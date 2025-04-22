@@ -461,12 +461,12 @@ https://templatemo.com/tm-590-topic-listing
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="/module">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Graduation</h5>
+                                                            <h5 class="mb-2">Module</h5>
 
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            <p class="mb-0">Learn the essentials and deepen your understanding.</p>
                                                         </div>
 
                                                         <span class="badge bg-education rounded-pill ms-auto">80</span>
@@ -479,12 +479,12 @@ https://templatemo.com/tm-590-topic-listing
 
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="/exam">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Educator</h5>
+                                                            <h5 class="mb-2">Exam</h5>
 
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            <p class="mb-0">Test your understanding with this comprehensive exam.</p>
                                                         </div>
 
                                                         <span class="badge bg-education rounded-pill ms-auto">75</span>

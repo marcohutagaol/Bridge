@@ -14,6 +14,14 @@ Route::get('/topic-listing', function () {
     return view('pages.topic_listing');
 });
 
+Route::get('/exam', function () {
+    return view('pages.detail.exam_detail');
+});
+
+Route::get('/module', function () {
+    return view('pages.detail.module_detail');
+});
+
 Route::get('/', function () {
     return view('pages.index');
 });
