@@ -166,7 +166,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                             <li class="social-icon-item">
                                                 <a href="#" class="social-icon-link bi-facebook"></a>
-                                            </li>Designms-auto"></a>
+                                          
                                     </div>
 
                                     <div class="section-overlay"></div>
@@ -180,7 +180,7 @@ https://templatemo.com/tm-590-topic-listing
 
 
             <section class="explore-section section-padding" id="section_2">
-                <div class="container">Design
+                <div class="container">
 
                         <div class="col-12 text-center">
                             <h2 class="mb-4">Browse Topics</h1>

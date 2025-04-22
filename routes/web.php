@@ -17,3 +17,8 @@ Route::get('/topic-listing', function () {
 Route::get('/', function () {
     return view('pages.index');
 });
+
+Route::get('/home', function () {
+    return view('pages.index');
+});
+
