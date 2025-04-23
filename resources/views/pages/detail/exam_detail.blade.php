@@ -37,36 +37,38 @@
                     </button>
     
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                    <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html#section_1">Home</a>
+                                <a class="nav-link click-scroll" href="\home#section_1">Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html#section_2">Browse Topics</a>
+                                <a class="nav-link click-scroll" href="\home#section_2">Browse Topics</a>
                             </li>
     
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html#section_3">How it works</a>
+                                <a class="nav-link click-scroll" href="\home#section_3">How it works</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html#section_4">FAQs</a>
+                                <a class="nav-link click-scroll" href="\home#section_4">FAQs</a>
                             </li>
     
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html#section_5">Contact</a>
+                                <a class="nav-link click-scroll" href="\home#section_5">Contact</a>
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                                <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
 
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="/topic-listing">Topics Listing</a></li>
-                                    <li><a class="dropdown-item" href="/contact">Contact Form</a></li>
+                                    <li><a class="dropdown-item" href="topics-listing.html">Topics Listing</a></li>
+
+                                    <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
                                 </ul>
                             </li>
                         </ul>
+
 
                         <div class="d-none d-lg-block">
                             <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
