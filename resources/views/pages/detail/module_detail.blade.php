@@ -16,6 +16,8 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         <link href="css/templatemo-topic-listing.css" rel="stylesheet">
+        <link href="css/navbar.css" rel="stylesheet">     
+
         
         <style>
             .module-card {

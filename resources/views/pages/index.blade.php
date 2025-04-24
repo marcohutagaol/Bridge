@@ -21,6 +21,11 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
 
         <link href="css/templatemo-topic-listing.css" rel="stylesheet">      
+        <link href="css/navbar.css" rel="stylesheet">     
+       
+
+
+  
 <!--
 
 TemplateMo 590 topic listing
@@ -71,15 +76,17 @@ https://templatemo.com/tm-590-topic-listing
                                 <a class="nav-link click-scroll" href="#section_5">Contact</a>
                             </li>
 
+
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+    <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
 
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="/topic-listing">Topics Listing</a></li>
+    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+        <li><a class="dropdown-item" href="/topic-listing">Topics Listing</a></li>
+        <li><a class="dropdown-item" href="/contact">Contact Form</a></li>
+    </ul>
+</li>
 
-                                    <li><a class="dropdown-item" href="/contact">Contact Form</a></li>
-                                </ul>
-                            </li>
+
                         </ul>
 
                         <div class="d-none d-lg-block">
@@ -767,6 +774,39 @@ https://templatemo.com/tm-590-topic-listing
         <script src="js/jquery.sticky.js"></script>
         <script src="js/click-scroll.js"></script>
         <script src="js/custom.js"></script>
+        <script>
+            // Variables to track scroll position
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
+const scrollThreshold = 100; // Adjust this value as needed
+
+// Function to handle scroll
+window.addEventListener('scroll', function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Add sticky class when scrolled past threshold
+    if (currentScroll > scrollThreshold) {
+        navbar.classList.add('sticky-top');
+        
+        // Check scroll direction
+        if (currentScroll < lastScrollTop) {
+            // Scrolling up - keep colored navbar
+            navbar.classList.remove('fade-out');
+        } else {
+            // Scrolling down - after a certain point, return to original
+            if (currentScroll > scrollThreshold + 200) { // Adjust this value as needed
+                navbar.classList.add('fade-out');
+            }
+        }
+    } else {
+        // At the top of the page
+        navbar.classList.remove('sticky-top');
+        navbar.classList.remove('fade-out');
+    }
+    
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+}, false);
+        </script>
 
     </body>
 </html>

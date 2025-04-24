@@ -134,6 +134,7 @@ strong {
 }
 
 
+
 /*---------------------------------------
   SECTION               
 -----------------------------------------*/
@@ -482,6 +483,130 @@ strong {
 }
 
 
+/* Main navbar styling with gradient */
+.navbar {
+    transition: all 0.3s ease;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: transparent;
+}
+
+/* Styling for navbar when scrolled */
+.navbar.sticky-top, 
+.navbar.sticky {
+    background: linear-gradient(135deg, #20b2aa, #48d1cc);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Remove underlines from navbar links */
+.navbar .nav-link {
+    color: white !important;
+    text-decoration: none;
+    position: relative;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect with gradient */
+.navbar .nav-link:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    color: #e0f7fa !important;
+    transform: translateY(-2px);
+}
+
+/* Active link styling */
+.navbar .nav-link.active {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+    color: #e0f7fa !important;
+    font-weight: 500;
+}
+
+/* Remove the underline effect */
+.navbar .nav-link:after {
+    display: none;
+}
+
+/* Profile icon styling */
+.navbar .navbar-icon {
+    color: white !important;
+    background-color: rgba(72, 209, 204, 0.3);
+    border-radius: 50%;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.navbar .navbar-icon:hover {
+    background-color: rgba(32, 178, 170, 0.6);
+    transform: scale(1.1);
+}
+
+/* Replace white profile circle with custom styling */
+.d-lg-none.ms-auto.me-4 a.navbar-icon,
+.d-none.d-lg-block a.navbar-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #48d1cc, #20b2aa);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.d-lg-none.ms-auto.me-4 a.navbar-icon:hover,
+.d-none.d-lg-block a.navbar-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #20b2aa, #48d1cc);
+}
+
+/* Fix dropdown menu styling */
+.navbar .dropdown-menu {
+    background: linear-gradient(135deg, #20b2aa, #48d1cc);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    padding: 8px 0;
+}
+
+.navbar .dropdown-item {
+    color: white;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+
+
+/* Mobile navbar styling */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: linear-gradient(135deg, #20b2aa, #48d1cc);
+        border-radius: 0 0 15px 15px;
+        padding: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        margin-top: 10px;
+    }
+    
+    .navbar .nav-link {
+        margin: 5px 0;
+        padding: 10px 15px;
+    }
+}
+/* Menghapus segitiga putih dari dropdown Bootstrap */
+.dropdown-menu::before,
+.dropdown-menu::after {
+    display: none !important;
+    content: none !important;
+}
+
+        
+
+
 /*---------------------------------------
   HERO        
 -----------------------------------------*/
@@ -518,6 +643,8 @@ strong {
   color: var(--white-color);
   max-width: 150px;
 }
+
+
 
 
 /*---------------------------------------
