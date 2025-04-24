@@ -38,7 +38,7 @@ https://templatemo.com/tm-590-topic-listing
                 <div class="container">
                     <a class="navbar-brand" href="index.html">
                         <i class="bi-back"></i>
-                        <span>Topic</span>
+                        <span>Bridge</span>
                     </a>
 
                     <div class="d-lg-none ms-auto me-4">
@@ -183,7 +183,7 @@ https://templatemo.com/tm-590-topic-listing
                 <div class="container">
 
                         <div class="col-12 text-center">
-                            <h2 class="mb-4">Browse Topics</h1>
+                            <h2 class="mb-4">TOPICS</h1>
                         </div>
 
                     </div>
@@ -193,23 +193,17 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Design</button>
+                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Prepare</button>
                             </li>
 
+     
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Marketing</button>
+                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Campus</button>
                             </li>
 
+                    
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Finance</button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Music</button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Education</button>
+                                <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Work</button>
                             </li>
                         </ul>
                     </div>
