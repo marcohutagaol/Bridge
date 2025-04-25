@@ -16,99 +16,14 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         <link href="css/templatemo-topic-listing.css" rel="stylesheet">
-        <link href="css/navbar.css" rel="stylesheet">     
+        <link href="css/navbar.css" rel="stylesheet"> 
+
+
+
 
         
         <style>
-            .module-card {
-                border-radius: 10px;
-                overflow: hidden;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                cursor: pointer;
-                height: 100%;
-            }
-            
-            .module-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            }
-            
-            .module-image {
-                height: 180px;
-                object-fit: cover;
-            }
-            
-            .module-badge {
-                position: absolute;
-                top: 15px;
-                right: 15px;
-            }
-            
-            .module-rating {
-                color: #FFD700;
-                margin-right: 5px;
-            }
-            
-            .module-reviews {
-                font-size: 0.8rem;
-                color: #6c757d;
-            }
-            
-            .module-price {
-                font-weight: bold;
-                color: #0d6efd;
-            }
-            
-            .module-old-price {
-                text-decoration: line-through;
-                color: #6c757d;
-                font-size: 0.9rem;
-            }
-            
-            #modulesList {
-                display: block;
-            }
-            
-            #moduleDetail {
-                display: none;
-            }
-            
-            .rating-stars i {
-                color: #FFD700;
-            }
-            
-            /* Changed: Move category above price */
-            .module-category {
-                /* Removed position: absolute */
-                /* Removed bottom and left properties */
-                margin-bottom: 10px; /* Add spacing between category and price */
-            }
-            
-            .instructor-avatar {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                object-fit: cover;
-            }
-            
-            .lessons-count {
-                background-color: #e9ecef;
-                padding: 5px 10px;
-                border-radius: 20px;
-                font-size: 0.8rem;
-            }
-            
-            .featured-badge {
-                position: absolute;
-                top: 15px;
-                left: 15px;
-                background-color: #ffc107;
-                color: #000;
-                font-weight: 600;
-                padding: 5px 10px;
-                border-radius: 5px;
-                font-size: 0.8rem;
-            }
+      
         </style>
     </head>
     
