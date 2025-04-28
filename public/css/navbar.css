@@ -1,491 +1,1053 @@
-/* Common base styles for both blocks */
-.custom-block {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
+
+:root {
+  --border-radius: 20px;
+  --primary-teal: #feffff; /* Changed to green-teal */
+  --primary-teal-transparent: rgba(38, 166, 154, 0.7); /* Changed to green-teal */
+  --dark-teal-transparent: rgba(38, 166, 154, 0.7); /* Changed to green-teal */
+  --black-transparent: rgba(0, 0, 0, 0.7);
+  --dark-black-transparent: rgba(0, 0, 0, 0.9);
+  --light-black-transparent: rgba(0, 0, 0, 0.45);
+  --white: #ffffff;
+  --light-bg: #f0f7f5; /* Adjusted for green-teal hue */
+  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  --card-hover-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+  --transition-standard: all 0.3s ease;
+  --section-bg: #4db6ac; /* Changed to green-teal */
+  --teal-light: #97e4e4;   /* lebih putih dan soft */
+  --teal-medium: #c0e4df; /* teal pastel lembut */
+  --teal-dark: #acdcdc;    /* abu-abu sangat muda */
+  --teal-deep: #70c4bb;    /* teal medium yang calm */
 }
 
+/* Update badge background color */
+.badge.bg-education {
+  background-color: var(--primary-teal) !important;
+  z-index: 3;
+  position: relative;
+}
 
+/* Update career block overlay */
+.career-block .overlay-bg,
+.career-overlay {
+  background: rgba(38, 166, 154, 0.35); /* Changed to green-teal */
+}
+
+/* Update module price color */
+.module-price {
+  font-weight: bold;
+  color: #4db6ac; /* Changed to green-teal */
+}
+
+/* Update card title underline gradient */
+#degreesList .card-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4db6ac, transparent); /* Changed to green-teal */
+  transition: width 0.3s ease;
+}
+
+/* Update browse section title color */
+.browse-section .section-title {
+  color: var(--primary-teal);
+  font-weight: 700;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.browse-section .section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-teal), transparent);
+}
+
+/* Update program level card icon color */
+.program-level-card i {
+  color: var(--primary-teal);
+  transition: transform 0.3s ease;
+}
+
+/* Update program level card button styles */
+.program-level-card .btn-outline-primary {
+  border-color: var(--primary-teal);
+  color: var(--primary-teal);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.program-level-card .btn-outline-primary:hover {
+  background-color: var(--primary-teal);
+  color: white;
+}
+
+/* Update category card icon color */
+.category-card i {
+  color: var(--primary-teal);
+  transition: transform 0.3s ease;
+}
+
+/* Update category card link color */
+.category-card .btn-link {
+  color: var(--primary-teal);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Update CTA button styles */
+.browse-section .btn-primary {
+  background-color: var(--primary-teal);
+  border-color: var(--primary-teal);
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(38, 166, 154, 0.3); /* Changed to green-teal */
+}
+
+.browse-section .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(38, 166, 154, 0.4); /* Changed to green-teal */
+  background-color: var(--teal-deep); /* Darker green-teal for hover */
+}
+
+/* Update section heading gradient */
+.browse-section h3.h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 25px;
+  background: linear-gradient(to bottom, var(--primary-teal), var(--section-bg));
+  border-radius: 3px;
+}
+
+/* ===== Common Block Styles ===== */
+.custom-block {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
 
 .custom-block img {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
-/* Overlay base styling */
+/* ===== Overlay Styling ===== */
 .overlay-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transition: background 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: background 0.3s ease;
 }
 
-/* Content positioning for both blocks */
+/* ===== Content Positioning ===== */
 .top-content, .bottom-content {
-    position: relative;
-    z-index: 3;
+  position: absolute;
+  right: 0;
+  left: 0;
+  padding: 30px;
+  z-index: 3;
 }
 
 .top-content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    padding: 30px;
-    z-index: 3;
+  top: 0;
 }
 
 .bottom-content {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    padding: 30px;
-    z-index: 3;
+  bottom: 0;
 }
 
-/* Text styling to ensure visibility */
+/* ===== Text Styling ===== */
 .top-content h5, .bottom-content p {
-    color: white !important;
-    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
-    font-weight: 500;
+  color: white !important;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
 }
 
-/* Badge styling */
+/* ===== Badge Styling ===== */
 .badge.bg-education {
-    background-color: #14a0a0 !important;
-    z-index: 3;
-    position: relative;
+  background-color: var(--primary-teal) !important;
+  z-index: 3;
+  position: relative;
 }
 
-/* DEGREE BLOCK STYLING - Black to Teal */
+/* ===== Block Type Styles ===== */
+/* Degree Block - Black to Teal transition */
 .degree-block .overlay-bg,
 .degree-overlay {
-    background: rgba(0, 0, 0, 0.45); /* Default: black transparent */
+  background: var(--light-black-transparent);
 }
 
 .degree-block:hover .overlay-bg,
 .custom-block:hover .degree-overlay {
-    background: rgba(20, 160, 160, 0.7) !important; /* Hover: teal */
+  background: var(--primary-teal-transparent) !important;
 }
 
 .degree-block:active .overlay-bg,
 .custom-block:active .degree-overlay {
-    background: rgba(20, 160, 160, 0.9) !important; /* Active: darker teal */
+  background: var(--dark-teal-transparent) !important;
 }
 
-/* CAREER BLOCK STYLING - Teal to Black */
+/* Career Block - Teal to Black transition */
 .career-block .overlay-bg,
 .career-overlay {
-    background: rgba(20, 160, 160, 0.35); /* Default: teal transparent */
+  background: rgba(20, 160, 160, 0.35);
 }
 
 .career-block:hover .overlay-bg,
 .custom-block:hover .career-overlay {
-    background: rgba(0, 0, 0, 0.7) !important; /* Hover: black */
+  background: var(--black-transparent) !important;
 }
 
 .career-block:active .overlay-bg,
 .custom-block:active .career-overlay {
-    background: rgba(0, 0, 0, 0.9) !important; /* Active: darker black */
+  background: var(--dark-black-transparent) !important;
 }
 
-/* Module card styling (keeping other styles intact) */
+/* ===== Module Card Styling ===== */
 .module-card {
-    border-radius: 20px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    height: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: var(--transition-standard);
+  cursor: pointer;
+  height: 100%;
 }
 
 .module-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-shadow);
 }
 
 .module-image {
-    height: 180px;
-    object-fit: cover;
+  height: 180px;
+  object-fit: cover;
 }
 
 .module-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
 .module-rating {
-    color: #FFD700;
-    margin-right: 5px;
+  color: #FFD700;
+  margin-right: 5px;
 }
 
 .module-reviews {
-    font-size: 0.8rem;
-    color: #6c757d;
+  font-size: 0.8rem;
+  color: #6c757d;
 }
 
 .module-price {
-    font-weight: bold;
-    color: #0d6efd;
+  font-weight: bold;
+  color: #7ad1ca;
 }
 
 .module-old-price {
-    text-decoration: line-through;
-    color: #6c757d;
-    font-size: 0.9rem;
+  text-decoration: line-through;
+  color: #6c757d;
+  font-size: 0.9rem;
 }
 
+/* Module display states */
 #modulesList {
-    display: block;
+  display: block;
 }
 
 #moduleDetail {
-    display: none;
+  display: none;
 }
 
+/* Other module styling */
 .rating-stars i {
-    color: #FFD700;
+  color: #FFD700;
 }
 
 .module-category {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .instructor-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 500%;
-    object-fit: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .lessons-count {
-    background-color: #e9ecef;
-    padding: 5px 10px;
-    border-radius: 200px;
-    font-size: 0.8rem;
+  background-color: #e9ecef;
+  padding: 5px 10px;
+  border-radius: 200px;
+  font-size: 0.8rem;
 }
 
 .featured-badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: #ffc107;
-    color: #000;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.8rem;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: #ffc107;
+  color: #000;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+/* ===== Degrees List Styling ===== */
+#degreesList {
+  font-family: 'Montserrat', sans-serif;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  padding-top: 150px;
+}
+
+/* Background gradient */
+#degreesList::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    var(--section-bg) 0%, 
+    var(--section-bg) 350px, 
+    rgba(95, 176, 183, 0.7) 400px, 
+    rgba(95, 176, 183, 0.3) 450px,
+    var(--light-bg) 500px,
+    var(--light-bg) 100%);
+  z-index: -1;
 }
 
 /* ===== Filter Section Styles ===== */
+#degreesList .filter-container {
+  padding: 16px 20px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  background: var(--section-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
 #degreesList .dropdown-toggle {
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 25px;
-    padding: 8px 18px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: var(--transition-standard);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+#degreesList .dropdown-toggle:hover,
+#degreesList .dropdown-toggle:focus {
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+#degreesList .dropdown-toggle::after {
+  margin-left: 8px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+#degreesList .dropdown-toggle[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+#degreesList .dropdown-menu {
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  padding: 10px 0;
+  margin-top: 8px;
+  animation: fadeIn 0.2s ease-out;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+#degreesList .dropdown-item {
+  padding: 8px 20px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+#degreesList .dropdown-item:hover {
+  background-color: rgba(13, 110, 253, 0.08);
+  color: #77e4db;
+}
+
+#degreesList .btn-outline-success {
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-weight: 500;
+  transition: var(--transition-standard);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+#degreesList .btn-outline-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+#degreesList .me-3 {
+  margin-right: 15px !important;
+  font-weight: 500;
+  color: white;
+  letter-spacing: 0.3px;
+}
+
+/* ===== Card Styles ===== */
+#degreesList .card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition-standard);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+#degreesList .card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--card-hover-shadow);
+  background: #ffffff;
+}
+
+#degreesList .card-img-top {
+  transition: transform 0.5s ease;
+  border-radius: 12px;
+  filter: grayscale(0.2);
+}
+
+#degreesList .card:hover .card-img-top {
+  transform: scale(1.05);
+  filter: grayscale(0);
+}
+
+#degreesList .card-body {
+  padding: 20px;
+}
+
+#degreesList .card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #222;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  position: relative;
+}
+
+#degreesList .card-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #81e4d7, transparent);
+  transition: width 0.3s ease;
+}
+
+#degreesList .card:hover .card-title::after {
+  width: 100%;
+}
+
+#degreesList .text-muted.small {
+  font-size: 13px;
+  color: #6c757d;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 500;
+}
+
+#degreesList .text-danger {
+  font-weight: 500;
+  font-size: 13px;
+  margin-top: 12px;
+  letter-spacing: 0.2px;
+}
+
+/* University name separator */
+#degreesList .card-body p:first-child {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease;
+}
+
+#degreesList .card:hover .card-body p:first-child {
+  border-bottom: 1px solid rgba(13, 110, 253, 0.3);
+}
+
+/* University rankings icon */
+#degreesList .card-body p:nth-child(3)::before {
+  content: "★";
+  margin-right: 5px;
+  color: #ffc107;
+  opacity: 0.8;
+}
+
+/* Deadline icon */
+#degreesList .text-danger::before {
+  content: "⏱";
+  margin-right: 5px;
+  opacity: 0.8;
+}
+
+/* Card hover effect */
+#degreesList .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 16px;
+}
+
+#degreesList .card:hover::before {
+  opacity: 1;
+}
+
+/* Section spacing */
+#degreesList .row.g-4 {
+  margin-bottom: 40px;
+}
+
+#degreesList .title-container {
+  margin-bottom: 40px;
+}
+
+#degreesList .content-section {
+  padding-top: 20px;
+}
+
+#degreesList .page-title {
+  color: var(--white);
+  margin-bottom: 50px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  #degreesList .dropdown-toggle:hover,
-  #degreesList .dropdown-toggle:focus {
-    border-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-1px);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  #degreesList .dropdown-toggle::after {
-    margin-left: 8px;
-    vertical-align: middle;
-    transition: transform 0.2s ease;
-  }
-  
-  #degreesList .dropdown-toggle[aria-expanded="true"]::after {
-    transform: rotate(180deg);
-  }
-  
-  #degreesList .dropdown-menu {
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    padding: 10px 0;
-    margin-top: 8px;
-    animation: fadeIn 0.2s ease-out;
-    background: rgba(255, 255, 255, 0.95);
-  }
-  
-  #degreesList .dropdown-item {
-    padding: 8px 20px;
-    font-size: 14px;
-    transition: all 0.2s ease;
-    font-weight: 500;
-  }
-  
-  #degreesList .dropdown-item:hover {
-    background-color: rgba(13, 110, 253, 0.08);
-    color: #0d6efd;
-  }
-  
-  #degreesList .btn-outline-success {
-    border-radius: 25px;
-    padding: 8px 18px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: white;
-    background: rgba(255, 255, 255, 0.15);
-  }
-  
-  #degreesList .btn-outline-success:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.7);
-  }
-  
-  /* Filter container */
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
   #degreesList .filter-container {
-    padding: 16px 20px;
-    border-radius: 16px;
-    margin-bottom: 30px;
-    background: #5fb0b7;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
   }
   
-  #degreesList .me-3 {
-    margin-right: 15px !important;
-    font-weight: 500;
-    color: white;
-    letter-spacing: 0.3px;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* ===== Card Styles ===== */
-  #degreesList .card {
-    border: none;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95);
+  #degreesList .dropdown-toggle {
+    padding: 6px 14px;
+    font-size: 13px;
   }
   
   #degreesList .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
-    background: #ffffff;
-  }
-  
-  #degreesList .card-img-top {
-    transition: transform 0.5s ease;
-    border-radius: 12px;
-    filter: grayscale(0.2);
-  }
-  
-  #degreesList .card:hover .card-img-top {
-    transform: scale(1.05);
-    filter: grayscale(0);
-  }
-  
-  #degreesList .card-body {
-    padding: 20px;
+    transform: translateY(-5px);
   }
   
   #degreesList .card-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #222;
-    line-height: 1.4;
-    letter-spacing: 0.2px;
-    position: relative;
+    font-size: 15px;
   }
   
-  #degreesList .card-title::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #0d6efd, transparent);
-    transition: width 0.3s ease;
-  }
-  
-  #degreesList .card:hover .card-title::after {
-    width: 100%;
-  }
-  
-  #degreesList .text-muted.small {
-    font-size: 13px;
-    color: #6c757d;
-    margin-bottom: 8px;
-    display: block;
-    font-weight: 500;
-  }
-  
+  #degreesList .text-muted.small,
   #degreesList .text-danger {
-    font-weight: 500;
-    font-size: 13px;
-    margin-top: 12px;
-    letter-spacing: 0.2px;
+    font-size: 12px;
+  }
+}
+
+/* ===== ENHANCED SECTION TRANSITIONS ===== */
+
+/* White section to browse section transition */
+.white-to-browse-transition {
+  position: relative;
+  height: 120px;
+  margin-top: -60px;
+  margin-bottom: -60px;
+  z-index: 5;
+  background: linear-gradient(to bottom, 
+    var(--white) 0%,
+    var(--teal-light) 40%,
+    var(--teal-medium) 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+}
+
+/* Enhanced Browse Section Styling with creative elements */
+.browse-section {
+  position: relative;
+  background: linear-gradient(135deg, 
+    var(--teal-medium) 0%,
+    var(--teal-dark) 50%,
+    var(--teal-deep) 100%);
+  padding-top: 100px;
+  padding-bottom: 100px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* Add decorative elements to browse section */
+.browse-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%),
+    radial-gradient(circle at 90% 90%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+  z-index: -1;
+}
+
+/* Add floating bubbles effect */
+.browse-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 1%, rgba(255,255,255,0) 3%),
+    radial-gradient(circle at 70% 20%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 1%, rgba(255,255,255,0) 3%),
+    radial-gradient(circle at 40% 80%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 1%, rgba(255,255,255,0) 3%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 1%, rgba(255,255,255,0) 3%);
+  z-index: -1;
+  opacity: 0.7;
+}
+
+/* Browse section to footer transition */
+.browse-to-footer-transition {
+  position: relative;
+  height: 120px;
+  margin-top: -60px;
+  margin-bottom: -60px;
+  z-index: 5;
+  background: linear-gradient(to bottom, 
+    var(--teal-deep) 0%,
+    #333 100%);
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Enhanced program level cards with hover effects */
+.program-level-card {
+  border-radius: var(--border-radius);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  position: relative;
+}
+
+.program-level-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--teal-medium), var(--teal-dark));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.program-level-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.program-level-card:hover::before {
+  transform: scaleX(1);
+}
+
+.program-level-card .card-body {
+  padding: 30px 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.program-level-card i {
+  color: var(--teal-dark);
+  font-size: 2.5rem;
+  transition: all 0.4s ease;
+  background: linear-gradient(135deg, var(--teal-medium), var(--teal-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.program-level-card:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Enhanced category cards with hover effects */
+.category-card {
+  border-radius: var(--border-radius);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  position: relative;
+}
+
+.category-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 40px 40px;
+  border-color: transparent transparent var(--teal-light) transparent;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.category-card:hover {
+  transform: translateY(-10px) translateX(5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-card:hover::after {
+  opacity: 1;
+  border-width: 0 0 80px 80px;
+}
+
+/* Enhanced section heading with animated underline */
+.browse-section h3.h4 {
+  position: relative;
+  padding-left: 20px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.browse-section h3.h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 30px;
+  background: linear-gradient(to bottom, var(--white), var(--teal-medium));
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.browse-section h3.h4::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--white), transparent);
+  transition: width 0.5s ease;
+}
+
+.browse-section h3.h4:hover::after {
+  width: 100%;
+}
+
+/* Enhanced CTA button with animated gradient */
+.browse-section .btn-primary {
+  background: linear-gradient(45deg, var(--teal-dark), var(--teal-deep));
+  background-size: 200% 200%;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: gradientShift 3s ease infinite;
+}
+
+.browse-section .btn-primary::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.browse-section .btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.browse-section .btn-primary:hover::before {
+  opacity: 1;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .white-to-browse-transition,
+  .browse-to-footer-transition {
+    height: 80px;
+    margin-top: -40px;
+    margin-bottom: -40px;
   }
   
-  /* Add a subtle line between university name and program title */
-  #degreesList .card-body p:first-child {
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    margin-bottom: 10px;
-    transition: border-color 0.3s ease;
+  .browse-section {
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
   
-  #degreesList .card:hover .card-body p:first-child {
-    border-bottom: 1px solid rgba(13, 110, 253, 0.3);
+  .program-level-card:hover,
+  .category-card:hover {
+    transform: translateY(-8px);
+  }
+}
+
+/* ===== Affordable Education Section Styling ===== */
+.affordable-education-section {
+  position: relative;
+  background: linear-gradient(135deg, var(--teal-light) 0%, var(--white) 100%);
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+/* Add decorative elements */
+.affordable-education-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 50%);
+  z-index: 0;
+}
+
+/* Section heading style */
+.affordable-education-section h3.h5 {
+  position: relative;
+  font-weight: 700;
+  color: var(--teal-deep);
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  display: inline-block;
+}
+
+.affordable-education-section h3.h5::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal-deep), transparent);
+  border-radius: 3px;
+}
+
+/* Enhanced university cards with unique styling */
+.affordable-education-section .card {
+  border: none;
+  border-radius: 15px;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Add price tag ribbon */
+.affordable-education-section .card::before {
+  content: "Affordable";
+  position: absolute;
+  top: 10px;
+  right: -27px;
+  background: var(--teal-deep);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 25px;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Card hover effect */
+.affordable-education-section .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Add subtle line separator between image and content */
+.affordable-education-section .card .p-2 {
+  position: relative;
+}
+
+.affordable-education-section .card .p-2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--teal-medium), transparent);
+}
+
+/* Enhance text titles */
+.affordable-education-section .card-title.h6 {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.affordable-education-section .card:hover .card-title.h6 {
+  color: var(--teal-deep);
+}
+
+/* Add subtle animation to university logo */
+.affordable-education-section .card:hover .card-img-top {
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+/* Style the deadline text */
+.affordable-education-section .text-danger {
+  position: relative;
+  display: inline-block;
+  padding-left: 14px;
+}
+
+.affordable-education-section .text-danger::before {
+  content: "⏱";
+  position: absolute;
+  left: 0;
+  font-size: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Add "Learn More" button on hover */
+.affordable-education-section .card-body {
+  position: relative;
+  padding-bottom: 35px !important;
+}
+
+.affordable-education-section .card-body::after {
+  content: "Learn More →";
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 0.7rem;
+  color: var(--teal-deep);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.affordable-education-section .card:hover .card-body::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Add decorative dots pattern to left description area */
+.affordable-education-section .col-lg-3.col-md-4 {
+  position: relative;
+  z-index: 1;
+}
+
+.affordable-education-section .col-lg-3.col-md-4::before {
+  content: "";
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 60px;
+  height: a0px;
+  background-image: radial-gradient(var(--teal-dark) 2px, transparent 2px);
+  background-size: 8px 8px;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .affordable-education-section .col-lg-3.col-md-4 {
+    margin-bottom: 30px;
   }
   
-  /* Add elegant icon for university rankings */
-  #degreesList .card-body p:nth-child(3)::before {
-    content: "★";
-    margin-right: 5px;
-    color: #ffc107;
-    opacity: 0.8;
+  .affordable-education-section .card {
+    margin-bottom: 15px;
   }
   
-  /* Add deadline icon */
-  #degreesList .text-danger::before {
-    content: "⏱";
-    margin-right: 5px;
-    opacity: 0.8;
+  .affordable-education-section .card::before {
+    font-size: 0.6rem;
+    padding: 2px 20px;
   }
-  
-  /* Elegant hover effect for entire card */
-  #degreesList .card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-    pointer-events: none;
-    border-radius: 16px;
-  }
-  
-  #degreesList .card:hover::before {
-    opacity: 1;
-  }
-  
-  /* Make sure the card container spacing is consistent */
-  #degreesList .row.g-4 {
-    margin-bottom: 40px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 767px) {
-    #degreesList .filter-container {
-      padding: 15px;
-    }
-    
-    #degreesList .dropdown-toggle {
-      padding: 6px 14px;
-      font-size: 13px;
-    }
-    
-    #degreesList .card:hover {
-      transform: translateY(-5px);
-    }
-    
-    #degreesList .card-title {
-      font-size: 15px;
-    }
-    
-    #degreesList .text-muted.small,
-    #degreesList .text-danger {
-      font-size: 12px;
-    }
-  }
-  
-  /* Enhanced typography for better readability */
-  #degreesList {
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  #degreesList .page-title {
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Section styling */
-  #degreesList {
-    background: transparent;
-    position: relative;
-    z-index: 1;
-    padding-top: 150px; /* Spacing from navbar */
-  }
-  
-  /* Keep the title text white for the teal section */
-  #degreesList .page-title {
-    color: #ffffff;
-    margin-bottom: 50px;
-  }
-  
-  /* Ensure proper spacing for the content */
-  #degreesList .row.g-4 {
-    padding-top: 20px;
-  }
-  
-  /* Title container positioning */
-  #degreesList .title-container {
-    margin-bottom: 40px;
-  }
-  
-  /* Content section with appropriate padding */
-  #degreesList .content-section {
-    padding-top: 20px;
-  }
-  
-  /* Create a smooth background gradient from teal to light blue */
-  #degreesList::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, 
-      #5fb0b7 0%, 
-      #5fb0b7 350px, 
-      rgba(95, 176, 183, 0.7) 400px, 
-      rgba(95, 176, 183, 0.3) 450px,
-      #f0f6f7 500px,
-      #f0f6f7 100%);
-    z-index: -1;
-  }
-  
-  /* Make sure the filter container inherits the teal background */
-  #degreesList .filter-container {
-    background: #5fb0b7;
-  }
+}
