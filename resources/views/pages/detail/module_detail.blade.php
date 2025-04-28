@@ -131,66 +131,6 @@
                         </div>
                     </div>
 
-                    <!-- University 5 -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card shadow h-100">
-                            <img src="images/universities/images2.png" class="card-img-top p-3"
-                                style="height: 100px; object-fit: contain;" alt="University of London">
-                            <div class="card-body">
-                                <p class="text-muted small">University of London</p>
-                                <h5 class="card-title">Bachelor of Science in Business Administration</h5>
-                                <p class="small text-muted">Ranked #34 in the UK (The Times and Sunday Times Good
-                                    University Guide 2025)</p>
-                                <p class="small text-danger">Aplikasi jatuh tempo pada 15 Juni 2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- University 6 -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card shadow h-100">
-                            <img src="images/universities/images1.png" class="card-img-top p-3"
-                                style="height: 100px; object-fit: contain;" alt="University of Colorado Boulder">
-                            <div class="card-body">
-                                <p class="text-muted small">University of Colorado Boulder</p>
-                                <h5 class="card-title">Master of Science in Electrical Engineering</h5>
-                                <p class="small text-muted">Top 20 Engineering School (U.S. News Engineering Schools
-                                    ranking, 2025)</p>
-                                <p class="small text-danger">Aplikasi jatuh tempo pada 12 Juni 2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- University 7 -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card shadow h-100">
-                            <img src="images/universities/images.png" class="card-img-top p-3"
-                                style="height: 100px; object-fit: contain;" alt="University of North Texas">
-                            <div class="card-body">
-                                <p class="text-muted small">University of North Texas</p>
-                                <h5 class="card-title">Bachelor of Science in General Business</h5>
-                                <p class="small text-muted">Ranked #25 for online Bachelor's programs (U.S. News & World
-                                    Report, 2025)</p>
-                                <p class="small text-danger">Aplikasi jatuh tempo pada 11 Mei 2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- University 8 -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card shadow h-100">
-                            <img src="images/universities/images1.png" class="card-img-top p-3"
-                                style="height: 100px; object-fit: contain;" alt="IIT Roorkee">
-                            <div class="card-body">
-                                <p class="text-muted small">IIT Roorkee</p>
-                                <h5 class="card-title">Executive MBA</h5>
-                                <p class="small text-muted">Universitas #8 di India menurut NIRF 2023, IIT Roorkee
-                                    adalah Institut Kepentingan Nasional</p>
-                                <p class="small text-danger">Aplikasi jatuh tempo pada 29 Mei 2025</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="row mt-4">
                     <div class="col-12">
@@ -217,36 +157,8 @@
         </section>
 <!-- Browse by Program Level and Category Section -->
 <section class="browse-section py-5 bg-light">
-    <style>
-        .text-teal {
-            color: #20B2AA !important; /* Light Sea Green / Teal */
-        }
-        .btn-outline-teal {
-            color: #20B2AA;
-            border-color: #20B2AA;
-        }
-        .btn-outline-teal:hover {
-            color: #fff;
-            background-color: #20B2AA;
-            border-color: #20B2AA;
-        }
-        .btn-teal {
-            color: #fff;
-            background-color: #20B2AA;
-            border-color: #20B2AA;
-        }
-        .btn-teal:hover {
-            color: #fff;
-            background-color: #1a9690;
-            border-color: #1a9690;
-        }
-        .btn-link.text-teal {
-            color: #20B2AA;
-        }
-    </style>
     <div class="container">
 
-        <!-- Browse by Program Level -->
         <div class="row mb-5">
             <div class="col-12">
                 <h3 class="h4 mb-4">Browse by Program Level</h3>
@@ -588,6 +500,210 @@
         </div>
     </div>
 </section>
+<!-- Student Testimonials Section -->
+<section class="student-testimonials-section py-5" style="background-color: #f9f9f9;">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="h3 mb-3">Cerita Sukses dari Mahasiswa Kami</h2>
+                <p class="text-muted">Dengarkan pengalaman dari siswa yang telah berhasil meraih tujuan akademis mereka melalui program online kami.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="testimonials-carousel position-relative">
+                    <!-- Testimonial Slides Container -->
+                    <div class="testimonial-slides">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-slide active">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                                    <div class="testimonial-video position-relative rounded shadow">
+                                        <video class="w-100 rounded" poster="{{ asset('images/testimonials/student1.jpg') }}" controls controlsList="nodownload">
+                                            <source src="{{ asset('images/video.mp4') }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <div class="play-overlay">
+                                            <button class="video-play-btn">
+                                                <i class="bi bi-play-circle-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="testimonial-content p-4">
+                                        <blockquote class="fs-5 mb-4">
+                                            <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
+                                            Program Master of Science in Data Science dari University of Colorado Boulder mengubah karir saya. Fleksibilitas jadwal memungkinkan saya tetap bekerja sambil kuliah. Kini saya bekerja sebagai Data Scientist dengan gaji yang lebih baik.
+                                        </blockquote>
+                                        <div class="testimonial-author">
+                                            <h5 class="h6 mb-1">Diana Purnama</h5>
+                                            <p class="small text-muted">M.S. in Data Science, University of Colorado Boulder</p>
+                                            <p class="small text-muted">Data Scientist di Tech Solutions Inc.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-slide">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                                    <div class="testimonial-video position-relative rounded shadow">
+                                        <video class="w-100 rounded" poster="{{ asset('images/testimonials/student1.jpg') }}" controls controlsList="nodownload">
+                                            <source src="{{ asset('images/video.mp4') }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <div class="play-overlay">
+                                            <button class="video-play-btn">
+                                                <i class="bi bi-play-circle-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="testimonial-content p-4">
+                                        <blockquote class="fs-5 mb-4">
+                                            <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
+                                            Saya berhasil menyelesaikan Bachelor of Science in Business Administration sambil mengurus keluarga. Kuliah online dari University of London memberikan saya keterampilan yang relevan dengan pasar kerja. Sangat worth it!
+                                        </blockquote>
+                                        <div class="testimonial-author">
+                                            <h5 class="h6 mb-1">Budi Santoso</h5>
+                                            <p class="small text-muted">B.S. in Business Administration, University of London</p>
+                                            <p class="small text-muted">Marketing Manager di Global Brands Corp.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-slide">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                                    <div class="testimonial-video position-relative rounded shadow">
+                                        <video class="w-100 rounded" poster="{{ asset('images/testimonials/student1.jpg') }}" controls controlsList="nodownload">
+                                            <source src="{{ asset('images/video.mp4') }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <div class="play-overlay">
+                                            <button class="video-play-btn">
+                                                <i class="bi bi-play-circle-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="testimonial-content p-4">
+                                        <blockquote class="fs-5 mb-4">
+                                            <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
+                                            Executive MBA dari IIT Roorkee memperluas jaringan profesional saya secara global. Materi pembelajaran yang berkualitas tinggi dan dosen yang berpengalaman membuat investasi pendidikan ini sangat berharga.
+                                        </blockquote>
+                                        <div class="testimonial-author">
+                                            <h5 class="h6 mb-1">Siti Rahayu</h5>
+                                            <p class="small text-muted">Executive MBA, IIT Roorkee</p>
+                                            <p class="small text-muted">CEO di Startup Innovation Labs</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-slide">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                                    <div class="testimonial-video position-relative rounded shadow">
+                                        <video class="w-100 rounded" poster="{{ asset('images/testimonials/student1.jpg') }}" controls controlsList="nodownload">
+                                            <source src="{{ asset('images/video.mp4') }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <div class="play-overlay">
+                                            <button class="video-play-btn">
+                                                <i class="bi bi-play-circle-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="testimonial-content p-4">
+                                        <blockquote class="fs-5 mb-4">
+                                            <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
+                                            Saya menyukai fleksibilitas yang ditawarkan program ini. Fakta bahwa saya dapat melihat materi dan menghadiri kuliah langsung dari mana saja dengan menggunakan ponsel atau laptop saya sangatlah luar biasa.
+                                        </blockquote>
+                                        <div class="testimonial-author">
+                                            <h5 class="h6 mb-1">Abdulhakim Abdullahi Abdi</h5>
+                                            <p class="small text-muted">M.A. dalam Hubungan Internasional, Keamanan, dan Strategi</p>
+                                            <p class="small text-muted">O.P. Jindal Global University</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 5 -->
+                        <div class="testimonial-slide">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                                    <div class="testimonial-video position-relative rounded shadow">
+                                        <video class="w-100 rounded" poster="{{ asset('images/testimonials/student1.jpg') }}" controls controlsList="nodownload">
+                                            <source src="{{ asset('images/video.mp4') }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <div class="play-overlay">
+                                            <button class="video-play-btn">
+                                                <i class="bi bi-play-circle-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="testimonial-content p-4">
+                                        <blockquote class="fs-5 mb-4">
+                                            <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
+                                            Program Master of Science in Management dari University of Illinois membuka pintu karir yang sebelumnya tidak pernah saya bayangkan. Studi kasus dan proyek tim mengajarkan keterampilan kepemimpinan yang praktis.
+                                        </blockquote>
+                                        <div class="testimonial-author">
+                                            <h5 class="h6 mb-1">Ahmad Rizki</h5>
+                                            <p class="small text-muted">M.S. in Management, University of Illinois Urbana-Champaign</p>
+                                            <p class="small text-muted">Senior Manager di Fortune 500 Company</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <button class="carousel-control carousel-control-prev" id="testimonialPrev">
+                        <i class="bi bi-chevron-left fs-3"></i>
+                    </button>
+                    <button class="carousel-control carousel-control-next" id="testimonialNext">
+                        <i class="bi bi-chevron-right fs-3"></i>
+                    </button>
+                    
+                    <!-- Indicators -->
+                    <div class="carousel-indicators testimonial-indicators">
+                        <button type="button" data-slide-to="0" class="active" aria-current="true"></button>
+                        <button type="button" data-slide-to="1"></button>
+                        <button type="button" data-slide-to="2"></button>
+                        <button type="button" data-slide-to="3"></button>
+                        <button type="button" data-slide-to="4"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <a href="#" class="btn btn-teal">Lihat Semua Kisah Sukses</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
@@ -755,7 +871,230 @@
                     }
                 });
             });
+
+            document.addEventListener('DOMContentLoaded', function() {
+        // Testimonial Carousel
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const indicators = document.querySelectorAll('.testimonial-indicators button');
+        const prevBtn = document.getElementById('testimonialPrev');
+        const nextBtn = document.getElementById('testimonialNext');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all indicators
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+                indicator.setAttribute('aria-current', 'false');
+            });
+            
+            // Show the current slide and set active indicator
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            indicators[index].setAttribute('aria-current', 'true');
+            
+            currentSlide = index;
+        }
+        
+        // Next slide
+        function nextSlide() {
+            const newIndex = (currentSlide + 1) % slides.length;
+            showSlide(newIndex);
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            const newIndex = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(newIndex);
+        }
+        
+        // Add event listeners for controls
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        
+        // Add event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Auto play (optional)
+        let slideInterval = setInterval(nextSlide, 6000);
+        
+        // Pause on hover
+        const testimonialCarousel = document.querySelector('.testimonials-carousel');
+        testimonialCarousel.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        testimonialCarousel.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 6000);
+        });
+        
+        // Play button functionality (in a real implementation this would play a video)
+        const playButtons = document.querySelectorAll('.play-button');
+        playButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Video would play here in a real implementation');
+            });
+        });
+    });
         </script>
+
+
+
+<!-- Add This JavaScript to your existing scripts -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Testimonial Carousel
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const indicators = document.querySelectorAll('.testimonial-indicators button');
+    const prevBtn = document.getElementById('testimonialPrev');
+    const nextBtn = document.getElementById('testimonialNext');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        // Hide all slides
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        // Remove active class from all indicators
+        indicators.forEach(indicator => {
+            indicator.classList.remove('active');
+            indicator.setAttribute('aria-current', 'false');
+        });
+        
+        // Show the current slide and set active indicator
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        indicators[index].setAttribute('aria-current', 'true');
+        
+        // Pause all videos when changing slides
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.pause();
+            // Reset play overlay
+            const videoContainer = video.closest('.testimonial-video');
+            if (videoContainer) {
+                videoContainer.classList.remove('playing');
+            }
+        });
+        
+        currentSlide = index;
+    }
+    
+    // Next slide
+    function nextSlide() {
+        const newIndex = (currentSlide + 1) % slides.length;
+        showSlide(newIndex);
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        const newIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(newIndex);
+    }
+    
+    // Add event listeners for controls
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    
+    // Add event listeners for indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+    
+    // Auto play (optional) - commented out but can be enabled if needed
+    // let slideInterval = setInterval(nextSlide, 6000);
+    
+    // Pause on hover (for auto play if enabled)
+    const testimonialCarousel = document.querySelector('.testimonials-carousel');
+    if (testimonialCarousel) {
+        testimonialCarousel.addEventListener('mouseenter', () => {
+            // clearInterval(slideInterval);
+        });
+        
+        testimonialCarousel.addEventListener('mouseleave', () => {
+            // slideInterval = setInterval(nextSlide, 6000);
+        });
+    }
+    
+    // Custom video play functionality
+    const playButtons = document.querySelectorAll('.video-play-btn');
+    playButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const videoContainer = this.closest('.testimonial-video');
+            const video = videoContainer.querySelector('video');
+            
+            if (video) {
+                videoContainer.classList.add('playing');
+                video.play();
+                
+                // Pause all other videos
+                const allVideos = document.querySelectorAll('video');
+                allVideos.forEach(otherVideo => {
+                    if (otherVideo !== video && !otherVideo.paused) {
+                        otherVideo.pause();
+                        const otherContainer = otherVideo.closest('.testimonial-video');
+                        if (otherContainer) {
+                            otherContainer.classList.remove('playing');
+                        }
+                    }
+                });
+            }
+        });
+    });
+    
+    // When a video ends
+    const allVideos = document.querySelectorAll('video');
+    allVideos.forEach(video => {
+        video.addEventListener('ended', function() {
+            const videoContainer = this.closest('.testimonial-video');
+            if (videoContainer) {
+                videoContainer.classList.remove('playing');
+            }
+        });
+        
+        // When video is paused
+        video.addEventListener('pause', function() {
+            const videoContainer = this.closest('.testimonial-video');
+            if (videoContainer) {
+                videoContainer.classList.remove('playing');
+            }
+        });
+        
+        // When video is playing
+        video.addEventListener('play', function() {
+            const videoContainer = this.closest('.testimonial-video');
+            if (videoContainer) {
+                videoContainer.classList.add('playing');
+            }
+            
+            // Pause all other videos
+            allVideos.forEach(otherVideo => {
+                if (otherVideo !== video && !otherVideo.paused) {
+                    otherVideo.pause();
+                    const otherContainer = otherVideo.closest('.testimonial-video');
+                    if (otherContainer) {
+                        otherContainer.classList.remove('playing');
+                    }
+                }
+            });
+        });
+    });
+});
+
+</script>
+
+
     </main>
 </body>
 
