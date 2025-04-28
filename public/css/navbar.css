@@ -1,6 +1,7 @@
 
 :root {
   --border-radius: 20px;
+  --primary-color:#13547a;
   --primary-teal: #feffff; /* Changed to green-teal */
   --primary-teal-transparent: rgba(38, 166, 154, 0.7); /* Changed to green-teal */
   --dark-teal-transparent: rgba(38, 166, 154, 0.7); /* Changed to green-teal */
@@ -39,7 +40,7 @@
 }
 
 /* Update card title underline gradient */
-#degreesList .card-title::after {
+#degreesList #univList .card-title::after {
   content: "";
   position: absolute;
   bottom: -6px;
@@ -90,13 +91,13 @@
 }
 
 /* Update category card icon color */
-.category-card i {
+.category-card .category-card-2 i {
   color: var(--primary-teal);
   transition: transform 0.3s ease;
 }
 
 /* Update category card link color */
-.category-card .btn-link {
+.category-card .category-card-2 .btn-link {
   color: var(--primary-teal);
   text-decoration: none;
   font-weight: 500;
@@ -311,7 +312,7 @@
 }
 
 /* ===== Degrees List Styling ===== */
-#degreesList {
+#degreesList #univList {
   font-family: 'Montserrat', sans-serif;
   background: transparent;
   position: relative;
@@ -320,7 +321,7 @@
 }
 
 /* Background gradient */
-#degreesList::before {
+#degreesList #univList::before {
   content: "";
   position: absolute;
   top: 0;
@@ -338,7 +339,7 @@
 }
 
 /* ===== Filter Section Styles ===== */
-#degreesList .filter-container {
+#degreesList #univList .filter-container {
   padding: 16px 20px;
   border-radius: 16px;
   margin-bottom: 30px;
@@ -346,7 +347,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-#degreesList .dropdown-toggle {
+#degreesList #univList .dropdown-toggle {
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 25px;
   padding: 8px 18px;
@@ -358,25 +359,25 @@
   color: white;
 }
 
-#degreesList .dropdown-toggle:hover,
-#degreesList .dropdown-toggle:focus {
+#degreesList #univList .dropdown-toggle:hover,
+#degreesList #univList .dropdown-toggle:focus {
   border-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.25);
   transform: translateY(-1px);
 }
 
-#degreesList .dropdown-toggle::after {
+#degreesList #univList .dropdown-toggle::after {
   margin-left: 8px;
   vertical-align: middle;
   transition: transform 0.2s ease;
 }
 
-#degreesList .dropdown-toggle[aria-expanded="true"]::after {
+#degreesList #univList .dropdown-toggle[aria-expanded="true"]::after {
   transform: rotate(180deg);
 }
 
-#degreesList .dropdown-menu {
+#degreesList #univList .dropdown-menu {
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
@@ -386,19 +387,19 @@
   background: rgba(255, 255, 255, 0.95);
 }
 
-#degreesList .dropdown-item {
+#degreesList #univList .dropdown-item {
   padding: 8px 20px;
   font-size: 14px;
   transition: all 0.2s ease;
   font-weight: 500;
 }
 
-#degreesList .dropdown-item:hover {
+#degreesList #univList .dropdown-item:hover {
   background-color: rgba(13, 110, 253, 0.08);
   color: #77e4db;
 }
 
-#degreesList .btn-outline-success {
+#degreesList #univList .btn-outline-success {
   border-radius: 25px;
   padding: 8px 18px;
   font-weight: 500;
@@ -408,14 +409,14 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-#degreesList .btn-outline-success:hover {
+#degreesList #univList .btn-outline-success:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.25);
   border-color: rgba(255, 255, 255, 0.7);
 }
 
-#degreesList .me-3 {
+#degreesList #univList .me-3 {
   margin-right: 15px !important;
   font-weight: 500;
   color: white;
@@ -423,7 +424,7 @@
 }
 
 /* ===== Card Styles ===== */
-#degreesList .card {
+#degreesList #univList .card {
   border: none;
   border-radius: 16px;
   overflow: hidden;
@@ -433,28 +434,28 @@
   background: rgba(255, 255, 255, 0.95);
 }
 
-#degreesList .card:hover {
+#degreesList #univList .card:hover {
   transform: translateY(-8px);
   box-shadow: var(--card-hover-shadow);
   background: #ffffff;
 }
 
-#degreesList .card-img-top {
+#degreesList #univList .card-img-top {
   transition: transform 0.5s ease;
   border-radius: 12px;
   filter: grayscale(0.2);
 }
 
-#degreesList .card:hover .card-img-top {
+#degreesList #univList .card:hover .card-img-top {
   transform: scale(1.05);
   filter: grayscale(0);
 }
 
-#degreesList .card-body {
+#degreesList #univList .card-body {
   padding: 20px;
 }
 
-#degreesList .card-title {
+#degreesList #univList .card-title {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
@@ -464,7 +465,7 @@
   position: relative;
 }
 
-#degreesList .card-title::after {
+#degreesList #univList .card-title::after {
   content: "";
   position: absolute;
   bottom: -6px;
@@ -475,11 +476,11 @@
   transition: width 0.3s ease;
 }
 
-#degreesList .card:hover .card-title::after {
+#degreesList #univList .card:hover .card-title::after {
   width: 100%;
 }
 
-#degreesList .text-muted.small {
+#degreesList #univList .text-muted.small {
   font-size: 13px;
   color: #6c757d;
   margin-bottom: 8px;
@@ -487,7 +488,7 @@
   font-weight: 500;
 }
 
-#degreesList .text-danger {
+#degreesList #univList .text-danger {
   font-weight: 500;
   font-size: 13px;
   margin-top: 12px;
@@ -495,19 +496,19 @@
 }
 
 /* University name separator */
-#degreesList .card-body p:first-child {
+#degreesList #univList .card-body p:first-child {
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   margin-bottom: 10px;
   transition: border-color 0.3s ease;
 }
 
-#degreesList .card:hover .card-body p:first-child {
+#degreesList #univList .card:hover .card-body p:first-child {
   border-bottom: 1px solid rgba(13, 110, 253, 0.3);
 }
 
 /* University rankings icon */
-#degreesList .card-body p:nth-child(3)::before {
+#degreesList #univList .card-body p:nth-child(3)::before {
   content: "★";
   margin-right: 5px;
   color: #ffc107;
@@ -515,14 +516,14 @@
 }
 
 /* Deadline icon */
-#degreesList .text-danger::before {
+#degreesList #univList .text-danger::before {
   content: "⏱";
   margin-right: 5px;
   opacity: 0.8;
 }
 
 /* Card hover effect */
-#degreesList .card::before {
+#degreesList #univList .card::before {
   content: "";
   position: absolute;
   top: 0;
@@ -537,24 +538,24 @@
   border-radius: 16px;
 }
 
-#degreesList .card:hover::before {
+#degreesList #univList .card:hover::before {
   opacity: 1;
 }
 
 /* Section spacing */
-#degreesList .row.g-4 {
+#degreesList #univList .row.g-4 {
   margin-bottom: 40px;
 }
 
-#degreesList .title-container {
+#degreesList #univList .title-container {
   margin-bottom: 40px;
 }
 
-#degreesList .content-section {
+#degreesList #univList .content-section {
   padding-top: 20px;
 }
 
-#degreesList .page-title {
+#degreesList #univList .page-title {
   color: var(--white);
   margin-bottom: 50px;
   letter-spacing: 0.5px;
@@ -575,25 +576,25 @@
 
 /* Responsive adjustments */
 @media (max-width: 767px) {
-  #degreesList .filter-container {
+  #degreesList #univList .filter-container {
     padding: 15px;
   }
   
-  #degreesList .dropdown-toggle {
+  #degreesList #univList .dropdown-toggle {
     padding: 6px 14px;
     font-size: 13px;
   }
   
-  #degreesList .card:hover {
+  #degreesList #univList .card:hover {
     transform: translateY(-5px);
   }
   
-  #degreesList .card-title {
+  #degreesList #univList .card-title {
     font-size: 15px;
   }
   
-  #degreesList .text-muted.small,
-  #degreesList .text-danger {
+  #degreesList #univList .text-muted.small,
+  #degreesList #univList .text-danger {
     font-size: 12px;
   }
 }
@@ -746,7 +747,7 @@
   height: 0;
   border-style: solid;
   border-width: 0 0 40px 40px;
-  border-color: transparent transparent var(--teal-light) transparent;
+  border-color: transparent transparent var(--primary-color) transparent;
   transition: all 0.4s ease;
   opacity: 0;
 }
@@ -759,6 +760,57 @@
 .category-card:hover::after {
   opacity: 1;
   border-width: 0 0 80px 80px;
+}
+
+.category-card-2 {
+  border-radius: var(--border-radius);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  position: relative;
+}
+
+.category-card-2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 40px 40px;
+  border-color: transparent transparent var(--primary-color) transparent;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.category-card-2:hover {
+  transform: translateY(-10px) translateX(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-card-2:hover::after {
+  opacity: 1;
+  border-width: 0 0 80px 80px;
+}
+
+.category-card-3 {
+  border-radius: var(--border-radius);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  position: relative;
+}
+
+.category-card-3:hover {
+  transform: translateY(-10px) translateX(5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Enhanced section heading with animated underline */
@@ -863,7 +915,7 @@
   }
   
   .program-level-card:hover,
-  .category-card:hover {
+  .category-card .category-card-2:hover {
     transform: translateY(-8px);
   }
 }

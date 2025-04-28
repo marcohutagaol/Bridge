@@ -119,17 +119,12 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="design-tab" data-bs-toggle="tab"
                                 data-bs-target="#design-tab-pane" type="button" role="tab"
-                                aria-controls="design-tab-pane" aria-selected="true">Prepare</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="finance-tab" data-bs-toggle="tab"
-                                data-bs-target="#finance-tab-pane" type="button" role="tab"
-                                aria-controls="finance-tab-pane" aria-selected="false">Campus</button>
+                                aria-controls="design-tab-pane" aria-selected="true">Kuliah</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="education-tab" data-bs-toggle="tab"
                                 data-bs-target="#education-tab-pane" type="button" role="tab"
-                                aria-controls="education-tab-pane" aria-selected="false">Work</button>
+                                aria-controls="education-tab-pane" aria-selected="false">Kerja</button>
                         </li>
                     </ul>
                 </div>
@@ -143,66 +138,12 @@
                             <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel"
                                 aria-labelledby="design-tab" tabindex="0">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Web Design</h5>
-                                                        <p class="mb-0">Topic Listing Template based on Bootstrap 5</p>
-                                                    </div>
-                                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
-                                                </div>
-                                                <img src="images/topics/undraw_Remote_design_team_re_urdx.png"
-                                                    class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Graphic</h5>
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-                                                    <span class="badge bg-design rounded-pill ms-auto">75</span>
-                                                </div>
-                                                <img src="images/topics/undraw_Redesign_feedback_re_jvm0.png"
-                                                    class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Logo Design</h5>
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-                                                    <span class="badge bg-design rounded-pill ms-auto">100</span>
-                                                </div>
-                                                <img src="images/topics/colleagues-working-cozy-office-medium-shot.png"
-                                                    class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Finance Tab Pane -->
-                            <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel"
-                                aria-labelledby="finance-tab" tabindex="0">
-                                <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
                                         <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
+                                            <a href="/topic-detail">
                                                 <div class="d-flex">
                                                     <div>
-                                                        <h5 class="mb-2">Investment</h5>
+                                                        <h5 class="mb-2">Persiapan</h5>
                                                         <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
                                                     </div>
                                                     <span class="badge bg-finance rounded-pill ms-auto">30</span>
@@ -213,42 +154,19 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="custom-block custom-block-overlay">
-                                            <div class="d-flex flex-column h-100">
-                                                <img src="images/businesswoman-using-tablet-analysis-graph-company-finance-strategy-statistics-success-concept-planning-future-office-room.jpg"
-                                                    class="custom-block-image img-fluid" alt="">
-
-                                                <div class="custom-block-overlay-text d-flex">
+                                    <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
+                                        <div class="custom-block bg-white shadow-lg">
+                                            <a href="/info-kampus">
+                                                <div class="d-flex">
                                                     <div>
-                                                        <h5 class="text-white mb-2">Finance</h5>
-                                                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur
-                                                            adipisicing elit. Sint animi necessitatibus aperiam
-                                                            repudiandae nam omnis</p>
-                                                        <a href="topics-detail.html"
-                                                            class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                                        <h5 class="mb-2">Info Kampus</h5>
+                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
                                                     </div>
-                                                    <span class="badge bg-finance rounded-pill ms-auto">25</span>
+                                                    <span class="badge bg-finance rounded-pill ms-auto">30</span>
                                                 </div>
-
-                                                <div class="social-share d-flex">
-                                                    <p class="text-white me-4">Share:</p>
-                                                    <ul class="social-icon">
-                                                        <li class="social-icon-item">
-                                                            <a href="#" class="social-icon-link bi-twitter"></a>
-                                                        </li>
-                                                        <li class="social-icon-item">
-                                                            <a href="#" class="social-icon-link bi-facebook"></a>
-                                                        </li>
-                                                        <li class="social-icon-item">
-                                                            <a href="#" class="social-icon-link bi-pinterest"></a>
-                                                        </li>
-                                                    </ul>
-                                                    <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
-                                                </div>
-
-                                                <div class="section-overlay"></div>
-                                            </div>
+                                                <img src="images/topics/undraw_Finance_re_gnv2.png"
+                                                    class="custom-block-image img-fluid" alt="">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
