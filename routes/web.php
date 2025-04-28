@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+// HOME
 Route::get('/', function () {
     return view('pages.index');
 });
@@ -14,6 +15,10 @@ Route::get('/topic-listing', function () {
     return view('pages.topic_listing');
 });
 
+Route::get('/topic-detail', function () {
+    return view('pages.topic_detail');
+});
+
 Route::get('/exam', function () {
     return view('pages.detail.exam_detail');
 });
@@ -21,12 +26,10 @@ Route::get('/exam', function () {
 Route::get('/module', function () {
     return view('pages.detail.module_detail');
 });
+// HOME
 
-Route::get('/', function () {
-    return view('pages.index');
+// SECTION 2
+Route::get('/info-kampus', function () {
+    return view('section2.info_kampus');
 });
-
-Route::get('/home', function () {
-    return view('pages.index');
-});
-
+// SECTION 2

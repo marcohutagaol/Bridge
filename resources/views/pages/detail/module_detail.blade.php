@@ -705,6 +705,269 @@
     </div>
 </section>
 
+
+
+
+
+
+
+
+
+<!-- Belajar dari Ahli Section -->
+<section class="expert-faculty-section py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="h3 mb-3">Belajar dari Para Ahli</h2>
+                <p class="text-muted">Dapatkan pengetahuan langsung dari para pengajar terkemuka yang merupakan pakar di bidangnya masing-masing.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Expert 1 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card shadow h-100">
+                    <div class="card-body">
+                        <!-- University Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="university-logo rounded-circle overflow-hidden me-2" style="width: 30px; height: 30px;">
+                                <img src="images/universities/images1.png" class="img-fluid" alt="University of London">
+                            </div>
+                            <p class="text-muted small mb-0">University of London</p>
+                        </div>
+                        
+                        <!-- Instructor Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="instructor-avatar rounded-circle overflow-hidden me-3" style="width: 60px; height: 60px;">
+                                <img src="images/instructors/dosen.jpg" class="img-fluid" alt="Dr. Jennifer Wilson">
+                            </div>
+                            <div>
+                                <h5 class="card-title h6 mb-1">Dr. Jennifer Wilson</h5>
+                                <p class="small text-muted mb-0">Ph.D., Business Administration</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Credentials -->
+                        <div class="instructor-credentials">
+                            <p class="small mb-2">Spesialisasi dalam Manajemen Strategis dan Kepemimpinan dengan pengalaman 15+ tahun mengajar di universitas terkemuka.</p>
+                            <p class="small mb-2"><i class="bi bi-journal-check me-2 text-teal"></i>Lebih dari 30 publikasi penelitian</p>
+                            <p class="small mb-0"><i class="bi bi-briefcase me-2 text-teal"></i>Mantan konsultan di McKinsey & Company</p>
+                        </div>
+                        
+                        <!-- CTA Button -->
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expert 2 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card shadow h-100">
+                    <div class="card-body">
+                        <!-- University Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="university-logo rounded-circle overflow-hidden me-2" style="width: 30px; height: 30px;">
+                                <img src="images/universities/images2.png" class="img-fluid" alt="University of Colorado Boulder">
+                            </div>
+                            <p class="text-muted small mb-0">University of Colorado Boulder</p>
+                        </div>
+                        
+                        <!-- Instructor Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="instructor-avatar rounded-circle overflow-hidden me-3" style="width: 60px; height: 60px;">
+                                <img src="images/instructors/dosen.jpg" class="img-fluid" alt="Prof. David Martinez">
+                            </div>
+                            <div>
+                                <h5 class="card-title h6 mb-1">Prof. David Martinez</h5>
+                                <p class="small text-muted mb-0">Ph.D., Computer Science</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Credentials -->
+                        <div class="instructor-credentials">
+                            <p class="small mb-2">Pakar dalam Artificial Intelligence dan Machine Learning dengan kontribusi signifikan dalam pengembangan algoritma modern.</p>
+                            <p class="small mb-2"><i class="bi bi-award me-2 text-teal"></i>Penerima IEEE Outstanding Researcher Award</p>
+                            <p class="small mb-0"><i class="bi bi-buildings me-2 text-teal"></i>Peneliti senior di Google AI (2015-2020)</p>
+                        </div>
+                        
+                        <!-- CTA Button -->
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expert 3 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card shadow h-100">
+                    <div class="card-body">
+                        <!-- University Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="university-logo rounded-circle overflow-hidden me-2" style="width: 30px; height: 30px;">
+                                <img src="images/universities/images3.png" class="img-fluid" alt="IIT Roorkee">
+                            </div>
+                            <p class="text-muted small mb-0">IIT Roorkee</p>
+                        </div>
+                        
+                        <!-- Instructor Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="instructor-avatar rounded-circle overflow-hidden me-3" style="width: 60px; height: 60px;">
+                                <img src="images/instructors/dosen.jpg" class="img-fluid" alt="Dr. Aisha Patel">
+                            </div>
+                            <div>
+                                <h5 class="card-title h6 mb-1">Dr. Aisha Patel</h5>
+                                <p class="small text-muted mb-0">Ph.D., Electrical Engineering</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Credentials -->
+                        <div class="instructor-credentials">
+                            <p class="small mb-2">Ahli dalam bidang Renewable Energy dan Smart Grid Technologies dengan lebih dari 12 tahun pengalaman riset.</p>
+                            <p class="small mb-2"><i class="bi bi-lightning me-2 text-teal"></i>Pionir dalam pengembangan teknologi solar cell</p>
+                            <p class="small mb-0"><i class="bi bi-person-workspace me-2 text-teal"></i>Konsultan untuk proyek energi terbarukan UN</p>
+                        </div>
+                        
+                        <!-- CTA Button -->
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expert 4 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card shadow h-100">
+                    <div class="card-body">
+                        <!-- University Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="university-logo rounded-circle overflow-hidden me-2" style="width: 30px; height: 30px;">
+                                <img src="images/universities/images1.png" class="img-fluid" alt="University of Illinois">
+                            </div>
+                            <p class="text-muted small mb-0">University of Illinois Urbana-Champaign</p>
+                        </div>
+                        
+                        <!-- Instructor Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="instructor-avatar rounded-circle overflow-hidden me-3" style="width: 60px; height: 60px;">
+                                <img src="images/instructors/dosen.jpg" class="img-fluid" alt="Prof. James Chen">
+                            </div>
+                            <div>
+                                <h5 class="card-title h6 mb-1">Prof. James Chen</h5>
+                                <p class="small text-muted mb-0">Ph.D., Data Science</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Credentials -->
+                        <div class="instructor-credentials">
+                            <p class="small mb-2">Spesialis dalam Big Data Analytics dan Business Intelligence dengan pengalaman industri yang luas.</p>
+                            <p class="small mb-2"><i class="bi bi-graph-up me-2 text-teal"></i>Pengembang framework analitik terkenal</p>
+                            <p class="small mb-0"><i class="bi bi-person-video3 me-2 text-teal"></i>Pembicara internasional di lebih dari 25 negara</p>
+                        </div>
+                        
+                        <!-- CTA Button -->
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expert 5 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card shadow h-100">
+                    <div class="card-body">
+                        <!-- University Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="university-logo rounded-circle overflow-hidden me-2" style="width: 30px; height: 30px;">
+                                <img src="images/universities/images2.png" class="img-fluid" alt="University of North Texas">
+                            </div>
+                            <p class="text-muted small mb-0">University of North Texas</p>
+                        </div>
+                        
+                        <!-- Instructor Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="instructor-avatar rounded-circle overflow-hidden me-3" style="width: 60px; height: 60px;">
+                                <img src="images/instructors/dosen.jpg" class="img-fluid" alt="Dr. Sarah Johnson">
+                            </div>
+                            <div>
+                                <h5 class="card-title h6 mb-1">Dr. Sarah Johnson</h5>
+                                <p class="small text-muted mb-0">Ph.D., Digital Marketing</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Credentials -->
+                        <div class="instructor-credentials">
+                            <p class="small mb-2">Ahli dalam strategi digital marketing dan analitik sosial media dengan pengalaman praktis yang ekstensif.</p>
+                            <p class="small mb-2"><i class="bi bi-megaphone me-2 text-teal"></i>Mantan VP Marketing di perusahaan Fortune 500</p>
+                            <p class="small mb-0"><i class="bi bi-book me-2 text-teal"></i>Penulis buku bestseller "Digital Transformation"</p>
+                        </div>
+                        
+                        <!-- CTA Button -->
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expert 6 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card shadow h-100">
+                    <div class="card-body">
+                        <!-- University Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="university-logo rounded-circle overflow-hidden me-2" style="width: 30px; height: 30px;">
+                                <img src="images/universities/images3.png" class="img-fluid" alt="University of London">
+                            </div>
+                            <p class="text-muted small mb-0">University of London</p>
+                        </div>
+                        
+                        <!-- Instructor Info -->
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="instructor-avatar rounded-circle overflow-hidden me-3" style="width: 60px; height: 60px;">
+                                <img src="images/instructors/dosen.jpg" class="img-fluid" alt="Prof. Michael Taylor">
+                            </div>
+                            <div>
+                                <h5 class="card-title h6 mb-1">Prof. Michael Taylor</h5>
+                                <p class="small text-muted mb-0">Ph.D., Finance & Economics</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Credentials -->
+                        <div class="instructor-credentials">
+                            <p class="small mb-2">Pakar dalam bidang International Finance, Investment Strategies, dan Market Analysis dengan reputasi global.</p>
+                            <p class="small mb-2"><i class="bi bi-bank me-2 text-teal"></i>Mantan ekonom senior di World Bank</p>
+                            <p class="small mb-0"><i class="bi bi-cash-coin me-2 text-teal"></i>Penasihat untuk beberapa institusi keuangan terkemuka</p>
+                        </div>
+                        
+                        <!-- CTA Button -->
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- View All Experts CTA -->
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <a href="#" class="btn btn-teal">Lihat Semua Pengajar</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
 <x-fotter></x-fotter>
 
         <!-- JAVASCRIPT FILES -->
