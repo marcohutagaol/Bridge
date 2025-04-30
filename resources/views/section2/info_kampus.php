@@ -249,7 +249,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-12">
               <h3 class="h4 mb-4">Browse by Category</h3>
@@ -261,8 +261,10 @@
                         <i class="bi bi-hospital me-3 fs-3 text-teal"></i>
                         <h4 class="card-title h5 mb-0">Kedokteran</h4>
                       </div>
-                      <p class="card-text small">Jurusan dengan persaingan tertinggi, prestisius, dan gaji awal yang tinggi.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i class="bi bi-arrow-right"></i></a>
+                      <p class="card-text small">Jurusan dengan persaingan tertinggi, prestisius, dan gaji awal yang
+                        tinggi.</p>
+                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                          class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>
@@ -274,7 +276,8 @@
                         <h4 class="card-title h5 mb-0">Teknik Informatika</h4>
                       </div>
                       <p class="card-text small">Lulusan sangat dibutuhkan di semua sektor, apalagi di era digital.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i class="bi bi-arrow-right"></i></a>
+                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                          class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>
@@ -286,7 +289,8 @@
                         <h4 class="card-title h5 mb-0">Ilmu Hukum</h4>
                       </div>
                       <p class="card-text small">Prospek kerja luas: pengacara, jaksa, notaris, konsultan hukum.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i class="bi bi-arrow-right"></i></a>
+                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                          class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>
@@ -297,8 +301,10 @@
                         <i class="bi bi-bar-chart-line me-3 fs-3 text-teal"></i>
                         <h4 class="card-title h5 mb-0">Manajemen</h4>
                       </div>
-                      <p class="card-text small">Jurusan bisnis yang populer dengan peluang karier luas di perusahaan dan startup.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i class="bi bi-arrow-right"></i></a>
+                      <p class="card-text small">Jurusan bisnis yang populer dengan peluang karier luas di perusahaan
+                        dan startup.</p>
+                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                          class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>
@@ -309,8 +315,10 @@
                         <i class="bi bi-people me-3 fs-3 text-teal"></i>
                         <h4 class="card-title h5 mb-0">Psikologi</h4>
                       </div>
-                      <p class="card-text small">Semakin dibutuhkan untuk HRD, konsultan pendidikan, kesehatan mental.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i class="bi bi-arrow-right"></i></a>
+                      <p class="card-text small">Semakin dibutuhkan untuk HRD, konsultan pendidikan, kesehatan mental.
+                      </p>
+                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                          class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>
@@ -322,7 +330,8 @@
                         <h4 class="card-title h5 mb-0">Teknik Elektro</h4>
                       </div>
                       <p class="card-text small">Fokus pada teknologi industri, telekomunikasi, dan energi.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i class="bi bi-arrow-right"></i></a>
+                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                          class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>
@@ -335,28 +344,33 @@
       <!-- CONTENT -->
   </main>
 
-  <footer class="site-footer section-padding section-bg">
+  <!-- FOOTER -->
+  <footer class="site-footer section-padding">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-12 mb-4 pb-2">
           <a class="navbar-brand mb-2" href="index.html">
             <i class="bi-back"></i>
-            <span>Topic</span>
+            <span>Coursera</span>
           </a>
         </div>
 
         <div class="col-lg-3 col-md-4 col-6">
           <h6 class="site-footer-title mb-3">Resources</h6>
+
           <ul class="site-footer-links">
             <li class="site-footer-link-item">
               <a href="#" class="site-footer-link">Home</a>
             </li>
+
             <li class="site-footer-link-item">
               <a href="#" class="site-footer-link">How it works</a>
             </li>
+
             <li class="site-footer-link-item">
               <a href="#" class="site-footer-link">FAQs</a>
             </li>
+
             <li class="site-footer-link-item">
               <a href="#" class="site-footer-link">Contact</a>
             </li>
@@ -365,11 +379,17 @@
 
         <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
           <h6 class="site-footer-title mb-3">Information</h6>
+
           <p class="text-white d-flex mb-1">
-            <a href="tel: 305-240-9671" class="site-footer-link">305-240-9671</a>
+            <a href="tel: 305-240-9671" class="site-footer-link">
+              305-240-9671
+            </a>
           </p>
+
           <p class="text-white d-flex">
-            <a href="mailto:info@company.com" class="site-footer-link">info@company.com</a>
+            <a href="mailto:info@company.com" class="site-footer-link">
+              info@company.com
+            </a>
           </p>
         </div>
 
@@ -378,16 +398,15 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               English</button>
+
             <ul class="dropdown-menu">
-              <li><button class="dropdown-item" type="button">Thai</button></li>
-              <li><button class="dropdown-item" type="button">Myanmar</button></li>
+              <li><button class="dropdown-item" type="button">Indonesian</button></li>
+              <li><button class="dropdown-item" type="button">Spanish</button></li>
               <li><button class="dropdown-item" type="button">Arabic</button></li>
             </ul>
           </div>
-          <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
-            <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a>
-            Distribution <a href="https://themewagon.com">ThemeWagon</a>
-          </p>
+
+          <p class="copyright-text mt-lg-5 mt-4">Copyright © 2025 Coursera. All rights reserved.</p>
         </div>
       </div>
     </div>
