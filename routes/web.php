@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Universitas;
 use Illuminate\Support\Facades\Route;
 
 // HOME
@@ -32,4 +33,8 @@ Route::get('/module', function () {
 Route::get('/info-kampus', function () {
     return view('section2.info_kampus');
 });
+
+Route::get('/direktori-kampus', [Universitas::class, 'index'])->name('section2.direktori_kampus');
+
+Route::get('/detail-kampus/{id}', [Universitas::class, 'show'])->name('section2.detail_kampus');
 // SECTION 2

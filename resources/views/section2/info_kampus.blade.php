@@ -26,64 +26,7 @@
 
 <body id="top">
   <main>
-    <nav class="navbar navbar-expand-lg">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <i class="bi-back"></i>
-          <span>Bridge</span>
-        </a>
-
-        <div class="d-lg-none ms-auto me-4">
-          <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
-        </div>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-lg-5 me-lg-auto">
-            <li class="nav-item">
-              <a class="nav-link click-scrol" href="/home#section_1">Home</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link click-scroll" href="/home#section_2">Browse Topics</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link click-scroll" href="/home#section_3">How it works</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link click-scroll" href="/home#section_4">FAQs</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link click-scroll" href="/home#section_5">Contact</a>
-            </li>
-
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-              <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                <li><a class="dropdown-item" href="/topic-listing">Topics Listing</a></li>
-                <li><a class="dropdown-item" href="/contact">Contact Form</a></li>
-              </ul>
-            </li>
-
-
-          </ul>
-
-          <div class="d-none d-lg-block">
-            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
-          </div>
-        </div>
-      </div>
-    </nav>
+  @include('components.navbar')
 
     <!-- HERO -->
     <section class="hero-section-2 d-flex justify-content-center align-items-center" id="section_1">
@@ -107,7 +50,7 @@
         <div class="row justify-content-center mt-5">
           <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
             <div class="custom-block bg-white shadow-lg">
-              <a href="/topic-detail">
+              <a href="/direktori-kampus">
                 <div class="d-flex">
                   <div>
                     <h5 class="mb-2">Universitas</h5>
@@ -159,8 +102,9 @@
                 <img src="images/section2/logo univ/UI.png" class="card-img-top p-3"
                   style="object-fit: contain; height: 150px;" alt="Universitas Indonesia">
                 <div class="card-body">
-                  <h5 class="card-title">Universitas Indonesia</h5>
-                  <p class="small text-muted">Depok, Jawa Barat</p>
+                  <h5 class="card-title">Universitas <br>Indonesia</h5>
+                  <p class=small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Depok, Jawa
+                    Barat</p>
                 </div>
               </div>
             </div>
@@ -171,8 +115,9 @@
                 <img src="images/section2/logo univ/UGM.png" class="card-img-top p-3"
                   style="height: 150px; object-fit: contain;" alt="University of Colorado Boulder">
                 <div class="card-body">
-                  <h5 class="card-title">University Gadjah Mada</h5>
-                  <p class="small text-muted">Yogyakarta, Daerah Istimewa Yogyakarta</p>
+                  <h5 class="card-title">Universitas <br>Gadjah Mada</h5>
+                  <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Daerah Istimewa
+                    Yogyakarta</p>
                 </div>
               </div>
             </div>
@@ -183,8 +128,9 @@
                 <img src="images/section2/logo univ/ITB.png" class="card-img-top p-3"
                   style="height: 150px; object-fit: contain;" alt="University of North Texas">
                 <div class="card-body">
-                  <h5 class="card-title">Institut Teknologi Bandung</h5>
-                  <p class="small text-muted">Bandung, Jawa Barat</p>
+                  <h5 class="card-title">Institut <br>Teknologi Bandung</h5>
+                  <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Bandung, Jawa
+                    Barat</p>
                 </div>
               </div>
             </div>
@@ -195,12 +141,14 @@
                 <img src="images/section2/logo univ/Unair.png" class="card-img-top p-3"
                   style="height: 150px; object-fit: contain;" alt="IIT Roorkee">
                 <div class="card-body">
-                  <h5 class="card-title">Universitas Airlangga</h5>
-                  <p class="small text-muted">Surabaya, Jawa Timur</p>
+                  <h5 class="card-title">Universitas <br>Airlangga</h5>
+                  <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Surabaya, Jawa
+                    Timur</p>
                 </div>
               </div>
             </div>
           </div>
+          <a href="/direktori-kampus" class="btn btn-link p-0 fs-5 text-teal">Lihat Semua <i class="bi bi-arrow-right"></i></a>
         </div>
       </section>
       <!-- UNIVERSITAS -->

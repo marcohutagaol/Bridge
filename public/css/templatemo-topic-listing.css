@@ -684,7 +684,40 @@ strong {
   max-width: 150px;
 }
 
+.hero-section-3 {
+  background-color: var(--primary-color);
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 100px 100px;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
 
+.hero-section-3 .input-group {
+  background-color: var(--white-color);
+  border-radius: var(--border-radius-large);
+  padding: 10px 10px;
+}
+
+.hero-section-3 .input-group-text {
+  background-color: transparent;
+  border: 0;
+}
+
+.hero-section-3 input[type="search"] {
+  border: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.hero-section-3 button[type="submit"] {
+  background-color: var(--primary-color);
+  border: 0;
+  border-radius: var(--border-radius-large) !important;
+  color: var(--white-color);
+  max-width: 150px;
+}
 
 /*---------------------------------------
   TOPICS              
