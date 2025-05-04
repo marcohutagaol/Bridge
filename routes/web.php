@@ -3,6 +3,13 @@
 use App\Http\Controllers\Universitas;
 use Illuminate\Support\Facades\Route;
 
+
+
+
+Route::get('/', function () {
+    return view('pages.index');
+});
+
 // HOME
 Route::get('/home', function () {
     return view('pages.index');
