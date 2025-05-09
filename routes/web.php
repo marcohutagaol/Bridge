@@ -38,9 +38,11 @@ Route::get('/topic-listing', function () {
     return view('pages.topic_listing');
 });
 
+//MASUK SECTION 1
 Route::get('/topic-detail', function () {
-    return view('pages.topic_detail');
+    return view('pages.section1.topic_detail');
 });
+// MASUK SECTION 1
 
 Route::get('/exam', function () {
     return view('pages.detail.exam_detail');
