@@ -33,7 +33,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-12 mx-auto">
-            <h3 class="text-white text-center">Cari Universitas Mu</h3>
+            <h3 class="text-white text-center">jdahgasjhdgsad</h3>
 
             <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
               <div class="input-group input-group-lg">
