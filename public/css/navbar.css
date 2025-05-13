@@ -29,6 +29,7 @@
   position: relative;
 }
 
+
 /* Update career block overlay */
 .career-block .overlay-bg,
 .career-overlay {
@@ -136,12 +137,129 @@
   border-radius: 3px;
 }
 
-/* ===== Common Block Styles ===== */
-.custom-block {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--border-radius);
+/* Certificate Block - Blue to Teal transition */
+.certificate-block {
+    margin-top: 20px; /* Atur nilainya sesuai kebutuhan */
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
 }
+.certificate-block .top-content {
+    padding-top: 30px; /* Atur sesuai keinginan */
+}
+
+.certificate-block .bottom-content {
+    padding-bottom: 20px; /* Opsional, jika ingin beri jarak juga ke bawah */
+}
+
+.certificate-block .overlay-bg,
+.certificate-overlay {
+  background: rgba(25, 118, 210, 0.4); /* Blue-based starting background */
+}
+
+.certificate-block:hover .overlay-bg,
+.custom-block:hover .certificate-overlay {
+  background: var(--primary-teal-transparent) !important; /* Transition to teal on hover */
+}
+
+.certificate-block:active .overlay-bg,
+.custom-block:active .certificate-overlay {
+  background: var(--dark-teal-transparent) !important; /* Darker teal when active */
+}
+
+/* Badge for certificate courses */
+.badge.bg-certificate {
+  background-color: #1976d2 !important; /* Blue color for certificate badge */
+  z-index: 3;
+  position: relative;
+}
+
+/* Certificate card accent styling */
+.certificate-card {
+  border-left: 4px solid #1976d2; /* Blue accent on certificate cards */
+}
+
+/* Certificate price styling */
+.certificate-price {
+  font-weight: bold;
+  color: #1976d2; /* Blue color for certificate prices */
+}
+
+/* Certificate icon styling */
+.certificate-icon {
+  color: #1976d2;
+  background: rgba(25, 118, 210, 0.1);
+  padding: 8px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Animation for certificate block */
+
+.certificate-block {
+  transition: transform 0.3s ease;
+  margin-bottom: 20px; /* Add bottom margin to the certificate block */
+}
+.career-block {
+  transition: transform 0.3s ease;
+  margin-right : 95px; /* Add right margin to the career block */
+}
+.degree-block{
+  transition: transform 0.3s ease;
+  margin-left : 85px; /* Add right margin to the degree block */
+}
+
+.certificate-block:hover {
+  transform: translateY(-5px);
+}
+
+/* Certificate tag styling */
+.certificate-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(45deg, #1976d2, #42a5f5);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(25, 118, 210, 0.3);
+  z-index: 3;
+}
+
+/* Add spacing to the parent row if needed */
+.row .col-lg-6:nth-child(3) {
+  margin-bottom: 30px; /* Add extra margin to third block (Kursus dan Sertifikat) */
+}
+.col-lg-6.col-md-6.col-12.mb-4.mb-lg-0 {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+
+/* Responsive adjustments for certificate block */
+@media (max-width: 768px) {
+  .certificate-block .top-content,
+  .certificate-block .bottom-content {
+    padding: 20px;
+  }
+  
+  .certificate-block .top-content h5 {
+    font-size: 1.1rem;
+  }
+  
+  .certificate-block .bottom-content p {
+    font-size: 0.9rem;
+  }
+  
+  /* Additional mobile spacing */
+  .certificate-block {
+    margin-bottom: 30px;
+  }
+}
+
+/* ===== Common Block Styles ===== */
+
 
 .custom-block img {
   display: block;
