@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="">
+    <meta name="description" content="Online Degree Programs Listing Page">
     <meta name="author" content="">
 
-    <title>Info Pendidikan Tinggi Negri</title>
+    <title>Persiapan Masuk Kuliah</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,400 +20,226 @@
     <link href="css/templatemo-topic-listing.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/degree-programs.css" rel="stylesheet">
-
-
 </head>
 
 <body id="top">
     <main>
-        @include('components.navbar')
+        <x-navbar></x-navbar>
 
-        <!-- HERO -->
-        <section class="hero-section-2 d-flex justify-content-center align-items-center" id="section_1">
+        <!-- Degree Programs Listing Section -->
+        <section class="hero-section d-flex justify-content-center align-items-center" id="degreesList">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-12 mx-auto">
-                        <h1 class="text-black text-center">Info Universitas dan Jurusan</h1>
-                        <h6 class="text-center">Pendidikan Tinggi Negri</h6>
-
-                        <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-text bi-search" id="basic-addon1"></span>
-                                <input name="keyword" type="search" class="form-control" id="keyword"
-                                    placeholder="Cari Universitas/Jurusan" aria-label="Search">
-                                <button type="submit" class="form-control text-black">Search</button>
-                            </div>
-                        </form>
+                    <div class="col-lg-8 col-12 mx-auto text-center title-container">
+                        <h1 class="text-white page-title">Persiapan Masuk</h1>
+                        <h6 class="text-center">untuk Kuliah</h6>
                     </div>
                 </div>
 
-                <div class="row justify-content-center mt-5">
-                    <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
-                        <div class="custom-block bg-white shadow-lg">
-                            <a href="/direktori-kampus">
-                                <div class="d-flex">
-                                    <div>
-                                        <h5 class="mb-2">Universitas</h5>
-                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                    </div>
-                                    <span class="badge bg-finance rounded-pill ms-auto">30</span>
+                <!-- Filter Options -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="filter-container d-flex flex-wrap align-items-center justify-content-between">
+                            <div class="d-flex align-items-center mb-3 mb-md-0">
+                                <span class="me-3">Filter menurut:</span>
+                                <div class="dropdown me-3">
+                                    <button class="btn dropdown-toggle" type="button" id="programLevelDropdown"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Semua
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="programLevelDropdown">
+                                        <li><a class="dropdown-item" href="#">Semua</a></li>
+                                        <li><a class="dropdown-item" href="#">UTBK & Ujian Mandiri</a></li>
+                                    </ul>
                                 </div>
-                                <img src="images/topics/undraw_Finance_re_gnv2.png" class="custom-block-image img-fluid"
-                                    alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="custom-block bg-white shadow-lg">
-                            <a href="/topic-detail">
-                                <div class="d-flex">
-                                    <div>
-                                        <h5 class="mb-2">Jurusan</h5>
-                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                    </div>
-                                    <span class="badge bg-finance rounded-pill ms-auto">30</span>
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" id="subjectDropdown"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Paket
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="subjectDropdown">
+                                        <li><a class="dropdown-item" href="#">Tes Potensi Skolastik</a></li>
+                                        <li><a class="dropdown-item" href="#">Tes Literasi</a></li>
+                                        <li><a class="dropdown-item" href="#">Persiapan Ujian Mandiri</a></li>
+                                        <li><a class="dropdown-item" href="#">Persiapan Kuliah</a></li>
+                                    </ul>
                                 </div>
-                                <img src="images/topics/undraw_Finance_re_gnv2.png" class="custom-block-image img-fluid"
-                                    alt="">
-                            </a>
+                            </div>
+                            <button class="btn btn-outline-success">Email info ke saya</button>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- HERO -->
-
-        <!-- CONTENT -->
-        <!-- UNIVERSITAS -->
-        <section class="explore-section section-padding-2" id="section_2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h3 class="mb-5 mt-5">Top Universitas</h3>
                     </div>
                 </div>
-            </div>
 
-            <section class="d-flex justify-content-center align-items-center mt-3 mb-5" id="univList">
-                <div class="container mb-5">
-                    <div class="row g-4 content-section mb-5">
-                        <!-- University 1 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow category-card-2 h-100">
-                                <img src="images/section2/logo univ/UI.png" class="card-img-top p-3"
-                                    style="object-fit: contain; height: 150px;" alt="Universitas Indonesia">
-                                <div class="card-body">
-                                    <h5 class="card-title">Universitas <br>Indonesia</h5>
-                                    <p class=small text-muted"><i
-                                            class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Depok, Jawa
-                                        Barat</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- University 2 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow category-card-2 h-100">
-                                <img src="images/section2/logo univ/UGM.png" class="card-img-top p-3"
-                                    style="height: 150px; object-fit: contain;" alt="University of Colorado Boulder">
-                                <div class="card-body">
-                                    <h5 class="card-title">Universitas <br>Gadjah Mada</h5>
-                                    <p class="small text-muted"><i
-                                            class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Daerah Istimewa
-                                        Yogyakarta</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- University 3 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow category-card h-100">
-                                <img src="images/section2/logo univ/ITB.png" class="card-img-top p-3"
-                                    style="height: 150px; object-fit: contain;" alt="University of North Texas">
-                                <div class="card-body">
-                                    <h5 class="card-title">Institut <br>Teknologi Bandung</h5>
-                                    <p class="small text-muted"><i
-                                            class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Bandung, Jawa
-                                        Barat</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- University 4 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow category-card h-100">
-                                <img src="images/section2/logo univ/Unair.png" class="card-img-top p-3"
-                                    style="height: 150px; object-fit: contain;" alt="IIT Roorkee">
-                                <div class="card-body">
-                                    <h5 class="card-title">Universitas <br>Airlangga</h5>
-                                    <p class="small text-muted"><i
-                                            class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Surabaya, Jawa
-                                        Timur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="/direktori-kampus" class="btn btn-link p-0 fs-5 text-teal">Lihat Semua <i
-                            class="bi bi-arrow-right"></i></a>
-                </div>
-            </section>
-            <!-- UNIVERSITAS -->
-
-            <!-- JURUSAN -->
-            <section class="bg-light section-padding">
-                <style>
-                    .text-teal {
-                        color: #20B2AA !important;
-                        /* Light Sea Green / Teal */
-                    }
-
-                    .btn-outline-teal {
-                        color: #20B2AA;
-                        border-color: #20B2AA;
-                    }
-
-                    .btn-outline-teal:hover {
-                        color: #fff;
-                        background-color: #20B2AA;
-                        border-color: #20B2AA;
-                    }
-
-                    .btn-teal {
-                        color: #fff;
-                        background-color: #20B2AA;
-                        border-color: #20B2AA;
-                    }
-
-                    .btn-teal:hover {
-                        color: #fff;
-                        background-color: #1a9690;
-                        border-color: #1a9690;
-                    }
-
-                    .btn-link.text-teal {
-                        color: #20B2AA;
-                    }
-                </style>
-                <div class="container">
-                    <!-- Browse by Category -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <h3 class="mb-5">Top Jurusan</h3>
+                <div class="row g-4 content-section">
+                    <!-- University 1 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card shadow h-100">
+                            <img src="images/universities/images2.png" class="card-img-top p-3"
+                                style="height: 100px; object-fit: contain;" alt="University of London">
+                            <div class="card-body">
+                                <p class="text-muted small">University of London</p>
+                                <h5 class="card-title">Bachelor of Science in Business Administration</h5>
+                                <p class="small text-muted">Ranked #34 in the UK (The Times and Sunday Times Good
+                                    University Guide 2025)</p>
+                                <p class="small text-danger">Aplikasi jatuh tempo pada 15 Juni 2025</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
+                    <!-- University 2 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card shadow h-100">
+                            <img src="images/universities/images1.png" class="card-img-top p-3"
+                                style="height: 100px; object-fit: contain;" alt="University of Colorado Boulder">
+                            <div class="card-body">
+                                <p class="text-muted small">University of Colorado Boulder</p>
+                                <h5 class="card-title">Master of Science in Electrical Engineering</h5>
+                                <p class="small text-muted">Top 20 Engineering School (U.S. News Engineering Schools
+                                    ranking, 2025)</p>
+                                <p class="small text-danger">Aplikasi jatuh tempo pada 12 Juni 2025</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- University 3 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card shadow h-100">
+                            <img src="images/universities/images.png" class="card-img-top p-3"
+                                style="height: 100px; object-fit: contain;" alt="University of North Texas">
+                            <div class="card-body">
+                                <p class="text-muted small">University of North Texas</p>
+                                <h5 class="card-title">Bachelor of Science in General Business</h5>
+                                <p class="small text-muted">Ranked #25 for online Bachelor's programs (U.S. News & World
+                                    Report, 2025)</p>
+                                <p class="small text-danger">Aplikasi jatuh tempo pada 11 Mei 2025</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- University 4 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card shadow h-100">
+                            <img src="images/universities/images1.png" class="card-img-top p-3"
+                                style="height: 100px; object-fit: contain;" alt="IIT Roorkee">
+                            <div class="card-body">
+                                <p class="text-muted small">IIT Roorkee</p>
+                                <h5 class="card-title">Executive MBA</h5>
+                                <p class="small text-muted">Universitas #8 di India menurut NIRF 2023, IIT Roorkee
+                                    adalah Institut Kepentingan Nasional</p>
+                                <p class="small text-danger">Aplikasi jatuh tempo pada 29 Mei 2025</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-4">
                         <div class="col-12">
-                            <h3 class="h4 mb-4">Browse by Category</h3>
-                            <div class="row g-4">
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="card h-100 category-card-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <i class="bi bi-hospital me-3 fs-3 text-teal"></i>
-                                                <h4 class="card-title h5 mb-0">Kedokteran</h4>
-                                            </div>
-                                            <p class="card-text small">Jurusan dengan persaingan tertinggi, prestisius,
-                                                dan gaji awal yang
-                                                tinggi.</p>
-                                            <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
-                                                    class="bi bi-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="card h-100 category-card-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <i class="bi bi-pc-display me-3 fs-3 text-teal"></i>
-                                                <h4 class="card-title h5 mb-0">Teknik Informatika</h4>
-                                            </div>
-                                            <p class="card-text small">Lulusan sangat dibutuhkan di semua sektor,
-                                                apalagi di era digital.</p>
-                                            <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
-                                                    class="bi bi-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="card h-100 category-card-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <i class="bi bi-bank me-3 fs-3 text-teal"></i>
-                                                <h4 class="card-title h5 mb-0">Ilmu Hukum</h4>
-                                            </div>
-                                            <p class="card-text small">Prospek kerja luas: pengacara, jaksa, notaris,
-                                                konsultan hukum.</p>
-                                            <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
-                                                    class="bi bi-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="card h-100 category-card-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <i class="bi bi-bar-chart-line me-3 fs-3 text-teal"></i>
-                                                <h4 class="card-title h5 mb-0">Manajemen</h4>
-                                            </div>
-                                            <p class="card-text small">Jurusan bisnis yang populer dengan peluang karier
-                                                luas di perusahaan
-                                                dan startup.</p>
-                                            <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
-                                                    class="bi bi-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="card h-100 category-card-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <i class="bi bi-people me-3 fs-3 text-teal"></i>
-                                                <h4 class="card-title h5 mb-0">Psikologi</h4>
-                                            </div>
-                                            <p class="card-text small">Semakin dibutuhkan untuk HRD, konsultan
-                                                pendidikan, kesehatan mental.
-                                            </p>
-                                            <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
-                                                    class="bi bi-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="card h-100 category-card-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <i class="bi bi-lightning-charge me-3 fs-3 text-teal"></i>
-                                                <h4 class="card-title h5 mb-0">Teknik Elektro</h4>
-                                            </div>
-                                            <p class="card-text small">Fokus pada teknologi industri, telekomunikasi,
-                                                dan energi.</p>
-                                            <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
-                                                    class="bi bi-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled" id="prevPageBtn">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span> Previous
+                                        </a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
+                                    <li class="page-item" id="nextPageBtn">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            Next <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- JURUSAN -->
-            <!-- CONTENT -->
-    </main>
+        </section>
 
-    <!-- FOOTER -->
-    <footer class="site-footer section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-12 mb-4 pb-2">
-                    <a class="navbar-brand mb-2" href="index.html">
-                        <i class="bi-back"></i>
-                        <span>Coursera</span>
-                    </a>
-                </div>
+        <x-fotter></x-fotter>
 
-                <div class="col-lg-3 col-md-4 col-6">
-                    <h6 class="site-footer-title mb-3">Resources</h6>
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/custom.js"></script>
 
-                    <ul class="site-footer-links">
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Home</a>
-                        </li>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Dropdown functionality for filtering
+                const programItems = document.querySelectorAll('#programLevelDropdown + .dropdown-menu .dropdown-item');
+                const subjectItems = document.querySelectorAll('#subjectDropdown + .dropdown-menu .dropdown-item');
 
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">How it works</a>
-                        </li>
+                programItems.forEach(item => {
+                    item.addEventListener('click', function () {
+                        document.getElementById('programLevelDropdown').textContent = this.textContent;
+                    });
+                });
 
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">FAQs</a>
-                        </li>
+                subjectItems.forEach(item => {
+                    item.addEventListener('click', function () {
+                        document.getElementById('subjectDropdown').textContent = this.textContent;
+                    });
+                });
 
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+                // Pagination functionality
+                const pages = document.querySelectorAll('.pagination .page-link[data-page]');
+                const prevBtn = document.getElementById('prevPageBtn');
+                const nextBtn = document.getElementById('nextPageBtn');
+                let currentPage = 1;
+                const totalPages = pages.length;
 
-                <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
-                    <h6 class="site-footer-title mb-3">Information</h6>
+                function updatePagination() {
+                    // Update active page indicator
+                    pages.forEach(page => {
+                        const pageNum = parseInt(page.getAttribute('data-page'));
+                        if (pageNum === currentPage) {
+                            page.parentElement.classList.add('active');
+                        } else {
+                            page.parentElement.classList.remove('active');
+                        }
+                    });
 
-                    <p class="text-white d-flex mb-1">
-                        <a href="tel: 305-240-9671" class="site-footer-link">
-                            305-240-9671
-                        </a>
-                    </p>
+                    // Update prev/next button states
+                    prevBtn.classList.toggle('disabled', currentPage === 1);
+                    nextBtn.classList.toggle('disabled', currentPage === totalPages);
 
-                    <p class="text-white d-flex">
-                        <a href="mailto:info@company.com" class="site-footer-link">
-                            info@company.com
-                        </a>
-                    </p>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            English</button>
-
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Indonesian</button></li>
-                            <li><button class="dropdown-item" type="button">Spanish</button></li>
-                            <li><button class="dropdown-item" type="button">Arabic</button></li>
-                        </ul>
-                    </div>
-
-                    <p class="copyright-text mt-lg-5 mt-4">Copyright © 2025 Coursera. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JAVASCRIPT FILES -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/custom.js"></script>
-    <script>
-        // Variables to track scroll position
-        let lastScrollTop = 0;
-        const navbar = document.querySelector('.navbar');
-        const scrollThreshold = 100; // Adjust this value as needed
-
-        // Function to handle scroll
-        window.addEventListener('scroll', function () {
-            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-            // Add sticky class when scrolled past threshold
-            if (currentScroll > scrollThreshold) {
-                navbar.classList.add('sticky-top');
-
-                // Check scroll direction
-                if (currentScroll < lastScrollTop) {
-                    // Scrolling up - keep colored navbar
-                    navbar.classList.remove('fade-out');
-                } else {
-                    // Scrolling down - after a certain point, return to original
-                    if (currentScroll > scrollThreshold + 200) { // Adjust this value as needed
-                        navbar.classList.add('fade-out');
-                    }
+                    // Scroll to top of the section
+                    window.scrollTo(0, document.getElementById('degreesList').offsetTop - 100);
                 }
-            } else {
-                // At the top of the page
-                navbar.classList.remove('sticky-top');
-                navbar.classList.remove('fade-out');
-            }
 
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-        }, false);
-    </script>
+                pages.forEach(page => {
+                    page.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        currentPage = parseInt(this.getAttribute('data-page'));
+                        updatePagination();
+                        console.log(`Loading page ${currentPage}`);
+                    });
+                });
+
+                prevBtn.querySelector('a').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (currentPage > 1) {
+                        currentPage--;
+                        updatePagination();
+                        console.log(`Loading page ${currentPage}`);
+                    }
+                });
+
+                nextBtn.querySelector('a').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        updatePagination();
+                        console.log(`Loading page ${currentPage}`);
+                    }
+                });
+            });
+        </script>
 
 
+    </main>
 </body>
 
 </html>
