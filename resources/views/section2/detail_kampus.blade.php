@@ -119,6 +119,7 @@
 
             <li class="site-footer-link-item">
               <a href="#" class="site-footer-link">Contact</a>
+              <a href="#" class="site-footer-link">Contact</a>
             </li>
           </ul>
         </div>
