@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('tanggal_berdiri');
             $table->string('lokasi');
             $table->string('akreditas');
+            $table->string('logo');
         });
     }
 

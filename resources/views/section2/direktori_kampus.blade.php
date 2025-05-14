@@ -67,10 +67,9 @@
             @foreach ($universitas as $univ)
         <div class="col-lg-3 col-md-6 col-sm-12">
           <div class="card shadow category-card-2 h-100">
-          <img src="...." class="card-img-top p-3" style="object-fit: contain; height: 150px;"
-            alt="Logo Universitas">
+          <img src="{{ $univ->logo }}" class="card-img-top p-3" style="object-fit: contain; height: 150px;"
+            alt="Logo {{ $univ->nama }}">
           <div class="card-body">
-            <h5 class="card-title">{{ $univ->id }}</h5>
             <h5 class="card-title">{{ $univ->nama }}</h5>
             <p class=small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>{{ $univ->lokasi }}
             </p>
@@ -80,15 +79,77 @@
           </div>
         </div>
       @endforeach
-
             <!-- CARD -->
-          </div>
-          <a href="/direktori-kampus" class="btn btn-link p-0 fs-5 text-teal">Lihat Semua <i
-              class="bi bi-arrow-right"></i></a>
-        </div>
+
       </section>
       <!-- UNIVERSITAS -->
-      <!-- CONTENT -->
+
+      <!-- INSTITUT -->
+      <section class="explore-section section-padding-2" id="section_2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-start">
+              <h3 class="mb-5 mt-5">Daftar Institut</h3>
+            </div>
+          </div>
+        </div>
+
+        <section class="d-flex justify-content-center align-items-center mt-3 mb-5" id="univList">
+          <div class="container mb-5">
+            <div class="row g-4 content-section mb-5">
+              <!-- CARD -->
+              @foreach ($institut as $ins)
+          <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card shadow category-card-2 h-100">
+            <img src="{{ $ins->logo }}" class="card-img-top p-3" style="object-fit: contain; height: 150px;"
+            alt="Logo {{ $ins->nama }}">
+            <div class="card-body">
+            <h5 class="card-title">{{ $ins->nama }}</h5>
+            <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>{{ $ins->lokasi }}
+            </p>
+            <a href="/detail-kampus/{{ $ins->id }}" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+              class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          </div>
+        @endforeach
+              <!-- CARD -->
+        </section>
+        <!-- INSTITUT -->
+
+        <!-- POLITEKNIK -->
+      <section class="explore-section section-padding-2" id="section_2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-start">
+              <h3 class="mb-5 mt-5">Daftar Politeknik</h3>
+            </div>
+          </div>
+        </div>
+
+        <section class="d-flex justify-content-center align-items-center mt-3 mb-5" id="univList">
+          <div class="container mb-5">
+            <div class="row g-4 content-section mb-5">
+              <!-- CARD -->
+              @foreach ($politeknik as $poli)
+          <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card shadow category-card-2 h-100">
+            <img src="{{ $poli->logo }}" class="card-img-top p-3" style="object-fit: contain; height: 150px;"
+            alt="Logo {{ $poli->nama }}">
+            <div class="card-body">
+            <h5 class="card-title">{{ $poli->nama }}</h5>
+            <p class=small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>{{ $poli->lokasi }}
+            </p>
+            <a href="/detail-kampus/{{ $poli->id }}" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+              class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          </div>
+        @endforeach
+              <!-- CARD -->
+        </section>
+        <!-- POLITEKNIK -->
+        <!-- CONTENT -->
   </main>
 
   <!-- FOOTER -->
