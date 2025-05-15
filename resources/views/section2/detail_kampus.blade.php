@@ -70,25 +70,25 @@
         </div>
       </div>
 
+    @foreach ($deskripsi as $desc)
       <section class="d-flex justify-content-center align-items-center mt-3 mb-5" id="univList">
         <div class="container mb-5">
           <div class="row g-4 content-section mb-5">
             <div class="col-lg-6 col-md-6 col-12 my-3">
               <div class="custom-block bg-white shadow-lg">
                 <h5>Visi</h5>
-                <p>Menjadi Perguruan Tinggi yang unggul, bermartabat, mandiri, dan diakui dunia serta memandu perubahan
-                  yang mampu meningkatkan kesejahteraan bangsa Indonesia dan dunia.</p>
+                <p>{{ $desc->visi }}</p>
               </div>
             </div>
 
             <div class="col-lg-6 col-md-6 col-12 my-3">
               <div class="custom-block bg-white shadow-lg">
                 <h5>Misi</h5>
-                <p>Menciptakan, berbagi dan menerapkan ilmu pengetahuan, teknologi, seni dan kemanusiaan serta
-                  menghasilkan sumber daya insani yang unggul untuk menjadikan Indonesia dan dunia lebih baik.</p>
+                <p>{!! $desc->misi !!}</p>
               </div>
             </div>
       </section>
+    @endforeach
       <!-- CONTENT -->
   </main>
 
