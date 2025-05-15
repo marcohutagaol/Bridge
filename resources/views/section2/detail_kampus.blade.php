@@ -33,7 +33,7 @@
     @foreach ($universitas as $univ)
     <section class="hero-section-4 d-flex justify-content-center align-items-center" id="section_1">
       <div class="container">
-        <a href="/info-kampus"><i style="color: #76beb6;" class="bi bi-arrow-left-circle fs-1 mb-5"></i></a> <br><br>
+        <a href="/direktori-kampus"><i style="color: #76beb6;" class="bi bi-arrow-left-circle fs-1 mb-5"></i></a> <br><br>
           <div class="row">
             <div class="col-lg-7 col-md-6 col-12 mb-4 mb-lg-0 mx-auto">
               <h3 class="text-white text-start fs-1 col-12">{{ $univ->nama }}</h3> <br><br>
