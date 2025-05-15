@@ -28,65 +28,67 @@
   <main>
     @include('components.navbar')
 
+    
     <!-- HERO -->
-    <section class="hero-section-3 d-flex justify-content-center align-items-center" id="section_1">
+    @foreach ($universitas as $univ)
+    <section class="hero-section-4 d-flex justify-content-center align-items-center" id="section_1">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-12 mx-auto">
-            <h3 class="text-white text-center">Cari Universitas Mu</h3>
+        <a href="/direktori-kampus"><i style="color: #76beb6;" class="bi bi-arrow-left-circle fs-1 mb-5"></i></a> <br><br>
+          <div class="row">
+            <div class="col-lg-7 col-md-6 col-12 mb-4 mb-lg-0 mx-auto">
+              <h3 class="text-white text-start fs-1 col-12">{{ $univ->nama }}</h3> <br><br>
+              <p class="text-white">{{ $univ->deskripsi }}</p>
+            </div>
 
-            <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
-              <div class="input-group input-group-lg">
-                <span class="input-group-text bi-search" id="basic-addon1"></span>
-                <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Universitas ..."
-                  aria-label="Search">
-                <button type="submit" class="form-control text-black">Search</button>
+            <div class="col-lg-5 col-12 mb-4 mb-lg-0 d-flex justify-content-center">
+              <img src="{{ asset($univ->logo) }}" alt="" width="400rem">
+            </div>
+
+            <div class="col-lg-5 col-md-6 col-12 mb-4 mb-lg-0">
+              <div class="custom-block bg-white shadow-lg mx-0">
+                <p class="text-black">📅 <span class="text-muted">Tanggal Berdiri</span>: {{ $univ->tanggal_berdiri }}</p>
+                  <p class="text-black">🏅 <span class="text-muted">Akreditasi</span>: {{ $univ->akreditas }}</p>
+                  <p class="text-black">📍 <span class="text-muted">Lokasi</span>: {{ $univ->lokasi }}</p>
+                  <p class="text-black">🔗 <span class="text-muted">Website</span>:
+                    <a href="https://{{ $univ->website }}">{{ $univ->website }}</a>
+                  </p>
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    @endforeach
     <!-- HERO -->
 
     <!-- CONTENT -->
-    <!-- UNIVERSITAS -->
-    <section class="explore-section section-padding-2" id="section_2">
+    <section class="bg-light explore-section section-padding-2" id="section_2">
       <div class="container">
         <div class="row">
           <div class="col-12 text-start">
-            <h3 class="mb-5 mt-5">Daftar Universitas</h3>
+            <h3 class="mb-5 mt-5">Visi Misi</h3>
           </div>
         </div>
       </div>
 
+    @foreach ($deskripsi as $desc)
       <section class="d-flex justify-content-center align-items-center mt-3 mb-5" id="univList">
         <div class="container mb-5">
           <div class="row g-4 content-section mb-5">
-            <!-- CARD -->
-            @foreach ($universitas as $univ)
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="card shadow category-card-2 h-100">
-          <img src="...." class="card-img-top p-3" style="object-fit: contain; height: 150px;"
-            alt="Logo Universitas">
-          <div class="card-body">
-            <h5 class="card-title">{{ $univ->nama }}</h5>
-            <p class=small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>{{ $univ->lokasi }}
-            </p>
-            <a href="/detail-kampus/{{ $univ->id }}" class="btn btn-link p-0 fs-6 text-blue">Detail <i
-              class="bi bi-arrow-right"></i></a>
-          </div>
-          </div>
-        </div>
-      @endforeach
+            <div class="col-lg-6 col-md-6 col-12 my-3">
+              <div class="custom-block bg-white shadow-lg">
+                <h5>Visi</h5>
+                <p>{{ $desc->visi }}</p>
+              </div>
+            </div>
 
-            <!-- CARD -->
-          </div>
-          <a href="/direktori-kampus" class="btn btn-link p-0 fs-5 text-teal">Lihat Semua <i
-              class="bi bi-arrow-right"></i></a>
-        </div>
+            <div class="col-lg-6 col-md-6 col-12 my-3">
+              <div class="custom-block bg-white shadow-lg">
+                <h5>Misi</h5>
+                <p>{!! $desc->misi !!}</p>
+              </div>
+            </div>
       </section>
-      <!-- UNIVERSITAS -->
+    @endforeach
       <!-- CONTENT -->
   </main>
 
@@ -97,7 +99,7 @@
         <div class="col-lg-3 col-12 mb-4 pb-2">
           <a class="navbar-brand mb-2" href="index.html">
             <i class="bi-back"></i>
-            <span>Coursera</span>
+            <span>Bridge</span>
           </a>
         </div>
 

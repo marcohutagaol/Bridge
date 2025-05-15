@@ -5,9 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('/', function () {
+    return view('pages.index');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -21,9 +25,6 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::get('/', function () {
-    return view('pages.index');
-});
 
 // HOME
 Route::get('/home', function () {

@@ -719,6 +719,15 @@ strong {
   max-width: 150px;
 }
 
+.hero-section-4 {
+  background-color: #124664;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 100px 100px;
+  padding-top: 110px;
+  padding-bottom: 150px;
+}
+
 /*---------------------------------------
   TOPICS              
 -----------------------------------------*/

@@ -43,7 +43,8 @@ class UniversitasController extends Controller
     public function show(string $id)
     {
         $universitas = DB::table('data_universitas')->where('id', $id)->get();
-        return view('section2.detail_kampus', compact('universitas'));
+        $deskripsi = DB::table('visimisi_universitas')->where('id', $id)->get();
+        return view('section2.detail_kampus', compact('universitas', 'deskripsi'));
     }
 
     /**

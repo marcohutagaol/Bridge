@@ -26,7 +26,7 @@
 
 <body id="top">
   <main>
-  @include('components.navbar')
+    @include('components.navbar')
 
     <!-- HERO -->
     <section class="hero-section-2 d-flex justify-content-center align-items-center" id="section_1">
@@ -105,6 +105,8 @@
                   <h5 class="card-title">Universitas <br>Indonesia</h5>
                   <p class=small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Depok, Jawa
                     Barat</p>
+                  <a href="/detail-kampus/2" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+                      class="bi bi-arrow-right"></i></a>
                 </div>
               </div>
             </div>
@@ -118,6 +120,8 @@
                   <h5 class="card-title">Universitas <br>Gadjah Mada</h5>
                   <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Daerah Istimewa
                     Yogyakarta</p>
+                  <a href="/detail-kampus/1" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+                      class="bi bi-arrow-right"></i></a>
                 </div>
               </div>
             </div>
@@ -131,6 +135,8 @@
                   <h5 class="card-title">Institut <br>Teknologi Bandung</h5>
                   <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Bandung, Jawa
                     Barat</p>
+                  <a href="/detail-kampus/64" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+                      class="bi bi-arrow-right"></i></a>
                 </div>
               </div>
             </div>
@@ -144,11 +150,14 @@
                   <h5 class="card-title">Universitas <br>Airlangga</h5>
                   <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Surabaya, Jawa
                     Timur</p>
+                  <a href="/detail-kampus/4" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+                      class="bi bi-arrow-right"></i></a>
                 </div>
               </div>
             </div>
           </div>
-          <a href="/direktori-kampus" class="btn btn-link p-0 fs-5 text-teal">Lihat Semua <i class="bi bi-arrow-right"></i></a>
+          <a href="/direktori-kampus" class="btn btn-link p-0 fs-5 text-teal">Lihat Semua <i
+              class="bi bi-arrow-right"></i></a>
         </div>
       </section>
       <!-- UNIVERSITAS -->
