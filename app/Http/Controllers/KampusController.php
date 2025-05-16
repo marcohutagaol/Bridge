@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class UniversitasController extends Controller
+class KampusController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $universitas = DB::table('data_universitas')->where('tipe', 'universitas')->get();
-        $institut = DB::table('data_universitas')->where('tipe', 'institut')->get();
-        $politeknik = DB::table('data_universitas')->where('tipe', 'politeknik')->get();
+        $universitas = DB::table('data_kampus')->where('tipe', 'universitas')->get();
+        $institut = DB::table('data_kampus')->where('tipe', 'institut')->get();
+        $politeknik = DB::table('data_kampus')->where('tipe', 'politeknik')->get();
         
         return view('section2.direktori_kampus', compact('universitas', 'institut', 'politeknik'));
     }
@@ -42,8 +42,8 @@ class UniversitasController extends Controller
      */
     public function show(string $id)
     {
-        $universitas = DB::table('data_universitas')->where('id', $id)->get();
-        $deskripsi = DB::table('visimisi_universitas')->where('id', $id)->get();
+        $universitas = DB::table('data_kampus')->where('id', $id)->get();
+        $deskripsi = DB::table('visimisi_kampus')->where('id', $id)->get();
         return view('section2.detail_kampus', compact('universitas', 'deskripsi'));
     }
 

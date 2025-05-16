@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UniversitasController;
+use App\Http\Controllers\KampusController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -12,9 +12,9 @@ Route::get('/welcome', function () {
 
 Route::get('/', function () {
     return view('pages.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('index');
 
-Route::get('/dashboard', function () {
+Route::get('/profil', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -70,9 +70,9 @@ Route::get('/info-kampus', function () {
     return view('section2.info_kampus');
 });
 
-Route::get('/direktori-kampus', [UniversitasController::class, 'index'])->name('section2.direktori_kampus');
+Route::get('/direktori-kampus', [KampusController::class, 'index'])->name('section2.direktori_kampus');
 
-Route::get('/detail-kampus/{id}', [UniversitasController::class, 'show'])->name('section2.detail_kampus');
+Route::get('/detail-kampus/{id}', [KampusController::class, 'show'])->name('section2.detail_kampus');
 // SECTION 2
 
 require __DIR__.'/auth.php';
