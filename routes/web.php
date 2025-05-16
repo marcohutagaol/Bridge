@@ -11,9 +11,9 @@ Route::get('/welcome', function () {
 
 Route::get('/', function () {
     return view('pages.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('index');
 
-Route::get('/dashboard', function () {
+Route::get('/profil', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
