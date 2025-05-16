@@ -9,6 +9,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+
 Route::get('/', function () {
     return view('pages.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -22,6 +23,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
 
 
 
@@ -47,6 +55,9 @@ Route::get('/topic-detail', function () {
 
 Route::get('/exam', function () {
     return view('pages.detail.exam_detail');
+});
+Route::get('/courses', function () {
+    return view('pages.detail.courses_detail');
 });
 
 Route::get('/module', function () {

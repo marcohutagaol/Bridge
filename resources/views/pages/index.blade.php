@@ -136,41 +136,41 @@
                         <div class="tab-content" id="myTabContent">
                             <!-- Design Tab Pane -->
                             <!-- Modified HTML structure to remove gaps between blocks -->
-<div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel"
-    aria-labelledby="design-tab" tabindex="0">
-    <div class="row tight-blocks-row g-0">
-        <div class="col-lg-6 col-md-6 col-12 p-3">
-            <div class="custom-block bg-white shadow-lg">
-                <a href="/topic-detail">
-                    <div class="d-flex">
-                        <div>
-                            <h5 class="mb-2">Persiapan</h5>
-                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                        </div>
-                        <span class="badge bg-finance rounded-pill ms-auto">30</span>
-                    </div>
-                    <img src="images/topics/undraw_Finance_re_gnv2.png"
-                        class="custom-block-image img-fluid" alt="">
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-12 p-3">
-            <div class="custom-block bg-white shadow-lg">
-                <a href="/info-kampus">
-                    <div class="d-flex">
-                        <div>
-                            <h5 class="mb-2">Info Kampus</h5>
-                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                        </div>
-                        <span class="badge bg-finance rounded-pill ms-auto">30</span>
-                    </div>
-                    <img src="images/topics/undraw_Finance_re_gnv2.png"
-                        class="custom-block-image img-fluid" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+                            <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel"
+                                aria-labelledby="design-tab" tabindex="0">
+                                <div class="row tight-blocks-row g-0">
+                                    <div class="col-lg-6 col-md-6 col-12 p-3">
+                                        <div class="custom-block bg-white shadow-lg">
+                                            <a href="/topic-detail">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Persiapan</h5>
+                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                    </div>
+                                                    <span class="badge bg-finance rounded-pill ms-auto">30</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Finance_re_gnv2.png"
+                                                    class="custom-block-image img-fluid" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 p-3">
+                                        <div class="custom-block bg-white shadow-lg">
+                                            <a href="/info-kampus">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Info Kampus</h5>
+                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                    </div>
+                                                    <span class="badge bg-finance rounded-pill ms-auto">30</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Finance_re_gnv2.png"
+                                                    class="custom-block-image img-fluid" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- Education Tab Pane -->
                             <div class="tab-pane fade" id="education-tab-pane" role="tabpanel"
@@ -244,7 +244,7 @@
                                     <div class="col-lg-10 col-md-6 col-12 mb-4 mx-auto">
                                         <div class="custom-block custom-block-overlay certificate-block">
                                             <a href="/courses">
-                                                <img src="images/topics/undraw_Certificate_re_yadi.png"
+                                                <img src="images/topics/certif.png"
                                                     class="custom-block-image img-fluid" alt="">
 
                                                 <!-- Content positioned at the top -->
