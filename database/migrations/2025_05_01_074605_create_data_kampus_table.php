@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_universitas', function (Blueprint $table) {
-            $table->string('id');
+        Schema::create('data_kampus', function (Blueprint $table) {
+            $table->id();
             $table->string('nama');
-            $table->string('singkatan');
             $table->string('tanggal_berdiri');
             $table->string('lokasi');
             $table->string('akreditas');
+            $table->string('tipe');
             $table->string('logo');
+            $table->text('deskripsi');
+            $table->string('website');
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_universitas');
+        Schema::dropIfExists('data_kampus');
     }
 };
