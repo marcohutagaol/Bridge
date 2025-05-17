@@ -139,9 +139,12 @@
 
 /* Certificate Block - Blue to Teal transition */
 .certificate-block {
+    max-width: 800px;   
     margin-top: 20px; /* Atur nilainya sesuai kebutuhan */
     transition: transform 0.3s ease;
     margin-bottom: 20px;
+    margin-left: 135px;
+    
 }
 .certificate-block .top-content {
     padding-top: 30px; /* Atur sesuai keinginan */
@@ -195,10 +198,7 @@
 
 /* Animation for certificate block */
 
-.certificate-block {
-  transition: transform 0.3s ease;
-  margin-bottom: 20px; /* Add bottom margin to the certificate block */
-}
+
 .career-block {
   transition: transform 0.3s ease;
   margin-right : 95px; /* Add right margin to the career block */
@@ -1645,3 +1645,160 @@
   background: #5fb0b7;
 }
   
+
+    /* Elegant Category Section Styling */
+    .categories-section {
+        background-color: transparent;
+        position: relative;
+        padding: 0 0 60px 0;
+        margin-top: 30px; /* Ubah dari -20px menjadi nilai positif untuk menurunkan posisi */
+    }
+    
+    .categories-section:before {
+        display: none; /* Menghilangkan garis horizontal di bagian atas */
+    }
+    
+    .section-title {
+        color: #333;
+        font-weight: 700;
+        position: relative;
+        margin-bottom: 40px;
+        margin-top: 20px;
+    }
+    
+    .category-card {
+        height: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #40e0d0; /* Warna hijau toska muda */
+        transition: all 0.4s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 10px;
+        z-index: 1;
+    }
+    
+    .category-card:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(64, 224, 208, 0.9), rgba(72, 201, 176, 0.9));
+        z-index: -1;
+        transition: opacity 0.4s ease;
+        opacity: 0;
+    }
+    
+    .category-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(64, 224, 208, 0.2);
+    }
+    
+    .category-card:hover:before {
+        opacity: 1;
+    }
+    
+    .category-icon {
+        font-size: 24px;
+        color: #fff;
+        margin-bottom: 10px;
+        background-color: rgba(255, 255, 255, 0.2);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .category-card:hover .category-icon {
+        background-color: #fff;
+        color: #40e0d0;
+        transform: scale(1.1);
+    }
+    
+    .category-link {
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        margin-top: 5px;
+        padding: 3px 0;
+        position: relative;
+    }
+    
+    .category-link:after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: #fff;
+        transition: width 0.3s ease;
+    }
+    
+    .category-card:hover .category-link:after {
+        width: 50px;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 991px) {
+        .category-card {
+            padding: 12px 10px;
+        }
+        
+        .category-icon {
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+        }
+        
+        .category-link {
+            font-size: 14px;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .categories-section {
+            padding: 30px 0;
+        }
+        
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .category-link {
+            font-size: 13px;
+        }
+        
+        .row {
+            margin-top: -10px;
+        }
+    }
+    
+    /* Subtle animation effects */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    .category-card:hover .category-icon {
+        animation: pulse 1.5s infinite;
+    }
