@@ -8,7 +8,7 @@
     <meta name="description" content="Online Degree Programs Listing Page">
     <meta name="author" content="">
 
-    <title>Persiapan Masuk Kuliah</title>
+    <title>Persiapan</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,8 +31,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto text-center title-container">
-                        <h1 class="text-white page-title">Persiapan Masuk</h1>
-                        <h6 class="text-center">untuk Kuliah</h6>
+                        <h1 class="text-white page-title">Persiapan Masuk untuk Kuliah</h1>
+                        <h6 class="text-center">Persiapkan diri Anda untuk sukses dalam ujian masuk perguruan tinggi
+                            dengan materi pembelajaran terbaik dan terlengkap.</h6>
                     </div>
                 </div>
 
@@ -45,23 +46,23 @@
                                 <div class="dropdown me-3">
                                     <button class="btn dropdown-toggle" type="button" id="programLevelDropdown"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        Semua
+                                        UTBK & Ujian Mandiri
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="programLevelDropdown">
-                                        <li><a class="dropdown-item" href="#">Semua</a></li>
                                         <li><a class="dropdown-item" href="#">UTBK & Ujian Mandiri</a></li>
                                     </ul>
                                 </div>
                                 <div class="dropdown">
                                     <button class="btn dropdown-toggle" type="button" id="subjectDropdown"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        Paket
+                                        Pilih Paket
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="subjectDropdown">
-                                        <li><a class="dropdown-item" href="#">Tes Potensi Skolastik</a></li>
-                                        <li><a class="dropdown-item" href="#">Tes Literasi</a></li>
-                                        <li><a class="dropdown-item" href="#">Persiapan Ujian Mandiri</a></li>
-                                        <li><a class="dropdown-item" href="#">Persiapan Kuliah</a></li>
+                                        <li><a class="dropdown-item" href="#">Penalaran Umum</a></li>
+                                        <li><a class="dropdown-item" href="#">PPU, PBM, dan Literasi Bahasa
+                                                Indonesia</a></li>
+                                        <li><a class="dropdown-item" href="#">Literasi Bahasa Inggris</a></li>
+                                        <li><a class="dropdown-item" href="#">PK & Penalaran Umum</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -71,67 +72,21 @@
                 </div>
 
                 <div class="row g-4 content-section">
-                    <!-- University 1 -->
+                    <!-- Penalaran umum 1 -->
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="card shadow h-100">
-                            <img src="images/universities/images2.png" class="card-img-top p-3"
-                                style="height: 100px; object-fit: contain;" alt="University of London">
+                            <img src="images/materiutbk/images1.png" class="card-img-top p-3"
+                                style="height: 100px; object-fit: contain;" alt="">
                             <div class="card-body">
-                                <p class="text-muted small">University of London</p>
-                                <h5 class="card-title">Bachelor of Science in Business Administration</h5>
-                                <p class="small text-muted">Ranked #34 in the UK (The Times and Sunday Times Good
-                                    University Guide 2025)</p>
-                                <p class="small text-danger">Aplikasi jatuh tempo pada 15 Juni 2025</p>
+                                <p class="text-muted small">Penalaran Umum</p>
+                                <h5 class="card-title">Pengantar Penalaran Induktif dan Deduktif</h5>
+                                <p class="small text-muted">2 tes</p>
+                                <p class="small text-danger">total 19 soal</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- University 2 -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card shadow h-100">
-                            <img src="images/universities/images1.png" class="card-img-top p-3"
-                                style="height: 100px; object-fit: contain;" alt="University of Colorado Boulder">
-                            <div class="card-body">
-                                <p class="text-muted small">University of Colorado Boulder</p>
-                                <h5 class="card-title">Master of Science in Electrical Engineering</h5>
-                                <p class="small text-muted">Top 20 Engineering School (U.S. News Engineering Schools
-                                    ranking, 2025)</p>
-                                <p class="small text-danger">Aplikasi jatuh tempo pada 12 Juni 2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- University 3 -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card shadow h-100">
-                            <img src="images/universities/images.png" class="card-img-top p-3"
-                                style="height: 100px; object-fit: contain;" alt="University of North Texas">
-                            <div class="card-body">
-                                <p class="text-muted small">University of North Texas</p>
-                                <h5 class="card-title">Bachelor of Science in General Business</h5>
-                                <p class="small text-muted">Ranked #25 for online Bachelor's programs (U.S. News & World
-                                    Report, 2025)</p>
-                                <p class="small text-danger">Aplikasi jatuh tempo pada 11 Mei 2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- University 4 -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card shadow h-100">
-                            <img src="images/universities/images1.png" class="card-img-top p-3"
-                                style="height: 100px; object-fit: contain;" alt="IIT Roorkee">
-                            <div class="card-body">
-                                <p class="text-muted small">IIT Roorkee</p>
-                                <h5 class="card-title">Executive MBA</h5>
-                                <p class="small text-muted">Universitas #8 di India menurut NIRF 2023, IIT Roorkee
-                                    adalah Institut Kepentingan Nasional</p>
-                                <p class="small text-danger">Aplikasi jatuh tempo pada 29 Mei 2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    <!-- Tombol next previous -->
                     <div class="row mt-4">
                         <div class="col-12">
                             <nav aria-label="Page navigation">
@@ -156,7 +111,17 @@
                 </div>
         </section>
 
-        <x-fotter></x-fotter>
+
+
+
+        <!-- Bagian bawah -->
+
+        <x-fotter>
+            <!-- footer -->
+        </x-fotter>
+
+
+
 
         <!-- JAVASCRIPT FILES -->
         <script src="js/jquery.min.js"></script>
