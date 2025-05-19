@@ -768,3 +768,17 @@ allVideos.forEach(otherVideo => {
         });
     });
 });
+
+
+    document.getElementById('applySubjectFilter').addEventListener('click', function () {
+        const checked = document.querySelectorAll('input[name="subject"]:checked');
+        let query = [];
+
+        checked.forEach(cb => {
+            if (cb.value !== 'semua') {
+                query.push('subjects[]=' + cb.value);
+            }
+        });
+
+        window.location.href = `/module?${query.join('&')}`;
+    });

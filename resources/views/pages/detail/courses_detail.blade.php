@@ -37,29 +37,36 @@
                     </div>
                 </div>
 
-                <!-- Filter Options -->
 
-                <div class="row mt-4 mb-2">
-                    <div class="col-12">
-                        <div class="filter-container d-flex flex-wrap align-items-center justify-content-between">
-                            <div class="d-flex align-items-center mb-3 mb-md-0">
-                                <span class="me-3">Your career goal is to start a career as a Network
-                                    Administrator</span>
-                            </div>
-                            <a href="#" class="btn btn-link">Edit goal</a>
-                        </div>
-                    </div>
-                </div>
         </section>
 
 
         <!-- Combined Education Sections with Unified Background -->
-        <section class="affordable-education-section py-5 bg-light">
-            <div class="container">
-                <!-- Recently Viewed Products Section -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Recently Viewed Products</h2>
+<section class="affordable-education-section py-5 bg-light">
+    <div class="container">
+        <div class="row mt-4 mb-3">
+            <div class="col-12">
+                <div class="career-goal-container">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between">
+                        <div class="d-flex flex-column mb-3 mb-md-0">
+                            <div class="career-goal-label">CURRENT CAREER GOAL</div>
+                            <div class="career-goal-text">
+                                <i class="bi bi-bullseye"></i>
+                                <span>Your career goal is to start a career as a Network Administrator</span>
+                            </div>
+                        </div>
+                        <a href="#" class="edit-goal-btn">
+                            <i class="bi bi-pencil-square"></i> Edit goal
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Recently Viewed Products Section -->
+        <div class="mb-5">
+            <h2 class="mb-4">Recently Viewed Products</h2>
+            <!-- Konten produk di sini -->
                     <div class="row g-3">
                         <!-- University 1 - Illinois -->
                         <div class="col-lg-3 col-md-6 col-sm-12">
