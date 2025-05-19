@@ -1,13 +1,10 @@
 <?php
 
-use App\Http\Controllers\KampusController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KampusController;
 use App\Http\Controllers\ProfileController;
-
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\UniversitasController;
 
 
 Route::get('/', function () {
@@ -15,20 +12,25 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified'])->name('index');
 
 Route::get('/profil', function () {
-    return view('dashboard');
+    return view('pages.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+
+//online deggre
+Route::get('/module', [UniversityController::class, 'index'])->name('module.detail');
+Route::get('/program/bachelor', [UniversityController::class, 'bachelor'])->name('universities.bachelor');
+Route::get('/program/master', [UniversityController::class, 'master'])->name('universities.master');
+Route::get('/program/all', [UniversityController::class, 'all'])->name('universities.all');
+Route::get('/program/postgraduate', [UniversityController::class, 'postgraduate'])->name('universities.postgraduate');
 
 
 
@@ -60,9 +62,7 @@ Route::get('/courses', function () {
     return view('pages.detail.courses_detail');
 });
 
-Route::get('/module', function () {
-    return view('pages.detail.module_detail');
-});
+
 // HOME
 
 // SECTION 2

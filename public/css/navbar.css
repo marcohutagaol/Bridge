@@ -757,13 +757,36 @@
 /* ===== Affordable Education Section Styling ===== */
 .affordable-education-section {
   position: relative;
-  background: linear-gradient(135deg, var(--teal-light) 0%, var(--white) 100%);
+  background: linear-gradient(to bottom, 
+                            #ffffff 0%, 
+                            rgba(255, 255, 255, 0.98) 15%,
+                            rgba(255, 255, 255, 0.95) 30%,
+                            rgba(255, 255, 255, 0.9) 45%,
+                            rgba(32, 178, 170, 0.1) 65%,
+                            rgba(32, 178, 170, 0.2) 80%,
+                            rgba(32, 178, 170, 0.25) 100%);
   padding: 60px 0;
   overflow: hidden;
+  margin-top: 60px; /* Space for wave to overlap */
 }
 
-/* Add decorative elements */
+/* Wave Divider - Matching the design in screenshot */
 .affordable-education-section::before {
+  content: "";
+  position: absolute;
+  top: -80px; /* Pull up to create overlap */
+  left: 0;
+  width: 100%;
+  height: 80px; /* Height of the wave */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath fill='%23ffffff' d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25'%3E%3C/path%3E%3Cpath fill='%23ffffff' d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5'%3E%3C/path%3E%3Cpath fill='%23ffffff' d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-position: center bottom;
+  z-index: 5; /* Ensure wave is visible above content */
+  opacity: 0.9; /* Slightly transparent for smoother transition */
+}
+
+/* Subtle background pattern */
+.affordable-education-section::after {
   content: "";
   position: absolute;
   top: 0;
@@ -771,18 +794,28 @@
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 50%);
-  z-index: 0;
+    radial-gradient(circle at 15% 15%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%),
+    radial-gradient(circle at 85% 85%, rgba(32,178,170,0.1) 0%, rgba(32,178,170,0) 70%);
+  z-index: 1;
+  opacity: 0.7; /* Slightly reduced opacity for smoother blend */
+}
+
+/* All content should have appropriate z-index */
+.affordable-education-section .container {
+  position: relative;
+  z-index: 10; /* Ensure content is above the gradient overlays and waves */
 }
 
 /* Section heading style */
 .affordable-education-section h3.h5 {
   position: relative;
   font-weight: 700;
-  color: var(--teal-deep);
+  color: #222; /* Darker text color for better visibility */
   margin-bottom: 20px;
   padding-bottom: 15px;
   display: inline-block;
+  z-index: 10; /* Ensure content is above the gradient overlays */
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8); /* Subtle text shadow for clarity */
 }
 
 .affordable-education-section h3.h5::after {
@@ -790,7 +823,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 60px;
+  width: 80px; /* Slightly wider underline */
   height: 3px;
   background: linear-gradient(90deg, var(--teal-deep), transparent);
   border-radius: 3px;
@@ -801,10 +834,14 @@
   border: none;
   border-radius: 15px;
   transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(to bottom, 
+                  rgba(255, 255, 255, 1) 0%,
+                  rgba(255, 255, 255, 0.98) 85%,
+                  rgba(32, 178, 170, 0.05) 100%);
+  backdrop-filter: blur(5px);
 }
 
 /* Add price tag ribbon */
@@ -826,7 +863,7 @@
 /* Card hover effect */
 .affordable-education-section .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Add subtle line separator between image and content */
@@ -846,21 +883,33 @@
 
 /* Enhance text titles */
 .affordable-education-section .card-title.h6 {
-  font-weight: 600;
-  color: #333;
-  font-size: 0.85rem;
+  font-weight: 700; /* Bolder for better readability */
+  color: #222; /* Darker text for better contrast */
+  font-size: 0.9rem; /* Slightly larger */
   line-height: 1.4;
   transition: color 0.3s ease;
+  letter-spacing: 0.02em; /* Improved letter spacing for readability */
 }
 
 .affordable-education-section .card:hover .card-title.h6 {
   color: var(--teal-deep);
 }
 
+/* Style for general text in cards for better readability */
+.affordable-education-section .card-body p,
+.affordable-education-section .card-text {
+  color: #333; /* Darker color for better readability */
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
 /* Add subtle animation to university logo */
+.affordable-education-section .card-img-top {
+  transition: transform 0.4s ease;
+}
+
 .affordable-education-section .card:hover .card-img-top {
   transform: scale(1.05);
-  transition: transform 0.4s ease;
 }
 
 /* Style the deadline text */
@@ -868,6 +917,8 @@
   position: relative;
   display: inline-block;
   padding-left: 14px;
+  font-weight: 600; /* Bolder for better visibility */
+  color: #e63946 !important; /* Brighter red for better visibility */
 }
 
 .affordable-education-section .text-danger::before {
@@ -890,9 +941,9 @@
   position: absolute;
   bottom: 12px;
   left: 12px;
-  font-size: 0.7rem;
+  font-size: 0.75rem; /* Slightly larger for better visibility */
   color: var(--teal-deep);
-  font-weight: 600;
+  font-weight: 700; /* Bolder for emphasis */
   opacity: 0;
   transform: translateX(-5px);
   transition: all 0.3s ease;
@@ -901,6 +952,14 @@
 .affordable-education-section .card:hover .card-body::after {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Left description area styling */
+.affordable-education-section .col-lg-3.col-md-4 p {
+  color: #222; /* Darker text for better contrast */
+  font-weight: 400;
+  line-height: 1.6;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8); /* Text shadow for better readability */
 }
 
 /* Add decorative dots pattern to left description area */
@@ -915,15 +974,28 @@
   right: 20px;
   bottom: 20px;
   width: 60px;
-  height: a0px;
+  height: 60px;
   background-image: radial-gradient(var(--teal-dark) 2px, transparent 2px);
   background-size: 8px 8px;
   z-index: -1;
   opacity: 0.5;
 }
 
-/* Responsive adjustments */
+
+
+
+/* ===== Media Queries for Responsive Waves ===== */
 @media (max-width: 991px) {
+  .affordable-education-section {
+    padding-top: 50px;
+    margin-top: 40px; /* Less space for wave on mobile */
+  }
+  
+  .affordable-education-section::before {
+    height: 40px;
+    top: -40px;
+  }
+  
   .affordable-education-section .col-lg-3.col-md-4 {
     margin-bottom: 30px;
   }
@@ -937,40 +1009,169 @@
     padding: 2px 20px;
   }
 }
+
+/* Improved Teal color utilities */
+:root {
+  --teal-deep: #158880;
+  --teal-medium: #20B2AA;
+  --teal-light: #8FE3DD;
+  --teal-dark: #106E68;
+  --teal-bg: rgba(32, 178, 170, 0.15);
+  --teal-accent: rgba(32, 178, 170, 0.35);
+}
+
 .text-teal {
-  color: #20B2AA !important; /* Light Sea Green / Teal */
+  color: var(--teal-deep) !important; /* Darker teal for better contrast on white */
 }
+
 .btn-outline-teal {
-  color: #20B2AA;
-  border-color: #20B2AA;
+  color: var(--teal-deep);
+  border-color: var(--teal-deep);
+  font-weight: 600; /* Bolder for better readability */
 }
+
 .btn-outline-teal:hover {
   color: #fff;
-  background-color: #20B2AA;
-  border-color: #20B2AA;
+  background-color: var(--teal-deep);
+  border-color: var(--teal-deep);
 }
+
 .btn-teal {
   color: #fff;
-  background-color: #20B2AA;
-  border-color: #20B2AA;
+  background-color: var(--teal-deep);
+  border-color: var(--teal-deep);
+  font-weight: 600; /* Bolder for better readability */
 }
+
 .btn-teal:hover {
   color: #fff;
-  background-color: #1a9690;
-  border-color: #1a9690;
+  background-color: var(--teal-dark);
+  border-color: var(--teal-dark);
 }
+
 .btn-link.text-teal {
-  color: #20B2AA;
+  color: var(--teal-deep);
+  font-weight: 600; /* Bolder for better readability */
+}
+/* Enhanced Career Goal Section Styles */
+.career-goal-container {
+  background: linear-gradient(to right, rgba(240, 255, 250, 0.9), rgba(230, 255, 245, 0.8));
+  border-radius: 15px;
+  padding: 18px 25px;
+  margin: 30px 0 50px; /* Increased margin-bottom for more spacing from subsequent elements */
+  box-shadow: 0 4px 12px rgba(0, 120, 80, 0.1);
+  border-left: 5px solid #20B2AA; /* Teal color from previous styles */
+  transition: all 0.3s ease;
+  position: relative;
+  top: -15px; /* Move it slightly higher */
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(32, 178, 170, 0.2);
 }
 
+.career-goal-container:hover {
+  box-shadow: 0 6px 15px rgba(0, 120, 80, 0.15);
+  transform: translateY(-3px);
+  border-left-color: #158880; /* Darker teal on hover */
+}
 
+.career-goal-text {
+  font-weight: 600;
+  color: #1a5d50; /* Darker green for better readability */
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.01em;
+}
 
+.career-goal-text i {
+  color: #20B2AA;
+  margin-right: 15px;
+  font-size: 1.25rem;
+}
 
+.career-goal-label {
+  color: #20856f;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 0.6px;
+}
 
+.edit-goal-btn {
+  color: #20B2AA;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1.5px solid #20B2AA;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
 
+.edit-goal-btn:before {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #20B2AA;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
 
+.edit-goal-btn:hover {
+  color: white;
+  text-decoration: none;
+}
 
+.edit-goal-btn:hover:before {
+  left: 0;
+}
 
+.edit-goal-btn i {
+  margin-right: 5px;
+  transition: transform 0.2s ease;
+}
+
+.edit-goal-btn:hover i {
+  transform: translateX(2px);
+}
+
+/* Add a subtle decorative element */
+.career-goal-container:after {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background-image: radial-gradient(circle, rgba(32, 178, 170, 0.2) 3px, transparent 3px);
+  background-size: 10px 10px;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+@media (max-width: 767px) {
+  .career-goal-container {
+    padding: 15px 18px;
+    margin: 25px 0 40px;
+    top: -10px;
+  }
+  
+  .career-goal-text {
+    font-size: 1rem;
+  }
+  
+  .edit-goal-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}
 /* SECTION VIDEO */
 
     .student-testimonials-section {
@@ -1802,3 +2003,66 @@
     .category-card:hover .category-icon {
         animation: pulse 1.5s infinite;
     }
+
+
+  
+/* Style to ensure consistent font appearance for both dropdown buttons */
+.filter-btn {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    
+}
+
+/* Make font size consistent in dropdown items */
+.filter-dropdown {
+    font-size: 0.875rem; /* Smaller font size for dropdown items */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    
+}
+
+/* Style for form-check labels to match dropdown items */
+.form-check-label {
+    font-size: 0.875rem;
+    color: #000000 !important; /* Dark black text color */
+    font-weight: 500;
+      
+}
+
+/* Adjust checkbox size for better visual balance */
+.form-check-input {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.25rem;
+ 
+}
+
+/* Ensure both dropdown menus have consistent padding */
+.dropdown-menu.filter-dropdown {
+    padding: 0.75rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+/* Add padding to checkbox items */
+.dropdown-menu.filter-dropdown .form-check {
+    padding: 0.4rem 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Style the "Terapkan" button to be proportional */
+#applySubjectFilter {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    font-weight: 500;
+}
+
+/* Add some spacing between items */
+ul.dropdown-menu.filter-dropdown > li:not(:last-child) {
+    margin-bottom: 0.25rem;
+    margin-left: 15px;
+}
+
+
