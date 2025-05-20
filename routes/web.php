@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UtbkController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KampusController;
 use App\Http\Controllers\ProfileController;
@@ -50,9 +51,9 @@ Route::get('/topic-listing', function () {
 });
 
 //MASUK SECTION 1
-Route::get('/topic-detail', function () {
-    return view('pages.section1.topic_detail');
-});
+Route::get('/topic_detail', [UtbkController::class, 'index']);
+
+
 // MASUK SECTION 1
 
 Route::get('/exam', function () {
@@ -61,6 +62,8 @@ Route::get('/exam', function () {
 Route::get('/courses', function () {
     return view('pages.detail.courses_detail');
 });
+
+
 
 
 // HOME
