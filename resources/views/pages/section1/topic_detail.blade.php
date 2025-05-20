@@ -20,6 +20,15 @@
     <link href="css/templatemo-topic-listing.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/degree-programs.css" rel="stylesheet">
+
+
+    <style>
+        .pagination~.pagination-summary,
+        .pagination-info,
+        .dataTables_info {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body id="top">
@@ -72,22 +81,37 @@
                 </div>
 
                 <div class="row g-4 content-section">
-                    <!-- Penalaran umum 1 -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card shadow h-100">
-                            <img src="images/materiutbk/images1.png" class="card-img-top p-3"
-                                style="height: 100px; object-fit: contain;" alt="">
-                            <div class="card-body">
-                                <p class="text-muted small">Penalaran Umum</p>
-                                <h5 class="card-title">Pengantar Penalaran Induktif dan Deduktif</h5>
-                                <p class="small text-muted">2 tes</p>
-                                <p class="small text-danger">total 19 soal</p>
+                    <!-- CARD UTBK -->
+                    <div class="row g-4 content-section">
+                        @php
+                            // Ambil semua sub_kategori unik dari data $utbk
+                            $sub_kategori_unik = $utbk->unique('sub_kategori');
+                        @endphp
+
+                        @foreach($sub_kategori_unik as $materi)
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card shadow h-100">
+                                    <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}" class="card-img-top p-3"
+                                        style="height: 100px; object-fit: contain;" alt="">
+                                    <div class="card-body">
+                                        <p class="text-muted small">{{ $materi->kategori }}</p>
+                                        <h5 class="card-title">{{ $materi->sub_kategori }}</h5>
+                                        <p class="small text-muted">Essay</p>
+                                        <p class="small text-danger">5 soal</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
 
+
+<!-- 
+
+                    <div class="col-12 d-flex justify-content-center">
+                        {{ $utbk->links('pagination::bootstrap-5') }}
+                    </div> -->
                     <!-- Tombol next previous -->
-                    <div class="row mt-4">
+                    <!-- <div class="row mt-4">
                         <div class="col-12">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination justify-content-center">
@@ -106,9 +130,9 @@
                                     </li>
                                 </ul>
                             </nav>
-                        </div>
-                    </div>
+                        </div> -->
                 </div>
+            </div>
         </section>
 
 
