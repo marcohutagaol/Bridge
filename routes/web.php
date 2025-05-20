@@ -51,8 +51,10 @@ Route::get('/topic-listing', function () {
 });
 
 //MASUK SECTION 1
-Route::get('/topic_detail', [UtbkController::class, 'index']);
-
+Route::get('/topic-detail', [UtbkController::class, 'index']);
+Route::get('/materi-detail', function () {
+    return view('pages.section1.materi_detail');
+})->name('materi.detail');
 
 // MASUK SECTION 1
 
@@ -78,4 +80,4 @@ Route::get('/direktori-kampus', [KampusController::class, 'index'])->name('secti
 Route::get('/detail-kampus/{id}', [KampusController::class, 'show'])->name('section2.detail_kampus');
 // SECTION 2
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -23,10 +23,40 @@
 
 
     <style>
+        section.hero-section {
+            padding-bottom: 0 !important;
+        }
+
+        /* banner */
         .pagination~.pagination-summary,
         .pagination-info,
         .dataTables_info {
             display: none !important;
+        }
+
+        .konsultan-banner {
+            background: linear-gradient(90deg, #1ca7c7 0%, #36d1c4 100%);
+            min-height: 160px;
+            margin-bottom: 8px !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .konsultan-img {
+            background: transparent;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .konsultan-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .konsultan-img {
+                margin-bottom: 1rem !important;
+            }
         }
     </style>
 </head>
@@ -75,7 +105,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <button class="btn btn-outline-success">Email info ke saya</button>
+                            <!-- <button class="btn btn-outline-success">Email info ke saya</button> -->
                         </div>
                     </div>
                 </div>
@@ -90,7 +120,7 @@
 
                         @foreach($sub_kategori_unik as $materi)
                             <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="card shadow h-100">
+                                <div class="card shadow h-100 card-clickable">
                                     <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}" class="card-img-top p-3"
                                         style="height: 100px; object-fit: contain;" alt="">
                                     <div class="card-body">
@@ -104,12 +134,27 @@
                         @endforeach
                     </div>
 
+                    <!-- Banner Konsultan -->
+                    <div class="konsultan-banner d-flex align-items-center justify-content-between p-4 mb-4"
+                        style="border-radius: 20px;">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('images/materiutbk/stephena.png') }}" alt="Konsultan 1"
+                                class="konsultan-img me-3"
+                                style="height: 140px; width: 110px; object-fit: cover; border-radius: 16px;">
+                            <img src="{{ asset('images/materiutbk/arya.png') }}" alt="Konsultan 2"
+                                class="konsultan-img me-4"
+                                style="height: 140px; width: 110px; object-fit: cover; border-radius: 16px;">
+                            <div>
+                                <div class="text-white fw-semibold mb-1" style="font-size: 1.1rem;">Masih punya
+                                    pertanyaan?</div>
+                                <div class="text-white fw-bold" style="font-size: 1.6rem; line-height: 1.2;">
+                                    Tanyakan via chat ke Konsultan<br>Arya & Stephen
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-success">Email info ke saya</button>
+                    </div>
 
-<!-- 
-
-                    <div class="col-12 d-flex justify-content-center">
-                        {{ $utbk->links('pagination::bootstrap-5') }}
-                    </div> -->
                     <!-- Tombol next previous -->
                     <!-- <div class="row mt-4">
                         <div class="col-12">
@@ -131,21 +176,16 @@
                                 </ul>
                             </nav>
                         </div> -->
+                    <!-- </div> -->
                 </div>
             </div>
         </section>
-
-
-
 
         <!-- Bagian bawah -->
 
         <x-fotter>
             <!-- footer -->
         </x-fotter>
-
-
-
 
         <!-- JAVASCRIPT FILES -->
         <script src="js/jquery.min.js"></script>
