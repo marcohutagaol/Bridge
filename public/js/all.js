@@ -782,3 +782,24 @@ allVideos.forEach(otherVideo => {
 
         window.location.href = `/module?${query.join('&')}`;
     });
+
+
+    function toggleDescription(button) {
+    const descriptionSpan = button.previousElementSibling;
+    const fullText = descriptionSpan.getAttribute('data-full-text');
+    const truncatedText = fullText.substring(0, 100) + '...';
+    
+    if (button.textContent === 'Show More') {
+        descriptionSpan.textContent = fullText;
+        button.textContent = 'Show Less';
+    } else {
+        descriptionSpan.textContent = truncatedText;
+        button.textContent = 'Show More';
+    }
+}
+
+   document.querySelectorAll('#filterForm input[type="checkbox"]').forEach((checkbox) => {
+        checkbox.addEventListener('change', function () {
+            document.getElementById('filterForm').submit();
+        });
+    });

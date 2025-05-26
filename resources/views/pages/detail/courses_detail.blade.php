@@ -25,6 +25,9 @@
 <body id="top">
     <main>
         <x-navbar></x-navbar>
+        
+        
+
 
         <!-- Degree Programs Listing Section -->
         <!-- Hero Section -->
@@ -33,7 +36,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto text-center title-container">
-                        <h1 class="text-dark page-title">Find the right degree for you..</h1>
+                        <h1 class="text-dark page-title">Find the right degree for you.. </h1>
+                         <a href="/certificate-detail" class="btn">Kunjungi Situs</a>
+
                     </div>
                 </div>
 
@@ -55,7 +60,7 @@
                                 <span>Your career goal is to start a career as a Network Administrator</span>
                             </div>
                         </div>
-                        <a href="#" class="edit-goal-btn">
+                        <a href="/next" class="edit-goal-btn">
                             <i class="bi bi-pencil-square"></i> Edit goal
                         </a>
                     </div>

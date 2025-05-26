@@ -5,7 +5,8 @@ use App\Http\Controllers\KampusController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UniversitasController;
-
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CourseController;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -32,6 +33,22 @@ Route::get('/program/master', [UniversityController::class, 'master'])->name('un
 Route::get('/program/all', [UniversityController::class, 'all'])->name('universities.all');
 Route::get('/program/postgraduate', [UniversityController::class, 'postgraduate'])->name('universities.postgraduate');
 
+//carrer
+Route::get('/exam', [CareerController::class, 'showCareers'])->name('careers');
+
+
+
+//certifikat
+Route::get('/certificate-detail', [CourseController::class, 'index'])
+     ->name('certificate.detail');
+
+
+
+
+//kursus
+Route::get('/next', function () {
+    return view('pages.detail.nextkursus.learning_goals');
+});
 
 
 
@@ -55,12 +72,10 @@ Route::get('/topic-detail', function () {
 });
 // MASUK SECTION 1
 
-Route::get('/exam', function () {
-    return view('pages.detail.exam_detail');
-});
 Route::get('/courses', function () {
     return view('pages.detail.courses_detail');
 });
+
 
 
 // HOME
