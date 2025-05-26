@@ -55,7 +55,7 @@
                                 <span>Your career goal is to start a career as a Network Administrator</span>
                             </div>
                         </div>
-                        <a href="#" class="edit-goal-btn">
+                        <a href="/next" class="edit-goal-btn">
                             <i class="bi bi-pencil-square"></i> Edit goal
                         </a>
                     </div>

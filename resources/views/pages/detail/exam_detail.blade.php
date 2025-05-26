@@ -20,45 +20,45 @@
     <link href="css/templatemo-topic-listing.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/degree-programs.css" rel="stylesheet">
-    
+
     <!-- CSS tambahan untuk card styling -->
     <style>
-      .career-card {
+        .career-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 12px;
             overflow: hidden;
             border: none;
         }
-        
+
         .career-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .career-card .card-img-top {
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
             object-fit: cover !important;
             height: 180px;
         }
-        
+
         .career-card .card-body {
             padding: 1.5rem;
         }
-        
+
         .career-card .card-title {
             font-weight: 600;
             margin-bottom: 1rem;
             color: #2c3e50;
         }
-        
+
         .tag-container {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-top: 1rem;
         }
-        
+
         .tag {
             background-color: #f8f9fa;
             padding: 4px 12px;
@@ -66,24 +66,24 @@
             font-size: 0.8rem;
             color: #6c757d;
         }
-        
+
         .salary {
             display: flex;
             align-items: center;
             margin-top: 1rem;
         }
-        
+
         .salary-icon {
             color: #28a745;
             margin-right: 6px;
         }
-        
+
         .jobs-available {
             display: flex;
             align-items: center;
             margin-top: 0.5rem;
         }
-        
+
         .jobs-icon {
             color: #007bff;
             margin-right: 6px;
@@ -97,7 +97,7 @@
         <x-navbar></x-navbar>
 
         <!-- Degree Programs Listing Section -->
-       
+
         <!-- Degree Programs Listing Section -->
         <section class="hero-section d-flex justify-content-center align-items-center" id="degreesList">
             <div class="container">
@@ -106,195 +106,231 @@
                         <h1 class="text-white page-title">Find the right degree for you..</h1>
                     </div>
                 </div>
+                
+                <style>
+                    /* Color palette based on the image */
+                    :root {
+                        --primary-teal: #5fbfbf;
+                        --secondary-teal: #77c9c9;
+                        --light-teal: #a3dada;
+                        --dark-teal: #4a9e9e;
+                        --white: #ffffff;
+                        --light-gray: #f5f5f5;
+                        --medium-gray: #e0e0e0;
+                    }
 
+                    .page-title {
+                        color: var(--white);
+                        text-align: center;
+                        font-size: 3.5rem;
+                        font-weight: bold;
+                        margin-bottom: 3rem;
+                        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    }
+
+                    /* Overall container styling */
+                    .filter-container {
+                        background-color: rgba(255, 255, 255, 0.2);
+                        border-radius: 12px;
+                        padding: 20px;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                        backdrop-filter: blur(5px);
+                        margin-bottom: 3rem;
+                    }
+
+                    /* Level dropdown styling */
+                    #levelDropdown {
+                        min-width: 140px;
+                        border-radius: 25px;
+                        font-weight: 500;
+                        padding: 8px 16px;
+                        transition: all 0.3s ease;
+                        background-color: rgba(255, 255, 255, 0.4);
+                        border-color: var(--white);
+                        color: var(--white);
+                    }
+
+                    #levelDropdown:hover {
+                        background-color: rgba(255, 255, 255, 0.6);
+                        border-color: var(--white);
+                    }
+
+                    .dropdown-menu {
+                        border-radius: 10px;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                        padding: 8px 0;
+                        background-color: var(--white);
+                    }
+
+                    .dropdown-item {
+                        padding: 8px 16px;
+                        transition: background-color 0.2s ease;
+                    }
+
+                    .dropdown-item:hover {
+                        background-color: var(--light-teal);
+                    }
+
+                    .dropdown-item.active {
+                        background-color: var(--primary-teal);
+                        color: var(--white);
+                        font-weight: 500;
+                    }
+
+                    /* Filter bidang buttons */
+                    .btn-outline-secondary {
+                        color: var(--white);
+                        border-color: var(--white);
+                        background-color: rgba(255, 255, 255, 0.2);
+                        border-radius: 6px;
+                        padding: 8px 16px;
+                        margin: 3px;
+                    }
+
+                    .btn-outline-secondary:hover {
+                        background-color: rgba(255, 255, 255, 0.3);
+                        border-color: var(--white);
+                        color: var(--white);
+                    }
+
+                    .btn-outline-secondary.active {
+                        background-color: var(--dark-teal);
+                        border-color: var(--white);
+                        color: var(--white);
+                        font-weight: 500;
+                    }
+
+                    /* Animation for hover effects */
+                    .btn {
+                        transition: transform 0.2s ease, box-shadow 0.2s ease;
+                    }
+
+                    .btn:hover:not(.active) {
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }
+
+                    /* Course cards */
+                    .card {
+                        border-radius: 12px;
+                        overflow: hidden;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        margin-bottom: 2rem;
+                    }
+
+                    .card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+                    }
+                </style>
                 <!-- Filter Options -->
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <div class="filter-container d-flex flex-wrap align-items-center justify-content-between">
-                            <div class="d-flex align-items-center mb-3 mb-md-0">
-                                <span class="me-3">Filter menurut:</span>
-                                <div class="dropdown me-3">
-                                    <button class="btn dropdown-toggle" type="button" id="programLevelDropdown"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Level Posisi
+                <div class="container mt-5">
+                    <!-- Filter Options -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="filter-container d-flex flex-wrap align-items-center justify-content-between">
+                                <!-- Dropdown Level -->
+                                <div class="dropdown me-3 mb-3">
+                                    <button class="btn btn-outline-primary dropdown-toggle" type="button"
+                                        id="levelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Beginner
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="programLevelDropdown">
-                                        <li><a class="dropdown-item" href="#">Semua</a></li>
-                                        <li><a class="dropdown-item" href="#">Entry Level</a></li>
-                                        <li><a class="dropdown-item" href="#">Mid Level</a></li>
-                                        <li><a class="dropdown-item" href="#">Senior Level</a></li>
+                                    <ul class="dropdown-menu" aria-labelledby="levelDropdown">
+                                        <li><a class="dropdown-item active" href="#">Beginner</a></li>
+                                        <li><a class="dropdown-item" href="#">Intermediate</a></li>
+                                        <li><a class="dropdown-item" href="#">Advanced</a></li>
                                     </ul>
                                 </div>
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" id="subjectDropdown"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Subjek
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="subjectDropdown">
-                                        <li><a class="dropdown-item" href="#">Semua</a></li>
-                                        <li><a class="dropdown-item" href="#">Marketing</a></li>
-                                        <li><a class="dropdown-item" href="#">Engineering</a></li>
-                                        <li><a class="dropdown-item" href="#">Human Resources</a></li>
-                                    </ul>
+
+                                <!-- Filter bidang -->
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <a href="{{ route('careers', ['category' => 'all']) }}"
+                                        class="btn btn-outline-secondary {{ $category == 'all' ? 'active' : '' }}">All</a>
+
+                                    <a href="{{ route('careers', ['category' => 'softwareandedit']) }}"
+                                        class="btn btn-outline-secondary {{ $category == 'softwareandedit' ? 'active' : '' }}">Software
+                                        Engineering & IT</a>
+
+                                    <a href="{{ route('careers', ['category' => 'bisnis']) }}"
+                                        class="btn btn-outline-secondary {{ $category == 'bisnis' ? 'active' : '' }}">Business</a>
+
+                                    <a href="{{ route('careers', ['category' => 'salesandmarketing']) }}"
+                                        class="btn btn-outline-secondary {{ $category == 'salesandmarketing' ? 'active' : '' }}">Sales
+                                        & Marketing</a>
+
+                                    <a href="{{ route('careers', ['category' => 'datascience']) }}"
+                                        class="btn btn-outline-secondary {{ $category == 'datascience' ? 'active' : '' }}">Data
+                                        Science & Analytics</a>
+
+                                    <a href="{{ route('careers', ['category' => 'healthcare']) }}"
+                                        class="btn btn-outline-secondary {{ $category == 'healthcare' ? 'active' : '' }}">Healthcare</a>
                                 </div>
                             </div>
-                            <button class="btn btn-outline-success">Email info ke saya</button>
                         </div>
                     </div>
+
+                    <!-- Content area for filtered items would go here -->
+
                 </div>
+
+
 
                 <!-- Career Cards -->
-            <!-- Career Cards -->
-<div class="row g-4 content-section">
-    <!-- Digital Marketing Specialist Card 1 -->
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card shadow h-100 career-card">
-            <img src="images/carrer/digital.jpg" class="card-img-top" alt="Spesialis Pemasaran Digital">
-            <div class="card-body">
-                <p class="text-muted small mb-1">Karir Digital</p>
-                <h5 class="card-title">Spesialis Pemasaran Digital</h5>
-                <p class="small text-muted">Mengelola kampanye, mengoptimalkan SEO, dan media sosial dengan alat bantu seperti Google Analytics untuk meningkatkan keterlibatan.</p>
-                
-                <div class="tag-container">
-                    <span class="tag">Kampanye Online</span>
-                    <span class="tag">Analisis Data</span>
-                    <span class="tag">Engagement</span>
-                </div>
-                
-                <div class="salary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar salary-icon" viewBox="0 0 16 16">
-                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                    </svg>
-                    <p class="small text-success mb-0">Rp 68.202.686 gaji median</p>
-                </div>
-                
-                <div class="jobs-available">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase jobs-icon" viewBox="0 0 16 16">
-                        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
-                    </svg>
-                    <p class="small text-primary mb-0">3.725 pekerjaan tersedia</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                <div class="row g-4 content-section">
+                    @foreach ($careers as $career)
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card shadow h-100 career-card">
+                                <img src="{{ $career->image }}" class="card-img-top" alt="{{ $career->name }}">
+                                <div class="card-body">
+                                    <p class="text-muted small mb-1">{{ ucfirst($career->kategoris) }}</p>
+                                    <h5 class="card-title">{{ $career->name }}</h5>
+                                    <p class="small text-muted">{{ $career->description }}</p>
+                                    <p class="small text-muted"><strong>If you like:</strong> {{ $career->description2 }}
+                                    </p>
 
-    <!-- Digital Marketing Specialist Card 2 -->
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card shadow h-100 career-card">
-            <img src="images/carrer/digital.jpg" class="card-img-top" alt="Spesialis Pemasaran Digital">
-            <div class="card-body">
-                <p class="text-muted small mb-1">Karir Digital</p>
-                <h5 class="card-title">Spesialis Pemasaran Digital</h5>
-                <p class="small text-muted">Mengelola kampanye, mengoptimalkan SEO, dan media sosial dengan alat bantu seperti Google Analytics untuk meningkatkan keterlibatan.</p>
-                
-                <div class="tag-container">
-                    <span class="tag">Kampanye Online</span>
-                    <span class="tag">Analisis Data</span>
-                    <span class="tag">Engagement</span>
-                </div>
-                
-                <div class="salary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar salary-icon" viewBox="0 0 16 16">
-                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                    </svg>
-                    <p class="small text-success mb-0">Rp 68.202.686 gaji median</p>
-                </div>
-                
-                <div class="jobs-available">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase jobs-icon" viewBox="0 0 16 16">
-                        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
-                    </svg>
-                    <p class="small text-primary mb-0">3.725 pekerjaan tersedia</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                                    <div class="salary">
+                                        <p class="small text-success mb-0">{{ $career->median_salary }}</p>
+                                    </div>
 
-    <!-- Digital Marketing Specialist Card 3 -->
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card shadow h-100 career-card">
-            <img src="images/carrer/digital.jpg" class="card-img-top" alt="Spesialis Pemasaran Digital">
-            <div class="card-body">
-                <p class="text-muted small mb-1">Karir Digital</p>
-                <h5 class="card-title">Spesialis Pemasaran Digital</h5>
-                <p class="small text-muted">Mengelola kampanye, mengoptimalkan SEO, dan media sosial dengan alat bantu seperti Google Analytics untuk meningkatkan keterlibatan.</p>
-                
-                <div class="tag-container">
-                    <span class="tag">Kampanye Online</span>
-                    <span class="tag">Analisis Data</span>
-                    <span class="tag">Engagement</span>
-                </div>
-                
-                <div class="salary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar salary-icon" viewBox="0 0 16 16">
-                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                    </svg>
-                    <p class="small text-success mb-0">Rp 68.202.686 gaji median</p>
-                </div>
-                
-                <div class="jobs-available">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase jobs-icon" viewBox="0 0 16 16">
-                        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
-                    </svg>
-                    <p class="small text-primary mb-0">3.725 pekerjaan tersedia</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    <!-- Digital Marketing Specialist Card 4 -->
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card shadow h-100 career-card">
-            <img src="images/carrer/digital.jpg" class="card-img-top" alt="Spesialis Pemasaran Digital">
-            <div class="card-body">
-                <p class="text-muted small mb-1">Karir Digital</p>
-                <h5 class="card-title">Spesialis Pemasaran Digital</h5>
-                <p class="small text-muted">Mengelola kampanye, mengoptimalkan SEO, dan media sosial dengan alat bantu seperti Google Analytics untuk meningkatkan keterlibatan.</p>
-                
-                <div class="tag-container">
-                    <span class="tag">Kampanye Online</span>
-                    <span class="tag">Analisis Data</span>
-                    <span class="tag">Engagement</span>
-                </div>
-                
-                <div class="salary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar salary-icon" viewBox="0 0 16 16">
-                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                    </svg>
-                    <p class="small text-success mb-0">Rp 68.202.686 gaji median</p>
-                </div>
-                
-                <div class="jobs-available">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase jobs-icon" viewBox="0 0 16 16">
-                        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
-                    </svg>
-                    <p class="small text-primary mb-0">3.725 pekerjaan tersedia</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-                
-                
+                                    <div class="jobs-available">
+                                        <p class="small text-primary mb-0">{{ $career->jobs_available }}</p>
+                                    </div>
 
+                                    <div class="credentials mt-3">
+                                        <p class="mb-2"><strong>Credentials</strong></p>
+                                        @foreach (explode(';', $career->credential) as $cred)
+                                            <div class="credential-item d-flex align-items-center mb-1">
+                                                <img src="{{ $career->credential_logo }}" width="16" height="16" class="me-1">
+                                                <span class="small">{{ $cred }}</span>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
 
                 <!-- Pagination -->
                 <div class="row mt-4">
                     <div class="col-12">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item disabled" id="prevPageBtn">
-                                    <a class="page-link" href="#" aria-label="Previous">
+                                <li class="page-item {{ $careers->onFirstPage() ? 'disabled' : '' }}" id="prevPageBtn">
+                                    <a class="page-link" href="{{ $careers->previousPageUrl() }}" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span> Previous
                                     </a>
                                 </li>
-                                <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
-                                <li class="page-item" id="nextPageBtn">
-                                    <a class="page-link" href="#" aria-label="Next">
+
+                                @for ($i = 1; $i <= $careers->lastPage(); $i++)
+                                    <li class="page-item {{ $careers->currentPage() == $i ? 'active' : '' }}">
+                                        <a class="page-link" href="{{ $careers->url($i) }}">{{ $i }}</a>
+                                    </li>
+                                @endfor
+
+                                <li class="page-item {{ $careers->hasMorePages() ? '' : 'disabled' }}" id="nextPageBtn">
+                                    <a class="page-link" href="{{ $careers->nextPageUrl() }}" aria-label="Next">
                                         Next <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
@@ -306,153 +342,161 @@
         </section>
 
 
-        
+
         <!-- Browse by Program Level and Category Section -->
         <section class="browse-section py-5 bg-light">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12">
-                <h3 class="h4 mb-4">Sumber daya karier</h3>
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card h-100 program-level-card">
-                            <div class="card-body text-center">
-                                <i class="bi bi-people fs-1 mb-3 text-teal"></i>
-                                <h4 class="card-title h5">Umum</h4>
-                                <p class="card-text small">Dasar-dasar dan panduan umum karier</p>
-                                <a href="#" class="btn btn-outline-teal btn-sm">Lihat</a>
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h3 class="h4 mb-4">Sumber daya karier</h3>
+                        <div class="row g-4">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 program-level-card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-people fs-1 mb-3 text-teal"></i>
+                                        <h4 class="card-title h5">Umum</h4>
+                                        <p class="card-text small">Dasar-dasar dan panduan umum karier</p>
+                                        <a href="#" class="btn btn-outline-teal btn-sm">Lihat</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card h-100 program-level-card">
-                            <div class="card-body text-center">
-                                <i class="bi bi-graph-up fs-1 mb-3 text-teal"></i>
-                                <h4 class="card-title h5">Keterampilan</h4>
-                                <p class="card-text small">Pengembangan keterampilan penting</p>
-                                <a href="#" class="btn btn-outline-teal btn-sm">Lihat</a>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 program-level-card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-graph-up fs-1 mb-3 text-teal"></i>
+                                        <h4 class="card-title h5">Keterampilan</h4>
+                                        <p class="card-text small">Pengembangan keterampilan penting</p>
+                                        <a href="#" class="btn btn-outline-teal btn-sm">Lihat</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card h-100 program-level-card">
-                            <div class="card-body text-center">
-                                <i class="bi bi-briefcase fs-1 mb-3 text-teal"></i>
-                                <h4 class="card-title h5">Saran karier</h4>
-                                <p class="card-text small">Tips dan saran untuk memajukan karier</p>
-                                <a href="#" class="btn btn-outline-teal btn-sm">Lihat</a>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 program-level-card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-briefcase fs-1 mb-3 text-teal"></i>
+                                        <h4 class="card-title h5">Saran karier</h4>
+                                        <p class="card-text small">Tips dan saran untuk memajukan karier</p>
+                                        <a href="#" class="btn btn-outline-teal btn-sm">Lihat</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card h-100 program-level-card">
-                            <div class="card-body text-center">
-                                <i class="bi bi-map fs-1 mb-3 text-teal"></i>
-                                <h4 class="card-title h5">Perencanaan jalur karier</h4>
-                                <p class="card-text small">Panduan langkah-langkah perencanaan</p>
-                                <a href="#" class="btn btn-outline-teal btn-sm">Lihat</a>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 program-level-card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-map fs-1 mb-3 text-teal"></i>
+                                        <h4 class="card-title h5">Perencanaan jalur karier</h4>
+                                        <p class="card-text small">Panduan langkah-langkah perencanaan</p>
+                                        <a href="#" class="btn btn-outline-teal btn-sm">Lihat</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Browse by Category -->
-        <div class="row">
-            <div class="col-12">
-                <h3 class="h4 mb-4">Jelajahi Panduan Karier</h3>
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 category-card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-bar-chart-line me-3 fs-3 text-teal"></i>
-                                    <h4 class="card-title h5 mb-0">Analis Data</h4>
+                <!-- Browse by Category -->
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="h4 mb-4">Jelajahi Panduan Karier</h3>
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card h-100 category-card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="bi bi-bar-chart-line me-3 fs-3 text-teal"></i>
+                                            <h4 class="card-title h5 mb-0">Analis Data</h4>
+                                        </div>
+                                        <p class="card-text small">Mengumpulkan, membersihkan, dan menafsirkan data</p>
+                                        <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i
+                                                class="bi bi-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                                <p class="card-text small">Mengumpulkan, membersihkan, dan menafsirkan data</p>
-                                <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 category-card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-kanban me-3 fs-3 text-teal"></i>
-                                    <h4 class="card-title h5 mb-0">Manajer Proyek</h4>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card h-100 category-card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="bi bi-kanban me-3 fs-3 text-teal"></i>
+                                            <h4 class="card-title h5 mb-0">Manajer Proyek</h4>
+                                        </div>
+                                        <p class="card-text small">Mengatur, merencanakan, dan melaksanakan proyek</p>
+                                        <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i
+                                                class="bi bi-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                                <p class="card-text small">Mengatur, merencanakan, dan melaksanakan proyek</p>
-                                <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 category-card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-code-slash me-3 fs-3 text-teal"></i>
-                                    <h4 class="card-title h5 mb-0">Pengembang Web</h4>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card h-100 category-card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="bi bi-code-slash me-3 fs-3 text-teal"></i>
+                                            <h4 class="card-title h5 mb-0">Pengembang Web</h4>
+                                        </div>
+                                        <p class="card-text small">Membuat dan memelihara situs web</p>
+                                        <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i
+                                                class="bi bi-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                                <p class="card-text small">Membuat dan memelihara situs web</p>
-                                <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 category-card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-palette me-3 fs-3 text-teal"></i>
-                                    <h4 class="card-title h5 mb-0">Desainer UX</h4>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card h-100 category-card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="bi bi-palette me-3 fs-3 text-teal"></i>
+                                            <h4 class="card-title h5 mb-0">Desainer UX</h4>
+                                        </div>
+                                        <p class="card-text small">Merancang pengalaman pengguna untuk produk digital
+                                        </p>
+                                        <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i
+                                                class="bi bi-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                                <p class="card-text small">Merancang pengalaman pengguna untuk produk digital</p>
-                                <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 category-card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-megaphone me-3 fs-3 text-teal"></i>
-                                    <h4 class="card-title h5 mb-0">Pemasaran Digital</h4>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card h-100 category-card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="bi bi-megaphone me-3 fs-3 text-teal"></i>
+                                            <h4 class="card-title h5 mb-0">Pemasaran Digital</h4>
+                                        </div>
+                                        <p class="card-text small">Strategi pemasaran online dan teknologi digital</p>
+                                        <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i
+                                                class="bi bi-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                                <p class="card-text small">Strategi pemasaran online dan teknologi digital</p>
-                                <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 category-card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-shield-lock me-3 fs-3 text-teal"></i>
-                                    <h4 class="card-title h5 mb-0">Keamanan Siber</h4>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card h-100 category-card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="bi bi-shield-lock me-3 fs-3 text-teal"></i>
+                                            <h4 class="card-title h5 mb-0">Keamanan Siber</h4>
+                                        </div>
+                                        <p class="card-text small">Melindungi komputer, perangkat seluler, dan informasi
+                                        </p>
+                                        <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i
+                                                class="bi bi-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                                <p class="card-text small">Melindungi komputer, perangkat seluler, dan informasi</p>
-                                <a href="#" class="btn btn-link p-0 text-teal">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- CTA Section -->
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <p class="mb-4">Ingin menjelajahi panduan karier lainnya?</p>
+                        <a href="#" class="btn btn-teal">Lihat Semua Panduan</a>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <!-- CTA Section -->
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <p class="mb-4">Ingin menjelajahi panduan karier lainnya?</p>
-                <a href="#" class="btn btn-teal">Lihat Semua Panduan</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-      
+        </section>
 
 
-    
+
+
+
         <!-- Student Testimonials Section -->
         <section class="student-testimonials-section py-5" style="background-color: #f9f9f9;">
             <div class="container">
