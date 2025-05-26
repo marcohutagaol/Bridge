@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UtbkController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KampusController;
 use App\Http\Controllers\ProfileController;
@@ -35,15 +36,9 @@ Route::get('/program/postgraduate', [UniversityController::class, 'postgraduate'
 
 //carrer
 Route::get('/exam', [CareerController::class, 'showCareers'])->name('careers');
-
-
-
 //certifikat
 Route::get('/certificate-detail', [CourseController::class, 'index'])
      ->name('certificate.detail');
-
-
-
 
 //kursus
 Route::get('/next', function () {
@@ -67,18 +62,16 @@ Route::get('/topic-listing', function () {
 });
 
 //MASUK SECTION 1
-Route::get('/topic-detail', function () {
-    return view('pages.section1.topic_detail');
-});
-// MASUK SECTION 1
+Route::get('/topic-detail', [UtbkController::class, 'index']);
+Route::get('/materi-detail', function () {
+    return view('pages.section1.materi_detail');
+})->name('materi.detail');
 
+
+// MASUK SECTION 1
 Route::get('/courses', function () {
     return view('pages.detail.courses_detail');
 });
-
-
-
-// HOME
 
 // SECTION 2
 Route::get('/info-kampus', function () {
@@ -90,4 +83,4 @@ Route::get('/direktori-kampus', [KampusController::class, 'index'])->name('secti
 Route::get('/detail-kampus/{id}', [KampusController::class, 'show'])->name('section2.detail_kampus');
 // SECTION 2
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
