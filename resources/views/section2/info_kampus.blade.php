@@ -128,7 +128,7 @@
 
             <!-- University 3 -->
             <div class="col-lg-3 col-md-6 col-sm-12">
-              <div class="card shadow category-card h-100">
+              <div class="card shadow category-card-2 h-100">
                 <img src="images/section2/logo univ/ITB.png" class="card-img-top p-3"
                   style="height: 150px; object-fit: contain;" alt="University of North Texas">
                 <div class="card-body">
@@ -143,7 +143,7 @@
 
             <!-- University 4 -->
             <div class="col-lg-3 col-md-6 col-sm-12">
-              <div class="card shadow category-card h-100">
+              <div class="card shadow category-card-2 h-100">
                 <img src="images/section2/logo univ/Unair.png" class="card-img-top p-3"
                   style="height: 150px; object-fit: contain;" alt="IIT Roorkee">
                 <div class="card-body">

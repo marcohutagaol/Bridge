@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KampusController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UniversityController;
-use App\Http\Controllers\UniversitasController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 
@@ -14,7 +13,7 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified'])->name('index');
 
 Route::get('/profil', function () {
-    return view('pages.index');
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -46,6 +45,9 @@ Route::get('/next', function () {
 });
 
 
+Route::get('/admin', function () {
+    return view('admin.index');
+});
 
 
 // HOME
