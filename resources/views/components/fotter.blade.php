@@ -6,7 +6,7 @@
                     <div class="col-lg-3 col-12 mb-4 pb-2">
                         <a class="navbar-brand mb-2" href="index.html">
                             <i class="bi-back"></i>
-                            <span>Coursera</span>
+                            <span>Bridge</span>
                         </a>
                     </div>
 
