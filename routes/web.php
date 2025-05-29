@@ -50,6 +50,9 @@ Route::get('/admin', function () {
     return view('admin.index');
 });
 
+Route::get('/message', function () {
+    return view('pages.message');
+});
 
 // HOME
 Route::get('/home', function () {

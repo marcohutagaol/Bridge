@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('sub_kategori');
             $table->integer('nomor');
             $table->text('soal');
+            $table->string('gambar');
             $table->timestamps();
         });
     }
