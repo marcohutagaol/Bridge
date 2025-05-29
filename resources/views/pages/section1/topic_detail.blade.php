@@ -15,11 +15,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
         rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/templatemo-topic-listing.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
-    <link href="css/degree-programs.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/templatemo-topic-listing.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/degree-programs.css') }}" rel="stylesheet">
 
 
     <style>
@@ -120,16 +120,19 @@
 
                         @foreach($sub_kategori_unik as $materi)
                             <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="card shadow h-100 card-clickable">
-                                    <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}" class="card-img-top p-3"
-                                        style="height: 100px; object-fit: contain;" alt="">
-                                    <div class="card-body">
-                                        <p class="text-muted small">{{ $materi->kategori }}</p>
-                                        <h5 class="card-title">{{ $materi->sub_kategori }}</h5>
-                                        <p class="small text-muted">Essay</p>
-                                        <p class="small text-danger">5 soal</p>
+                                <a href="{{ route('materi.detail', ['sub_kategori' => urlencode($materi->sub_kategori)]) }}"
+                                    style="text-decoration: none; color: inherit;">
+                                    <div class="card shadow h-100 card-clickable">
+                                        <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}"
+                                            class="card-img-top p-3" style="height: 100px; object-fit: contain;" alt="">
+                                        <div class="card-body">
+                                            <p class="text-muted small">{{ $materi->kategori }}</p>
+                                            <h5 class="card-title">{{ $materi->sub_kategori }}</h5>
+                                            <p class="small text-muted">Essay</p>
+                                            <p class="small text-danger">5 soal</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -188,11 +191,11 @@
         </x-fotter>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/click-scroll.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+        <script src="{{ asset('js/click-scroll.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
