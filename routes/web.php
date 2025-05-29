@@ -69,6 +69,8 @@ Route::get('/topic-detail', [UtbkController::class, 'index']);
 
 Route::get('/materi/{sub_kategori}', [MateriController::class, 'show'])->name('materi.detail');
 
+Route::post('/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('jawaban.submit');
+
 // MASUK SECTION 1
 Route::get('/courses', function () {
     return view('pages.detail.courses_detail');

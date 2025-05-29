@@ -87,6 +87,11 @@
                     <div class="row g-4 content-section">
                         <div class="col-12">
                             <h4 class="mb-4 fw-bold">{{ $sub_kategori }}</h4>
+                            @if(session('success'))
+                                <div class="alert alert-success mt-3">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                             <div class="row g-3">
                                 @foreach($materi as $index => $item)
                                     <div class="col-md-12">
@@ -99,11 +104,14 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <textarea class="form-control mt-3" rows="3" placeholder="Masukkan jawaban Anda di sini"
-                                maxlength="1000"></textarea>
-                            <button class="btn btn-primary mt-2" type="button" id="button-kirim" title="Kirim Jawaban">
-                                <i class="bi bi-send-fill"></i>
-                            </button>
+                            <form action="{{ route('jawaban.submit') }}" method="POST">
+                                @csrf
+                                <textarea class="form-control mt-3" name="jawaban" rows="3"
+                                    placeholder="Masukkan jawaban Anda di sini" maxlength="1000" required></textarea>
+                                <button class="btn btn-primary mt-2" type="submit" title="Kirim Jawaban">
+                                    <i class="bi bi-send-fill"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
 
