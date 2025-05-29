@@ -98,7 +98,7 @@
                                         <div class="card shadow-sm mb-2">
                                             <div class="card-body">
                                                 <div class="fw-semibold mb-2">Soal {{ $index + 1 }}</div>
-                                                <div>{{ $item->soal }}</div>
+                                                <div style="text-align: justify;">{{ $item->soal }}</div>
                                             </div>
                                         </div>
                                     </div>

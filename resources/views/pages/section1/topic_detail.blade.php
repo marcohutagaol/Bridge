@@ -97,11 +97,18 @@
                                         Pilih Paket
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="subjectDropdown">
-                                        <li><a class="dropdown-item" href="#">Penalaran Umum</a></li>
-                                        <li><a class="dropdown-item" href="#">PPU, PBM, dan Literasi Bahasa
-                                                Indonesia</a></li>
-                                        <li><a class="dropdown-item" href="#">Literasi Bahasa Inggris</a></li>
-                                        <li><a class="dropdown-item" href="#">PK & Penalaran Umum</a></li>
+                                        <li><a class="dropdown-item" href="#" data-kategori="Semua">Semua</a></li>
+                                        <li><a class="dropdown-item" href="#" data-kategori="Penalaran Umum">Penalaran
+                                                Umum</a></li>
+                                        <li><a class="dropdown-item" href="#"
+                                                data-kategori="PPU, PBM, dan Literasi dalam Bahasa Indonesia">PPU, PBM,
+                                                dan
+                                                Literasi Bahasa Indonesia</a></li>
+                                        <li><a class="dropdown-item" href="#"
+                                                data-kategori="Literasi Bahasa Inggris">Literasi Bahasa Inggris</a></li>
+                                        <li><a class="dropdown-item" href="#"
+                                                data-kategori="PK & Penalaran Matematika">PK &
+                                                Penalaran Umum</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -119,7 +126,7 @@
                         @endphp
 
                         @foreach($sub_kategori_unik as $materi)
-                            <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="col-lg-3 col-md-6 col-sm-12 card-kategori" data-kategori="{{ $materi->kategori }}">
                                 <a href="{{ route('materi.detail', ['sub_kategori' => urlencode($materi->sub_kategori)]) }}"
                                     style="text-decoration: none; color: inherit;">
                                     <div class="card shadow h-100 card-clickable">
@@ -198,6 +205,31 @@
         <script src="{{ asset('js/custom.js') }}"></script>
 
         <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                // ...existing code...
+
+                // Filter berdasarkan kategori
+                const subjectItems = document.querySelectorAll('#subjectDropdown + .dropdown-menu .dropdown-item');
+                const cards = document.querySelectorAll('.card-kategori');
+
+                subjectItems.forEach(item => {
+                    item.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const kategori = this.getAttribute('data-kategori');
+                        document.getElementById('subjectDropdown').textContent = this.textContent;
+
+                        cards.forEach(card => {
+                            if (kategori === 'Semua' || card.getAttribute('data-kategori') === kategori) {
+                                card.style.display = '';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            });
+
             document.addEventListener('DOMContentLoaded', function () {
                 // Dropdown functionality for filtering
                 const programItems = document.querySelectorAll('#programLevelDropdown + .dropdown-menu .dropdown-item');
