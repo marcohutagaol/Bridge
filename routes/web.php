@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\MateriController;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -65,10 +66,10 @@ Route::get('/topic-listing', function () {
 
 //MASUK SECTION 1
 Route::get('/topic-detail', [UtbkController::class, 'index']);
-Route::get('/materi-detail', function () {
-    return view('pages.section1.materi_detail');
-})->name('materi.detail');
 
+Route::get('/materi/{sub_kategori}', [MateriController::class, 'show'])->name('materi.detail');
+
+Route::post('/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('jawaban.submit');
 
 // MASUK SECTION 1
 Route::get('/courses', function () {

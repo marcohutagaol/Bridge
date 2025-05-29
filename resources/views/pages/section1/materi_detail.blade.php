@@ -15,11 +15,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
         rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/templatemo-topic-listing.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
-    <link href="css/degree-programs.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/templatemo-topic-listing.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/degree-programs.css') }}" rel="stylesheet">
 
 
     <style>
@@ -77,8 +77,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto text-center title-container">
-                        <h1 class="text-white page-title">Kategori</h1>
-                        <h6 class="text-center">Soal Essay Sub-Kategori</h6>
+                        <h1 class="text-white page-title">Selamat Mengerjakan Soal dengan Baik</h1>
+                        <h6 class="text-center">Apapun hasilnya tetap semangat</h6>
                     </div>
                 </div>
 
@@ -86,19 +86,32 @@
                     <!-- CARD UTBK -->
                     <div class="row g-4 content-section">
                         <div class="col-12">
-                            <div class="bg-warna-warni mb-3 p-3">
-                                Soal<br>
-                                1.<br>
-                                2.<br>
-                                3.<br>
-                                4.<br>
-                                5.<br>
+                            <h4 class="mb-4 fw-bold">{{ $sub_kategori }}</h4>
+                            @if(session('success'))
+                                <div class="alert alert-success mt-3">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            <div class="row g-3">
+                                @foreach($materi as $index => $item)
+                                    <div class="col-md-12">
+                                        <div class="card shadow-sm mb-2">
+                                            <div class="card-body">
+                                                <div class="fw-semibold mb-2">Soal {{ $index + 1 }}</div>
+                                                <div>{{ $item->soal }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                            <textarea class="form-control" rows="3" placeholder="Masukkan jawaban Anda di sini"
-                                maxlength="1000"></textarea>
-                            <button class="btn btn-primary" type="button" id="button-kirim" title="Kirim Jawaban" style="margin-top: 15px;">
-                                <i class="bi bi-send-fill"></i>
-                            </button>
+                            <form action="{{ route('jawaban.submit') }}" method="POST">
+                                @csrf
+                                <textarea class="form-control mt-3" name="jawaban" rows="3"
+                                    placeholder="Masukkan jawaban Anda di sini" maxlength="1000" required></textarea>
+                                <button class="btn btn-primary mt-2" type="submit" title="Kirim Jawaban">
+                                    <i class="bi bi-send-fill"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
 
@@ -132,80 +145,80 @@
         </x-fotter>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></scsc >
-                <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/click-scroll.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+        <script src="{{ asset('js/click-scroll.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
 
         <script>
-                                               document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function () {
                 // Dropdown functionality for filtering
                 const programItems = document.querySelectorAll('#programLevelDropdown + .dropdown-menu .dropdown-item');
-                                               const subjectItems = document.querySelectorAll('#subjectDropdown + .dropdown-menu .dropdown-item');
+                const subjectItems = document.querySelectorAll('#subjectDropdown + .dropdown-menu .dropdown-item');
 
                 programItems.forEach(item => {
-                                                   item.addEventListener('click', function () {
-                                                       document.getElementById('programLevelDropdown').textContent = this.textContent;
-                                                   });
+                    item.addEventListener('click', function () {
+                        document.getElementById('programLevelDropdown').textContent = this.textContent;
+                    });
                 });
 
                 subjectItems.forEach(item => {
-                                                   item.addEventListener('click', function () {
-                                                       document.getElementById('subjectDropdown').textContent = this.textContent;
-                                                   });
+                    item.addEventListener('click', function () {
+                        document.getElementById('subjectDropdown').textContent = this.textContent;
+                    });
                 });
 
-                                               // Pagination functionality
-                                               const pages = document.querySelectorAll('.pagination .page-link[data-page]');
-                                               const prevBtn = document.getElementById('prevPageBtn');
-                                               const nextBtn = document.getElementById('nextPageBtn');
-                                               let currentPage = 1;
-                                               const totalPages = pages.length;
+                // Pagination functionality
+                const pages = document.querySelectorAll('.pagination .page-link[data-page]');
+                const prevBtn = document.getElementById('prevPageBtn');
+                const nextBtn = document.getElementById('nextPageBtn');
+                let currentPage = 1;
+                const totalPages = pages.length;
 
-                                               function updatePagination() {
-                                                   // Update active page indicator
-                                                   pages.forEach(page => {
-                                                       const pageNum = parseInt(page.getAttribute('data-page'));
-                                                       if (pageNum === currentPage) {
-                                                           page.parentElement.classList.add('active');
-                                                       } else {
-                                                           page.parentElement.classList.remove('active');
-                                                       }
-                                                   });
+                function updatePagination() {
+                    // Update active page indicator
+                    pages.forEach(page => {
+                        const pageNum = parseInt(page.getAttribute('data-page'));
+                        if (pageNum === currentPage) {
+                            page.parentElement.classList.add('active');
+                        } else {
+                            page.parentElement.classList.remove('active');
+                        }
+                    });
 
-                                               // Update prev/next button states
-                                               prevBtn.classList.toggle('disabled', currentPage === 1);
-                                               nextBtn.classList.toggle('disabled', currentPage === totalPages);
+                    // Update prev/next button states
+                    prevBtn.classList.toggle('disabled', currentPage === 1);
+                    nextBtn.classList.toggle('disabled', currentPage === totalPages);
 
-                                               // Scroll to top of the section
-                                               window.scrollTo(0, document.getElementById('degreesList').offsetTop - 100);
+                    // Scroll to top of the section
+                    window.scrollTo(0, document.getElementById('degreesList').offsetTop - 100);
                 }
 
                 pages.forEach(page => {
-                                                   page.addEventListener('click', function (e) {
-                                                       e.preventDefault();
-                                                       currentPage = parseInt(this.getAttribute('data-page'));
-                                                       updatePagination();
-                                                       console.log(`Loading page ${currentPage}`);
-                                                   });
+                    page.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        currentPage = parseInt(this.getAttribute('data-page'));
+                        updatePagination();
+                        console.log(`Loading page ${currentPage}`);
+                    });
                 });
 
-                                               prevBtn.querySelector('a').addEventListener('click', function (e) {
-                                                   e.preventDefault();
+                prevBtn.querySelector('a').addEventListener('click', function (e) {
+                    e.preventDefault();
                     if (currentPage > 1) {
-                                                   currentPage--;
-                                               updatePagination();
-                                               console.log(`Loading page ${currentPage}`);
+                        currentPage--;
+                        updatePagination();
+                        console.log(`Loading page ${currentPage}`);
                     }
                 });
 
-                                               nextBtn.querySelector('a').addEventListener('click', function (e) {
-                                                   e.preventDefault();
-                                               if (currentPage < totalPages) {
-                                                   currentPage++;
-                                               updatePagination();
-                                               console.log(`Loading page ${currentPage}`);
+                nextBtn.querySelector('a').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        updatePagination();
+                        console.log(`Loading page ${currentPage}`);
                     }
                 });
             });
