@@ -88,15 +88,14 @@
                         <div class="col-12">
                             <div class="bg-warna-warni mb-3 p-3">
                                 Soal<br>
-                                1.<br>
-                                2.<br>
-                                3.<br>
-                                4.<br>
-                                5.<br>
+                                @foreach($materi as $i => $item)
+                                    {{ $i + 1 }}. {{ $item->soal }}<br>
+                                @endforeach
                             </div>
                             <textarea class="form-control" rows="3" placeholder="Masukkan jawaban Anda di sini"
                                 maxlength="1000"></textarea>
-                            <button class="btn btn-primary" type="button" id="button-kirim" title="Kirim Jawaban" style="margin-top: 15px;">
+                            <button class="btn btn-primary" type="button" id="button-kirim" title="Kirim Jawaban"
+                                style="margin-top: 15px;">
                                 <i class="bi bi-send-fill"></i>
                             </button>
                         </div>

@@ -125,9 +125,12 @@
                                         style="height: 100px; object-fit: contain;" alt="">
                                     <div class="card-body">
                                         <p class="text-muted small">{{ $materi->kategori }}</p>
-                                        <h5 class="card-title">{{ $materi->sub_kategori }}</h5>
-                                        <p class="small text-muted">Essay</p>
-                                        <p class="small text-danger">5 soal</p>
+                                        <h5 class="card-title">
+                                            <a href="{{ url('materi-detail/' . urlencode($materi->sub_kategori)) }}">
+                                                {{ $materi->sub_kategori }}
+                                            </a>
+                                            <p class="small text-muted">Essay</p>
+                                            <p class="small text-danger">5 soal</p>
                                     </div>
                                 </div>
                             </div>

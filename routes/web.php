@@ -55,6 +55,7 @@ Route::get('/topic-detail', [UtbkController::class, 'index']);
 Route::get('/materi-detail', function () {
     return view('pages.section1.materi_detail');
 })->name('materi.detail');
+Route::get('/materi-detail/{sub_kategori}', [UtbkController::class, 'show'])->name('materi.detail');
 
 // MASUK SECTION 1
 
