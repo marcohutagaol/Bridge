@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UtbkController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KampusController;
@@ -9,9 +10,8 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MateriController;
 
-Route::get('/', function () {
-    return view('pages.index');
-})->middleware(['auth', 'verified'])->name('index');
+Route::get('/', [AdminController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('index');
 
 Route::get('/profil', function () {
     return view('dashboard');
@@ -24,6 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+});
 
 
 
@@ -38,7 +41,7 @@ Route::get('/program/postgraduate', [UniversityController::class, 'postgraduate'
 Route::get('/exam', [CareerController::class, 'showCareers'])->name('careers');
 //certifikat
 Route::get('/certificate-detail', [CourseController::class, 'index'])
-     ->name('certificate.detail');
+    ->name('certificate.detail');
 
 //kursus
 Route::get('/next', function () {
@@ -46,9 +49,6 @@ Route::get('/next', function () {
 });
 
 
-Route::get('/admin', function () {
-    return view('admin.index');
-});
 
 Route::get('/message', function () {
     return view('pages.message');
