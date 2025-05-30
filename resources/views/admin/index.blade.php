@@ -28,7 +28,7 @@
         <x-navbar></x-navbar>
 
         <section class="hero-section-admin d-flex justify-content-center align-items-center" id="section_1">
-            
+            <h1>Admin</h1>
         </section>
     </main>
 
@@ -39,6 +39,7 @@
     <script src="js/jquery.sticky.js"></script>
     <script src="js/click-scroll.js"></script>
     <script src="js/custom.js"></script>
+    
     <script>
         // Variables to track scroll position
         let lastScrollTop = 0;
