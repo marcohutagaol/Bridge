@@ -38,6 +38,24 @@ class UtbkController extends Controller
         return view('pages.section1.topic_detail', compact('utbk', 'ppid', 'pd', 'pi', 'pk', 'mt', 'eja', 'kata', 'kalimat', 'diksi', 'lbi', 'basic', 'eng1', 'eng2', 'eng3', 'lm', 'bil', 'alj', 'geo', 'data'));
     }
 
+    public function submitJawaban(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'jawaban' => 'required|string|max:1000',
+        ]);
+
+        // Simpan ke database
+        DB::table('jawaban_utbk')->insert([
+            'jawaban' => $request->jawaban,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return back()->with('success', 'Jawaban berhasil dikirim!');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */

@@ -1,19 +1,20 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UtbkController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KampusController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UniversityController;
-use App\Http\Controllers\UniversitasController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\MateriController;
 
-
-Route::get('/', function () {
-    return view('pages.index');
-})->middleware(['auth', 'verified'])->name('index');
+Route::get('/', [AdminController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('index');
 
 Route::get('/profil', function () {
-    return view('pages.index');
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -23,6 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+});
 
 
 
@@ -33,9 +37,22 @@ Route::get('/program/master', [UniversityController::class, 'master'])->name('un
 Route::get('/program/all', [UniversityController::class, 'all'])->name('universities.all');
 Route::get('/program/postgraduate', [UniversityController::class, 'postgraduate'])->name('universities.postgraduate');
 
+//carrer
+Route::get('/exam', [CareerController::class, 'showCareers'])->name('careers');
+//certifikat
+Route::get('/certificate-detail', [CourseController::class, 'index'])
+    ->name('certificate.detail');
+
+//kursus
+Route::get('/next', function () {
+    return view('pages.detail.nextkursus.learning_goals');
+});
 
 
 
+Route::get('/message', function () {
+    return view('pages.message');
+});
 
 // HOME
 Route::get('/home', function () {
@@ -52,24 +69,15 @@ Route::get('/topic-listing', function () {
 
 //MASUK SECTION 1
 Route::get('/topic-detail', [UtbkController::class, 'index']);
-Route::get('/materi-detail', function () {
-    return view('pages.section1.materi_detail');
-})->name('materi.detail');
-Route::get('/materi-detail/{sub_kategori}', [UtbkController::class, 'show'])->name('materi.detail');
+
+Route::get('/materi/{sub_kategori}', [MateriController::class, 'show'])->name('materi.detail');
+
+Route::post('/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('jawaban.submit');
 
 // MASUK SECTION 1
-
-Route::get('/exam', function () {
-    return view('pages.detail.exam_detail');
-});
 Route::get('/courses', function () {
     return view('pages.detail.courses_detail');
 });
-
-
-
-
-// HOME
 
 // SECTION 2
 Route::get('/info-kampus', function () {

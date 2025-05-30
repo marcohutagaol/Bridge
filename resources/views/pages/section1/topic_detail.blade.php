@@ -15,11 +15,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
         rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/templatemo-topic-listing.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
-    <link href="css/degree-programs.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/templatemo-topic-listing.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/degree-programs.css') }}" rel="stylesheet">
 
 
     <style>
@@ -97,11 +97,18 @@
                                         Pilih Paket
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="subjectDropdown">
-                                        <li><a class="dropdown-item" href="#">Penalaran Umum</a></li>
-                                        <li><a class="dropdown-item" href="#">PPU, PBM, dan Literasi Bahasa
-                                                Indonesia</a></li>
-                                        <li><a class="dropdown-item" href="#">Literasi Bahasa Inggris</a></li>
-                                        <li><a class="dropdown-item" href="#">PK & Penalaran Umum</a></li>
+                                        <li><a class="dropdown-item" href="#" data-kategori="Semua">Semua</a></li>
+                                        <li><a class="dropdown-item" href="#" data-kategori="Penalaran Umum">Penalaran
+                                                Umum</a></li>
+                                        <li><a class="dropdown-item" href="#"
+                                                data-kategori="PPU, PBM, dan Literasi dalam Bahasa Indonesia">PPU, PBM,
+                                                dan
+                                                Literasi Bahasa Indonesia</a></li>
+                                        <li><a class="dropdown-item" href="#"
+                                                data-kategori="Literasi Bahasa Inggris">Literasi Bahasa Inggris</a></li>
+                                        <li><a class="dropdown-item" href="#"
+                                                data-kategori="PK & Penalaran Matematika">PK &
+                                                Penalaran Umum</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -110,27 +117,31 @@
                     </div>
                 </div>
 
+
+                <!-- CARD UTBK -->
                 <div class="row g-4 content-section">
-                    <!-- CARD UTBK -->
                     <div class="row g-4 content-section">
                         @php
-                            // Ambil semua sub_kategori unik dari data $utbk
                             $sub_kategori_unik = $utbk->unique('sub_kategori');
                         @endphp
 
                         @foreach($sub_kategori_unik as $materi)
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="card shadow h-100 card-clickable">
+                            <div class="col-lg-3 col-md-6 col-sm-12 d-flex">
+                                <div class="card shadow h-100 w-100 card-clickable d-flex flex-column">
                                     <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}" class="card-img-top p-3"
                                         style="height: 100px; object-fit: contain;" alt="">
-                                    <div class="card-body">
-                                        <p class="text-muted small">{{ $materi->kategori }}</p>
-                                        <h5 class="card-title">
-                                            <a href="{{ url('materi-detail/' . urlencode($materi->sub_kategori)) }}">
+                                    <div class="card-body d-flex flex-column">
+                                        <p class="text-muted small mb-1">{{ $materi->kategori }}</p>
+                                        <h5 class="card-title mb-2" style="min-height: 48px;">
+                                            <a href="{{ route('materi.detail', ['sub_kategori' => urlencode($materi->sub_kategori)]) }}"
+                                                style="text-decoration: none; color: inherit;">
                                                 {{ $materi->sub_kategori }}
                                             </a>
-                                            <p class="small text-muted">Essay</p>
-                                            <p class="small text-danger">5 soal</p>
+                                        </h5>
+                                        <div class="mt-auto">
+                                            <p class="small text-muted mb-1">Essay</p>
+                                            <p class="small text-danger mb-0">5 soal</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +192,6 @@
                         </div> -->
                     <!-- </div> -->
                 </div>
-            </div>
         </section>
 
         <!-- Bagian bawah -->
@@ -191,13 +201,38 @@
         </x-fotter>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/click-scroll.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+        <script src="{{ asset('js/click-scroll.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
 
         <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                // ...existing code...
+
+                // Filter berdasarkan kategori
+                const subjectItems = document.querySelectorAll('#subjectDropdown + .dropdown-menu .dropdown-item');
+                const cards = document.querySelectorAll('.card-kategori');
+
+                subjectItems.forEach(item => {
+                    item.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const kategori = this.getAttribute('data-kategori');
+                        document.getElementById('subjectDropdown').textContent = this.textContent;
+
+                        cards.forEach(card => {
+                            if (kategori === 'Semua' || card.getAttribute('data-kategori') === kategori) {
+                                card.style.display = '';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            });
+
             document.addEventListener('DOMContentLoaded', function () {
                 // Dropdown functionality for filtering
                 const programItems = document.querySelectorAll('#programLevelDropdown + .dropdown-menu .dropdown-item');

@@ -2066,3 +2066,22 @@ ul.dropdown-menu.filter-dropdown > li:not(:last-child) {
 }
 
 
+.show-more-btn {
+    background: none;
+    border: none;
+    color: #20b2aa;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    margin-left: 5px;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.show-more-btn:hover {
+    color: #1a9a94;
+}
+
+.description-text {
+    transition: all 0.3s ease;
+}
