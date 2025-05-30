@@ -75,9 +75,14 @@ class UtbkController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+
+    public function show($sub_kategori)
     {
-        //
+        $materi = Utbk::where('sub_kategori', $sub_kategori)
+            ->orderBy('nomor')
+            ->limit(5)
+            ->get();
+        return view('pages.section1.materi_detail', compact('materi', 'sub_kategori'));
     }
 
     /**

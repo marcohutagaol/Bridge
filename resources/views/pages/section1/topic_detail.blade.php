@@ -117,29 +117,33 @@
                     </div>
                 </div>
 
+
+                <!-- CARD UTBK -->
                 <div class="row g-4 content-section">
-                    <!-- CARD UTBK -->
                     <div class="row g-4 content-section">
                         @php
-                            // Ambil semua sub_kategori unik dari data $utbk
                             $sub_kategori_unik = $utbk->unique('sub_kategori');
                         @endphp
 
                         @foreach($sub_kategori_unik as $materi)
-                            <div class="col-lg-3 col-md-6 col-sm-12 card-kategori" data-kategori="{{ $materi->kategori }}">
-                                <a href="{{ route('materi.detail', ['sub_kategori' => urlencode($materi->sub_kategori)]) }}"
-                                    style="text-decoration: none; color: inherit;">
-                                    <div class="card shadow h-100 card-clickable">
-                                        <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}"
-                                            class="card-img-top p-3" style="height: 100px; object-fit: contain;" alt="">
-                                        <div class="card-body">
-                                            <p class="text-muted small">{{ $materi->kategori }}</p>
-                                            <h5 class="card-title">{{ $materi->sub_kategori }}</h5>
-                                            <p class="small text-muted">Essay</p>
-                                            <p class="small text-danger">5 soal</p>
+                            <div class="col-lg-3 col-md-6 col-sm-12 d-flex">
+                                <div class="card shadow h-100 w-100 card-clickable d-flex flex-column">
+                                    <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}" class="card-img-top p-3"
+                                        style="height: 100px; object-fit: contain;" alt="">
+                                    <div class="card-body d-flex flex-column">
+                                        <p class="text-muted small mb-1">{{ $materi->kategori }}</p>
+                                        <h5 class="card-title mb-2" style="min-height: 48px;">
+                                            <a href="{{ route('materi.detail', ['sub_kategori' => urlencode($materi->sub_kategori)]) }}"
+                                                style="text-decoration: none; color: inherit;">
+                                                {{ $materi->sub_kategori }}
+                                            </a>
+                                        </h5>
+                                        <div class="mt-auto">
+                                            <p class="small text-muted mb-1">Essay</p>
+                                            <p class="small text-danger mb-0">5 soal</p>
                                         </div>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -188,7 +192,6 @@
                         </div> -->
                     <!-- </div> -->
                 </div>
-            </div>
         </section>
 
         <!-- Bagian bawah -->
