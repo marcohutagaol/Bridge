@@ -86,11 +86,11 @@
                     <!-- CARD UTBK -->
                     <div class="row g-4 content-section">
                         <div class="col-12">
-                            <div class="bg-warna-warni mb-3 p-3">
+                            <!-- <div class="bg-warna-warni mb-3 p-3">
                                 Soal<br>
                                 @foreach($materi as $i => $item)
                                     {{ $i + 1 }}. {{ $item->soal }}<br>
-                                @endforeach
+                                @endforeach -->
                             <h4 class="mb-4 fw-bold">{{ $sub_kategori }}</h4>
                             @if(session('success'))
                                 <div class="alert alert-success mt-3">
@@ -109,12 +109,12 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <textarea class="form-control" rows="3" placeholder="Masukkan jawaban Anda di sini"
+                            <!-- <textarea class="form-control" rows="3" placeholder="Masukkan jawaban Anda di sini"
                                 maxlength="1000"></textarea>
                             <button class="btn btn-primary" type="button" id="button-kirim" title="Kirim Jawaban"
                                 style="margin-top: 15px;">
                                 <i class="bi bi-send-fill"></i>
-                            </button>
+                            </button> -->
                             <form action="{{ route('jawaban.submit') }}" method="POST">
                                 @csrf
                                 <textarea class="form-control mt-3" name="jawaban" rows="3"

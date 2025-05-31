@@ -127,23 +127,24 @@
 
                         @foreach($sub_kategori_unik as $materi)
                             <div class="col-lg-3 col-md-6 col-sm-12 d-flex">
-                                <div class="card shadow h-100 w-100 card-clickable d-flex flex-column">
-                                    <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}" class="card-img-top p-3"
-                                        style="height: 100px; object-fit: contain;" alt="">
-                                    <div class="card-body d-flex flex-column">
-                                        <p class="text-muted small mb-1">{{ $materi->kategori }}</p>
-                                        <h5 class="card-title mb-2" style="min-height: 48px;">
-                                            <a href="{{ route('materi.detail', ['sub_kategori' => urlencode($materi->sub_kategori)]) }}"
-                                                style="text-decoration: none; color: inherit;">
+                                <a href="{{ route('materi.detail', ['sub_kategori' => urlencode($materi->sub_kategori)]) }}"
+                                    style="text-decoration: none; color: inherit; width: 100%;">
+                                    <div class="card shadow h-100 w-100 card-clickable d-flex flex-column card-kategori"
+                                        data-kategori="{{ $materi->kategori }}">
+                                        <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}"
+                                            class="card-img-top p-3" style="height: 100px; object-fit: contain;" alt="">
+                                        <div class="card-body d-flex flex-column">
+                                            <p class="text-muted small mb-1">{{ $materi->kategori }}</p>
+                                            <h5 class="card-title mb-2" style="min-height: 48px;">
                                                 {{ $materi->sub_kategori }}
-                                            </a>
-                                        </h5>
-                                        <div class="mt-auto">
-                                            <p class="small text-muted mb-1">Essay</p>
-                                            <p class="small text-danger mb-0">5 soal</p>
+                                            </h5>
+                                            <div class="mt-auto">
+                                                <p class="small text-muted mb-1">Essay</p>
+                                                <p class="small text-danger mb-0">5 soal</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -168,29 +169,6 @@
                         </div>
                         <button class="btn btn-outline-success">Email info ke saya</button>
                     </div>
-
-                    <!-- Tombol next previous -->
-                    <!-- <div class="row mt-4">
-                        <div class="col-12">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item disabled" id="prevPageBtn">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span> Previous
-                                        </a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
-                                    <li class="page-item" id="nextPageBtn">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            Next <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div> -->
-                    <!-- </div> -->
                 </div>
         </section>
 
@@ -210,8 +188,6 @@
         <script>
 
             document.addEventListener('DOMContentLoaded', function () {
-                // ...existing code...
-
                 // Filter berdasarkan kategori
                 const subjectItems = document.querySelectorAll('#subjectDropdown + .dropdown-menu .dropdown-item');
                 const cards = document.querySelectorAll('.card-kategori');
@@ -223,10 +199,12 @@
                         document.getElementById('subjectDropdown').textContent = this.textContent;
 
                         cards.forEach(card => {
+                            // cari parent col (kolom luar)
+                            const parentCol = card.closest('.col-lg-3, .col-md-6, .col-sm-12');
                             if (kategori === 'Semua' || card.getAttribute('data-kategori') === kategori) {
-                                card.style.display = '';
+                                parentCol.style.display = '';
                             } else {
-                                card.style.display = 'none';
+                                parentCol.style.display = 'none';
                             }
                         });
                     });
