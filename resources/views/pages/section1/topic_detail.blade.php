@@ -4,10 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="description" content="Online Degree Programs Listing Page">
     <meta name="author" content="">
-
     <title>Persiapan</title>
 
     <!-- CSS FILES -->
@@ -21,13 +19,11 @@
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/degree-programs.css') }}" rel="stylesheet">
 
-
     <style>
         section.hero-section {
             padding-bottom: 0 !important;
         }
 
-        /* banner */
         .pagination~.pagination-summary,
         .pagination-info,
         .dataTables_info {
@@ -57,6 +53,11 @@
             .konsultan-img {
                 margin-bottom: 1rem !important;
             }
+        }
+
+        .filter-loading {
+            opacity: 0.6;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -91,40 +92,47 @@
                                         <li><a class="dropdown-item" href="#">UTBK & Ujian Mandiri</a></li>
                                     </ul>
                                 </div>
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" id="subjectDropdown"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Pilih Paket
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="subjectDropdown">
-                                        <li><a class="dropdown-item" href="#" data-kategori="Semua">Semua</a></li>
-                                        <li><a class="dropdown-item" href="#" data-kategori="Penalaran Umum">Penalaran
-                                                Umum</a></li>
-                                        <li><a class="dropdown-item" href="#"
-                                                data-kategori="PPU, PBM, dan Literasi dalam Bahasa Indonesia">PPU, PBM,
-                                                dan
-                                                Literasi Bahasa Indonesia</a></li>
-                                        <li><a class="dropdown-item" href="#"
-                                                data-kategori="Literasi Bahasa Inggris">Literasi Bahasa Inggris</a></li>
-                                        <li><a class="dropdown-item" href="#"
-                                                data-kategori="PK & Penalaran Matematika">PK &
-                                                Penalaran Umum</a></li>
-                                    </ul>
-                                </div>
+                                
+                                <!-- Filter Form -->
+                                <form method="GET" action="{{ route('utbk.index') }}" id="filterForm">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle" type="button" id="subjectDropdown"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            {{ $kategori_filter ?? 'Pilih Paket' }}
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="subjectDropdown">
+                                            <li>
+                                                <a class="dropdown-item filter-option" href="#" data-kategori="Semua">
+                                                    Semua
+                                                </a>
+                                            </li>
+                                            @if(isset($kategori_list))
+                                                @foreach($kategori_list as $kategori)
+                                                    <li>
+                                                        <a class="dropdown-item filter-option" href="#" 
+                                                           data-kategori="{{ $kategori->kategori }}">
+                                                            {{ $kategori->kategori }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            @else
+                                                <li><a class="dropdown-item filter-option" href="#" data-kategori="Penalaran Umum">Penalaran Umum</a></li>
+                                                <li><a class="dropdown-item filter-option" href="#" data-kategori="PPU, PBM, dan Literasi dalam Bahasa Indonesia">PPU, PBM, dan Literasi Bahasa Indonesia</a></li>
+                                                <li><a class="dropdown-item filter-option" href="#" data-kategori="Literasi Bahasa Inggris">Literasi Bahasa Inggris</a></li>
+                                                <li><a class="dropdown-item filter-option" href="#" data-kategori="PK & Penalaran Matematika">PK & Penalaran Matematika</a></li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                    <input type="hidden" name="kategori" id="kategori_input" value="{{ $kategori_filter ?? '' }}">
+                                </form>
                             </div>
-                            <!-- <button class="btn btn-outline-success">Email info ke saya</button> -->
                         </div>
                     </div>
                 </div>
 
-
                 <!-- CARD UTBK -->
-                <div class="row g-4 content-section">
-                    <div class="row g-4 content-section">
-                        @php
-                            $sub_kategori_unik = $utbk->unique('sub_kategori');
-                        @endphp
-
+                <div class="row g-4 content-section" id="card-container">
+                    @if(isset($sub_kategori_unik) && $sub_kategori_unik->count() > 0)
                         @foreach($sub_kategori_unik as $materi)
                             <div class="col-lg-3 col-md-6 col-sm-12 d-flex">
                                 <a href="{{ route('materi.detail', ['sub_kategori' => urlencode($materi->sub_kategori)]) }}"
@@ -147,36 +155,34 @@
                                 </a>
                             </div>
                         @endforeach
-                    </div>
+                    @else
+                        <div class="col-12 text-center">
+                            <p class="text-muted">Tidak ada materi yang ditemukan untuk kategori ini.</p>
+                        </div>
+                    @endif
 
                     <!-- Banner Konsultan -->
                     <div class="konsultan-banner d-flex align-items-center justify-content-between p-4 mb-4"
                         style="border-radius: 20px;">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('images/materiutbk/stephena.png') }}" alt="Konsultan 1"
+                            <img src="{{ asset('images/materiutbk/icon.png') }}" alt="Konsultan"
                                 class="konsultan-img me-3"
-                                style="height: 140px; width: 110px; object-fit: cover; border-radius: 16px;">
-                            <img src="{{ asset('images/materiutbk/arya.png') }}" alt="Konsultan 2"
-                                class="konsultan-img me-4"
                                 style="height: 140px; width: 110px; object-fit: cover; border-radius: 16px;">
                             <div>
                                 <div class="text-white fw-semibold mb-1" style="font-size: 1.1rem;">Masih punya
                                     pertanyaan?</div>
                                 <div class="text-white fw-bold" style="font-size: 1.6rem; line-height: 1.2;">
-                                    Tanyakan via chat ke Konsultan<br>Arya & Stephen
+                                    Tanyakan via chat ke Konsultan
                                 </div>
                             </div>
                         </div>
                         <button class="btn btn-outline-success">Email info ke saya</button>
                     </div>
                 </div>
+            </div>
         </section>
 
-        <!-- Bagian bawah -->
-
-        <x-fotter>
-            <!-- footer -->
-        </x-fotter>
+        <x-fotter></x-fotter>
 
         <!-- JAVASCRIPT FILES -->
         <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -186,104 +192,99 @@
         <script src="{{ asset('js/custom.js') }}"></script>
 
         <script>
-
             document.addEventListener('DOMContentLoaded', function () {
-                // Filter berdasarkan kategori
-                const subjectItems = document.querySelectorAll('#subjectDropdown + .dropdown-menu .dropdown-item');
-                const cards = document.querySelectorAll('.card-kategori');
+                // Filter functionality dengan server-side
+                const filterOptions = document.querySelectorAll('.filter-option');
+                const cardContainer = document.getElementById('card-container');
+                const kategoriInput = document.getElementById('kategori_input');
+                const filterForm = document.getElementById('filterForm');
 
-                subjectItems.forEach(item => {
-                    item.addEventListener('click', function (e) {
+                filterOptions.forEach(option => {
+                    option.addEventListener('click', function (e) {
                         e.preventDefault();
+                        
                         const kategori = this.getAttribute('data-kategori');
-                        document.getElementById('subjectDropdown').textContent = this.textContent;
-
-                        cards.forEach(card => {
-                            // cari parent col (kolom luar)
-                            const parentCol = card.closest('.col-lg-3, .col-md-6, .col-sm-12');
-                            if (kategori === 'Semua' || card.getAttribute('data-kategori') === kategori) {
-                                parentCol.style.display = '';
-                            } else {
-                                parentCol.style.display = 'none';
-                            }
-                        });
+                        const dropdownButton = document.getElementById('subjectDropdown');
+                        
+                        // Update dropdown text
+                        dropdownButton.textContent = this.textContent;
+                        
+                        // Set input value
+                        kategoriInput.value = kategori === 'Semua' ? '' : kategori;
+                        
+                        // Add loading state
+                        cardContainer.classList.add('filter-loading');
+                        
+                        // Submit form
+                        filterForm.submit();
                     });
                 });
-            });
 
-            document.addEventListener('DOMContentLoaded', function () {
-                // Dropdown functionality for filtering
+                // Dropdown functionality untuk program level
                 const programItems = document.querySelectorAll('#programLevelDropdown + .dropdown-menu .dropdown-item');
-                const subjectItems = document.querySelectorAll('#subjectDropdown + .dropdown-menu .dropdown-item');
-
+                
                 programItems.forEach(item => {
-                    item.addEventListener('click', function () {
+                    item.addEventListener('click', function (e) {
+                        e.preventDefault();
                         document.getElementById('programLevelDropdown').textContent = this.textContent;
                     });
                 });
 
-                subjectItems.forEach(item => {
-                    item.addEventListener('click', function () {
-                        document.getElementById('subjectDropdown').textContent = this.textContent;
-                    });
-                });
-
-                // Pagination functionality
+                // Pagination functionality (jika diperlukan)
                 const pages = document.querySelectorAll('.pagination .page-link[data-page]');
                 const prevBtn = document.getElementById('prevPageBtn');
                 const nextBtn = document.getElementById('nextPageBtn');
-                let currentPage = 1;
-                const totalPages = pages.length;
+                
+                if (pages.length > 0) {
+                    let currentPage = 1;
+                    const totalPages = pages.length;
 
-                function updatePagination() {
-                    // Update active page indicator
+                    function updatePagination() {
+                        pages.forEach(page => {
+                            const pageNum = parseInt(page.getAttribute('data-page'));
+                            if (pageNum === currentPage) {
+                                page.parentElement.classList.add('active');
+                            } else {
+                                page.parentElement.classList.remove('active');
+                            }
+                        });
+
+                        if (prevBtn) prevBtn.classList.toggle('disabled', currentPage === 1);
+                        if (nextBtn) nextBtn.classList.toggle('disabled', currentPage === totalPages);
+
+                        window.scrollTo(0, document.getElementById('degreesList').offsetTop - 100);
+                    }
+
                     pages.forEach(page => {
-                        const pageNum = parseInt(page.getAttribute('data-page'));
-                        if (pageNum === currentPage) {
-                            page.parentElement.classList.add('active');
-                        } else {
-                            page.parentElement.classList.remove('active');
-                        }
+                        page.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            currentPage = parseInt(this.getAttribute('data-page'));
+                            updatePagination();
+                        });
                     });
 
-                    // Update prev/next button states
-                    prevBtn.classList.toggle('disabled', currentPage === 1);
-                    nextBtn.classList.toggle('disabled', currentPage === totalPages);
+                    if (prevBtn) {
+                        prevBtn.querySelector('a').addEventListener('click', function (e) {
+                            e.preventDefault();
+                            if (currentPage > 1) {
+                                currentPage--;
+                                updatePagination();
+                            }
+                        });
+                    }
 
-                    // Scroll to top of the section
-                    window.scrollTo(0, document.getElementById('degreesList').offsetTop - 100);
+                    if (nextBtn) {
+                        nextBtn.querySelector('a').addEventListener('click', function (e) {
+                            e.preventDefault();
+                            if (currentPage < totalPages) {
+                                currentPage++;
+                                updatePagination();
+                            }
+                        });
+                    }
                 }
-
-                pages.forEach(page => {
-                    page.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        currentPage = parseInt(this.getAttribute('data-page'));
-                        updatePagination();
-                        console.log(`Loading page ${currentPage}`);
-                    });
-                });
-
-                prevBtn.querySelector('a').addEventListener('click', function (e) {
-                    e.preventDefault();
-                    if (currentPage > 1) {
-                        currentPage--;
-                        updatePagination();
-                        console.log(`Loading page ${currentPage}`);
-                    }
-                });
-
-                nextBtn.querySelector('a').addEventListener('click', function (e) {
-                    e.preventDefault();
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        updatePagination();
-                        console.log(`Loading page ${currentPage}`);
-                    }
-                });
             });
         </script>
-
-
     </main>
 </body>
 
