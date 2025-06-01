@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('jawaban_utbk', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('soal_id');
             $table->text('jawaban');
             $table->timestamps();
         });
