@@ -803,3 +803,30 @@ allVideos.forEach(otherVideo => {
             document.getElementById('filterForm').submit();
         });
     });
+
+     function toggleCourses() {
+                        const hiddenCourses = document.querySelectorAll('.hidden-course');
+                        const btnText = document.getElementById('btnText');
+                        const btnCount = document.getElementById('btnCount');
+                        const btnIcon = document.getElementById('btnIcon');
+
+                        if (hiddenCourses[0].style.display === 'none') {
+                            // Show hidden courses
+                            hiddenCourses.forEach(course => {
+                                course.style.display = 'block';
+                            });
+                            btnText.textContent = 'Show Less';
+                            btnCount.style.display = 'none';
+                            btnIcon.className = 'fas fa-chevron-up ms-2';
+                        } else {
+                            // Hide courses
+                            hiddenCourses.forEach(course => {
+                                course.style.display = 'none';
+                            });
+                            btnText.textContent = 'Show More';
+                            btnCount.style.display = 'inline';
+                            btnIcon.className = 'fas fa-chevron-down ms-2';
+                        }
+                    }
+
+                    

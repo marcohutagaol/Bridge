@@ -44,7 +44,11 @@
                     <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                         <li><a class="dropdown-item" href="/topic-listing">Topics Listing</a></li>
                         <li><a class="dropdown-item" href="/contact">Contact Form</a></li>
+<<<<<<< HEAD
                         <li><a class="dropdown-item" href="/message">Message</a></li>
+=======
+                        <li><a class="dropdown-item" href="/my-learning">My learning</a></li>
+>>>>>>> b92e46bcd38395e6b33b8d67edc70d64b6f8cc6d
                     </ul>
                 </li>
 

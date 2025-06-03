@@ -278,40 +278,42 @@
 
 
                 <!-- Career Cards -->
-                <div class="row g-4 content-section">
-                    @foreach ($careers as $career)
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100 career-card">
-                                <img src="{{ $career->image }}" class="card-img-top" alt="{{ $career->name }}">
-                                <div class="card-body">
-                                    <p class="text-muted small mb-1">{{ ucfirst($career->kategoris) }}</p>
-                                    <h5 class="card-title">{{ $career->name }}</h5>
-                                    <p class="small text-muted">{{ $career->description }}</p>
-                                    <p class="small text-muted"><strong>If you like:</strong> {{ $career->description2 }}
-                                    </p>
+              <div class="row g-4 content-section">
+    @foreach ($careers as $career)
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card shadow h-100 career-card">
+                <a href="{{ route('career.detail', $career->id) }}" class="text-decoration-none text-dark">
+                    <img src="{{ $career->image }}" class="card-img-top" alt="{{ $career->name }}">
+                    <div class="card-body">
+                        <p class="text-muted small mb-1">{{ ucfirst($career->kategoris) }}</p>
+                        <h5 class="card-title">{{ $career->name }}</h5>
+                        <p class="small text-muted">{{ $career->description }}</p>
+                        <p class="small text-muted"><strong>If you like:</strong> {{ $career->description2 }}
+                        </p>
 
-                                    <div class="salary">
-                                        <p class="small text-success mb-0">{{ $career->median_salary }}</p>
-                                    </div>
-
-                                    <div class="jobs-available">
-                                        <p class="small text-primary mb-0">{{ $career->jobs_available }}</p>
-                                    </div>
-
-                                    <div class="credentials mt-3">
-                                        <p class="mb-2"><strong>Credentials</strong></p>
-                                        @foreach (explode(';', $career->credential) as $cred)
-                                            <div class="credential-item d-flex align-items-center mb-1">
-                                                <img src="{{ $career->credential_logo }}" width="16" height="16" class="me-1">
-                                                <span class="small">{{ $cred }}</span>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="salary">
+                            <p class="small text-success mb-0">{{ $career->median_salary }}</p>
                         </div>
-                    @endforeach
-                </div>
+
+                        <div class="jobs-available">
+                            <p class="small text-primary mb-0">{{ $career->jobs_available }}</p>
+                        </div>
+
+                        <div class="credentials mt-3">
+                            <p class="mb-2"><strong>Credentials</strong></p>
+                            @foreach (explode(';', $career->credential) as $cred)
+                                <div class="credential-item d-flex align-items-center mb-1">
+                                    <img src="{{ $career->credential_logo }}" width="16" height="16" class="me-1">
+                                    <span class="small">{{ $cred }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    @endforeach
+</div>
 
                 <!-- Pagination -->
                 <div class="row mt-4">

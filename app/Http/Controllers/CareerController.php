@@ -23,4 +23,13 @@ class CareerController extends Controller
         
         return view('pages.detail.exam_detail', compact('careers', 'categories', 'category'));
     }
+
+        public function show($id)
+    {
+        $career = Career::findOrFail($id);
+
+        return view('pages.detail.career_show', [
+            'career' => $career
+        ]);
+    }
 }

@@ -39,4 +39,60 @@ class CourseController extends Controller
             'message' => $courses->isEmpty() ? 'No courses found' : null
         ]);
     }
+
+    
+    public function show($id)
+    {
+        $course = Course::findOrFail($id);
+
+        return view('pages.detail.certificate_show', [
+            'course' => $course
+        ]);
+    }
+
+     public function checkout($id)
+    {
+        $course = Course::findOrFail($id);
+        
+        return view('pages.detail.checkout', [
+            'course' => $course
+        ]);
+    }
+
+    /**
+     * Proses checkout (untuk form POST)
+     */
+    public function processCheckout(Request $request, $id)
+    {
+        $course = Course::findOrFail($id);
+        
+        // Validasi data form
+        $validated = $request->validate([
+            'payment_method' => 'required',
+            'terms' => 'accepted'
+        ]);
+        
+        // Di sini Anda bisa menambahkan logika:
+        // - Penyimpanan ke database
+        // - Integrasi payment gateway
+        // - dll
+        
+        // Redirect ke halaman sukses
+        return redirect()->route('checkout.success', ['id' => $id])
+                         ->with('success', 'Pembelian berhasil diproses!');
+    }
+
+    /**
+     * Halaman sukses checkout
+     */
+    public function checkoutSuccess($id)
+    {
+        $course = Course::findOrFail($id);
+        
+        return view('pages.detail.checkout_success', [
+            'course' => $course
+        ]);
+    }
+
+
 }
