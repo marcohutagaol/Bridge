@@ -7,7 +7,7 @@ https://templatemo.com/tm-590-topic-listing
 */
 
 /*---------------------------------------
-  CUSTOM PROPERTIES ( VARIABLES )             
+  CUSTOM PROPERTIES ( VARIABLES )
 -----------------------------------------*/
 :root {
   --white-color:                  #ffffff;
@@ -47,12 +47,12 @@ https://templatemo.com/tm-590-topic-listing
 
 body {
   background-color: var(--white-color);
-  font-family: var(--body-font-family); 
+  font-family: var(--body-font-family);
 }
 
 
 /*---------------------------------------
-  TYPOGRAPHY               
+  TYPOGRAPHY
 -----------------------------------------*/
 
 h2,
@@ -69,7 +69,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--title-font-family); 
+  font-family: var(--title-font-family);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -113,7 +113,7 @@ ul li {
   font-weight: var(--font-weight-normal);
 }
 
-a, 
+a,
 button {
   touch-action: manipulation;
   transition: all 0.3s;
@@ -137,7 +137,7 @@ strong {
 
 
 /*---------------------------------------
-  SECTION               
+  SECTION
 -----------------------------------------*/
 .section-padding {
   padding-top: 100px;
@@ -195,9 +195,9 @@ strong {
   margin-right: 20px;
 }
 
-.nav-tabs .nav-item.show .nav-link, 
+.nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active,
-.nav-tabs .nav-link:focus, 
+.nav-tabs .nav-link:focus,
 .nav-tabs .nav-link:hover {
   border-bottom-color: var(--primary-color);
   color: var(--primary-color);
@@ -205,7 +205,7 @@ strong {
 
 
 /*---------------------------------------
-  CUSTOM ICON COLOR               
+  CUSTOM ICON COLOR
 -----------------------------------------*/
 .custom-icon {
   color: var(--secondary-color);
@@ -213,7 +213,7 @@ strong {
 
 
 /*---------------------------------------
-  CUSTOM BUTTON               
+  CUSTOM BUTTON
 -----------------------------------------*/
 .custom-btn {
   background: var(--custom-btn-bg-color);
@@ -251,7 +251,7 @@ strong {
 
 
 /*---------------------------------------
-  SITE HEADER              
+  SITE HEADER
 -----------------------------------------*/
 .site-header {
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
@@ -280,7 +280,7 @@ strong {
 
 
 /*---------------------------------------
-  NAVIGATION              
+  NAVIGATION
 -----------------------------------------*/
 .sticky-wrapper {
   position: absolute;
@@ -319,7 +319,7 @@ strong {
 .navbar-nav .nav-link {
   display: inline-block;
   color: var(--white-color);
-  font-family: var(--title-font-family); 
+  font-family: var(--title-font-family);
   font-size: var(--menu-font-size);
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
@@ -329,7 +329,7 @@ strong {
   padding-bottom: 15px;
 }
 
-.navbar-nav .nav-link.active, 
+.navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
   color: var(--primary-color);
 }
@@ -362,7 +362,7 @@ strong {
 .navbar .dropdown-item {
   display: inline-block;
   color: var(--p-bg-color);
-  font-family: var(--title-font-family); 
+  font-family: var(--title-font-family);
   font-size: var(--menu-font-size);
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
@@ -370,9 +370,9 @@ strong {
   position: relative;
 }
 
-.navbar .dropdown-item.active, 
+.navbar .dropdown-item.active,
 .navbar .dropdown-item:active,
-.navbar .dropdown-item:focus, 
+.navbar .dropdown-item:focus,
 .navbar .dropdown-item:hover {
   background: transparent;
   color: var(--primary-color);
@@ -498,7 +498,7 @@ strong {
 }
 
 /* Styling for navbar when scrolled */
-.navbar.sticky-top, 
+.navbar.sticky-top,
 .navbar.sticky {
     background: linear-gradient(135deg, #20b2aa, #48d1cc);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
@@ -596,7 +596,7 @@ strong {
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         margin-top: 10px;
     }
-    
+
     .navbar .nav-link {
         margin: 5px 0;
         padding: 10px 15px;
@@ -609,11 +609,11 @@ strong {
     content: none !important;
 }
 
-        
+
 
 
 /*---------------------------------------
-  HERO        
+  HERO
 -----------------------------------------*/
 .hero-section {
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
@@ -735,8 +735,9 @@ strong {
   position: absolute;
 }
 
+
 /*---------------------------------------
-  TOPICS              
+  TOPICS
 -----------------------------------------*/
 .featured-section {
   background-color: var(--secondary-color);
@@ -856,7 +857,7 @@ strong {
 
 
 /*---------------------------------------
-  TOPICS               
+  TOPICS
 -----------------------------------------*/
 .topics-detail-block {
   border-radius: var(--border-radius-medium);
@@ -899,7 +900,7 @@ blockquote {
 
 
 /*---------------------------------------
-  PAGINATION              
+  PAGINATION
 -----------------------------------------*/
 .pagination {
   margin-top: 40px;
@@ -938,7 +939,7 @@ blockquote {
 
 
 /*---------------------------------------
-  TIMELINE              
+  TIMELINE
 -----------------------------------------*/
 .timeline-section {
   background-image: url('../images/colleagues-working-cozy-office-medium-shot.jpg');
@@ -1042,7 +1043,7 @@ blockquote {
 
 
 /*---------------------------------------
-  FAQs              
+  FAQs
 -----------------------------------------*/
 .faq-section .accordion-item {
   border: 0;
@@ -1070,7 +1071,7 @@ blockquote {
 }
 
 /*---------------------------------------
-  NEWSLETTER               
+  NEWSLETTER
 -----------------------------------------*/
 .newsletter-image {
   border-radius: var(--border-radius-medium);
@@ -1078,7 +1079,7 @@ blockquote {
 
 
 /*---------------------------------------
-  CONTACT               
+  CONTACT
 -----------------------------------------*/
 .google-map {
   border-radius: var(--border-radius-medium);
@@ -1091,7 +1092,7 @@ blockquote {
 
 
 /*---------------------------------------
-  SUBSCRIBE FORM               
+  SUBSCRIBE FORM
 -----------------------------------------*/
 .subscribe-form-wrap {
   padding: 50px;
@@ -1103,7 +1104,7 @@ blockquote {
 
 
 /*---------------------------------------
-  CUSTOM FORM               
+  CUSTOM FORM
 -----------------------------------------*/
 .custom-form .form-control {
   border-radius: var(--border-radius-large);
@@ -1139,7 +1140,7 @@ blockquote {
 
 
 /*---------------------------------------
-  SITE FOOTER              
+  SITE FOOTER
 -----------------------------------------*/
 .site-footer {
   border-bottom: 10px solid var(--secondary-color);
@@ -1160,7 +1161,7 @@ blockquote {
 }
 
 .site-footer-title {
-  color: var(--primary-color); 
+  color: var(--primary-color);
 }
 
 .site-footer .dropdown-menu {
@@ -1220,7 +1221,7 @@ blockquote {
 
 
 /*---------------------------------------
-  SOCIAL ICON               
+  SOCIAL ICON
 -----------------------------------------*/
 .social-icon {
   margin: 0;
@@ -1254,7 +1255,7 @@ blockquote {
 
 
 /*---------------------------------------
-  RESPONSIVE STYLES               
+  RESPONSIVE STYLES
 -----------------------------------------*/
 @media screen and (max-width: 991px) {
   h1 {
@@ -1285,7 +1286,7 @@ blockquote {
     padding-top: 50px;
     padding-bottom: 50px;
   }
-  
+
   .navbar {
     background-color: var(--secondary-color);
   }

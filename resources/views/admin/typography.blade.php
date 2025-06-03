@@ -23,65 +23,28 @@
 
 </head>
 
-
 <body id="top">
-    <!-- NAVBAR -->
-    <x-navbaradmin></x-navbaradmin>
     <main class="mt-5">
+        <!-- NAVBAR -->
+        <x-navbaradmin></x-navbaradmin>
 
 <div class="container-fluid">
     <div class="row">
         <!-- Sidebar -->
         <x-sidebar></x-sidebar>
 
-<!-- Main Content -->
+    <!-- Main Content -->
 <div class="col-md-9 p-5" style="background: linear-gradient(to top, #13547a 0%, #80d0c7 100%); color: white;">
-    <h1 class="mb-3 fw-bold">Halaman Dashboard</h1>
-    <p>Hai <strong>Admin</strong>, selamat datang di aplikasi Bridge!</p>
+    <h1 class="mb-3 fw-bold">Halaman Typography</h1>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4">
-        <div class="col">
-            <div class="p-4 rounded shadow-sm" style="background-color: #13547a;">1000 Jumlah Course</div>
-        </div>
-        <div class="col">
-            <div class="p-4 rounded shadow-sm" style="background-color: #13547a;">500 Jumlah Course Bisnis</div>
-        </div>
-        <div class="col">
-            <div class="p-4 rounded shadow-sm" style="background-color: #13547a;">150 Jumlah Course Data Analyst</div>
-        </div>
-        <div class="col">
-            <div class="p-4 rounded shadow-sm" style="background-color: #13547a;">300 Jumlah Course Cyber Security</div>
-        </div>
-        <div class="col">
-            <div class="p-4 rounded shadow-sm" style="background-color: #13547a;">150 Jumlah Course</div>
-        </div>
+    <div>
+        {{-- isi --}}
     </div>
 
     <footer class="mt-5 text-center text-white small">
         &copy; 2025 Bridge. All rights reserved.
     </footer>
 </div>
-
-
-    <!-- Script untuk toggle dropdown -->
-    <script>
-      const dropdownButton = document.getElementById("dropdownButton");
-      const dropdownMenu = document.getElementById("dropdownMenu");
-
-      dropdownButton.addEventListener("click", () => {
-        dropdownMenu.classList.toggle("hidden");
-      });
-
-      window.addEventListener("click", function (e) {
-        if (
-          !dropdownButton.contains(e.target) &&
-          !dropdownMenu.contains(e.target)
-        ) {
-          dropdownMenu.classList.add("hidden");
-        }
-      });
-    </script>
-
     </main>
 
 
