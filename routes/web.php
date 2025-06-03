@@ -5,6 +5,7 @@ use App\Http\Controllers\UniversitasController;
 use App\Http\Controllers\SelectedCourseController;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtbkController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KampusController;
@@ -28,11 +29,26 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// ADMIN
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
 
+Route::get('/user', function () {
+    return view('admin.userlist');
+});
+Route::get('/typography', function () {
+    return view('admin.typography');
+});
+Route::get('/category', function () {
+    return view('admin.category');
+});
+Route::get('/course-data', function () {
+    return view('admin.course');
+});
 
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/course-data', [CourseController::class, 'admin']);
 
 
 //online deggre
