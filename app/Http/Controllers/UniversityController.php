@@ -26,7 +26,6 @@ class UniversityController extends Controller
 
         $universities = $query->orderBy('application_deadline')->paginate(8);
 
-        // Featured universities berdasarkan row (1–5)
         $featuredUniversitiesRow1 = University::where('row', 1)->orderBy('ranking')->take(3)->get();
         $featuredUniversitiesRow2 = University::where('row', 2)->orderBy('ranking')->take(3)->get();
         $featuredUniversitiesRow3 = University::where('row', 3)->orderBy('ranking')->take(3)->get();
@@ -107,5 +106,14 @@ class UniversityController extends Controller
             'featuredUniversitiesRow4',
             'featuredUniversitiesRow5'
         ));
+    }
+
+    public function show($id)
+    {
+        $university = University::with('subjects')->findOrFail($id);
+
+        return view('pages.detail.module_show', [
+            'university' => $university
+        ]);
     }
 }

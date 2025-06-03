@@ -37,273 +37,326 @@
 
                 <!-- Filter Options -->
 
-             <div class="row mb-4">
-    <div class="col-12">
-        <div class="filter-container d-flex flex-wrap align-items-center justify-content-between">
-            <div class="d-flex align-items-center mb-3 mb-md-0">
-                <span class="me-3">Filter by:</span>
-                
-                <!-- Tingkat Program Dropdown -->
-                <div class="dropdown me-3">
-                    <button class="btn dropdown-toggle filter-btn" type="button" id="programLevelDropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Tingkat Program
-                    </button>
-                    <ul class="dropdown-menu filter-dropdown" aria-labelledby="programLevelDropdown">
-                        <li><a class="dropdown-item" href="/module">All</a></li>
-                        <li><a class="dropdown-item" href="{{ route('universities.bachelor') }}">Bachelor</a></li>
-                        <li><a class="dropdown-item" href="{{ route('universities.master') }}">Master</a></li>
-                        <li><a class="dropdown-item" href="{{ route('universities.postgraduate') }}">  &nbsp;&nbsp;&nbsp;&nbsp;Diploma</a></li>
-                    </ul>
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="filter-container d-flex flex-wrap align-items-center justify-content-between">
+                            <div class="d-flex align-items-center mb-3 mb-md-0">
+                                <span class="me-3">Filter by:</span>
+
+                                <!-- Tingkat Program Dropdown -->
+                                <div class="dropdown me-3">
+                                    <button class="btn dropdown-toggle filter-btn" type="button"
+                                        id="programLevelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Tingkat Program
+                                    </button>
+                                    <ul class="dropdown-menu filter-dropdown" aria-labelledby="programLevelDropdown">
+                                        <li><a class="dropdown-item" href="/module">All</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('universities.bachelor') }}">Bachelor</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('universities.master') }}">Master</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('universities.postgraduate') }}">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;Diploma</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- Subjek Dropdown with Checkboxes -->
+                                <form method="GET" action="{{ route('module.detail') }}">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle filter-btn" type="button"
+                                            id="subjectDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Subjek
+                                        </button>
+                                        <ul class="dropdown-menu filter-dropdown p-3" aria-labelledby="subjectDropdown"
+                                            style="min-width: 240px; right: -15px; left: auto;">
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox" id="semua"
+                                                        name="subjects[]" value="Semua">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="semua">Semua</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox" id="business"
+                                                        name="subjects[]" value="Business">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="business">Business</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox" id="engineering"
+                                                        name="subjects[]" value="Engineering">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="engineering">Engineering</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox" id="computerScience"
+                                                        name="subjects[]" value="Computer Science">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="computerScience">Computer Science</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox" id="health"
+                                                        name="subjects[]" value="Health">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="health">Health</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox" id="mathLogic"
+                                                        name="subjects[]" value="Math and Logic">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="mathLogic">Information Thecnology</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="languageLearning" name="subjects[]"
+                                                        value="Language Learning">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="languageLearning">Arts and Human</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox" id="mg"
+                                                        name="subjects[]" value="ml">
+                                                    <label class="form-check-label text-dark fw-normal" for="ml">Math
+                                                        and Logic</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox" id="socialScience"
+                                                        name="subjects[]" value="Social Science">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="socialScience">Social Science</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="personalDevelopment" name="subjects[]"
+                                                        value="Personal Development">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="personalDevelopment">Personal Development</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check ms-2">
+                                                    <input class="form-check-input" type="checkbox" id="dataScience"
+                                                        name="subjects[]" value=" Data Science">
+                                                    <label class="form-check-label text-dark fw-normal"
+                                                        for="dataScience"> Data Science</label>
+                                                </div>
+                                            </li>
+                                            <li class="mt-3">
+                                                <button class="btn btn-primary w-100" type="submit"
+                                                    id="applySubjectFilter">Terapkan</button>
+                                        </ul>
+
+                                    </div>
+                                </form>
+
+                            </div>
+
+                            <!-- Email Button -->
+                            <button class="btn btn-outline-success">Email info ke saya</button>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Subjek Dropdown with Checkboxes -->
-             <form method="GET" action="{{ route('module.detail') }}">
-    <div class="dropdown">
-        <button class="btn dropdown-toggle filter-btn" type="button" id="subjectDropdown"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Subjek
-        </button>
-       <ul class="dropdown-menu filter-dropdown p-3" aria-labelledby="subjectDropdown"
-    style="min-width: 240px; right: -15px; left: auto;">
-    <li>
-        <div class="form-check ms-2">
-            <input class="form-check-input" type="checkbox" id="semua" name="subjects[]" value="Semua">
-            <label class="form-check-label text-dark fw-normal" for="semua">Semua</label>
-        </div>
-    </li>
-    <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="business" name="subjects[]" value="Business">
-        <label class="form-check-label text-dark fw-normal" for="business">Business</label>
-    </div></li>
-    <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="engineering" name="subjects[]" value="Engineering">
-        <label class="form-check-label text-dark fw-normal" for="engineering">Engineering</label>
-    </div></li>
-    <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="computerScience" name="subjects[]" value="Computer Science">
-        <label class="form-check-label text-dark fw-normal" for="computerScience">Computer Science</label>
-    </div></li>
-    <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="health" name="subjects[]" value="Health">
-        <label class="form-check-label text-dark fw-normal" for="health">Health</label>
-    </div></li>
-    <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="mathLogic" name="subjects[]" value="Math and Logic">
-        <label class="form-check-label text-dark fw-normal" for="mathLogic">Information Thecnology</label>
-    </div></li>
-    <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="languageLearning" name="subjects[]" value="Language Learning">
-        <label class="form-check-label text-dark fw-normal" for="languageLearning">Arts and Human</label>
-    </div></li>
-        <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="mg" name="subjects[]" value="ml">
-        <label class="form-check-label text-dark fw-normal" for="ml">Math and Logic</label>
-    </div></li>
-    <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="socialScience" name="subjects[]" value="Social Science">
-        <label class="form-check-label text-dark fw-normal" for="socialScience">Social Science</label>
-    </div></li>
-    <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="personalDevelopment" name="subjects[]" value="Personal Development">
-        <label class="form-check-label text-dark fw-normal" for="personalDevelopment">Personal Development</label>
-    </div></li>
-     <li><div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" id="dataScience" name="subjects[]" value=" Data Science">
-        <label class="form-check-label text-dark fw-normal" for="dataScience"> Data Science</label>
-    </div></li>
-    <li class="mt-3">
-        <button class="btn btn-primary w-100" type="submit" id="applySubjectFilter">Terapkan</button>
-</ul>
 
-    </div>
-</form>
 
+                <script>
+                    document.getElementById('applySubjectFilter').addEventListener('click', function () {
+                        const checked = document.querySelectorAll('input[name="subject"]:checked');
+                        let query = [];
+
+                        checked.forEach(cb => {
+                            if (cb.value !== 'semua') {
+                                query.push('subjects[]=' + cb.value);
+                            }
+                        });
+
+                        window.location.href = `/module?${query.join('&')}`;
+                    });
+                </script>
+
+                <script>
+                    // JavaScript to handle the checkbox functionality
+                    document.addEventListener('DOMContentLoaded', function () {
+                        // Handle "Semua" checkbox to toggle all others
+                        const semuaCheckbox = document.getElementById('semua');
+                        const subjectCheckboxes = document.querySelectorAll('input[name="subject"]:not(#semua)');
+
+                        if (semuaCheckbox) {
+                            semuaCheckbox.addEventListener('change', function () {
+                                if (this.checked) {
+                                    subjectCheckboxes.forEach(checkbox => {
+                                        checkbox.checked = false;
+                                        checkbox.disabled = true;
+                                    });
+                                } else {
+                                    subjectCheckboxes.forEach(checkbox => {
+                                        checkbox.disabled = false;
+                                    });
+                                }
+                            });
+                        }
+
+                        // Update dropdown button text based on selections
+                        const applyButton = document.getElementById('applySubjectFilter');
+                        const dropdownButton = document.getElementById('subjectDropdown');
+
+                        if (applyButton && dropdownButton) {
+                            applyButton.addEventListener('click', function () {
+                                let selectedSubjects = [];
+
+                                if (semuaCheckbox && semuaCheckbox.checked) {
+                                    selectedSubjects.push('Semua');
+                                } else {
+                                    subjectCheckboxes.forEach(checkbox => {
+                                        if (checkbox.checked) {
+                                            selectedSubjects.push(checkbox.nextElementSibling.textContent.trim());
+                                        }
+                                    });
+                                }
+
+                                if (selectedSubjects.length > 0) {
+                                    dropdownButton.textContent = selectedSubjects.join(', ');
+                                } else {
+                                    dropdownButton.textContent = 'Subjek';
+                                }
+
+                                // Close dropdown after applying (using Bootstrap's API)
+                                if (typeof bootstrap !== 'undefined' && bootstrap.Dropdown) {
+                                    const dropdownInstance = bootstrap.Dropdown.getInstance(dropdownButton);
+                                    if (dropdownInstance) {
+                                        dropdownInstance.hide();
+                                    }
+                                }
+
+                                // Apply filter logic here
+                                applySubjectFilter(selectedSubjects);
+                            });
+                        }
+
+                        // Function to apply the subject filter
+                        function applySubjectFilter(selectedSubjects) {
+                            // You can add your filter implementation here
+                            console.log('Applying subject filter with:', selectedSubjects);
+                        }
+                    });
+                </script>
+
+             <div class="row g-4 content-section">
+    @foreach($universities as $university)
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card shadow h-100">
+                <a href="{{ route('module.show', $university->id) }}" class="text-decoration-none text-dark">
+                    <img src="{{ $university->image_path ?? '/images/default.jpg' }}"
+                         onerror="this.onerror=null;this.src='/images/default.jpg';" 
+                         class="card-img-top p-3"
+                         style="height: 100px; object-fit: contain;" 
+                         alt="{{ $university->name }}">
+
+                    <div class="card-body">
+                        <p class="text-muted small">{{ $university->name }}</p>
+                        <h5 class="card-title">{{ $university->degree }}</h5>
+                        <p class="small text-muted">{{ $university->ranking }}</p>
+                        <p class="small text-danger">{{ $university->application_deadline }}</p>
+                    </div>
+                </a>
             </div>
-            
-            <!-- Email Button -->
-            <button class="btn btn-outline-success">Email info ke saya</button>
+        </div>
+    @endforeach
+
+    <!-- Pagination Section -->
+    <div class="col-12">
+        <div class="row mt-4">
+            <div class="col-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item {{ $universities->onFirstPage() ? 'disabled' : '' }}" id="prevPageBtn">
+                            <a class="page-link" href="{{ $universities->previousPageUrl() }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span> Previous
+                            </a>
+                        </li>
+
+                        @for ($i = 1; $i <= $universities->lastPage(); $i++)
+                            <li class="page-item {{ $universities->currentPage() == $i ? 'active' : '' }}">
+                                <a class="page-link" href="{{ $universities->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+
+                        <li class="page-item {{ $universities->hasMorePages() ? '' : 'disabled' }}" id="nextPageBtn">
+                            <a class="page-link" href="{{ $universities->nextPageUrl() }}" aria-label="Next">
+                                Next <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 </div>
-
-
-<script>
-    document.getElementById('applySubjectFilter').addEventListener('click', function () {
-        const checked = document.querySelectorAll('input[name="subject"]:checked');
-        let query = [];
-
-        checked.forEach(cb => {
-            if (cb.value !== 'semua') {
-                query.push('subjects[]=' + cb.value);
-            }
-        });
-
-        window.location.href = `/module?${query.join('&')}`;
-    });
-</script>
-
-<script>
-// JavaScript to handle the checkbox functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle "Semua" checkbox to toggle all others
-    const semuaCheckbox = document.getElementById('semua');
-    const subjectCheckboxes = document.querySelectorAll('input[name="subject"]:not(#semua)');
-    
-    if (semuaCheckbox) {
-        semuaCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                subjectCheckboxes.forEach(checkbox => {
-                    checkbox.checked = false;
-                    checkbox.disabled = true;
-                });
-            } else {
-                subjectCheckboxes.forEach(checkbox => {
-                    checkbox.disabled = false;
-                });
-            }
-        });
-    }
-    
-    // Update dropdown button text based on selections
-    const applyButton = document.getElementById('applySubjectFilter');
-    const dropdownButton = document.getElementById('subjectDropdown');
-    
-    if (applyButton && dropdownButton) {
-        applyButton.addEventListener('click', function() {
-            let selectedSubjects = [];
-            
-            if (semuaCheckbox && semuaCheckbox.checked) {
-                selectedSubjects.push('Semua');
-            } else {
-                subjectCheckboxes.forEach(checkbox => {
-                    if (checkbox.checked) {
-                        selectedSubjects.push(checkbox.nextElementSibling.textContent.trim());
-                    }
-                });
-            }
-            
-            if (selectedSubjects.length > 0) {
-                dropdownButton.textContent = selectedSubjects.join(', ');
-            } else {
-                dropdownButton.textContent = 'Subjek';
-            }
-            
-            // Close dropdown after applying (using Bootstrap's API)
-            if (typeof bootstrap !== 'undefined' && bootstrap.Dropdown) {
-                const dropdownInstance = bootstrap.Dropdown.getInstance(dropdownButton);
-                if (dropdownInstance) {
-                    dropdownInstance.hide();
-                }
-            }
-            
-            // Apply filter logic here
-            applySubjectFilter(selectedSubjects);
-        });
-    }
-    
-    // Function to apply the subject filter
-    function applySubjectFilter(selectedSubjects) {
-        // You can add your filter implementation here
-        console.log('Applying subject filter with:', selectedSubjects);
-    }
-});
-</script>
-
-                <div class="row g-4 content-section">
-                    @foreach($universities as $university)
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                              <img src="{{ $university->image_path ?? '/images/default.jpg' }}"
-     onerror="this.onerror=null;this.src='/images/default.jpg';"
-     class="card-img-top p-3"
-     style="height: 100px; object-fit: contain;" alt="{{ $university->name }}">
-
-                                <div class="card-body">
-                                    <p class="text-muted small">{{ $university->name }}</p>
-                                    <h5 class="card-title">{{ $university->degree }}</h5>
-                                    <p class="small text-muted">{{ $university->ranking }}</p>
-                                    <p class="small text-danger"> {{ $university->application_deadline }}</p>
-
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item {{ $universities->onFirstPage() ? 'disabled' : '' }}"
-                                        id="prevPageBtn">
-                                        <a class="page-link" href="{{ $universities->previousPageUrl() }}"
-                                            aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span> Previous
-                                        </a>
-                                    </li>
-
-                                    @for ($i = 1; $i <= $universities->lastPage(); $i++)
-                                        <li class="page-item {{ $universities->currentPage() == $i ? 'active' : '' }}">
-                                            <a class="page-link" href="{{ $universities->url($i) }}">{{ $i }}</a>
-                                        </li>
-                                    @endfor
-
-                                    <li class="page-item {{ $universities->hasMorePages() ? '' : 'disabled' }}"
-                                        id="nextPageBtn">
-                                        <a class="page-link" href="{{ $universities->nextPageUrl() }}"
-                                            aria-label="Next">
-                                            Next <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-
+              
         </section>
         <!-- Browse by Program Level and Category Section -->
 
-    <section class="browse-section py-5 bg-light">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12">
-                <h3 class="h4 mb-4 text-center">Browse by Program Level</h3>
-                <!-- Div pembungkus baru dengan kelas justify-content-center -->
-                <div class="row g-4 justify-content-center">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card h-100 program-level-card">
-                            <div class="card-body text-center">
-                                <i class="bi bi-mortarboard fs-1 mb-3 text-teal"></i>
-                                <h4 class="card-title h5">Bachelor's Degree</h4>
-                                <p class="card-text small">Undergraduate programs for new or transfer students</p>
-                                <a href="{{ route('universities.bachelor') }}" class="btn btn-outline-teal btn-sm">View Programs</a>
+        <section class="browse-section py-5 bg-light">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h3 class="h4 mb-4 text-center">Browse by Program Level</h3>
+                        <!-- Div pembungkus baru dengan kelas justify-content-center -->
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 program-level-card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-mortarboard fs-1 mb-3 text-teal"></i>
+                                        <h4 class="card-title h5">Bachelor's Degree</h4>
+                                        <p class="card-text small">Undergraduate programs for new or transfer students
+                                        </p>
+                                        <a href="{{ route('universities.bachelor') }}"
+                                            class="btn btn-outline-teal btn-sm">View Programs</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card h-100 program-level-card">
-                            <div class="card-body text-center">
-                                <i class="bi bi-award fs-1 mb-3 text-teal"></i>
-                                <h4 class="card-title h5">Master's Degree</h4>
-                                <p class="card-text small">Graduate programs for career advancement</p>
-                                <a href="{{ route('universities.master') }}" class="btn btn-outline-teal btn-sm">View Programs</a>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 program-level-card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-award fs-1 mb-3 text-teal"></i>
+                                        <h4 class="card-title h5">Master's Degree</h4>
+                                        <p class="card-text small">Graduate programs for career advancement</p>
+                                        <a href="{{ route('universities.master') }}"
+                                            class="btn btn-outline-teal btn-sm">View Programs</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card h-100 program-level-card">
-                            <div class="card-body text-center">
-                                <i class="bi bi-briefcase fs-1 mb-3 text-teal"></i>
-                                <h4 class="card-title h5">Postgraduate Program</h4>
-                                <p class="card-text small">Professional programs for advanced-level learners</p>
-                                <a href="{{ route('universities.postgraduate') }}" class="btn btn-outline-teal btn-sm">Discover Programs</a>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 program-level-card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-briefcase fs-1 mb-3 text-teal"></i>
+                                        <h4 class="card-title h5">Postgraduate Program</h4>
+                                        <p class="card-text small">Professional programs for advanced-level learners</p>
+                                        <a href="{{ route('universities.postgraduate') }}"
+                                            class="btn btn-outline-teal btn-sm">Discover Programs</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
 
 
@@ -462,58 +515,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         <!-- Affordable Education Section -->
-  <section class="affordable-education-section py-5">
-    <div class="container">
-        <div class="row">
-            <!-- Left side - Description -->
-            <div class="col-lg-3 col-md-4">
-                <h3 class="h5 mb-3">Gain admission without an application</h3>
-                <p class="text-muted small">Complete university-approved content to qualify for
-                    performance-based admission to select degree programs and earn credit toward your degree. No
-                    application or prior work experience is required to start these degree pathways.</p>
-            </div>
+        <section class="affordable-education-section py-5">
+            <div class="container">
+                <div class="row">
+                    <!-- Left side - Description -->
+                    <div class="col-lg-3 col-md-4">
+                        <h3 class="h5 mb-3">Gain admission without an application</h3>
+                        <p class="text-muted small">Complete university-approved content to qualify for
+                            performance-based admission to select degree programs and earn credit toward your degree. No
+                            application or prior work experience is required to start these degree pathways.</p>
+                    </div>
 
-            <!-- Right side - University Cards -->
-            <div class="col-lg-9 col-md-8">
-                <div class="row g-3">
-                    @foreach ($featuredUniversitiesRow2 as $univ)
-                        <div class="col-lg-4 col-md-12 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="{{ asset($univ->image_path ?? 'images/default.png') }}"
-                                        class="card-img-top"
-                                        style="height: 60px; object-fit: contain;"
-                                        alt="{{ $univ->name }}">
+                    <!-- Right side - University Cards -->
+                    <div class="col-lg-9 col-md-8">
+                        <div class="row g-3">
+                            @foreach ($featuredUniversitiesRow2 as $univ)
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <div class="card shadow h-100">
+                                        <div class="p-2">
+                                            <img src="{{ asset($univ->image_path ?? 'images/default.png') }}"
+                                                class="card-img-top" style="height: 60px; object-fit: contain;"
+                                                alt="{{ $univ->name }}">
+                                        </div>
+                                        <div class="card-body p-3">
+                                            <p class="text-muted small mb-1" style="font-size: 0.75rem;">
+                                                {{ $univ->name }}
+                                            </p>
+                                            <h5 class="card-title h6 mb-1">
+                                                {{ $univ->degree }}
+                                            </h5>
+                                            <p class="small text-muted mb-1" style="font-size: 0.7rem;">
+                                                {{ $univ->description }}
+                                            </p>
+                                            <p class="small text-danger mb-0" style="font-size: 0.7rem;">
+                                                @php
+                                                    try {
+                                                        $formattedDeadline = \Carbon\Carbon::parse($univ->application_deadline)->translatedFormat('d F Y');
+                                                    } catch (\Exception $e) {
+                                                        $formattedDeadline = $univ->application_deadline; // fallback
+                                                    }
+                                                @endphp
+                                                Aplikasi jatuh tempo pada {{ $formattedDeadline }}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">
-                                        {{ $univ->name }}
-                                    </p>
-                                    <h5 class="card-title h6 mb-1">
-                                        {{ $univ->degree }}
-                                    </h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">
-                                        {{ $univ->description }}
-                                    </p>
-                                    <p class="small text-danger mb-0" style="font-size: 0.7rem;">
-                                        @php
-                                            try {
-                                                $formattedDeadline = \Carbon\Carbon::parse($univ->application_deadline)->translatedFormat('d F Y');
-                                            } catch (\Exception $e) {
-                                                $formattedDeadline = $univ->application_deadline; // fallback
-                                            }
-                                        @endphp
-                                        Aplikasi jatuh tempo pada {{ $formattedDeadline }}
-                                    </p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
 
 
@@ -529,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
 
                     <!-- Right side - University Cards -->
-                      <div class="col-lg-9 col-md-8">
+                    <div class="col-lg-9 col-md-8">
                         <div class="row g-3">
                             @foreach ($featuredUniversitiesRow3 as $univ)
                                 <div class="col-lg-4 col-md-12 col-sm-12">
@@ -584,7 +636,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
 
                     <!-- Right side - University Cards -->
-                   <div class="col-lg-9 col-md-8">
+                    <div class="col-lg-9 col-md-8">
                         <div class="row g-3">
                             @foreach ($featuredUniversitiesRow4 as $univ)
                                 <div class="col-lg-4 col-md-12 col-sm-12">
@@ -638,7 +690,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
 
                     <!-- Right side - University Cards -->
-                       <div class="col-lg-9 col-md-8">
+                    <div class="col-lg-9 col-md-8">
                         <div class="row g-3">
                             @foreach ($featuredUniversitiesRow5 as $univ)
                                 <div class="col-lg-4 col-md-12 col-sm-12">
