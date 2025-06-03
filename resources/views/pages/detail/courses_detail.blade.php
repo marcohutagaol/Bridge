@@ -25,8 +25,8 @@
 <body id="top">
     <main>
         <x-navbar></x-navbar>
-        
-        
+
+
 
 
         <!-- Degree Programs Listing Section -->
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto text-center title-container">
                         <h1 class="text-dark page-title">Find the right degree for you.. </h1>
-                         <a href="/certificate-detail" class="btn">Kunjungi Situs</a>
+                        <a href="/certificate-detail" class="btn">Kunjungi Situs</a>
 
                     </div>
                 </div>
@@ -47,270 +47,358 @@
 
 
         <!-- Combined Education Sections with Unified Background -->
-<section class="affordable-education-section py-5 bg-light">
-    <div class="container">
-        <div class="row mt-4 mb-3">
-            <div class="col-12">
-                <div class="career-goal-container">
-                    <div class="d-flex flex-wrap align-items-center justify-content-between">
-                        <div class="d-flex flex-column mb-3 mb-md-0">
-                            <div class="career-goal-label">CURRENT CAREER GOAL</div>
-                            <div class="career-goal-text">
-                                <i class="bi bi-bullseye"></i>
-                                <span>Your career goal is to start a career as a Network Administrator</span>
+        <section class="affordable-education-section py-5 bg-light">
+            <div class="container">
+                <div class="row mt-4 mb-3">
+                    <div class="col-12">
+                        <div class="career-goal-container">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                <div class="d-flex flex-column mb-3 mb-md-0">
+                                    <div class="career-goal-label">CURRENT CAREER GOAL</div>
+                                    <div class="career-goal-text">
+                                        <i class="bi bi-bullseye"></i>
+                                        <span>Your career goal is to start a career as a Network Administrator</span>
+                                    </div>
+                                </div>
+                                <a href="/next" class="edit-goal-btn">
+                                    <i class="bi bi-pencil-square"></i> Edit goal
+                                </a>
                             </div>
                         </div>
-                        <a href="/next" class="edit-goal-btn">
-                            <i class="bi bi-pencil-square"></i> Edit goal
-                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Recently Viewed Products Section -->
-        <div class="mb-5">
-            <h2 class="mb-4">Recently Viewed Products</h2>
-            <!-- Konten produk di sini -->
-                    <div class="row g-3">
-                        <!-- University 1 - Illinois -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;"
-                                        alt="University of Illinois Urbana-Champaign">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        Illinois Urbana-Champaign</p>
-                                    <h5 class="card-title h6 mb-1">Master of Science in Management (iMSM)</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">Peringkat 12 dalam
-                                        daftar Universitas Negeri Terbaik di AS (U.S. News & World Report, 2023)</p>
-                                    <p class="small text-danger mb-0" style="font-size: 0.7rem;">Aplikasi jatuh
-                                        tempo pada 30 April 2025</p>
+                <!-- Recently Viewed Products Section -->
+                <div class="mb-5">
+                    <h2 class="mb-4 fw-bold">Recently Viewed Products</h2>
+                    <div class="row g-4" id="coursesContainer">
+                        @foreach($recentCourses as $index => $course)
+                            <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
+                                style="{{ $index >= 4 ? 'display: none;' : '' }}">
+                                <div class="card shadow-sm h-100 border-0"
+                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
+
+                                    <!-- Course Image with Better Fit -->
+                                    <div class="position-relative"
+                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
+                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
+                                    </div>
+
+                                    <div class="card-body p-3">
+                                        <!-- Institution with Logo -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            @if($course->institution_logo)
+                                                <img src="{{ $course->institution_logo }}" class="me-2"
+                                                    style="height: 24px; width: 24px; object-fit: contain;"
+                                                    alt="{{ $course->institution }}">
+                                            @else
+                                                <div class="me-2 d-flex align-items-center justify-content-center"
+                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                </div>
+                                            @endif
+                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                {{ $course->institution ?? 'Google' }}
+                                            </span>
+                                        </div>
+
+                                        <!-- Course Name -->
+                                        <h5 class="card-title mb-2"
+                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                            {{ $course->name }}
+                                        </h5>
+
+                                        <!-- Tags/Keywords -->
+                                        <div class="mb-3">
+                                            @if($course->kategori)
+                                                @php
+                                                    $tags = explode(',', $course->kategori);
+                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                @endphp
+                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                    <span class="badge me-1 mb-1"
+                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                        {{ trim($tag) }}
+                                                    </span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                        <!-- Rating -->
+                                        @if($course->rating)
+                                            <div class="d-flex align-items-center mb-3">
+                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                <span class="fw-bold"
+                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
+                                            </div>
+                                        @endif
+
+                                        <!-- Course Type and Duration with More Space -->
+                                        <div class="d-flex align-items-center text-muted mt-3"
+                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-certificate me-1"></i>
+                                                <span>Certificate</span>
+                                            </div>
+
+                                            @if($course->duration_r)
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-clock me-1"></i>
+                                                    <span>{{ $course->duration_r }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- University 2 - London -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of London">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        London</p>
-                                    <h5 class="card-title h6 mb-1">Master of Science in Cyber Security</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">Peringkat #29 dalam
-                                        Universitas Terbaik di Inggris (The Times dan Sunday Times Good University
-                                        Guide, 2023)</p>
-                                    <p class="small text-danger mb-0" style="font-size: 0.7rem;">Aplikasi jatuh
-                                        tempo pada 15 Juni 2025</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- University 3 - Colorado -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of Colorado Boulder">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        Colorado Boulder</p>
-                                    <h5 class="card-title h6 mb-1">Master of Science in Data Science</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">Universitas #38 di
-                                        Dunia (Peringkat Akademik Universitas Dunia, 2019)</p>
-                                    <p class="small text-danger mb-0" style="font-size: 0.7rem;">Aplikasi jatuh
-                                        tempo pada 12 Juni 2025</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- University 4 - MIT -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;"
-                                        alt="Massachusetts Institute of Technology">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Massachusetts
-                                        Institute of Technology</p>
-                                    <h5 class="card-title h6 mb-1">Master of Science in Computer Networks</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">Peringkat #1 dalam
-                                        Universitas Terbaik di Dunia (QS World University Rankings, 2023)</p>
-                                    <p class="small text-danger mb-0" style="font-size: 0.7rem;">Aplikasi jatuh
-                                        tempo pada 5 Mei 2025</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+
+                    @if(count(value: $recentCourses) > 4)
+                        <div class="mt-4">
+                            <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
+                                               color: white; 
+                                               border: none; 
+                                               border-radius: 20px; 
+                                               padding: 8px 18px; 
+                                               font-weight: 600;
+                                               font-size: 0.9rem;
+                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                               transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
+                                <span id="btnText">Show More</span>
+                                <span id="btnCount" class="ms-2 badge"
+                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
+                                <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Most Popular Certificates Section -->
                 <div class="mb-5">
-                    <h2 class="mb-4">Most Popular Certificates</h2>
+                    <h2 class="mb-4 fw-bold">Most Popular Certificates</h2>
+                    <div class="row g-4" id="coursesContainer">
+                        @foreach($popularCourses as $index => $course)
+                            <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
+                                style="{{ $index >= 4 ? 'display: none;' : '' }}">
+                                <div class="card shadow-sm h-100 border-0"
+                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                    <div class="row g-3">
-                        <!-- Certificate 1 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="Google">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Google</p>
-                                    <h5 class="card-title h6 mb-1">Google Data Analytics Professional Certificate</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">8 bulan untuk
-                                        menyelesaikan | 10.000+ peserta mendaftar bulan ini</p>
-                                    <p class="small text-success mb-0" style="font-size: 0.7rem;">Dibutuhkan oleh 3.560+
-                                        perusahaan</p>
+                                    <!-- Course Image with Better Fit -->
+                                    <div class="position-relative"
+                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
+                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
+                                    </div>
+
+                                    <div class="card-body p-3">
+                                        <!-- Institution with Logo -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            @if($course->institution_logo)
+                                                <img src="{{ $course->institution_logo }}" class="me-2"
+                                                    style="height: 24px; width: 24px; object-fit: contain;"
+                                                    alt="{{ $course->institution }}">
+                                            @else
+                                                <div class="me-2 d-flex align-items-center justify-content-center"
+                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                </div>
+                                            @endif
+                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                {{ $course->institution ?? 'Google' }}
+                                            </span>
+                                        </div>
+
+                                        <!-- Course Name -->
+                                        <h5 class="card-title mb-2"
+                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                            {{ $course->name }}
+                                        </h5>
+
+                                        <!-- Tags/Keywords -->
+                                        <div class="mb-3">
+                                            @if($course->kategori)
+                                                @php
+                                                    $tags = explode(',', $course->kategori);
+                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                @endphp
+                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                    <span class="badge me-1 mb-1"
+                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                        {{ trim($tag) }}
+                                                    </span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                        <!-- Rating -->
+                                        @if($course->rating)
+                                            <div class="d-flex align-items-center mb-3">
+                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                <span class="fw-bold"
+                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
+                                            </div>
+                                        @endif
+
+                                        <!-- Course Type and Duration with More Space -->
+                                        <div class="d-flex align-items-center text-muted mt-3"
+                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-certificate me-1"></i>
+                                                <span>Certificate</span>
+                                            </div>
+
+                                            @if($course->duration_r)
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-clock me-1"></i>
+                                                    <span>{{ $course->duration_r }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Certificate 2 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="Microsoft">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Microsoft</p>
-                                    <h5 class="card-title h6 mb-1">Microsoft Azure Fundamentals (AZ-900)</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">6 minggu untuk
-                                        menyelesaikan | 8.500+ peserta mendaftar bulan ini</p>
-                                    <p class="small text-success mb-0" style="font-size: 0.7rem;">Dibutuhkan oleh 2.980+
-                                        perusahaan</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certificate 3 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="AWS">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Amazon Web Services</p>
-                                    <h5 class="card-title h6 mb-1">AWS Cloud Practitioner Essentials</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">12 minggu untuk
-                                        menyelesaikan | 12.400+ peserta mendaftar bulan ini</p>
-                                    <p class="small text-success mb-0" style="font-size: 0.7rem;">Dibutuhkan oleh 4.250+
-                                        perusahaan</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+
+                    @if(count(value: $recentCourses) > 4)
+                        <div class="mt-4">
+                            <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
+                                               color: white; 
+                                               border: none; 
+                                               border-radius: 20px; 
+                                               padding: 8px 18px; 
+                                               font-weight: 600;
+                                               font-size: 0.9rem;
+                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                               transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
+                                <span id="btnText">Show More</span>
+                                <span id="btnCount" class="ms-2 badge"
+                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
+                                <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Personalized Specializations Section -->
                 <div class="mb-5">
-                    <h2 class="mb-4">Personalized Specializations for You</h2>
+                    <h2 class="mb-4 fw-bold">Personalized Specializations </h2>
+                    <div class="row g-4" id="coursesContainer">
+                        @foreach($personalizedCourses as $index => $course)
+                            <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
+                                style="{{ $index >= 4 ? 'display: none;' : '' }}">
+                                <div class="card shadow-sm h-100 border-0"
+                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                    <div class="row g-3">
-                        <!-- Specialization 1 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="DeepLearning.AI">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">DeepLearning.AI</p>
-                                    <h5 class="card-title h6 mb-1">Deep Learning Specialization</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">3 bulan untuk
-                                        menyelesaikan | 5 kursus</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-warning rounded-circle me-1" style="width: 8px; height: 8px;">
+                                    <!-- Course Image with Better Fit -->
+                                    <div class="position-relative"
+                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
+                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
+                                    </div>
+
+                                    <div class="card-body p-3">
+                                        <!-- Institution with Logo -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            @if($course->institution_logo)
+                                                <img src="{{ $course->institution_logo }}" class="me-2"
+                                                    style="height: 24px; width: 24px; object-fit: contain;"
+                                                    alt="{{ $course->institution }}">
+                                            @else
+                                                <div class="me-2 d-flex align-items-center justify-content-center"
+                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                </div>
+                                            @endif
+                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                {{ $course->institution ?? 'Google' }}
+                                            </span>
                                         </div>
-                                        <p class="small text-warning mb-0" style="font-size: 0.7rem;">Sesuai dengan
-                                            minat Machine Learning Anda</p>
+
+                                        <!-- Course Name -->
+                                        <h5 class="card-title mb-2"
+                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                            {{ $course->name }}
+                                        </h5>
+
+                                        <!-- Tags/Keywords -->
+                                        <div class="mb-3">
+                                            @if($course->kategori)
+                                                @php
+                                                    $tags = explode(',', $course->kategori);
+                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                @endphp
+                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                    <span class="badge me-1 mb-1"
+                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                        {{ trim($tag) }}
+                                                    </span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                        <!-- Rating -->
+                                        @if($course->rating)
+                                            <div class="d-flex align-items-center mb-3">
+                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                <span class="fw-bold"
+                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
+                                            </div>
+                                        @endif
+
+                                        <!-- Course Type and Duration with More Space -->
+                                        <div class="d-flex align-items-center text-muted mt-3"
+                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-certificate me-1"></i>
+                                                <span>Certificate</span>
+                                            </div>
+
+                                            @if($course->duration_r)
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-clock me-1"></i>
+                                                    <span>{{ $course->duration_r }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Specialization 2 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of Michigan">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of Michigan
-                                    </p>
-                                    <h5 class="card-title h6 mb-1">Python for Everybody Specialization</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">4 bulan untuk
-                                        menyelesaikan | 5 kursus</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-warning rounded-circle me-1" style="width: 8px; height: 8px;">
-                                        </div>
-                                        <p class="small text-warning mb-0" style="font-size: 0.7rem;">Berdasarkan
-                                            pencarian Python Anda</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Specialization 3 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="IBM">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">IBM</p>
-                                    <h5 class="card-title h6 mb-1">Data Science Professional Certificate</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">5 bulan untuk
-                                        menyelesaikan | 10 kursus</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-warning rounded-circle me-1" style="width: 8px; height: 8px;">
-                                        </div>
-                                        <p class="small text-warning mb-0" style="font-size: 0.7rem;">Populer untuk
-                                            karir yang Anda minati</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Specialization 4 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;"
-                                        alt="University of California, Irvine">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        California, Irvine</p>
-                                    <h5 class="card-title h6 mb-1">Project Management Specialization</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">3 bulan untuk
-                                        menyelesaikan | 4 kursus</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-warning rounded-circle me-1" style="width: 8px; height: 8px;">
-                                        </div>
-                                        <p class="small text-warning mb-0" style="font-size: 0.7rem;">Melengkapi
-                                            pendidikan Manajemen Anda</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+
+                    @if(count(value: $recentCourses) > 4)
+                        <div class="mt-4">
+                            <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
+                                               color: white; 
+                                               border: none; 
+                                               border-radius: 20px; 
+                                               padding: 8px 18px; 
+                                               font-weight: 600;
+                                               font-size: 0.9rem;
+                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                               transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
+                                <span id="btnText">Show More</span>
+                                <span id="btnCount" class="ms-2 badge"
+                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
+                                <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Coursera Plus Subscription Section -->
@@ -360,252 +448,341 @@
                     </div>
                 </div>
 
-                <!-- Earn Credit Section -->
+                <!-- Explore with a Coursera Plus Subscription -->
                 <div class="mb-5">
-                    <h2 class="mb-4">Earn credit towards one of these degrees</h2>
+                    <h2 class="mb-4 fw-bold">Explore with a Coursera Plus Subscription </h2>
+                    <div class="row g-4" id="coursesContainer">
+                        @foreach($exploreCourses as $index => $course)
+                            <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
+                                style="{{ $index >= 4 ? 'display: none;' : '' }}">
+                                <div class="card shadow-sm h-100 border-0"
+                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                    <div class="row g-3">
-                        <!-- Degree 1 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of Pennsylvania">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        Pennsylvania</p>
-                                    <h5 class="card-title h6 mb-1">Master of Computer and Information Technology</h5>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">100% online | Peringkat
-                                        #10 di AS untuk Ilmu Komputer</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-primary">Penerimaan 95%</span>
-                                        <span class="fw-bold">$25,000</span>
+                                    <!-- Course Image with Better Fit -->
+                                    <div class="position-relative"
+                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
+                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
+                                    </div>
+
+                                    <div class="card-body p-3">
+                                        <!-- Institution with Logo -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            @if($course->institution_logo)
+                                                <img src="{{ $course->institution_logo }}" class="me-2"
+                                                    style="height: 24px; width: 24px; object-fit: contain;"
+                                                    alt="{{ $course->institution }}">
+                                            @else
+                                                <div class="me-2 d-flex align-items-center justify-content-center"
+                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                </div>
+                                            @endif
+                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                {{ $course->institution ?? 'Google' }}
+                                            </span>
+                                        </div>
+
+                                        <!-- Course Name -->
+                                        <h5 class="card-title mb-2"
+                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                            {{ $course->name }}
+                                        </h5>
+
+                                        <!-- Tags/Keywords -->
+                                        <div class="mb-3">
+                                            @if($course->kategori)
+                                                @php
+                                                    $tags = explode(',', $course->kategori);
+                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                @endphp
+                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                    <span class="badge me-1 mb-1"
+                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                        {{ trim($tag) }}
+                                                    </span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                        <!-- Rating -->
+                                        @if($course->rating)
+                                            <div class="d-flex align-items-center mb-3">
+                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                <span class="fw-bold"
+                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
+                                            </div>
+                                        @endif
+
+                                        <!-- Course Type and Duration with More Space -->
+                                        <div class="d-flex align-items-center text-muted mt-3"
+                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-certificate me-1"></i>
+                                                <span>Certificate</span>
+                                            </div>
+
+                                            @if($course->duration_r)
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-clock me-1"></i>
+                                                    <span>{{ $course->duration_r }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Degree 2 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="HEC Paris">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">HEC Paris</p>
-                                    <h5 class="card-title h6 mb-1">Master's in Innovation and Entrepreneurship</h5>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">100% online | Sekolah
-                                        Bisnis #1 di Eropa</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-primary">Penerimaan 92%</span>
-                                        <span class="fw-bold">€20,000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Degree 3 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of Michigan">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of Michigan
-                                    </p>
-                                    <h5 class="card-title h6 mb-1">Master of Applied Data Science</h5>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">100% online | Peringkat
-                                        #19 di AS untuk Matematika</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-primary">Penerimaan 87%</span>
-                                        <span class="fw-bold">$31,688</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+
+                    @if(count(value: $recentCourses) > 4)
+                        <div class="mt-4">
+                            <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
+                                               color: white; 
+                                               border: none; 
+                                               border-radius: 20px; 
+                                               padding: 8px 18px; 
+                                               font-weight: 600;
+                                               font-size: 0.9rem;
+                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                               transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
+                                <span id="btnText">Show More</span>
+                                <span id="btnCount" class="ms-2 badge"
+                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
+                                <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </div>
+                    @endif
                 </div>
 
-                <!-- Earn Your Degree Section -->
+                <!-- Based on Your Recent Views -->
                 <div class="mb-5">
-                    <h2 class="mb-4">Earn Your Degree</h2>
+                    <h2 class="mb-4 fw-bold">Based on Your Recent Views</h2>
+                    <div class="row g-4" id="coursesContainer">
+                        @foreach($bestCourses as $index => $course)
+                            <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
+                                style="{{ $index >= 4 ? 'display: none;' : '' }}">
+                                <div class="card shadow-sm h-100 border-0"
+                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                    <div class="row g-4">
-                        <!-- Degree Category 1 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card shadow h-100">
-                                <img src="/api/placeholder/400/200" class="card-img-top" alt="Computer Science Degrees">
-                                <div class="card-body">
-                                    <h5 class="card-title h6">Ilmu Komputer</h5>
-                                    <p class="small text-muted">32 gelar dari universitas terkemuka</p>
-                                    <button class="btn btn-outline-primary btn-sm mt-2">Jelajahi</button>
+                                    <!-- Course Image with Better Fit -->
+                                    <div class="position-relative"
+                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
+                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
+                                    </div>
+
+                                    <div class="card-body p-3">
+                                        <!-- Institution with Logo -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            @if($course->institution_logo)
+                                                <img src="{{ $course->institution_logo }}" class="me-2"
+                                                    style="height: 24px; width: 24px; object-fit: contain;"
+                                                    alt="{{ $course->institution }}">
+                                            @else
+                                                <div class="me-2 d-flex align-items-center justify-content-center"
+                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                </div>
+                                            @endif
+                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                {{ $course->institution ?? 'Google' }}
+                                            </span>
+                                        </div>
+
+                                        <!-- Course Name -->
+                                        <h5 class="card-title mb-2"
+                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                            {{ $course->name }}
+                                        </h5>
+
+                                        <!-- Tags/Keywords -->
+                                        <div class="mb-3">
+                                            @if($course->kategori)
+                                                @php
+                                                    $tags = explode(',', $course->kategori);
+                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                @endphp
+                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                    <span class="badge me-1 mb-1"
+                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                        {{ trim($tag) }}
+                                                    </span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                        <!-- Rating -->
+                                        @if($course->rating)
+                                            <div class="d-flex align-items-center mb-3">
+                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                <span class="fw-bold"
+                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
+                                            </div>
+                                        @endif
+
+                                        <!-- Course Type and Duration with More Space -->
+                                        <div class="d-flex align-items-center text-muted mt-3"
+                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-certificate me-1"></i>
+                                                <span>Certificate</span>
+                                            </div>
+
+                                            @if($course->duration_r)
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-clock me-1"></i>
+                                                    <span>{{ $course->duration_r }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Degree Category 2 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card shadow h-100">
-                                <img src="/api/placeholder/400/200" class="card-img-top" alt="Business Degrees">
-                                <div class="card-body">
-                                    <h5 class="card-title h6">Bisnis</h5>
-                                    <p class="small text-muted">45 gelar dari sekolah bisnis terbaik</p>
-                                    <button class="btn btn-outline-primary btn-sm mt-2">Jelajahi</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Degree Category 3 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card shadow h-100">
-                                <img src="/api/placeholder/400/200" class="card-img-top" alt="Data Science Degrees">
-                                <div class="card-body">
-                                    <h5 class="card-title h6">Data Science</h5>
-                                    <p class="small text-muted">28 gelar dari institusi global</p>
-                                    <button class="btn btn-outline-primary btn-sm mt-2">Jelajahi</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Degree Category 4 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card shadow h-100">
-                                <img src="/api/placeholder/400/200" class="card-img-top" alt="Health Degrees">
-                                <div class="card-body">
-                                    <h5 class="card-title h6">Kesehatan</h5>
-                                    <p class="small text-muted">19 gelar dari institusi medis ternama</p>
-                                    <button class="btn btn-outline-primary btn-sm mt-2">Jelajahi</button>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+
+                    @if(count(value: $recentCourses) > 4)
+                        <div class="mt-4">
+                            <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
+                                               color: white; 
+                                               border: none; 
+                                               border-radius: 20px; 
+                                               padding: 8px 18px; 
+                                               font-weight: 600;
+                                               font-size: 0.9rem;
+                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                               transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
+                                <span id="btnText">Show More</span>
+                                <span id="btnCount" class="ms-2 badge"
+                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
+                                <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </div>
+                    @endif
+                </div>
+
+                <!-- Get Started with These Free Courses -->
+                <div class="mb-5">
+                    <h2 class="mb-4 fw-bold">Get Started with These Free Courses</h2>
+                    <div class="row g-4" id="coursesContainer">
+                        @foreach($freeCourses as $index => $course)
+                            <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
+                                style="{{ $index >= 4 ? 'display: none;' : '' }}">
+                                <div class="card shadow-sm h-100 border-0"
+                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
+
+                                    <!-- Course Image with Better Fit -->
+                                    <div class="position-relative"
+                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
+                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
+                                    </div>
+
+                                    <div class="card-body p-3">
+                                        <!-- Institution with Logo -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            @if($course->institution_logo)
+                                                <img src="{{ $course->institution_logo }}" class="me-2"
+                                                    style="height: 24px; width: 24px; object-fit: contain;"
+                                                    alt="{{ $course->institution }}">
+                                            @else
+                                                <div class="me-2 d-flex align-items-center justify-content-center"
+                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                </div>
+                                            @endif
+                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                {{ $course->institution ?? 'Google' }}
+                                            </span>
+                                        </div>
+
+                                        <!-- Course Name -->
+                                        <h5 class="card-title mb-2"
+                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                            {{ $course->name }}
+                                        </h5>
+
+                                        <!-- Tags/Keywords -->
+                                        <div class="mb-3">
+                                            @if($course->kategori)
+                                                @php
+                                                    $tags = explode(',', $course->kategori);
+                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                @endphp
+                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                    <span class="badge me-1 mb-1"
+                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                        {{ trim($tag) }}
+                                                    </span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                        <!-- Rating -->
+                                        @if($course->rating)
+                                            <div class="d-flex align-items-center mb-3">
+                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                <span class="fw-bold"
+                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
+                                            </div>
+                                        @endif
+
+                                        <!-- Course Type and Duration with More Space -->
+                                        <div class="d-flex align-items-center text-muted mt-3"
+                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-certificate me-1"></i>
+                                                <span>Certificate</span>
+                                            </div>
+
+                                            @if($course->duration_r)
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-clock me-1"></i>
+                                                    <span>{{ $course->duration_r }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    @if(count(value: $recentCourses) > 4)
+                        <div class="mt-4">
+                            <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
+                                               color: white; 
+                                               border: none; 
+                                               border-radius: 20px; 
+                                               padding: 8px 18px; 
+                                               font-weight: 600;
+                                               font-size: 0.9rem;
+                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                               transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
+                                <span id="btnText">Show More</span>
+                                <span id="btnCount" class="ms-2 badge"
+                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
+                                <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Free Courses Section -->
-                <div>
-                    <h2 class="mb-4">Get Started with These Free Courses</h2>
 
-                    <div class="row g-3">
-                        <!-- Free Course 1 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="position-relative">
-                                    <img src="/api/placeholder/400/200" class="card-img-top"
-                                        alt="Machine Learning Course">
-                                    <span
-                                        class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded-pill"
-                                        style="font-size: 0.7rem;">Gratis</span>
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Stanford University</p>
-                                    <h5 class="card-title h6 mb-1">Machine Learning for Beginners</h5>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="me-2">
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-half text-warning" style="font-size: 0.7rem;"></i>
-                                        </div>
-                                        <span class="small text-muted" style="font-size: 0.7rem;">(15,432)</span>
-                                    </div>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">41,000+ peserta telah
-                                        mendaftar</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Free Course 2 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="position-relative">
-                                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Python Course">
-                                    <span
-                                        class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded-pill"
-                                        style="font-size: 0.7rem;">Gratis</span>
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of Michigan
-                                    </p>
-                                    <h5 class="card-title h6 mb-1">Programming for Everybody (Python)</h5>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="me-2">
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star text-warning" style="font-size: 0.7rem;"></i>
-                                        </div>
-                                        <span class="small text-muted" style="font-size: 0.7rem;">(23,871)</span>
-                                    </div>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">56,000+ peserta telah
-                                        mendaftar</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Free Course 3 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="position-relative">
-                                    <img src="/api/placeholder/400/200" class="card-img-top"
-                                        alt="Financial Markets Course">
-                                    <span
-                                        class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded-pill"
-                                        style="font-size: 0.7rem;">Gratis</span>
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Yale University</p>
-                                    <h5 class="card-title h6 mb-1">Financial Markets</h5>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="me-2">
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                        </div>
-                                        <span class="small text-muted" style="font-size: 0.7rem;">(12,566)</span>
-                                    </div>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">38,000+ peserta telah
-                                        mendaftar</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Free Course 4 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="position-relative">
-                                    <img src="/api/placeholder/400/200" class="card-img-top"
-                                        alt="User Experience Design Course">
-                                    <span
-                                        class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded-pill"
-                                        style="font-size: 0.7rem;">Gratis</span>
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Google</p>
-                                    <h5 class="card-title h6 mb-1">Introduction to User Experience Design</h5>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="me-2">
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-half text-warning" style="font-size: 0.7rem;"></i>
-                                        </div>
-                                        <span class="small text-muted" style="font-size: 0.7rem;">(9,847)</span>
-                                    </div>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">29,000+ peserta telah
-                                        mendaftar</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -722,6 +899,8 @@
             </div>
         </section>
 
+
+
         <!-- Font Awesome CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -729,88 +908,113 @@
             <div class="container">
                 <!-- Recently Viewed Products Section -->
                 <div class="mb-5">
-                    <h2 class="mb-4">Recently Viewed Products</h2>
+                    <h2 class="mb-4 fw-bold">Based on Your Recent Views</h2>
+                    <div class="row g-4" id="coursesContainer">
+                        @foreach($bestCourses as $index => $course)
+                            <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
+                                style="{{ $index >= 4 ? 'display: none;' : '' }}">
+                                <div class="card shadow-sm h-100 border-0"
+                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                    <div class="row g-3">
-                        <!-- University 1 - Illinois -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;"
-                                        alt="University of Illinois Urbana-Champaign">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        Illinois Urbana-Champaign</p>
-                                    <h5 class="card-title h6 mb-1">Master of Science in Management (iMSM)</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">Peringkat 12 dalam
-                                        daftar Universitas Negeri Terbaik di AS (U.S. News & World Report, 2023)</p>
-                                    <p class="small text-danger mb-0" style="font-size: 0.7rem;">Aplikasi jatuh
-                                        tempo pada 30 April 2025</p>
+                                    <!-- Course Image with Better Fit -->
+                                    <div class="position-relative"
+                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
+                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
+                                    </div>
+
+                                    <div class="card-body p-3">
+                                        <!-- Institution with Logo -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            @if($course->institution_logo)
+                                                <img src="{{ $course->institution_logo }}" class="me-2"
+                                                    style="height: 24px; width: 24px; object-fit: contain;"
+                                                    alt="{{ $course->institution }}">
+                                            @else
+                                                <div class="me-2 d-flex align-items-center justify-content-center"
+                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                </div>
+                                            @endif
+                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                {{ $course->institution ?? 'Google' }}
+                                            </span>
+                                        </div>
+
+                                        <!-- Course Name -->
+                                        <h5 class="card-title mb-2"
+                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                            {{ $course->name }}
+                                        </h5>
+
+                                        <!-- Tags/Keywords -->
+                                        <div class="mb-3">
+                                            @if($course->kategori)
+                                                @php
+                                                    $tags = explode(',', $course->kategori);
+                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                @endphp
+                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                    <span class="badge me-1 mb-1"
+                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                        {{ trim($tag) }}
+                                                    </span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                        <!-- Rating -->
+                                        @if($course->rating)
+                                            <div class="d-flex align-items-center mb-3">
+                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                <span class="fw-bold"
+                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
+                                            </div>
+                                        @endif
+
+                                        <!-- Course Type and Duration with More Space -->
+                                        <div class="d-flex align-items-center text-muted mt-3"
+                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-certificate me-1"></i>
+                                                <span>Certificate</span>
+                                            </div>
+
+                                            @if($course->duration_r)
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-clock me-1"></i>
+                                                    <span>{{ $course->duration_r }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- University 2 - London -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of London">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        London</p>
-                                    <h5 class="card-title h6 mb-1">Master of Science in Cyber Security</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">Peringkat #29 dalam
-                                        Universitas Terbaik di Inggris (The Times dan Sunday Times Good University
-                                        Guide, 2023)</p>
-                                    <p class="small text-danger mb-0" style="font-size: 0.7rem;">Aplikasi jatuh
-                                        tempo pada 15 Juni 2025</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- University 3 - Colorado -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of Colorado Boulder">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        Colorado Boulder</p>
-                                    <h5 class="card-title h6 mb-1">Master of Science in Data Science</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">Universitas #38 di
-                                        Dunia (Peringkat Akademik Universitas Dunia, 2019)</p>
-                                    <p class="small text-danger mb-0" style="font-size: 0.7rem;">Aplikasi jatuh
-                                        tempo pada 12 Juni 2025</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- University 4 - MIT -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;"
-                                        alt="Massachusetts Institute of Technology">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Massachusetts
-                                        Institute of Technology</p>
-                                    <h5 class="card-title h6 mb-1">Master of Science in Computer Networks</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">Peringkat #1 dalam
-                                        Universitas Terbaik di Dunia (QS World University Rankings, 2023)</p>
-                                    <p class="small text-danger mb-0" style="font-size: 0.7rem;">Aplikasi jatuh
-                                        tempo pada 5 Mei 2025</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+
+                    @if(count(value: $recentCourses) > 4)
+                        <div class="mt-4">
+                            <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
+                                               color: white; 
+                                               border: none; 
+                                               border-radius: 20px; 
+                                               padding: 8px 18px; 
+                                               font-weight: 600;
+                                               font-size: 0.9rem;
+                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                               transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
+                                <span id="btnText">Show More</span>
+                                <span id="btnCount" class="ms-2 badge"
+                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
+                                <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Most Popular Certificates Section -->
@@ -1144,127 +1348,7 @@
                 </div>
 
                 <!-- Free Courses Section -->
-                <div>
-                    <h2 class="mb-4">Get Started with These Free Courses</h2>
 
-                    <div class="row g-3">
-                        <!-- Free Course 1 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="position-relative">
-                                    <img src="/api/placeholder/400/200" class="card-img-top"
-                                        alt="Machine Learning Course">
-                                    <span
-                                        class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded-pill"
-                                        style="font-size: 0.7rem;">Gratis</span>
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Stanford University</p>
-                                    <h5 class="card-title h6 mb-1">Machine Learning for Beginners</h5>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="me-2">
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-half text-warning" style="font-size: 0.7rem;"></i>
-                                        </div>
-                                        <span class="small text-muted" style="font-size: 0.7rem;">(15,432)</span>
-                                    </div>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">41,000+ peserta telah
-                                        mendaftar</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Free Course 2 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="position-relative">
-                                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Python Course">
-                                    <span
-                                        class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded-pill"
-                                        style="font-size: 0.7rem;">Gratis</span>
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of Michigan
-                                    </p>
-                                    <h5 class="card-title h6 mb-1">Programming for Everybody (Python)</h5>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="me-2">
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star text-warning" style="font-size: 0.7rem;"></i>
-                                        </div>
-                                        <span class="small text-muted" style="font-size: 0.7rem;">(23,871)</span>
-                                    </div>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">56,000+ peserta telah
-                                        mendaftar</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Free Course 3 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="position-relative">
-                                    <img src="/api/placeholder/400/200" class="card-img-top"
-                                        alt="Financial Markets Course">
-                                    <span
-                                        class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded-pill"
-                                        style="font-size: 0.7rem;">Gratis</span>
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Yale University</p>
-                                    <h5 class="card-title h6 mb-1">Financial Markets</h5>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="me-2">
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                        </div>
-                                        <span class="small text-muted" style="font-size: 0.7rem;">(12,566)</span>
-                                    </div>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">38,000+ peserta telah
-                                        mendaftar</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Free Course 4 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="position-relative">
-                                    <img src="/api/placeholder/400/200" class="card-img-top"
-                                        alt="User Experience Design Course">
-                                    <span
-                                        class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded-pill"
-                                        style="font-size: 0.7rem;">Gratis</span>
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Google</p>
-                                    <h5 class="card-title h6 mb-1">Introduction to User Experience Design</h5>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="me-2">
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem;"></i>
-                                            <i class="bi bi-star-half text-warning" style="font-size: 0.7rem;"></i>
-                                        </div>
-                                        <span class="small text-muted" style="font-size: 0.7rem;">(9,847)</span>
-                                    </div>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">29,000+ peserta telah
-                                        mendaftar</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
