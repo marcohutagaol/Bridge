@@ -622,7 +622,7 @@
             <div class="main-container">
                 <!-- Left Section - All Learning Items -->
                 <div class="left-section">
-                    <h2 class="page-title">My Learning Journey</h2>
+                    <h2 class="page-title">My Learning Journey..</h2>
                     
                     @if($checkouts->count() > 0)
                         <div class="course-list">
