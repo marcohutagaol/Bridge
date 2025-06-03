@@ -40,7 +40,7 @@ class CourseController extends Controller
         ]);
     }
 
-    
+
     public function show($id)
     {
         $course = Course::findOrFail($id);
@@ -50,10 +50,10 @@ class CourseController extends Controller
         ]);
     }
 
-     public function checkout($id)
+    public function checkout($id)
     {
         $course = Course::findOrFail($id);
-        
+
         return view('pages.detail.checkout', [
             'course' => $course
         ]);
@@ -65,21 +65,21 @@ class CourseController extends Controller
     public function processCheckout(Request $request, $id)
     {
         $course = Course::findOrFail($id);
-        
+
         // Validasi data form
         $validated = $request->validate([
             'payment_method' => 'required',
             'terms' => 'accepted'
         ]);
-        
+
         // Di sini Anda bisa menambahkan logika:
         // - Penyimpanan ke database
         // - Integrasi payment gateway
         // - dll
-        
+
         // Redirect ke halaman sukses
         return redirect()->route('checkout.success', ['id' => $id])
-                         ->with('success', 'Pembelian berhasil diproses!');
+            ->with('success', 'Pembelian berhasil diproses!');
     }
 
     /**
@@ -88,11 +88,16 @@ class CourseController extends Controller
     public function checkoutSuccess($id)
     {
         $course = Course::findOrFail($id);
-        
+
         return view('pages.detail.checkout_success', [
             'course' => $course
         ]);
     }
 
 
+    public function admin()
+    {
+        $courses = Course::paginate(10);
+        return view('admin.course', compact('courses'));
+    }
 }
