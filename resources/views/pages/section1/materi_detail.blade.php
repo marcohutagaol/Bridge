@@ -72,7 +72,7 @@
     <main>
         <x-navbar></x-navbar>
 
-        <!-- Degree Programs Listing Section -->
+        <!-- Section Atas -->
         <section class="hero-section d-flex justify-content-center align-items-center" id="degreesList">
             <div class="container">
                 <div class="row">
@@ -93,25 +93,26 @@
                                 </div>
                             @endif
                             <div class="row g-3">
-                                @foreach($materi as $index => $item)
-                                    <div class="col-md-12">
-                                        <div class="card shadow-sm mb-2">
-                                            <div class="card-body">
-                                                <div class="fw-semibold mb-2">Soal {{ $index + 1 }}</div>
-                                                <div style="text-align: justify;">{{ $item->soal }}</div>
+                                <form action="{{ route('jawaban.submit') }}" method="POST">
+                                    @csrf
+                                    @foreach($materi as $index => $item)
+                                        <div class="col-md-12">
+                                            <div class="card shadow-sm mb-2">
+                                                <div class="card-body">
+                                                    <div class="fw-semibold mb-2">Soal {{ $index + 1 }}</div>
+                                                    <div style="text-align: justify;">{{ $item->soal }}</div>
+                                                    <textarea class="form-control mt-3" name="jawaban[{{ $item->id }}]"
+                                                        rows="3" placeholder="Masukkan jawaban Anda di sini"
+                                                        maxlength="1000" required></textarea>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                    <button class="btn btn-primary mt-2" type="submit" title="Kirim Semua Jawaban">
+                                        <i class="bi bi-send-fill"></i> Kirim Semua Jawaban
+                                    </button>
+                                </form>
                             </div>
-                            <form action="{{ route('jawaban.submit') }}" method="POST">
-                                @csrf
-                                <textarea class="form-control mt-3" name="jawaban" rows="3"
-                                    placeholder="Masukkan jawaban Anda di sini" maxlength="1000" required></textarea>
-                                <button class="btn btn-primary mt-2" type="submit" title="Kirim Jawaban">
-                                    <i class="bi bi-send-fill"></i>
-                                </button>
-                            </form>
                         </div>
                     </div>
 
@@ -119,17 +120,14 @@
                     <div class="konsultan-banner d-flex align-items-center justify-content-between p-4 mb-4"
                         style="border-radius: 20px;">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('images/materiutbk/stephena.png') }}" alt="Konsultan 1"
+                            <img src="{{ asset('images/materiutbk/icon.png') }}" alt="Konsultan"
                                 class="konsultan-img me-3"
-                                style="height: 140px; width: 110px; object-fit: cover; border-radius: 16px;">
-                            <img src="{{ asset('images/materiutbk/arya.png') }}" alt="Konsultan 2"
-                                class="konsultan-img me-4"
                                 style="height: 140px; width: 110px; object-fit: cover; border-radius: 16px;">
                             <div>
                                 <div class="text-white fw-semibold mb-1" style="font-size: 1.1rem;">Masih punya
                                     pertanyaan?</div>
                                 <div class="text-white fw-bold" style="font-size: 1.6rem; line-height: 1.2;">
-                                    Tanyakan via chat ke Konsultan<br>Arya & Stephen
+                                    Tanyakan via chat ke Konsultan
                                 </div>
                             </div>
                         </div>

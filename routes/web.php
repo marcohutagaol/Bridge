@@ -120,7 +120,17 @@ Route::get('/materi/{sub_kategori}', [MateriController::class, 'show'])->name('m
 Route::post('/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('jawaban.submit');
 
 // MASUK SECTION 1
-Route::get('/courses', [SelectedCourseController::class, 'index']);
+Route::get('/courses', function () {
+    return view('pages.detail.courses_detail');
+});
+
+// UTBK Routes
+Route::get('/utbk', [UtbkController::class, 'index'])->name('utbk.index');
+// Route::get('/materi/{sub_kategori}', [UtbkController::class, 'show'])->name('materi.detail');
+// Route::post('/utbk/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('utbk.submit');
+
+// Alternative route jika menggunakan nama lain
+// Route::get('/topic-detail', [UtbkController::class, 'index'])->name('topic.detail');
  
 // SECTION 2
 Route::get('/info-kampus', function () {
