@@ -53,7 +53,7 @@ Route::get('/certificate-detail', [CourseController::class, 'index'])
 
 Route::get('/certificate-detail', [CourseController::class, 'index'])->name('certificate.detail');
 Route::get('/certificate-detail/{id}', [CourseController::class, 'show'])->name('certificate.detail.show');
-     // Halaman checkout
+// Halaman checkout
 Route::get('/course/{id}/checkout', [CourseController::class, 'checkout'])->name('course.checkout');
 
 // Proses checkout
@@ -62,7 +62,7 @@ Route::get('/course/{id}/checkout', [CheckoutController::class, 'showCourseCheck
     ->middleware('auth');
 
 
-    
+
 // Route untuk checkout careers
 Route::get('/career/{id}/checkout', [CheckoutController::class, 'showCareerCheckout'])
     ->name('career.checkout')
@@ -91,8 +91,6 @@ Route::get('/my-learning', [MyLearningController::class, 'index'])->name('mylear
 Route::get('/next', function () {
     return view('pages.detail.nextkursus.learning_goals');
 });
-
-use App\Http\Controllers\LearningController;
 
 use App\Http\Controllers\LearningController;
 
@@ -125,7 +123,7 @@ Route::post('/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('
 
 // MASUK SECTION 1
 Route::get('/courses', [SelectedCourseController::class, 'index']);
- 
+
 // SECTION 2
 Route::get('/info-kampus', function () {
     return view('section2.info_kampus');
