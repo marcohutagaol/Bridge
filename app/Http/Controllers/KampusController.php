@@ -13,9 +13,12 @@ class KampusController extends Controller
     public function index()
     {
         $universitas = DB::table('data_kampus')->where('tipe', 'universitas')->get();
+        // SELECT * FROM data_kampus WHERE tipe = 'universitas';
         $institut = DB::table('data_kampus')->where('tipe', 'institut')->get();
+        // SELECT * FROM data_kampus WHERE tipe = 'institut';
         $politeknik = DB::table('data_kampus')->where('tipe', 'politeknik')->get();
-        
+        // SELECT * FROM data_kampus WHERE tipe = 'politeknik';
+
         return view('section2.direktori_kampus', compact('universitas', 'institut', 'politeknik'));
     }
 
@@ -24,9 +27,9 @@ class KampusController extends Controller
      */
     public function create()
     {
-       
-  //
-       
+
+        //
+
     }
 
     /**
@@ -43,7 +46,9 @@ class KampusController extends Controller
     public function show(string $id)
     {
         $universitas = DB::table('data_kampus')->where('id', $id)->get();
-        $deskripsi = DB::table('visimisi_kampus')->where('id', $id)->get();
+        // SELECT * FROM data_kampus WHERE id = '$id';
+        $deskripsi = DB::table('visimisi_kampus')->where('kampus_id', $id)->get();
+        // SELECT * FROM visimisi_kampus WHERE id = '$id';
         return view('section2.detail_kampus', compact('universitas', 'deskripsi'));
     }
 
