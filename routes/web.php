@@ -52,6 +52,13 @@ Route::get('/degree', [AdminController::class, 'degreePayment']);
 Route::get('/career', [AdminController::class, 'careerPayment']);
 Route::get('/course', [AdminController::class, 'coursePayment']);
 
+// UTBK Routes
+Route::get('/utbk', [UtbkController::class, 'index'])->name('utbk.index');
+Route::get('/materi/{sub_kategori}', [UtbkController::class, 'show'])->name('materi.detail');
+Route::post('/utbk/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('utbk.submit');
+
+// Alternative route jika menggunakan nama lain
+Route::get('/topic-detail', [UtbkController::class, 'index'])->name('topic.detail');
 
 //online deggre
 Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
