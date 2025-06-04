@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $table = 'gabungan_semua';
-    
+    protected $table = 'courses_certificates';
+
     protected $fillable = [
         'name',
         'image',
@@ -26,12 +26,12 @@ class Course extends Model
 
     public function getAccreditationAttribute()
     {
-        return 'Accredited Degree'; // Default value
+        return 'Accredited Degree';
     }
 
     public function getReviewCountAttribute()
     {
-        return $this->attributes['review_count'] ?? '1.5K'; 
+        return $this->attributes['review_count'] ?? '1.5K';
     }
 
     public function getLevelAttribute()
@@ -47,5 +47,10 @@ class Course extends Model
     public function getFormattedDurationAttribute()
     {
         return $this->duration_r . ' Hours';
+    }
+
+     public function checkouts()
+    {
+        return $this->hasMany(Checkout::class);
     }
 }

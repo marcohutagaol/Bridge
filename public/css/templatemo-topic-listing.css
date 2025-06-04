@@ -729,10 +729,10 @@ strong {
 }
 
 .hero-section-admin {
-  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
+  background-image: linear-gradient(150deg, #13547a 0%, #80d0c7 80%);
+  height: 100%;
+  width: 100%;
+  /* position: relative; */
 }
 
 /*---------------------------------------
@@ -760,6 +760,21 @@ strong {
 }
 
 .custom-block:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.custom-block-admin {
+  border-radius: var(--border-radius-medium);
+  /* position: relative; */
+  overflow: hidden;
+  padding: 30px;
+  transition: all 0.3s ease;
+  height: 600px;
+  width: 1000px;
+}
+
+.custom-block-admin:hover {
   background-color: var(--secondary-color);
   transform: translateY(-3px);
 }
