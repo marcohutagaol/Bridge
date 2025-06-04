@@ -6,7 +6,7 @@
 
   <ul class="nav flex-column px-3">
     <li class="nav-item mb-2">
-      <a href="/" class="nav-link text-white rounded-pill px-3 py-2 w-70"
+      <a href="/dashboard" class="nav-link text-white rounded-pill px-3 py-2 w-70"
         onmouseover="this.style.backgroundColor='#80d0c7';" onmouseout="this.style.backgroundColor='transparent';">
         Dashboard
       </a>
@@ -18,7 +18,7 @@
       </a>
     </li>
     <li class="nav-item mb-2">
-      <a href="/typography" class="nav-link text-white rounded-pill px-3 py-2 w-100"
+      <a href="/ranking" class="nav-link text-white rounded-pill px-3 py-2 w-100"
         onmouseover="this.style.backgroundColor='#80d0c7';" onmouseout="this.style.backgroundColor='transparent';">
         Ranking
       </a>
