@@ -72,7 +72,7 @@
     <main>
         <x-navbar></x-navbar>
 
-        <!-- Degree Programs Listing Section -->
+        <!-- Section Atas -->
         <section class="hero-section d-flex justify-content-center align-items-center" id="degreesList">
             <div class="container">
                 <div class="row">

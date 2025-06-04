@@ -898,6 +898,7 @@
 
 <div class="course-grid">
     @foreach($courses as $course)
+            <a href="{{ route('certificate.detail.show', $course->id) }}" style="text-decoration: none; color: inherit;">
         <div class="course-card">
             <div class="ai-badge">
                 <i class="bi bi-award"></i>
