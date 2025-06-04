@@ -34,7 +34,7 @@ class Checkout extends Model
     // Relationship ke User
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     // Specific relationships untuk setiap type - DIPERBAIKI tanpa where constraint
