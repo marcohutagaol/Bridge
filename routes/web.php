@@ -48,7 +48,9 @@ Route::get('/course-data', function () {
 });
 
 Route::get('/user', [UserController::class, 'index']);
-Route::get('/course-data', [CourseController::class, 'admin']);
+Route::get('/degree', [AdminController::class, 'degreePayment']);
+Route::get('/career', [AdminController::class, 'careerPayment']);
+Route::get('/course', [AdminController::class, 'coursePayment']);
 
 
 //online deggre

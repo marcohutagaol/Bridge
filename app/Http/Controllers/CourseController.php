@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -92,12 +93,5 @@ class CourseController extends Controller
         return view('pages.detail.checkout_success', [
             'course' => $course
         ]);
-    }
-
-
-    public function admin()
-    {
-        $courses = Course::paginate(10);
-        return view('admin.course', compact('courses'));
     }
 }
