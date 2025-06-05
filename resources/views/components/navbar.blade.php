@@ -54,9 +54,6 @@
 
             <div class="d-none d-lg-block">
                 <div class="dropdown">
-<<<<<<< HEAD
-                    <a href="/profile" class="navbar-icon bi-person smoothscroll"></a>
-=======
                     @if(Auth::check())
                         <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -68,7 +65,6 @@
                         </a>
                     @endif
 
->>>>>>> dcde238c76372be0832f78ef50254f2eab571649
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/profile">Profil</a></li>
                         <li>
