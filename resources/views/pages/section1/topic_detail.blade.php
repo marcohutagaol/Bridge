@@ -92,7 +92,6 @@
                                         <li><a class="dropdown-item" href="#">UTBK & Ujian Mandiri</a></li>
                                     </ul>
                                 </div>
-
                                 <!-- Filter Form -->
                                 <form method="GET" action="{{ route('utbk.index') }}" id="filterForm">
                                     <div class="dropdown">
@@ -109,8 +108,8 @@
                                             @if(isset($kategori_list))
                                                 @foreach($kategori_list as $kategori)
                                                     <li>
-                                                        <a class="dropdown-item filter-option" href="#" 
-                                                           data-kategori="{{ $kategori->kategori }}">
+                                                        <a class="dropdown-item filter-option" href="#"
+                                                            data-kategori="{{ $kategori->kategori }}">
 
                                                             {{ $kategori->kategori }}
                                                         </a>
@@ -118,14 +117,22 @@
                                                 @endforeach
                                             @else
 
-                                                <li><a class="dropdown-item filter-option" href="#" data-kategori="Penalaran Umum">Penalaran Umum</a></li>
-                                                <li><a class="dropdown-item filter-option" href="#" data-kategori="PPU, PBM, dan Literasi dalam Bahasa Indonesia">PPU, PBM, dan Literasi Bahasa Indonesia</a></li>
-                                                <li><a class="dropdown-item filter-option" href="#" data-kategori="Literasi Bahasa Inggris">Literasi Bahasa Inggris</a></li>
-                                                <li><a class="dropdown-item filter-option" href="#" data-kategori="PK & Penalaran Matematika">PK & Penalaran Matematika</a></li>
+                                                <li><a class="dropdown-item filter-option" href="#"
+                                                        data-kategori="Penalaran Umum">Penalaran Umum</a></li>
+                                                <li><a class="dropdown-item filter-option" href="#"
+                                                        data-kategori="PPU, PBM, dan Literasi dalam Bahasa Indonesia">PPU,
+                                                        PBM, dan Literasi Bahasa Indonesia</a></li>
+                                                <li><a class="dropdown-item filter-option" href="#"
+                                                        data-kategori="Literasi Bahasa Inggris">Literasi Bahasa Inggris</a>
+                                                </li>
+                                                <li><a class="dropdown-item filter-option" href="#"
+                                                        data-kategori="PK & Penalaran Matematika">PK & Penalaran
+                                                        Matematika</a></li>
                                             @endif
                                         </ul>
                                     </div>
-                                    <input type="hidden" name="kategori" id="kategori_input" value="{{ $kategori_filter ?? '' }}">
+                                    <input type="hidden" name="kategori" id="kategori_input"
+                                        value="{{ $kategori_filter ?? '' }}">
                                 </form>
                             </div>
                         </div>
@@ -142,8 +149,8 @@
                                     <div class="card shadow h-100 w-100 card-clickable d-flex flex-column card-kategori"
                                         data-kategori="{{ $materi->kategori }}">
 
-                                        <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}"
-                                            class="card-img-top p-3" style="height: 100px; object-fit: contain;" alt="">
+                                        <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}" class="card-img-top p-3"
+                                            style="height: 100px; object-fit: contain;" alt="">
 
                                         <div class="card-body d-flex flex-column">
                                             <p class="text-muted small mb-1">{{ $materi->kategori }}</p>
@@ -206,19 +213,19 @@
                 filterOptions.forEach(option => {
                     option.addEventListener('click', function (e) {
                         e.preventDefault();
-                        
+
                         const kategori = this.getAttribute('data-kategori');
                         const dropdownButton = document.getElementById('subjectDropdown');
-                        
+
                         // Update dropdown text
                         dropdownButton.textContent = this.textContent;
-                        
+
                         // Set input value
                         kategoriInput.value = kategori === 'Semua' ? '' : kategori;
-                        
+
                         // Add loading state
                         cardContainer.classList.add('filter-loading');
-                        
+
                         // Submit form
                         filterForm.submit();
                     });
@@ -226,7 +233,6 @@
 
                 // Dropdown functionality untuk program level
                 const programItems = document.querySelectorAll('#programLevelDropdown + .dropdown-menu .dropdown-item');
-
                 programItems.forEach(item => {
                     item.addEventListener('click', function (e) {
                         e.preventDefault();
@@ -238,7 +244,7 @@
                 const pages = document.querySelectorAll('.pagination .page-link[data-page]');
                 const prevBtn = document.getElementById('prevPageBtn');
                 const nextBtn = document.getElementById('nextPageBtn');
-                
+
                 if (pages.length > 0) {
                     let currentPage = 1;
                     const totalPages = pages.length;
