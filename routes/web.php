@@ -46,7 +46,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 });
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/user', [UserController::class, 'index'])->name('admin.user');
+    Route::get('/user', [UserController::class, 'admin'])->name('admin.user');
 });
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/ranking', [RankingController::class, 'index'])->name('admin.rankng');

@@ -54,7 +54,17 @@
 
             <div class="d-none d-lg-block">
                 <div class="dropdown">
-                    <a href="/profil" class="navbar-icon bi-person smoothscroll"></a>
+                    @if(Auth::check())
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                    @else
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button">
+                            Guest
+                        </a>
+                    @endif
+
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/profil">Profil</a></li>
                         <li>
@@ -65,7 +75,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </div>
     </div>

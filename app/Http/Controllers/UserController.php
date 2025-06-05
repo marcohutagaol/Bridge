@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function index()
+    public function admin()
     {
         $users = User::all();
         return view('admin.userlist', compact('users'));
