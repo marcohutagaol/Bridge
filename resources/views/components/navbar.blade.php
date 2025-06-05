@@ -54,9 +54,9 @@
 
             <div class="d-none d-lg-block">
                 <div class="dropdown">
-                    <a href="/profil" class="navbar-icon bi-person smoothscroll"></a>
+                    <a href="/profile" class="navbar-icon bi-person smoothscroll"></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/profil">Profil</a></li>
+                        <li><a class="dropdown-item" href="/profile">Profil</a></li>
                         <li>
                             <form method="POST" action="/logout">
                                 @csrf
