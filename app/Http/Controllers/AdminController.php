@@ -19,7 +19,7 @@ class AdminController extends Controller
             }
 
             if ($user_type == 'admin') {
-                return view('admin.index');
+                return view('admin.dashboard');
             }
         }
     }
@@ -45,6 +45,4 @@ class AdminController extends Controller
             ->paginate(10);
         return view('admin.course', compact('checkouts'));
     }
-
-
 }

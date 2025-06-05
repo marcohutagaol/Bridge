@@ -110,11 +110,13 @@
                                                     <li>
                                                         <a class="dropdown-item filter-option" href="#"
                                                             data-kategori="{{ $kategori->kategori }}">
+
                                                             {{ $kategori->kategori }}
                                                         </a>
                                                     </li>
                                                 @endforeach
                                             @else
+
                                                 <li><a class="dropdown-item filter-option" href="#"
                                                         data-kategori="Penalaran Umum">Penalaran Umum</a></li>
                                                 <li><a class="dropdown-item filter-option" href="#"
@@ -146,8 +148,10 @@
                                     style="text-decoration: none; color: inherit; width: 100%;">
                                     <div class="card shadow h-100 w-100 card-clickable d-flex flex-column card-kategori"
                                         data-kategori="{{ $materi->kategori }}">
+
                                         <img src="{{ asset('images/materiutbk/' . $materi->gambar) }}" class="card-img-top p-3"
                                             style="height: 100px; object-fit: contain;" alt="">
+
                                         <div class="card-body d-flex flex-column">
                                             <p class="text-muted small mb-1">{{ $materi->kategori }}</p>
                                             <h5 class="card-title mb-2" style="min-height: 48px;">
