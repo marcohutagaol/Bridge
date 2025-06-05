@@ -7,8 +7,9 @@
 
         <div class="d-flex align-items-center">
             <div class="dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Admin
+                <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ Auth::user()->name }}
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="/profil">Profil</a></li>
