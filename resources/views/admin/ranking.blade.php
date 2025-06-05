@@ -18,8 +18,13 @@
 
     <div class="row mt-5">
         <div class="bg-white rounded-md p-4 mx-4" style="width: 45%;">
-            <h2 class="text-l mb-4">Rating Chart</h2>
+            <h2 class="text-l mb-4">Course Rating Chart</h2>
             <canvas id="ratingChart"></canvas>
+        </div>
+
+        <div class="bg-white rounded-md p-4 mx-4" style="width: 45%;">
+            <h2 class="text-l mb-4">Top Career Chart</h2>
+            <canvas id="careerChart"></canvas>
         </div>
     </div>
 
@@ -50,18 +55,18 @@
                     }]
                 },
                 options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
             });
         });
     </script>
@@ -90,18 +95,18 @@
                     }]
                 },
                 options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
             });
         });
     </script>
@@ -113,7 +118,7 @@
             data: {
                 labels: ['4.7 - 5.0', '4.4 - 4.6', '4.1 - 4.3', '3.0 - 4.0', '0.5 - 2.0'],
                 datasets: [{
-                    data: [{{ $topRating['first'] }}, {{ $topRating['second'] }}, {{ $topRating['third'] }}, {{ $topRating['fourth'] }}, {{ $topRating['fifth'] }}],
+                    data: [{{ $course_rating['first'] }}, {{ $course_rating['second'] }}, {{ $course_rating['third'] }}, {{ $course_rating['fourth'] }}, {{ $course_rating['fifth'] }}],
                     backgroundColor: [
                         '#4caf50',
                         '#8bc34a',
@@ -140,5 +145,52 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('careerChart');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ["Highest Salary", "Most Jobs Available"],
+                    datasets: [
+                        {
+                            data: [{{ $career_data[0] }}, null],
+                            backgroundColor: 'rgba(75,192,192,0.6)',
+                            yAxisID: 'y1'
+                        },
+                        {
+                            data: [null, {{ $career_data[1] }}],
+                            backgroundColor: 'rgba(255,159,64,0.6)',
+                            yAxisID: 'y2'
+                        }
+                    ]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    responsive: true,
+                    
+                    scales: {
+                        y1: {
+                            type: 'linear',
+                            position: 'left',
+                            beginAtZero: true,
+                            
+                        },
+                        y2: {
+                            type: 'linear',
+                            position: 'right',
+                            beginAtZero: true,
+                            
+                            
+                        }
+                    }
+                }
+            });
 
+        });
+    </script>
 @endsection

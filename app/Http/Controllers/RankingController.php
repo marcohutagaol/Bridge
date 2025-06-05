@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
 use App\Models\Checkout;
 use App\Models\Course;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class RankingController extends Controller
         $topUsers_labels = $topUsers->map(fn($item) => $item->user->name); // atau email jika tidak ada name
         $topUsers_data = $topUsers->map(fn($item) => $item->total);
 
-        $topRating = [
+        $course_rating = [
             'first' => Course::whereBetween('rating', [4.7, 5.0])->count(),
             'second' => Course::whereBetween('rating', [4.4, 4.6])->count(),
             'third' => Course::whereBetween('rating', [4.1, 4.3])->count(),
@@ -35,11 +36,20 @@ class RankingController extends Controller
             'fifth' => Course::whereBetween('rating', [0.5, 2.0])->count(),
         ];
 
-        return view('admin.ranking',  [
+
+        $highestSalary = Career::orderByDesc('median_salary')->first();
+        $mostJobs = Career::orderByDesc('jobs_available')->first();
+
+        return view('admin.ranking', [
             'checkouts' => $checkouts,
             'topUsers_labels' => $topUsers_labels,
             'topUsers_data' => $topUsers_data,
-            'topRating' => $topRating
+            'course_rating' => $course_rating,
+            'career_labels' => ['Highest Salary', 'Most Jobs Available'],
+            'career_data' => [
+                $highestSalary->median_salary,
+                $mostJobs->jobs_available
+            ],
         ]);
     }
 }

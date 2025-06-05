@@ -4293,6 +4293,23 @@ INSERT INTO `visimisi_kampus` (`id`, `kampus_id`, `nama`, `visi`, `misi`) VALUES
 (120, 120, 'Politeknik Negeri Nunukan', 'Menjadi institusi pendidikan tinggi vokasional terkemuka dan luar biasa di Kalimantan pada tahun 2024.', '1. Menginovasi fleksibilitas kurikulum</br>\r\n2. Membangun kegunaannya</br>\r\n3. Memberdayakan semua sumber daya');
 COMMIT;
 
+--
+-- Dumping data for table `wishlists`
+--
+
+INSERT INTO `wishlists` (`id`, `user_id`, `wishlistable_type`, `wishlistable_id`, `created_at`, `updated_at`) VALUES
+(1, 16, 'App\\Models\\University', 4, '2025-06-04 08:27:02', '2025-06-04 08:27:02'),
+(2, 16, 'App\\Models\\Career', 1, '2025-06-04 08:31:23', '2025-06-04 08:31:23'),
+(3, 16, 'App\\Models\\Course', 1, '2025-06-04 08:36:26', '2025-06-04 08:36:26'),
+(4, 16, 'App\\Models\\Course', 2, '2025-06-04 08:36:45', '2025-06-04 08:36:45'),
+(5, 16, 'App\\Models\\Course', 4, '2025-06-04 08:38:13', '2025-06-04 08:38:13'),
+(6, 16, 'App\\Models\\Course', 3, '2025-06-04 08:39:25', '2025-06-04 08:39:25'),
+(15, 11, 'App\\Models\\University', 4, '2025-06-04 19:01:38', '2025-06-04 19:01:38'),
+(16, 11, 'App\\Models\\Course', 4, '2025-06-04 19:30:56', '2025-06-04 19:30:56'),
+(17, 11, 'App\\Models\\Course', 13, '2025-06-05 00:21:35', '2025-06-05 00:21:35'),
+(18, 11, 'App\\Models\\Career', 1, '2025-06-05 00:22:55', '2025-06-05 00:22:55');
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
