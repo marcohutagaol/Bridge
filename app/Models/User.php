@@ -18,6 +18,8 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var list<string>
      */
+
+    protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
@@ -47,7 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-     public function checkouts()
+    public function checkouts()
     {
         return $this->hasMany(Checkout::class);
     }

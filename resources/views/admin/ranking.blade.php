@@ -147,6 +147,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const rawCareerData = {!! json_encode($career_data) !!};
+            const careerData = rawCareerData.map(value => Number(value) || 0);
+
             const ctx = document.getElementById('careerChart');
             const chart = new Chart(ctx, {
                 type: 'bar',
@@ -154,43 +157,39 @@
                     labels: ["Highest Salary", "Most Jobs Available"],
                     datasets: [
                         {
-                            data: [{{ $career_data[0] }}, null],
+                            data: [careerData[0], null],
                             backgroundColor: 'rgba(75,192,192,0.6)',
                             yAxisID: 'y1'
                         },
                         {
-                            data: [null, {{ $career_data[1] }}],
+                            data: [null, careerData[1]],
                             backgroundColor: 'rgba(255,159,64,0.6)',
                             yAxisID: 'y2'
                         }
                     ]
                 },
                 options: {
+                    responsive: true,
                     plugins: {
                         legend: {
                             display: false
                         }
                     },
-                    responsive: true,
-                    
                     scales: {
                         y1: {
                             type: 'linear',
                             position: 'left',
-                            beginAtZero: true,
-                            
+                            beginAtZero: true
                         },
                         y2: {
                             type: 'linear',
                             position: 'right',
-                            beginAtZero: true,
-                            
-                            
+                            beginAtZero: true
                         }
                     }
                 }
             });
-
         });
     </script>
+
 @endsection

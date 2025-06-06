@@ -25,7 +25,7 @@ class RankingController extends Controller
             ->limit(4)
             ->get();
 
-        $topUsers_labels = $topUsers->map(fn($item) => $item->user->name); // atau email jika tidak ada name
+        $topUsers_labels = $topUsers->map(fn($item) => $item->user->name);
         $topUsers_data = $topUsers->map(fn($item) => $item->total);
 
         $course_rating = [
