@@ -36,7 +36,7 @@
       <td class="px-6 py-4 text-sm text-gray-700">{{ $checkout->user_id }}</td>
       <td class="px-6 py-4 text-sm text-gray-700">{{ $checkout->user->name ?? 'N/A' }}</td> 
       <td class="px-6 py-4 text-sm text-gray-700">{{ $checkout->item_id }}</td>
-      <td class="px-6 py-4 text-sm text-gray-700">{{ $checkout->course->name }}</td>
+      <td class="px-6 py-4 text-sm text-gray-700">{{ $checkout->career->name }}</td>
       <td class="px-6 py-4 text-sm text-gray-700">{{ $checkout->payment_amount }}</td>
       <td class="px-6 py-4 text-sm text-gray-700">{{ $checkout->country }}</td>
       <td class="px-6 py-4 text-sm text-gray-700">{{ $checkout->payment_method }}</td>

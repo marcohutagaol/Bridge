@@ -1,6 +1,8 @@
 <?php
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyLearningController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\RankingController;
 use App\Http\Controllers\UniversitasController;
 use App\Http\Controllers\SelectedCourseController;
 
@@ -21,6 +23,15 @@ use App\Http\Controllers\WishlistController;
  
 Route::get('/', [AdminController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('index');
+Route::get('/', function () {
+    return view('pages.index');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
+});
 
 Route::get('/profil', function () {
     return view('dashboard');
@@ -37,25 +48,34 @@ Route::middleware('auth')->group(function () {
 
 // ADMIN
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/user', [UserController::class, 'admin'])->name('admin.user');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/ranking', [RankingController::class, 'index'])->name('admin.rankng');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/degree', [AdminController::class, 'degreePayment'])->name('admin.degree');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/career', [AdminController::class, 'careerPayment'])->name('admin.career');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/course', [AdminController::class, 'coursePayment'])->name('admin.course');
 });
 
-Route::get('/user', function () {
-    return view('admin.userlist');
-});
-Route::get('/typography', function () {
-    return view('admin.typography');
-});
-Route::get('/category', function () {
-    return view('admin.category');
-});
-Route::get('/course-data', function () {
-    return view('admin.course');
-});
+// UTBK Routes
+Route::get('/utbk', [UtbkController::class, 'index'])->name('utbk.index');
+Route::get('/materi/{sub_kategori}', [UtbkController::class, 'show'])->name('materi.detail');
+Route::post('/utbk/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('utbk.submit');
 
-Route::get('/user', [UserController::class, 'index']);
-Route::get('/course-data', [CourseController::class, 'admin']);
-
+// Alternative route jika menggunakan nama lain
+Route::get('/topic-detail', [UtbkController::class, 'index'])->name('topic.detail');
 
 Route::get('/learning-page/{type}/{id}', [App\Http\Controllers\LearningPageController::class, 'show'])
     ->name('learning.page')
@@ -97,6 +117,8 @@ Route::get('/career/{id}', [CareerController::class, 'show'])->name('career.deta
 //certificate
 Route::get('/certificate-detail', [CourseController::class, 'index'])->name('certificate.detail');
 Route::get('/certificate-detail/{id}', [CourseController::class, 'show'])->name('certificate.detail.show');
+// Halaman checkout
+Route::get('/course/{id}/checkout', [CourseController::class, 'checkout'])->name('course.checkout');
 
 // COURSES ROUTES - FIXED
 // Main courses page using SelectedCourseController (contains $recentCourses)
@@ -170,7 +192,7 @@ Route::get('/utbk', [UtbkController::class, 'index'])->name('utbk.index');
 
 // Alternative route jika menggunakan nama lain
 // Route::get('/topic-detail', [UtbkController::class, 'index'])->name('topic.detail');
- 
+
 // SECTION 2
 Route::get('/info-kampus', function () {
     return view('section2.info_kampus');

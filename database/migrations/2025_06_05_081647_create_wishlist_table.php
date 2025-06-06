@@ -8,12 +8,12 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('jawaban_utbk', function (Blueprint $table) {
+        Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('soal_id');
-            $table->text('jawaban');
+            $table->unsignedBigInteger('user_id');
+            $table->morphs('wishlistable');
             $table->timestamps();
         });
     }
@@ -23,6 +23,7 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('jawaban_utbk');
+        Schema::dropIfExists('wishlists');
     }
+
 };
