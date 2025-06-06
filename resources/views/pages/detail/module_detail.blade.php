@@ -7,7 +7,9 @@
 
     <meta name="description" content="Online Degree Programs Listing Page">
     <meta name="author" content="">
+    
 
+       <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Online Degree Programs</title>
 
     <!-- CSS FILES -->
@@ -21,6 +23,42 @@
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/degree-programs.css') }}" rel="stylesheet">
 </head>
+    <style>
+        .bookmark-btn {
+            transition: all 0.3s ease !important;
+        }
+        .bookmark-btn:hover {
+            background: #17A2B8 !important;
+            transform: scale(1.05);
+        }
+        .bookmark-btn:hover .bookmark-icon {
+            color: white !important;
+        }
+        .bookmark-btn.bookmarked {
+            background: #17A2B8 !important;
+        }
+        .bookmark-btn.bookmarked .bookmark-icon {
+            color: white !important;
+        }
+        .bookmark-container {
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        .card:hover .bookmark-container {
+            opacity: 1;
+        }
+        .bookmark-btn:focus {
+            outline: none !important;
+            box-shadow: -2px -2px 8px rgba(23, 162, 184, 0.4) !important;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+    </style>
 
 <body id="top">
     <main>
@@ -258,27 +296,244 @@
                     });
                 </script>
 
-             <div class="row g-4 content-section">
-    @foreach($universities as $university)
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card shadow h-100">
-                <a href="{{ route('module.show', $university->id) }}" class="text-decoration-none text-dark">
-                    <img src="{{ $university->image_path ?? '/images/default.jpg' }}"
-                         onerror="this.onerror=null;this.src='/images/default.jpg';" 
-                         class="card-img-top p-3"
-                         style="height: 100px; object-fit: contain;" 
-                         alt="{{ $university->name }}">
 
-                    <div class="card-body">
-                        <p class="text-muted small">{{ $university->name }}</p>
-                        <h5 class="card-title">{{ $university->degree }}</h5>
-                        <p class="small text-muted">{{ $university->ranking }}</p>
-                        <p class="small text-danger">{{ $university->application_deadline }}</p>
-                    </div>
-                </a>
+
+<div class="row g-4 content-section">
+ @foreach($universities as $university)
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+        <div class="card shadow h-100 position-relative">
+            <!-- Bookmark Button -->
+            <div class="bookmark-container position-absolute" style="bottom: 8px; left: 8px; z-index: 100;">
+                <button class="btn p-0 bookmark-btn {{ in_array($university->id, $wishlistIds) ? 'bookmarked' : '' }}" 
+                        onclick="toggleBookmark(event, {{ $university->id }}, this, 'university')"
+                        style="background: #20B2AA; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                    <span class="bookmark-icon" style="font-size: 14px; color: white; transition: all 0.3s ease;">
+                        {{ in_array($university->id, $wishlistIds) ? '♥' : '♡' }}
+                    </span>
+                </button>
             </div>
+            <a href="{{ route('module.show', $university->id) }}" class="text-decoration-none text-dark">
+                <img src="{{ $university->image_path ?? '/images/default.jpg' }}"
+                     onerror="this.onerror=null;this.src='/images/default.jpg';" 
+                     class="card-img-top p-3"
+                     style="height: 100px; object-fit: contain;" 
+                     alt="{{ $university->name }}">
+                <div class="card-body">
+                    <p class="text-muted small">{{ $university->name }}</p>
+                    <h5 class="card-title">{{ $university->degree }}</h5>
+                    <p class="small text-muted">{{ $university->ranking }}</p>
+                    <p class="small text-danger">{{ $university->application_deadline }}</p>
+                </div>
+            </a>
         </div>
-    @endforeach
+    </div>
+@endforeach
+
+<!-- Fixed JavaScript -->
+<script>
+function toggleBookmark(event, itemId, button, itemType) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    // Check authentication
+    const isAuthenticated = {{ auth()->check() ? 'true' : 'false' }};
+    if (!isAuthenticated) {
+        window.location.href = "{{ route('login') }}";
+        return;
+    }
+
+    const icon = button.querySelector('.bookmark-icon');
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+    
+    // Check if CSRF token exists
+    if (!csrfToken) {
+        console.error('CSRF token not found. Make sure you have @csrf or meta tag in your layout.');
+        showUniversityToast('Security token missing. Please refresh the page.', 'error');
+        return;
+    }
+
+    // Visual feedback while processing
+    const originalText = icon.innerHTML;
+    const isCurrentlyBookmarked = button.classList.contains('bookmarked');
+    
+    button.disabled = true;
+    icon.style.opacity = '0.5';
+    button.style.transform = 'scale(0.95)';
+
+    console.log('Toggling university bookmark for:', {
+        itemId: itemId,
+        itemType: itemType,
+        currentlyBookmarked: isCurrentlyBookmarked
+    });
+
+    fetch("{{ route('wishlist.toggle') }}", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({ 
+            item_id: itemId,
+            item_type: itemType
+        })
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+            return response.text().then(text => {
+                console.error('Error response:', text);
+                throw new Error(`HTTP ${response.status}: ${text}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data);
+        
+        if (data.status === 'added') {
+            button.classList.add('bookmarked');
+            icon.innerHTML = '♥';
+            console.log('University added to wishlist');
+            showUniversityToast('University added to wishlist!', 'success');
+            
+        } else if (data.status === 'removed') {
+            button.classList.remove('bookmarked');
+            icon.innerHTML = '♡';
+            console.log('University removed from wishlist');
+            showUniversityToast('University removed from wishlist!', 'info');
+        }
+
+        // Animation feedback
+        icon.style.transform = 'scale(1.3)';
+        button.style.transform = 'scale(1.1)';
+        
+        setTimeout(() => {
+            icon.style.transform = 'scale(1)';
+            button.style.transform = 'scale(1)';
+            icon.style.opacity = '1';
+        }, 200);
+        
+    })
+    .catch(error => {
+        console.error('Error details:', error);
+        
+        // Revert to original state
+        if (isCurrentlyBookmarked) {
+            button.classList.add('bookmarked');
+            icon.innerHTML = '♥';
+        } else {
+            button.classList.remove('bookmarked');
+            icon.innerHTML = '♡';
+        }
+        
+        // Show user-friendly error
+        showUniversityToast('Failed to update wishlist. Please try again.', 'error');
+        
+        // Reset visual state
+        icon.style.opacity = '1';
+        button.style.transform = 'scale(1)';
+    })
+    .finally(() => {
+        button.disabled = false;
+    });
+}
+
+// Toast notification function for universities
+function showUniversityToast(message, type = 'info') {
+    // Remove existing toasts
+    const existingToasts = document.querySelectorAll('.university-toast');
+    existingToasts.forEach(toast => toast.remove());
+    
+    const toast = document.createElement('div');
+    toast.className = `alert alert-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} position-fixed university-toast`;
+    toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px; animation: slideInRight 0.3s ease;';
+    toast.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="bi bi-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
+            <span>${message}</span>
+            <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Auto remove after 4 seconds
+    setTimeout(() => {
+        if (toast.parentElement) {
+            toast.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => toast.remove(), 300);
+        }
+    }, 4000);
+}
+</script>
+
+<!-- CSS untuk University Cards -->
+<style>
+.bookmark-btn {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.bookmark-btn:hover {
+    transform: scale(1.1);
+    background: #1a9999 !important;
+}
+
+.bookmark-btn.bookmarked {
+    background: #dc3545 !important;
+}
+
+.bookmark-btn.bookmarked:hover {
+    background: #c82333 !important;
+}
+
+/* Toast animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 15px;
+    }
+    
+    .card-title {
+        font-size: 16px;
+    }
+    
+    .bookmark-btn {
+        width: 35px;
+        height: 30px;
+    }
+    
+    .bookmark-icon {
+        font-size: 14px !important;
+    }
+}
+</style>
+
 
     <!-- Pagination Section -->
     <div class="col-12">

@@ -19,6 +19,24 @@ class Course extends Model
         'kategori'
     ];
 
+    // Accessor untuk konsistensi nama
+    public function getTitleAttribute()
+    {
+        return $this->name;
+    }
+
+    // Accessor untuk konsistensi durasi
+    public function getDurationAttribute()
+    {
+        return $this->duration_r ? $this->duration_r . ' hours' : null;
+    }
+
+    // Accessor untuk price (jika diperlukan)
+    public function getPriceAttribute()
+    {
+        return $this->attributes['price'] ?? 0;
+    }
+
     public function getTypeAttribute()
     {
         return $this->kategori ?? 'Program';
@@ -49,8 +67,13 @@ class Course extends Model
         return $this->duration_r . ' Hours';
     }
 
-     public function checkouts()
+    public function checkouts()
     {
         return $this->hasMany(Checkout::class);
+    }
+
+    public function wishlists()
+    {
+        return $this->morphMany(Wishlist::class, 'wishlistable');
     }
 }

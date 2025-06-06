@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Course Detail Page">
     <meta name="author" content="">
+    
     <title>{{ $course->name }} - Course Details</title>
 
     <!-- CSS FILES -->

@@ -624,7 +624,7 @@
                 <div class="left-section">
                     <h2 class="page-title">My Learning Journey</h2>
                     
-                    @if($checkouts->count() > 0)
+                   @if($checkouts->count() > 0)
                         <div class="course-list">
                             @foreach ($checkouts as $checkout)
                                 @php 
@@ -633,63 +633,78 @@
                                 @endphp
                                 
                                 @if ($item)
-                                    <div class="course-card" data-type="{{ $checkout->item_type }}">
-                                        <!-- Item Image -->
-                                        <img src="{{ $itemDetails['image'] ?? '/default-image.jpg' }}" 
-                                             class="course-image" 
-                                             alt="{{ $itemDetails['name'] }}">
-                                        
-                                        <div class="course-content">
-                                            <!-- Item Title -->
-                                            <h5 class="course-title">{{ $itemDetails['name'] }}</h5>
+                                    <!-- Make the entire card clickable -->
+                                    <a href="{{ route('learning.page', ['type' => $checkout->item_type, 'id' => $checkout->item_id]) }}" 
+                                       class="text-decoration-none">
+                                        <div class="course-card" data-type="{{ $checkout->item_type }}">
+                                            <!-- Item Image -->
+                                            <img src="{{ $itemDetails['image'] ?? '/default-image.jpg' }}" 
+                                                 class="course-image" 
+                                                 alt="{{ $itemDetails['name'] }}">
                                             
-                                            <!-- Item Type Badge -->
-                                            <span class="item-type-badge badge-{{ $checkout->item_type }}">
-                                                @switch($checkout->item_type)
-                                                    @case('course')
-                                                        <i class="bi bi-play-circle"></i> Course
-                                                        @break
-                                                    @case('career')
-                                                        <i class="bi bi-briefcase"></i> Career
-                                                        @break
-                                                    @case('module')
-                                                        <i class="bi bi-mortarboard"></i> Module
-                                                        @break
-                                                @endswitch
-                                            </span>
-                                            
-                                            <!-- Essential Meta Information Only -->
-                                            <div class="course-meta">
-                                                @if($checkout->item_type === 'course')
-                                                    @if(isset($item->formatted_duration))
-                                                        <span><i class="bi bi-clock"></i> {{ $item->formatted_duration }}</span>
-                                                    @endif
-                                                    @if(isset($item->rating))
-                                                        <span><i class="bi bi-star-fill"></i> {{ $item->rating }}</span>
-                                                    @endif
-                                                @elseif($checkout->item_type === 'career')
-                                                    @if(isset($item->jobs_available))
-                                                        <span><i class="bi bi-briefcase"></i> {{ $item->jobs_available }} Jobs</span>
-                                                    @endif
-                                                @elseif($checkout->item_type === 'module')
-                                                    @if(isset($item->degree))
-                                                        <span><i class="bi bi-mortarboard"></i> {{ $item->degree }}</span>
-                                                    @endif
-                                                @endif
+                                            <div class="course-content">
+                                                <!-- Item Title -->
+                                                <h5 class="course-title">{{ $itemDetails['name'] }}</h5>
                                                 
-                                                <!-- Payment Amount -->
-                                                <span class="payment-amount">
-                                                    <i class="bi bi-credit-card"></i> 
-                                                    Rp {{ number_format($checkout->payment_amount, 0, ',', '.') }}
+                                                <!-- Item Type Badge -->
+                                                <span class="item-type-badge badge-{{ $checkout->item_type }}">
+                                                    @switch($checkout->item_type)
+                                                        @case('course')
+                                                            <i class="bi bi-play-circle"></i> Course
+                                                            @break
+                                                        @case('career')
+                                                            <i class="bi bi-briefcase"></i> Career
+                                                            @break
+                                                        @case('module')
+                                                            <i class="bi bi-mortarboard"></i> Module
+                                                            @break
+                                                    @endswitch
                                                 </span>
                                                 
-                                                <!-- Status -->
-                                                <span class="status-badge status-{{ $checkout->status }}">
-                                                    {{ ucfirst($checkout->status) }}
-                                                </span>
+                                                <!-- Essential Meta Information Only -->
+                                                <div class="course-meta">
+                                                    @if($checkout->item_type === 'course')
+                                                        @if(isset($item->formatted_duration))
+                                                            <span><i class="bi bi-clock"></i> {{ $item->formatted_duration }}</span>
+                                                        @endif
+                                                        @if(isset($item->rating))
+                                                            <span><i class="bi bi-star-fill"></i> {{ $item->rating }}</span>
+                                                        @endif
+                                                    @elseif($checkout->item_type === 'career')
+                                                        @if(isset($item->jobs_available))
+                                                            <span><i class="bi bi-briefcase"></i> {{ $item->jobs_available }} Jobs</span>
+                                                        @endif
+                                                    @elseif($checkout->item_type === 'module')
+                                                        @if(isset($item->degree))
+                                                            <span><i class="bi bi-mortarboard"></i> {{ $item->degree }}</span>
+                                                        @endif
+                                                    @endif
+                                                    
+                                                    <!-- Payment Amount -->
+                                                    <span class="payment-amount">
+                                                        <i class="bi bi-credit-card"></i> 
+                                                        Rp {{ number_format($checkout->payment_amount, 0, ',', '.') }}
+                                                    </span>
+                                                    
+                                                    <!-- Status -->
+                                                    <span class="status-badge status-{{ $checkout->status }}">
+                                                        {{ ucfirst($checkout->status) }}
+                                                    </span>
+                                                    
+                                                    <!-- Access Indicator -->
+                                                    @if($checkout->status === 'completed')
+                                                        <span class="text-success">
+                                                            <i class="bi bi-check-circle"></i> Access Available
+                                                        </span>
+                                                    @else
+                                                        <span class="text-warning">
+                                                            <i class="bi bi-lock"></i> Pending Access
+                                                        </span>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 @else
                                     <!-- Fallback untuk item yang tidak ditemukan -->
                                     <div class="course-card error-card">
@@ -711,6 +726,8 @@
                             @endforeach
                         </div>
                     @else
+
+                    
                         <div class="no-courses">
                             <i class="bi bi-mortarboard"></i>
                             <h4>Mulai Perjalanan Belajarmu!</h4>

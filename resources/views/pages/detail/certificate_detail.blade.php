@@ -7,6 +7,7 @@
 
     <meta name="description" content="Online Degree Programs Listing Page">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Online Degree Programs</title>
 
@@ -895,35 +896,62 @@
                         <option>Sort by: Rating</option>
                     </select>
                 </div>
-
 <div class="course-grid">
-    @foreach($courses as $course)
-            <a href="{{ route('certificate.detail.show', $course->id) }}" style="text-decoration: none; color: inherit;">
-        <div class="course-card">
+@foreach($courses as $course)
+    <div class="course-card position-relative">
+
+        <!-- Wishlist Button - Dipindah ke kiri bawah -->
+        <div class="position-absolute" style="bottom: 8px; left: 8px; z-index: 100;">
+            <button class="btn p-0 bookmark-btn {{ in_array($course->id, $wishlistIds) ? 'bookmarked' : '' }}" 
+                    onclick="toggleBookmark(event, {{ $course->id }}, this, 'course')"
+                    style="background: #20B2AA; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <span class="bookmark-icon" style="font-size: 14px; color: white; transition: all 0.3s ease;">
+                    {{ in_array($course->id, $wishlistIds) ? '♥' : '♡' }}
+                </span>
+            </button>
+        </div>
+
+        <a href="{{ route('certificate.detail.show', $course->id) }}" style="text-decoration: none; color: inherit;">
             <div class="ai-badge">
                 <i class="bi bi-award"></i>
                 {{ ucfirst($course->type ?? 'Program') }}
             </div>
 
-            <div class="course-image" style="background: linear-gradient(45deg, #20b2aa, #48d1cc); background-image: url('{{ $course->image }}'); background-size: cover; background-position: center;"></div>
+            <div class="course-image" 
+                 style="background: linear-gradient(45deg, #20b2aa, #48d1cc); 
+                        background-image: url('{{ $course->image ?? '/images/default-course.jpg' }}'); 
+                        background-size: cover; 
+                        background-position: center;
+                        height: 200px;
+                        border-radius: 8px 8px 0 0;"></div>
 
             <div class="course-content">
                 <div class="provider-info">
-                    <div class="provider-logo" style="background-image: url('{{ $course->institution_logo }}'); background-size: cover; background-position: center; width: 40px; height: 40px;"></div>
-                    <span class="provider-name">{{ $course->institution }}</span>
+                    <div class="provider-logo" 
+                         style="background-image: url('{{ $course->institution_logo ?? '/images/default-institution.png' }}'); 
+                                background-size: cover; 
+                                background-position: center; 
+                                width: 40px; 
+                                height: 40px;
+                                border-radius: 4px;
+                                border: 2px solid #e0e0e0;">
+                    </div>
+                    <span class="provider-name">{{ $course->institution ?? 'Institution' }}</span>
                 </div>
 
-                <h3 class="course-title">{{ $course->name }}</h3>
+                <h3 class="course-title">{{ $course->name ?? 'Course Title' }}</h3>
 
-                <div class="course-skills">
-                    <strong>Skills you'll gain:</strong> 
-                    <span class="description-text" id="desc-{{ $loop->index }}" data-full-text="{{ $course->description }}">
-                        {{ Str::limit($course->description, 100) }}
-                    </span>
-                    @if(strlen($course->description) > 100)
-                        <button class="show-more-btn" onclick="toggleDescription(this, {{ $loop->index }})">Show More</button>
-                    @endif
-                </div>
+                @if($course->description)
+                    <div class="course-skills">
+                        <strong>Skills you'll gain:</strong> 
+                        <span class="description-text" id="desc-{{ $course->id }}" data-full-text="{{ $course->description }}">
+                            {{ Str::limit($course->description, 100) }}
+                        </span>
+                        @if(strlen($course->description) > 100)
+                            <button class="show-more-btn" onclick="toggleDescription(this, {{ $course->id }})">Show More</button>
+                        @endif
+                    </div>
+                @endif
 
                 <div class="course-meta">
                     <div class="meta-item">
@@ -935,12 +963,285 @@
                         <span class="reviews">{{ $course->review_count ?? '1.5K' }} reviews</span>
                     </div>
                     <div class="meta-item">
-                        <span class="course-level">{{ $course->level ?? 'Beginner' }} · {{ $course->program_level ?? 'Bachelor\'s Degree' }} · {{ $course->duration_r }}</span>
+                        <span class="course-level">
+                            {{ $course->level ?? 'Beginner' }} · 
+                            {{ $course->program_level ?? "Bachelor's Degree" }} · 
+                            {{ $course->duration_r ? $course->duration_r . ' Hours' : 'Self-paced' }}
+                        </span>
                     </div>
                 </div>
             </div>
+        </a>
+    </div>
+@endforeach
+
+<!-- JavaScript untuk Course Wishlist dan Description Toggle -->
+<script>
+function toggleBookmark(event, itemId, button, itemType) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    // Check authentication
+    const isAuthenticated = {{ auth()->check() ? 'true' : 'false' }};
+    if (!isAuthenticated) {
+        window.location.href = "{{ route('login') }}";
+        return;
+    }
+
+    const icon = button.querySelector('.bookmark-icon');
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+    
+    // Check if CSRF token exists
+    if (!csrfToken) {
+        console.error('CSRF token not found. Make sure you have @csrf or meta tag in your layout.');
+        showCourseToast('Security token missing. Please refresh the page.', 'error');
+        return;
+    }
+
+    // Visual feedback while processing
+    const originalText = icon.innerHTML;
+    const isCurrentlyBookmarked = button.classList.contains('bookmarked');
+    
+    button.disabled = true;
+    icon.style.opacity = '0.5';
+    button.style.transform = 'scale(0.95)';
+
+    console.log('Toggling course bookmark for:', {
+        itemId: itemId,
+        itemType: itemType,
+        currentlyBookmarked: isCurrentlyBookmarked
+    });
+
+    fetch("{{ route('wishlist.toggle') }}", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({ 
+            item_id: itemId,
+            item_type: itemType
+        })
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+            return response.text().then(text => {
+                console.error('Error response:', text);
+                throw new Error(`HTTP ${response.status}: ${text}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data);
+        
+        if (data.status === 'added') {
+            button.classList.add('bookmarked');
+            icon.innerHTML = '♥';
+            console.log('Course added to wishlist');
+            showCourseToast('Course added to wishlist!', 'success');
+            
+        } else if (data.status === 'removed') {
+            button.classList.remove('bookmarked');
+            icon.innerHTML = '♡';
+            console.log('Course removed from wishlist');
+            showCourseToast('Course removed from wishlist!', 'info');
+        }
+
+        // Animation feedback
+        icon.style.transform = 'scale(1.3)';
+        button.style.transform = 'scale(1.1)';
+        
+        setTimeout(() => {
+            icon.style.transform = 'scale(1)';
+            button.style.transform = 'scale(1)';
+            icon.style.opacity = '1';
+        }, 200);
+        
+    })
+    .catch(error => {
+        console.error('Error details:', error);
+        
+        // Revert to original state
+        if (isCurrentlyBookmarked) {
+            button.classList.add('bookmarked');
+            icon.innerHTML = '♥';
+        } else {
+            button.classList.remove('bookmarked');
+            icon.innerHTML = '♡';
+        }
+        
+        // Show user-friendly error
+        showCourseToast('Failed to update wishlist. Please try again.', 'error');
+        
+        // Reset visual state
+        icon.style.opacity = '1';
+        button.style.transform = 'scale(1)';
+    })
+    .finally(() => {
+        button.disabled = false;
+    });
+}
+
+// Function to toggle description
+function toggleDescription(button, courseId) {
+    const descElement = document.getElementById(`desc-${courseId}`);
+    const fullText = descElement.getAttribute('data-full-text');
+    const isExpanded = button.textContent === 'Show Less';
+    
+    if (isExpanded) {
+        descElement.innerHTML = fullText.substring(0, 100) + '...';
+        button.textContent = 'Show More';
+    } else {
+        descElement.innerHTML = fullText;
+        button.textContent = 'Show Less';
+    }
+}
+
+// Toast notification function for courses
+function showCourseToast(message, type = 'info') {
+    // Remove existing toasts
+    const existingToasts = document.querySelectorAll('.course-toast');
+    existingToasts.forEach(toast => toast.remove());
+    
+    const toast = document.createElement('div');
+    toast.className = `alert alert-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} position-fixed course-toast`;
+    toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px; animation: slideInRight 0.3s ease;';
+    toast.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="bi bi-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
+            <span>${message}</span>
+            <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
         </div>
-    @endforeach
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Auto remove after 4 seconds
+    setTimeout(() => {
+        if (toast.parentElement) {
+            toast.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => toast.remove(), 300);
+        }
+    }, 4000);
+}
+</script>
+
+<!-- CSS untuk Course Cards -->
+<style>
+.course-card .bookmark-btn {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.course-card .bookmark-btn:hover {
+    transform: scale(1.1);
+    background: #1a9999 !important;
+}
+
+.course-card .bookmark-btn.bookmarked {
+    background: #dc3545 !important;
+}
+
+.course-card .bookmark-btn.bookmarked:hover {
+    background: #c82333 !important;
+}
+
+.show-more-btn {
+    background: none;
+    border: none;
+    color: #20b2aa;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 5px;
+    text-decoration: underline;
+}
+
+.show-more-btn:hover {
+    color: #1a9999;
+}
+
+.course-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.meta-item i {
+    color: #20b2aa;
+}
+
+.rating {
+    color: #ffa500;
+    font-weight: 600;
+}
+
+.reviews {
+    color: #999;
+}
+
+.course-level {
+    font-weight: 500;
+}
+
+/* Toast animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .course-content {
+        padding: 15px;
+    }
+    
+    .course-title {
+        font-size: 16px;
+    }
+    
+    .course-meta {
+        font-size: 12px;
+    }
+    
+    .ai-badge {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+}
+</style>
+
+
 </div>
 
 
