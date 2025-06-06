@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="dashboard-header mb-4">
-        <h1 class="fw-bold">Halaman Dashboard</h1>
+        <h1 class="fw-bold">Dashboard</h1>
         <p class="text-muted">Hai <strong>Admin</strong>, selamat datang di aplikasi Bridge!</p>
     </div>
 

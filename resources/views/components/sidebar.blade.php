@@ -15,24 +15,25 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/user" class="nav-link text-white">
+        <a href="/users" class="nav-link text-white">
           <i class="fas fa-users me-2"></i> User List
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/ranking" class="nav-link text-white">
-          <i class="fas fa-trophy me-2"></i> Ranking
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/category" class="nav-link text-white">
-          <i class="fas fa-tags me-2"></i> Category
         </a>
       </li>
       <li class="nav-item">
         <div class="dropdown">
           <a class="nav-link text-white dropdown-toggle" href="#" id="purchaseDropdown" data-bs-toggle="dropdown">
-            <i class="fas fa-shopping-cart me-2"></i> Purchase
+            <i class="fas fa-chart-bar me-2"></i> Charts
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="/ranking-chart"><i class="fas fa-ranking-star me-2"></i> Ranking</a></li>
+            <li><a class="dropdown-item" href="/product-chart"><i class="fas fa-briefcase me-2"></i> Product</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+          <a class="nav-link text-white dropdown-toggle" href="#" id="purchaseDropdown" data-bs-toggle="dropdown">
+            <i class="fas fa-shopping-cart me-2"></i> Purchases
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="/degree"><i class="fas fa-graduation-cap me-2"></i> Degree</a></li>

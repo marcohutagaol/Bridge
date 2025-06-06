@@ -3,7 +3,7 @@
 @section('content')
     <div class="user-list-container">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="fw-bold m-0">Daftar User</h1>
+            <h1 class="fw-bold m-0">User List</h1>
             <div class="search-box">
                 <div class="input-group">
                     <span class="input-group-text bg-white border-end-0">
