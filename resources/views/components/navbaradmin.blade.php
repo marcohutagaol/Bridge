@@ -16,13 +16,14 @@
             </div>
 
             <div class="dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="adminDropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="adminDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="avatar-small me-2">
                         <i class="fas fa-user text-white"></i>
                     </div>
                     <span class="text-white">{{ Auth::user()->name }}</span>
                 </a>
-                <ul class="dropdown-menu glass-effect border-0">
+                <ul class="dropdown-menu dropdown-menu-end glass-effect border-0" aria-labelledby="adminDropdown">
                     <li>
                         <a class="dropdown-item text-white" href="/profil">
                             <i class="fas fa-user-circle me-2"></i> Profile
