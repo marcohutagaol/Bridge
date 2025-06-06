@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyLearningController;
 use App\Http\Controllers\CheckoutController;
@@ -20,7 +21,7 @@ use App\Http\Controllers\MateriController;
 
 use App\Http\Controllers\WishlistController;
 
- 
+
 Route::get('/', [AdminController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('index');
 Route::get('/', function () {
@@ -54,10 +55,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 });
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/user', [UserController::class, 'admin'])->name('admin.user');
+    Route::get('/users', [UserController::class, 'admin'])->name('admin.users');
 });
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/ranking', [RankingController::class, 'index'])->name('admin.rankng');
+    Route::get('/ranking-chart', [ChartController::class, 'ranking'])->name('admin.ranking_chart');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/product-chart', [ChartController::class, 'product'])->name('admin.product_chart');
 });
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/degree', [AdminController::class, 'degreePayment'])->name('admin.degree');

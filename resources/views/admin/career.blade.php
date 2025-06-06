@@ -3,7 +3,7 @@
 @section('content')
   <div class="list-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="fw-bold m-0">Daftar Career</h1>
+    <h1 class="fw-bold m-0">Career List</h1>
     <div class="dropdown">
       <button class="btn btn-outline-primary dropdown-toggle" type="button" id="levelDropdown" data-bs-toggle="dropdown"
       aria-expanded="false">

@@ -16,26 +16,16 @@
             </div>
 
             <div class="dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="adminDropdown" role="button"
+                <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="avatar-small me-2">
-                        <i class="fas fa-user text-white"></i>
-                    </div>
-                    <span class="text-white">{{ Auth::user()->name }}</span>
+                    {{ Auth::user()->name }}
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end glass-effect border-0" aria-labelledby="adminDropdown">
-                    <li>
-                        <a class="dropdown-item text-white" href="/profil">
-                            <i class="fas fa-user-circle me-2"></i> Profile
-                        </a>
-                    </li>
-                    <li>
-                        <form method="POST" action="/logout">
-                            @csrf
-                            <button type="submit" class="dropdown-item text-white">
-                                <i class="fas fa-sign-out-alt me-2"></i> Logout
-                            </button>
-                        </form>
+
+                <ul class="dropdown-menu">
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button type="submit" class="dropdown-item">Logout</button>
+                    </form>
                     </li>
                 </ul>
             </div>
