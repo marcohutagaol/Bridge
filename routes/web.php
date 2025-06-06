@@ -15,6 +15,10 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MateriController;
 
+
+use App\Http\Controllers\WishlistController;
+
+ 
 Route::get('/', [AdminController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('index');
 
@@ -28,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 // ADMIN
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -51,7 +57,30 @@ Route::get('/user', [UserController::class, 'index']);
 Route::get('/course-data', [CourseController::class, 'admin']);
 
 
-//online deggre
+Route::get('/learning-page/{type}/{id}', [App\Http\Controllers\LearningPageController::class, 'show'])
+    ->name('learning.page')
+    ->where(['type' => 'course|career|module', 'id' => '[0-9]+']);
+
+
+// Wishlist routes (require authentication)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+    Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
+    Route::post('/wishlist/check', [WishlistController::class, 'check'])->name('wishlist.check');
+    Route::get('/wishlist/count', [WishlistController::class, 'count'])->name('wishlist.count');
+    Route::delete('/wishlist/remove', [WishlistController::class, 'remove'])->name('wishlist.remove');
+
+});
+
+
+
+//learning page 
+
+Route::get('/learning-page', function () {
+    return view('pages.detail.learningpage.course_learningpage');
+});
+
+//online degree
 Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
 Route::get('/module', [UniversityController::class, 'index'])->name('module.detail');
 Route::get('/module/{id}', [UniversityController::class, 'show'])->name('module.show');
@@ -61,54 +90,53 @@ Route::get('/program/master', [UniversityController::class, 'master'])->name('un
 Route::get('/program/all', [UniversityController::class, 'all'])->name('universities.all');
 Route::get('/program/postgraduate', [UniversityController::class, 'postgraduate'])->name('universities.postgraduate');
 
-//carrer
+//career
 Route::get('/exam', [CareerController::class, 'showCareers'])->name('careers');
 Route::get('/career/{id}', [CareerController::class, 'show'])->name('career.detail');
-//certifikat
 
+//certificate
 Route::get('/certificate-detail', [CourseController::class, 'index'])->name('certificate.detail');
 Route::get('/certificate-detail/{id}', [CourseController::class, 'show'])->name('certificate.detail.show');
-     // Halaman checkout
-Route::get('/course/{id}/checkout', [CourseController::class, 'checkout'])->name('course.checkout');
 
-// Proses checkout
-Route::get('/course/{id}/checkout', [CheckoutController::class, 'showCourseCheckout'])
-    ->name('course.checkout')
-    ->middleware('auth');
+// COURSES ROUTES - FIXED
+// Main courses page using SelectedCourseController (contains $recentCourses)
+Route::get('/courses', [SelectedCourseController::class, 'index'])->name('courses.index');
 
-// Route untuk checkout careers
-Route::get('/career/{id}/checkout', [CheckoutController::class, 'showCareerCheckout'])
-    ->name('career.checkout')
-    ->middleware('auth');
+// Individual course detail (if needed)
+Route::get('/courses/{id}', [SelectedCourseController::class, 'show'])->name('courses.show');
 
-// Routes untuk checkout - Method baru (recommended)
+// CHECKOUT ROUTES - CLEANED UP
+// Main checkout routes (recommended method)
 Route::get('/{itemType}/{itemId}/checkout', [CheckoutController::class, 'show'])
     ->where(['itemType' => 'course|career|module', 'itemId' => '[0-9]+'])
     ->name('checkout.show');
 
-// Routes untuk backward compatibility - Method lama
+// Specific checkout routes for backward compatibility
 Route::get('/course/{courseId}/checkout', [CheckoutController::class, 'showCourseCheckout'])
     ->where('courseId', '[0-9]+')
-    ->name('course.checkout');
+    ->name('course.checkout')
+    ->middleware('auth');
 
 Route::get('/career/{careerId}/checkout', [CheckoutController::class, 'showCareerCheckout'])
     ->where('careerId', '[0-9]+')
-    ->name('career.checkout');
+    ->name('career.checkout')
+    ->middleware('auth');
 
 Route::get('/module/{moduleId}/checkout', [CheckoutController::class, 'showModuleCheckout'])
     ->where('moduleId', '[0-9]+')
-    ->name('module.checkout');
+    ->name('module.checkout')
+    ->middleware('auth');
+
+// Checkout processing routes
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('/checkout/success/{checkoutId}', [CheckoutController::class, 'success'])->name('checkout.success');
 Route::get('/checkout/history', [CheckoutController::class, 'index'])->name('checkout.index');
-Route::get('/my-learning', [MyLearningController::class, 'index'])->name('mylearning');
+Route::get('/my-learning', [MyLearningController::class, 'index'])->name('my.learning');
 
 //kursus
 Route::get('/next', function () {
     return view('pages.detail.nextkursus.learning_goals');
 });
-
-
 
 
 Route::get('/message', function () {
@@ -134,11 +162,6 @@ Route::get('/topic-detail', [UtbkController::class, 'index']);
 Route::get('/materi/{sub_kategori}', [MateriController::class, 'show'])->name('materi.detail');
 
 Route::post('/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('jawaban.submit');
-
-// MASUK SECTION 1
-Route::get('/courses', function () {
-    return view('pages.detail.courses_detail');
-});
 
 // UTBK Routes
 Route::get('/utbk', [UtbkController::class, 'index'])->name('utbk.index');

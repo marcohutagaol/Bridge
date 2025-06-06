@@ -20,5 +20,21 @@ class Career extends Model
         'credential_logo',
         'kategoris',
     ];
-}
 
+    // Accessor untuk konsistensi nama
+    public function getTitleAttribute()
+    {
+        return $this->name;
+    }
+
+    // Accessor untuk salary range
+    public function getSalaryRangeAttribute()
+    {
+        return $this->median_salary;
+    }
+
+    public function wishlists()
+    {
+        return $this->morphMany(Wishlist::class, 'wishlistable');
+    }
+}

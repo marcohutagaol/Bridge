@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\University;
 use App\Models\Subject;
-use Carbon\Carbon;
+use App\Models\Wishlist;
 
 class UniversityController extends Controller
 {
@@ -32,13 +32,19 @@ class UniversityController extends Controller
         $featuredUniversitiesRow4 = University::where('row', 4)->orderBy('ranking')->take(3)->get();
         $featuredUniversitiesRow5 = University::where('row', 5)->orderBy('ranking')->take(3)->get();
 
+        $wishlistIds = [];
+        if (auth()->check()) {
+            $wishlistIds = auth()->user()->wishlistedItems('university');
+        }
+
         return view('pages.detail.module_detail', compact(
             'universities',
             'featuredUniversitiesRow1',
             'featuredUniversitiesRow2',
             'featuredUniversitiesRow3',
             'featuredUniversitiesRow4',
-            'featuredUniversitiesRow5'
+            'featuredUniversitiesRow5',
+            'wishlistIds'
         ));
     }
 
@@ -53,6 +59,10 @@ class UniversityController extends Controller
         $featuredUniversitiesRow3 = University::where('row', 3)->orderBy('ranking')->take(3)->get();
         $featuredUniversitiesRow4 = University::where('row', 4)->orderBy('ranking')->take(3)->get();
         $featuredUniversitiesRow5 = University::where('row', 5)->orderBy('ranking')->take(3)->get();
+        $wishlistIds = [];
+        if (auth()->check()) {
+            $wishlistIds = auth()->user()->wishlistedItems('university');
+        }
 
         return view('pages.detail.filterby.bachelor', compact(
             'universities',
@@ -60,7 +70,8 @@ class UniversityController extends Controller
             'featuredUniversitiesRow2',
             'featuredUniversitiesRow3',
             'featuredUniversitiesRow4',
-            'featuredUniversitiesRow5'
+            'featuredUniversitiesRow5',
+            'wishlistIds'
         ));
     }
 
@@ -76,13 +87,19 @@ class UniversityController extends Controller
         $featuredUniversitiesRow4 = University::where('row', 4)->orderBy('ranking')->take(3)->get();
         $featuredUniversitiesRow5 = University::where('row', 5)->orderBy('ranking')->take(3)->get();
 
+        $wishlistIds = [];
+        if (auth()->check()) {
+            $wishlistIds = auth()->user()->wishlistedItems('university');
+        }
+
         return view('pages.detail.filterby.master', compact(
             'universities',
             'featuredUniversitiesRow1',
             'featuredUniversitiesRow2',
             'featuredUniversitiesRow3',
             'featuredUniversitiesRow4',
-            'featuredUniversitiesRow5'
+            'featuredUniversitiesRow5',
+            'wishlistIds'
         ));
     }
 
@@ -98,13 +115,19 @@ class UniversityController extends Controller
         $featuredUniversitiesRow4 = University::where('row', 4)->orderBy('ranking')->take(3)->get();
         $featuredUniversitiesRow5 = University::where('row', 5)->orderBy('ranking')->take(3)->get();
 
-        return view('pages.detail.filterby.postgraduete', compact(
+        $wishlistIds = [];
+        if (auth()->check()) {
+            $wishlistIds = auth()->user()->wishlistedItems('university');
+        }
+
+        return view('pages.detail.filterby.postgraduate', compact(
             'universities',
             'featuredUniversitiesRow1',
             'featuredUniversitiesRow2',
             'featuredUniversitiesRow3',
             'featuredUniversitiesRow4',
-            'featuredUniversitiesRow5'
+            'featuredUniversitiesRow5',
+            'wishlistIds'
         ));
     }
 

@@ -44,8 +44,7 @@
                     <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                         <li><a class="dropdown-item" href="/topic-listing">Topics Listing</a></li>
                         <li><a class="dropdown-item" href="/contact">Contact Form</a></li>
-                        <li><a class="dropdown-item" href="/my-learning">My learning</a></li>
-                        <li><a class="dropdown-item" href="/message">Message</a></li>
+
                     </ul>
                 </li>
 
@@ -57,6 +56,8 @@
                     <a href="/profil" class="navbar-icon bi-person smoothscroll"></a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/profil">Profil</a></li>
+                        <li><a class="dropdown-item" href="/my-learning">My learning</a></li>
+                        <li><a class="dropdown-item" href="{{ route('wishlist.index') }}">My Wishlist</a></li>
                         <li>
                             <form method="POST" action="/logout">
                                 @csrf
@@ -65,7 +66,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </div>
     </div>

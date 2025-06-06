@@ -34,12 +34,22 @@ class CourseController extends Controller
 
         $courses = $query->get();
 
+        // Tambahkan wishlistIds
+        $wishlistIds = [];
+        if (auth()->check()) {
+            $wishlistIds = auth()->user()->wishlists()
+                ->where('wishlistable_type', Course::class)
+                ->pluck('wishlistable_id')
+                ->toArray();
+        }
+
+        // Return hasil akhir ke view
         return view('pages.detail.certificate_detail', [
             'courses' => $courses,
+            'wishlistIds' => $wishlistIds,
             'message' => $courses->isEmpty() ? 'No courses found' : null
         ]);
     }
-
 
     public function show($id)
     {
@@ -93,7 +103,6 @@ class CourseController extends Controller
             'course' => $course
         ]);
     }
-
 
     public function admin()
     {
