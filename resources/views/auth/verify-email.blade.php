@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="sign-in-form" style="max-width: 500px;">
+    <div class="sign-in-form" style="max-width: 750px;">
         <h2 class="title">{{ __('Verify Your Email') }}</h2>
 
         <div style="
@@ -32,8 +32,8 @@
             </div>
         @endif
 
-        <div style="width: 100%; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
-            <form method="POST" action="{{ route('verification.send') }}" style="width: 100%; max-width: 250px;">
+        <div style="width: 100%; display: flex; flex-direction: row; gap: 1rem; align-items: center;">
+            <form method="POST" action="{{ route('verification.send') }}" style="width: 100%; max-width: 375px;">
                 @csrf
                 <button type="submit" class="btn" style="width: 100%;">
                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
@@ -41,14 +41,14 @@
                 </button>
             </form>
 
-            <form method="POST" action="{{ route('logout') }}" style="width: 100%; max-width: 250px;">
+            <form method="POST" action="{{ route('logout') }}" style="width: 100%; max-width: 375px;">
                 @csrf
                 <button type="submit" class="btn" style="
                     width: 100%;
                     background: linear-gradient(45deg, #ef5350, #e53935);
                     transition: all 0.3s ease;">
                     <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
-                    {{ __('Log Out') }}
+                    {{ __('Later') }}
                 </button>
             </form>
         </div>

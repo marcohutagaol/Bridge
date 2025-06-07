@@ -10,6 +10,17 @@
                         <i class="fas fa-search text-muted"></i>
                     </span>
                     <input type="text" class="form-control border-start-0" placeholder="Search users...">
+
+                    <form method="GET" action="{{ route('admin.users') }}">
+                        <div class="relative">
+                            <select name="per_page" onchange="this.form.submit()" class="px-3 py-2 border rounded">
+                                <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
+                                <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
+                                <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
+                            </select>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -20,17 +31,17 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <!-- <th>ID</th> -->
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Actions</th>
+                            <!-- <th>Actions</th> -->
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($users as $index => $user)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <!-- <td>{{ $user->id }}</td> -->
+                                <td>{{ $user->id }}</td>
                                 <td>
                                     <div class="name-cell">
                                         <div class="avatar-circle">{{ strtoupper(substr($user->name, 0, 1)) }}</div>
@@ -38,16 +49,16 @@
                                     </div>
                                 </td>
                                 <td>{{ $user->email }}</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn btn-outline-info btn-sm" title="Edit">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-outline-danger btn-sm" title="Delete">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </td>
+                                <!-- <td>
+                                                    <div class="action-buttons">
+                                                        <button class="btn btn-outline-info btn-sm" title="Edit">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                        <button class="btn btn-outline-danger btn-sm" title="Delete">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td> -->
                             </tr>
                         @endforeach
                     </tbody>
