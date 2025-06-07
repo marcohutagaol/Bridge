@@ -1,14 +1,12 @@
 <?php
+use App\Http\Controllers\AdminCreateController;
+use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyLearningController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\RankingController;
-use App\Http\Controllers\UniversitasController;
 use App\Http\Controllers\SelectedCourseController;
-
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtbkController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KampusController;
@@ -54,24 +52,42 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 });
+
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/users', [UserController::class, 'admin'])->name('admin.users');
+    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
 });
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/career-list', [AdminController::class, 'careers'])->name('admin.list.career_list');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/course-list', [AdminController::class, 'courses'])->name('admin.list.course_list');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/degree-list', [AdminController::class, 'degrees'])->name('admin.list.degree_list');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/career-create', [AdminCreateController::class, 'careerList'])->name('admin.list.create.career_create');
+});
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/ranking-chart', [ChartController::class, 'ranking'])->name('admin.ranking_chart');
 });
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/product-chart', [ChartController::class, 'product'])->name('admin.product_chart');
 });
+
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/degree', [AdminController::class, 'degreePayment'])->name('admin.degree');
+    Route::get('/degree-payment', [AdminPaymentController::class, 'degreePayment'])->name('admin.payment.degree_payment');
 });
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/career', [AdminController::class, 'careerPayment'])->name('admin.career');
+    Route::get('/career-payment', [AdminPaymentController::class, 'careerPayment'])->name('admin.payment.career_payment');
 });
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/course', [AdminController::class, 'coursePayment'])->name('admin.course');
+    Route::get('/course-payment', [AdminPaymentController::class, 'coursePayment'])->name('admin.payment.course_payment');
 });
+
+
 
 // UTBK Routes
 Route::get('/utbk', [UtbkController::class, 'index'])->name('utbk.index');

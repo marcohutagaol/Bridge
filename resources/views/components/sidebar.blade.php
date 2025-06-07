@@ -22,6 +22,19 @@
       <li class="nav-item">
         <div class="dropdown">
           <a class="nav-link text-white dropdown-toggle" href="#" id="purchaseDropdown" data-bs-toggle="dropdown">
+            <i class="fas fa-briefcase me-2"></i> Product List
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="/career-list"><i class="fas fa-briefcase me-2"></i> Career</a></li>
+            <li><a class="dropdown-item" href="/course-list"><i class="fas fa-book me-2"></i> Course</a></li>
+            <li><a class="dropdown-item" href="/degree-list"><i class="fas fa-graduation-cap me-2"></i> Degree</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+          <a class="nav-link text-white dropdown-toggle" href="#" id="purchaseDropdown" data-bs-toggle="dropdown">
             <i class="fas fa-chart-bar me-2"></i> Charts
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
@@ -36,9 +49,10 @@
             <i class="fas fa-shopping-cart me-2"></i> Purchases
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="/degree"><i class="fas fa-graduation-cap me-2"></i> Degree</a></li>
-            <li><a class="dropdown-item" href="/career"><i class="fas fa-briefcase me-2"></i> Career</a></li>
-            <li><a class="dropdown-item" href="/course"><i class="fas fa-book me-2"></i> Course</a></li>
+            <li><a class="dropdown-item" href="/career-payment"><i class="fas fa-briefcase me-2"></i> Career</a></li>
+            <li><a class="dropdown-item" href="/course-payment"><i class="fas fa-book me-2"></i> Course</a></li>
+            <li><a class="dropdown-item" href="/degree-payment"><i class="fas fa-graduation-cap me-2"></i> Degree</a>
+            </li>
           </ul>
         </div>
       </li>

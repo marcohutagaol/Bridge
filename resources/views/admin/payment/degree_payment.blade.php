@@ -3,7 +3,7 @@
 @section('content')
   <div class="list-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="fw-bold m-0">Career List</h1>
+    <h1 class="fw-bold m-0">Degree Purcases List</h1>
     <div class="dropdown">
       <button class="btn btn-outline-primary dropdown-toggle" type="button" id="levelDropdown" data-bs-toggle="dropdown"
       aria-expanded="false">
@@ -17,12 +17,50 @@
     </div>
     </div>
 
+    <form method="GET" action="{{ route('admin.payment.degree_payment') }}">
+    <div class="p-4 bg-white rounded-lg">
+      <h2 class="text-xl font-semibold mb-4">Filter</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <input type="text" name="user_name" value="{{ request('user_name') }}" placeholder="Search by User Name"
+        class="px-3 py-2 border rounded w-full" />
+
+      <input type="text" name="item_name" value="{{ request('item_name') }}" placeholder="Search by University Name"
+        class="px-3 py-2 border rounded w-full" />
+
+      <select name="method" class="px-3 py-2 border rounded w-full">
+        <option value="">All Methods</option>
+        <option value="paypal" {{ request('method') == 'paypal' ? 'selected' : '' }}>PayPal</option>
+        <option value="creditcard" {{ request('method') == 'creditcard' ? 'selected' : '' }}>Credit Card</option>
+      </select>
+      </div>
+
+      <div class="mt-4 items-center flex-wrap gap-2 d-flex justify-content-between">
+      <div class="gap-2 flex">
+        <button type="submit" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
+        Apply Filter
+        </button>
+        <a href="{{ route('admin.payment.degree_payment') }}" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
+        Reset
+        </a>
+      </div>
+      <!-- Dropdown for Items per Page -->
+      <div class="relative">
+        <select name="per_page" onchange="this.form.submit()" class="px-3 py-2 border rounded">
+        <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
+        <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
+        <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
+        </select>
+      </div>
+      </div>
+    </div>
+    </form>
+
     <div class="table-container">
     <div class="table-responsive">
       <table class="table custom-table">
       <thead>
         <tr>
-        <th>ID</th>
+        <th>No.</th>
         <th>User ID</th>
         <th>User Name</th>
         <th>Item ID</th>
@@ -33,13 +71,13 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($checkouts as $checkout)
+        @foreach($checkouts as $index => $checkout)
       <tr>
-      <td>{{ $checkout->id }}</td>
+      <td>{{ $index + 1 }}</td>
       <td>{{ $checkout->user_id }}</td>
       <td>{{ $checkout->user->name ?? 'N/A' }}</td>
       <td>{{ $checkout->item_id }}</td>
-      <td>{{ $checkout->career->name }}</td>
+      <td>{{ $checkout->module->name }}</td>
       <td>{{ $checkout->payment_amount }}</td>
       <td>{{ $checkout->country }}</td>
       <td>{{ $checkout->payment_method }}</td>
@@ -160,20 +198,6 @@
     .btn-outline-primary:hover {
     background-color: #13547a;
     color: white;
-    }
-
-    .dropdown-menu {
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .dropdown-item {
-    padding: 8px 20px;
-    transition: background-color 0.2s ease;
-    }
-
-    .dropdown-item:hover {
-    background-color: #f8fafc;
     }
   </style>
 @endsection
