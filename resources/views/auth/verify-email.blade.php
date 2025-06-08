@@ -1,31 +1,63 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-    </div>
+    <div class="sign-in-form" style="max-width: 750px;">
+        <h2 class="title">{{ __('Verify Your Email') }}</h2>
 
-    @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+        <div style="
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.1);
+            color: #00838f;
+            line-height: 1.6;">
+            <p style="margin-bottom: 0;">
+                {{ __('Thanks for signing up! Please verify your email address by clicking on the link we just emailed to you.') }}
+            </p>
+            <p style="margin-top: 1rem; margin-bottom: 0;">
+                {{ __('If you didn\'t receive the email, click below to request another one.') }}
+            </p>
         </div>
-    @endif
 
-    <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ route('verification.send') }}">
-            @csrf
-
-            <div>
-                <x-primary-button>
-                    {{ __('Resend Verification Email') }}
-                </x-primary-button>
+        @if (session('status') == 'verification-link-sent')
+            <div style="
+                background: rgba(0, 150, 136, 0.1);
+                border-radius: 10px;
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+                color: #009688;
+                font-weight: 500;
+                text-align: center;
+                animation: fadeIn 0.5s ease-in-out;">
+                {{ __('A new verification link has been sent to your email address.') }}
             </div>
-        </form>
+        @endif
 
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
+        <div style="width: 100%; display: flex; flex-direction: row; gap: 1rem; align-items: center;">
+            <form method="POST" action="{{ route('verification.send') }}" style="width: 100%; max-width: 375px;">
+                @csrf
+                <button type="submit" class="btn" style="width: 100%;">
+                    <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                    {{ __('Resend Email') }}
+                </button>
+            </form>
 
-            <button type="submit" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                {{ __('Log Out') }}
-            </button>
-        </form>
+            <form method="POST" action="{{ route('logout') }}" style="width: 100%; max-width: 375px;">
+                @csrf
+                <button type="submit" class="btn" style="
+                    width: 100%;
+                    background: linear-gradient(45deg, #ef5350, #e53935);
+                    transition: all 0.3s ease;">
+                    <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                    {{ __('Later') }}
+                </button>
+            </form>
+        </div>
     </div>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </x-guest-layout>

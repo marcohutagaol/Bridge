@@ -1,24 +1,24 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="mb-3 fw-bold">Halaman Ranking</h1>
+    <h1 class="mb-3 fw-bold">Ranking Charts</h1>
 
     <div class="row">
         <div class="bg-white rounded-md p-4 mx-4" style="width: 45%;">
-            <h2 class="text-l mb-4">Checkout Chart</h2>
+            <h2 class="text-l mb-4">Top Checkout</h2>
             <canvas id="checkoutChart"></canvas>
         </div>
 
 
         <div class="bg-white rounded-md p-4 mx-4" style="width: 45%;">
-            <h2 class="text-l mb-4">Top Users Chart</h2>
+            <h2 class="text-l mb-4">Top Users on Checkout</h2>
             <canvas id="topUsersChart"></canvas>
         </div>
     </div>
 
     <div class="row mt-5">
         <div class="bg-white rounded-md p-4 mx-4" style="width: 45%;">
-            <h2 class="text-l mb-4">Course Rating Chart</h2>
+            <h2 class="text-l mb-4">Top Course Rating</h2>
             <canvas id="ratingChart"></canvas>
         </div>
 
@@ -52,6 +52,7 @@
                         borderWidth: 1,
                         barThickness: 70,
                         maxBarThickness: 100,
+                        borderRadius: 8
                     }]
                 },
                 options: {
@@ -92,6 +93,7 @@
                         borderWidth: 1,
                         barThickness: 70,
                         maxBarThickness: 100,
+                        borderRadius: 8
                     }]
                 },
                 options: {
@@ -126,6 +128,10 @@
                         '#ff9800',
                         '#f44336'
                     ],
+                    borderColor: '#fff',
+                    borderWidth: 1,
+                    barThickness: 70,
+                    maxBarThickness: 100,
                     borderRadius: 8
                 }]
             },
@@ -147,6 +153,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const rawCareerData = {!! json_encode($career_data) !!};
+            const careerData = rawCareerData.map(value => Number(value) || 0);
+
             const ctx = document.getElementById('careerChart');
             const chart = new Chart(ctx, {
                 type: 'bar',
@@ -154,43 +163,44 @@
                     labels: ["Highest Salary", "Most Jobs Available"],
                     datasets: [
                         {
-                            data: [{{ $career_data[0] }}, null],
+                            data: [careerData[0], null],
                             backgroundColor: 'rgba(75,192,192,0.6)',
                             yAxisID: 'y1'
                         },
                         {
-                            data: [null, {{ $career_data[1] }}],
+                            data: [null, careerData[1]],
                             backgroundColor: 'rgba(255,159,64,0.6)',
                             yAxisID: 'y2'
                         }
-                    ]
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 1,
+                    barThickness: 70,
+                    maxBarThickness: 100,
+                    borderRadius: 8
                 },
                 options: {
+                    responsive: true,
                     plugins: {
                         legend: {
                             display: false
                         }
                     },
-                    responsive: true,
-                    
                     scales: {
                         y1: {
                             type: 'linear',
                             position: 'left',
-                            beginAtZero: true,
-                            
+                            beginAtZero: true
                         },
                         y2: {
                             type: 'linear',
                             position: 'right',
-                            beginAtZero: true,
-                            
-                            
+                            beginAtZero: true
                         }
                     }
                 }
             });
-
         });
     </script>
+
 @endsection

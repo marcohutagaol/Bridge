@@ -1,25 +1,35 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
+    <form class="sign-in-form" method="POST" action="{{ route('password.email') }}">
         @csrf
+        <h2 class="title">{{ __('Forgot Password') }}</h2>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div style="
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.1);
+            color: #00838f;
+            text-align: center;
+            line-height: 1.6;">
+            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link.') }}
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
+        <x-auth-session-status class="mb-4" :status="session('status')" />
+
+        <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('Email') }}" />
+            <x-input-error :messages="$errors->get('email')" class="error-message" />
         </div>
+
+        <button type="submit" class="btn">
+            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+            {{ __('Send Reset Link') }}
+        </button>
+
+        <a href="{{ route('login') }}" class="text-sm" style="margin-top: 1rem;">
+            {{ __('Back to Login') }}
+        </a>
     </form>
 </x-guest-layout>

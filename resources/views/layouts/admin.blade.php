@@ -4,105 +4,115 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Topic Listing Bootstrap 5 Template</title>
-    <!-- CSS FILES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
-        rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/templatemo-topic-listing.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
+    <title>Bridge Admin</title>
 
-    @vite('resources/css/app.css')
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f6f9;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .content {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            z-index: 1000;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        
+    </style>
 </head>
 
+<body>
+    <div class="wrapper">
+        <x-sidebar></x-sidebar>
 
-<body id="top" class="overflow-x-hidden">
-    <!-- NAVBAR -->
-    <x-navbaradmin></x-navbaradmin>
-    <main class="mt-5">
+        <div class="main-content fade-in">
+            <x-navbaradmin></x-navbaradmin>
 
-        <div class="container-fluid">
-            <div class="row">
-                <!-- Sidebar -->
-                <x-sidebar></x-sidebar>
+            <div class="content">
+                @yield(section: 'content')
+            </div>
+        </div>
+    </div>
 
-                <section class="hero-section-admin d-flex align-items-center" id="section_1">
-                    <!-- Main Content -->
-                    <div class="col-md-9 p-5 min-h-screen bg-[#76beb6]"
-                        style="color: white; height: 100%; width: 80.8%; margin-left: 20%;">
-                        @yield('content')
-
-                    </div>
-                </section>
-
-
-                <!-- <footer class="mt-5 text-center text-white small">
-                    &copy; 2025 Bridge. All rights reserved.
-                </footer> -->
-
-
-                <!-- Script untuk toggle dropdown -->
-                <script>
-                    const dropdownButton = document.getElementById("dropdownButton");
-                    const dropdownMenu = document.getElementById("dropdownMenu");
-                    dropdownButton.addEventListener("click", () => {
-                        dropdownMenu.classList.toggle("hidden");
-                    });
-                    window.addEventListener("click", function (e) {
-                        if (
-                            !dropdownButton.contains(e.target) &&
-                            !dropdownMenu.contains(e.target)
-                        ) {
-                            dropdownMenu.classList.add("hidden");
-                        }
-                    });
-                </script>
-    </main>
-
-
-    <!-- JAVASCRIPT FILES -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/custom.js"></script>
-
-
-    <script>
-        // Variables to track scroll position
-        let lastScrollTop = 0;
-        const navbar = document.querySelector('.navbar');
-        const scrollThreshold = 100; // Adjust this value as needed
-        // Function to handle scroll
-        window.addEventListener('scroll', function () {
-            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            // Add sticky class when scrolled past threshold
-            if (currentScroll > scrollThreshold) {
-                navbar.classList.add('sticky-top');
-                // Check scroll direction
-                if (currentScroll < lastScrollTop) {
-                    // Scrolling up - keep colored navbar
-                    navbar.classList.remove('fade-out');
-                } else {
-                    // Scrolling down - after a certain point, return to original
-                    if (currentScroll > scrollThreshold + 200) { // Adjust this value as needed
-                        navbar.classList.add('fade-out');
-                    }
-                }
-            } else {
-                // At the top of the page
-                navbar.classList.remove('sticky-top');
-                navbar.classList.remove('fade-out');
-            }
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-        }, false);
-    </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
