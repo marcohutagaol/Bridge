@@ -31,7 +31,7 @@
         }
 
         .container {
-            position: relative;
+            position: ab;
             width: 100%;
             background-color: #f0ffff;
             min-height: 100vh;
@@ -40,7 +40,7 @@
         }
 
         .forms-container {
-            position: absolute;
+            position: absolte;
             width: 100%;
             height: 100%;
             top: 0;
