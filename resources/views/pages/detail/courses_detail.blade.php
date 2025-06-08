@@ -75,84 +75,88 @@
                         @foreach($recentCourses as $index => $course)
                             <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
                                 style="{{ $index >= 4 ? 'display: none;' : '' }}">
-                                <div class="card shadow-sm h-100 border-0"
-                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
-                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
-                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
+                                <a href="{{ route('certificate.detail.show', $course->id) }}" class="text-decoration-none">
 
-                                    <!-- Course Image with Better Fit -->
-                                    <div class="position-relative"
-                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
-                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
-                                    </div>
+                                    <div class="card shadow-sm h-100 border-0"
+                                        style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                        onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                                    <div class="card-body p-3">
-                                        <!-- Institution with Logo -->
-                                        <div class="d-flex align-items-center mb-2">
-                                            @if($course->institution_logo)
-                                                <img src="{{ $course->institution_logo }}" class="me-2"
-                                                    style="height: 24px; width: 24px; object-fit: contain;"
-                                                    alt="{{ $course->institution }}">
-                                            @else
-                                                <div class="me-2 d-flex align-items-center justify-content-center"
-                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
-                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                        <!-- Course Image with Better Fit -->
+                                        <div class="position-relative"
+                                            style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                            <img src="{{ $course->image ?? '/api/placeholder/350/160' }}"
+                                                class="w-100 h-100" style="object-fit: cover; object-position: center;"
+                                                alt="{{ $course->name }}">
+                                        </div>
+
+                                        <div class="card-body p-3">
+                                            <!-- Institution with Logo -->
+                                            <div class="d-flex align-items-center mb-2">
+                                                @if($course->institution_logo)
+                                                    <img src="{{ $course->institution_logo }}" class="me-2"
+                                                        style="height: 24px; width: 24px; object-fit: contain;"
+                                                        alt="{{ $course->institution }}">
+                                                @else
+                                                    <div class="me-2 d-flex align-items-center justify-content-center"
+                                                        style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                        {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                    </div>
+                                                @endif
+                                                <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                    {{ $course->institution ?? 'Google' }}
+                                                </span>
+                                            </div>
+
+                                            <!-- Course Name -->
+                                            <h5 class="card-title mb-2"
+                                                style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                                {{ $course->name }}
+                                            </h5>
+
+                                            <!-- Tags/Keywords -->
+                                            <div class="mb-3">
+                                                @if($course->kategori)
+                                                    @php
+                                                        $tags = explode(',', $course->kategori);
+                                                        $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                    @endphp
+                                                    @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                        <span class="badge me-1 mb-1"
+                                                            style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                            {{ trim($tag) }}
+                                                        </span>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+
+                                            <!-- Rating -->
+                                            @if($course->rating)
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                    <span class="fw-bold"
+                                                        style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
                                                 </div>
                                             @endif
-                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
-                                                {{ $course->institution ?? 'Google' }}
-                                            </span>
-                                        </div>
 
-                                        <!-- Course Name -->
-                                        <h5 class="card-title mb-2"
-                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
-                                            {{ $course->name }}
-                                        </h5>
-
-                                        <!-- Tags/Keywords -->
-                                        <div class="mb-3">
-                                            @if($course->kategori)
-                                                @php
-                                                    $tags = explode(',', $course->kategori);
-                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
-                                                @endphp
-                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
-                                                    <span class="badge me-1 mb-1"
-                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
-                                                        {{ trim($tag) }}
-                                                    </span>
-                                                @endforeach
-                                            @endif
-                                        </div>
-
-                                        <!-- Rating -->
-                                        @if($course->rating)
-                                            <div class="d-flex align-items-center mb-3">
-                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
-                                                <span class="fw-bold"
-                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
-                                            </div>
-                                        @endif
-
-                                        <!-- Course Type and Duration with More Space -->
-                                        <div class="d-flex align-items-center text-muted mt-3"
-                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-certificate me-1"></i>
-                                                <span>Certificate</span>
-                                            </div>
-
-                                            @if($course->duration_r)
+                                            <!-- Course Type and Duration with More Space -->
+                                            <div class="d-flex align-items-center text-muted mt-3"
+                                                style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="fas fa-clock me-1"></i>
-                                                    <span>{{ $course->duration_r }}</span>
+                                                    <i class="fas fa-certificate me-1"></i>
+                                                    <span>Certificate</span>
                                                 </div>
-                                            @endif
+
+                                                @if($course->duration_r)
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="fas fa-clock me-1"></i>
+                                                        <span>{{ $course->duration_r }}</span>
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -160,14 +164,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                               color: white; 
-                                               border: none; 
-                                               border-radius: 20px; 
-                                               padding: 8px 18px; 
-                                               font-weight: 600;
-                                               font-size: 0.9rem;
-                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                               transition: all 0.3s ease;"
+                                                               color: white; 
+                                                               border: none; 
+                                                               border-radius: 20px; 
+                                                               padding: 8px 18px; 
+                                                               font-weight: 600;
+                                                               font-size: 0.9rem;
+                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -186,110 +190,114 @@
                         @foreach($popularCourses as $index => $course)
                             <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
                                 style="{{ $index >= 4 ? 'display: none;' : '' }}">
-                                <div class="card shadow-sm h-100 border-0"
-                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
-                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
-                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                                    <!-- Course Image with Better Fit -->
-                                    <div class="position-relative"
-                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
-                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
-                                    </div>
+                                <!-- Wrap the entire card with a link -->
+                                <a href="{{ route('certificate.detail.show', $course->id) }}" class="text-decoration-none">
+                                    <div class="card shadow-sm h-100 border-0"
+                                        style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                        onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                                    <div class="card-body p-3">
-                                        <!-- Institution with Logo -->
-                                        <div class="d-flex align-items-center mb-2">
-                                            @if($course->institution_logo)
-                                                <img src="{{ $course->institution_logo }}" class="me-2"
-                                                    style="height: 24px; width: 24px; object-fit: contain;"
-                                                    alt="{{ $course->institution }}">
-                                            @else
-                                                <div class="me-2 d-flex align-items-center justify-content-center"
-                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
-                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                        <!-- Course Image with Better Fit -->
+                                        <div class="position-relative"
+                                            style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                            <img src="{{ $course->image ?? '/api/placeholder/350/160' }}"
+                                                class="w-100 h-100" style="object-fit: cover; object-position: center;"
+                                                alt="{{ $course->name }}">
+                                        </div>
+
+                                        <div class="card-body p-3">
+                                            <!-- Institution with Logo -->
+                                            <div class="d-flex align-items-center mb-2">
+                                                @if($course->institution_logo)
+                                                    <img src="{{ $course->institution_logo }}" class="me-2"
+                                                        style="height: 24px; width: 24px; object-fit: contain;"
+                                                        alt="{{ $course->institution }}">
+                                                @else
+                                                    <div class="me-2 d-flex align-items-center justify-content-center"
+                                                        style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                        {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                    </div>
+                                                @endif
+                                                <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                    {{ $course->institution ?? 'Google' }}
+                                                </span>
+                                            </div>
+
+                                            <!-- Course Name -->
+                                            <h5 class="card-title mb-2"
+                                                style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                                {{ $course->name }}
+                                            </h5>
+
+                                            <!-- Tags/Keywords -->
+                                            <div class="mb-3">
+                                                @if($course->kategori)
+                                                    @php
+                                                        $tags = explode(',', $course->kategori);
+                                                        $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                    @endphp
+                                                    @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                        <span class="badge me-1 mb-1"
+                                                            style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                            {{ trim($tag) }}
+                                                        </span>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+
+                                            <!-- Rating -->
+                                            @if($course->rating)
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                    <span class="fw-bold"
+                                                        style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
                                                 </div>
                                             @endif
-                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
-                                                {{ $course->institution ?? 'Google' }}
-                                            </span>
-                                        </div>
 
-                                        <!-- Course Name -->
-                                        <h5 class="card-title mb-2"
-                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
-                                            {{ $course->name }}
-                                        </h5>
-
-                                        <!-- Tags/Keywords -->
-                                        <div class="mb-3">
-                                            @if($course->kategori)
-                                                @php
-                                                    $tags = explode(',', $course->kategori);
-                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
-                                                @endphp
-                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
-                                                    <span class="badge me-1 mb-1"
-                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
-                                                        {{ trim($tag) }}
-                                                    </span>
-                                                @endforeach
-                                            @endif
-                                        </div>
-
-                                        <!-- Rating -->
-                                        @if($course->rating)
-                                            <div class="d-flex align-items-center mb-3">
-                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
-                                                <span class="fw-bold"
-                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
-                                            </div>
-                                        @endif
-
-                                        <!-- Course Type and Duration with More Space -->
-                                        <div class="d-flex align-items-center text-muted mt-3"
-                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-certificate me-1"></i>
-                                                <span>Certificate</span>
-                                            </div>
-
-                                            @if($course->duration_r)
+                                            <!-- Course Type and Duration with More Space -->
+                                            <div class="d-flex align-items-center text-muted mt-3"
+                                                style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="fas fa-clock me-1"></i>
-                                                    <span>{{ $course->duration_r }}</span>
+                                                    <i class="fas fa-certificate me-1"></i>
+                                                    <span>Certificate</span>
                                                 </div>
-                                            @endif
+
+                                                @if($course->duration_r)
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="fas fa-clock me-1"></i>
+                                                        <span>{{ $course->duration_r }}</span>
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
 
-                    @if(count(value: $recentCourses) > 4)
+                    @if(count($popularCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                               color: white; 
-                                               border: none; 
-                                               border-radius: 20px; 
-                                               padding: 8px 18px; 
-                                               font-weight: 600;
-                                               font-size: 0.9rem;
-                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                               transition: all 0.3s ease;"
+                                           color: white; 
+                                           border: none; 
+                                           border-radius: 20px; 
+                                           padding: 8px 18px; 
+                                           font-weight: 600;
+                                           font-size: 0.9rem;
+                                           box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                           transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
                                 <span id="btnCount" class="ms-2 badge"
-                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
+                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($popularCourses) - 4 }}</span>
                                 <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
                             </button>
                         </div>
                     @endif
                 </div>
-
                 <!-- Personalized Specializations Section -->
                 <div class="mb-5">
                     <h2 class="mb-4 fw-bold">Personalized Specializations </h2>
@@ -303,77 +311,80 @@
                                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
                                     <!-- Course Image with Better Fit -->
-                                    <div class="position-relative"
-                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
-                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
-                                    </div>
+                                    <a href="{{ route('certificate.detail.show', $course->id) }}"
+                                        class="text-decoration-none">
+                                        <div class="position-relative"
+                                            style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                                            <img src="{{ $course->image ?? '/api/placeholder/350/160' }}"
+                                                class="w-100 h-100" style="object-fit: cover; object-position: center;"
+                                                alt="{{ $course->name }}">
+                                        </div>
 
-                                    <div class="card-body p-3">
-                                        <!-- Institution with Logo -->
-                                        <div class="d-flex align-items-center mb-2">
-                                            @if($course->institution_logo)
-                                                <img src="{{ $course->institution_logo }}" class="me-2"
-                                                    style="height: 24px; width: 24px; object-fit: contain;"
-                                                    alt="{{ $course->institution }}">
-                                            @else
-                                                <div class="me-2 d-flex align-items-center justify-content-center"
-                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
-                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
+                                        <div class="card-body p-3">
+                                            <!-- Institution with Logo -->
+                                            <div class="d-flex align-items-center mb-2">
+                                                @if($course->institution_logo)
+                                                    <img src="{{ $course->institution_logo }}" class="me-2"
+                                                        style="height: 24px; width: 24px; object-fit: contain;"
+                                                        alt="{{ $course->institution }}">
+                                                @else
+                                                    <div class="me-2 d-flex align-items-center justify-content-center"
+                                                        style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
+                                                        {{ substr($course->institution ?? 'G', 0, 1) }}
+                                                    </div>
+                                                @endif
+                                                <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
+                                                    {{ $course->institution ?? 'Google' }}
+                                                </span>
+                                            </div>
+
+                                            <!-- Course Name -->
+                                            <h5 class="card-title mb-2"
+                                                style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
+                                                {{ $course->name }}
+                                            </h5>
+
+                                            <!-- Tags/Keywords -->
+                                            <div class="mb-3">
+                                                @if($course->kategori)
+                                                    @php
+                                                        $tags = explode(',', $course->kategori);
+                                                        $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
+                                                    @endphp
+                                                    @foreach(array_slice($tags, 0, 6) as $index => $tag)
+                                                        <span class="badge me-1 mb-1"
+                                                            style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
+                                                            {{ trim($tag) }}
+                                                        </span>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+
+                                            <!-- Rating -->
+                                            @if($course->rating)
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
+                                                    <span class="fw-bold"
+                                                        style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
                                                 </div>
                                             @endif
-                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
-                                                {{ $course->institution ?? 'Google' }}
-                                            </span>
-                                        </div>
 
-                                        <!-- Course Name -->
-                                        <h5 class="card-title mb-2"
-                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
-                                            {{ $course->name }}
-                                        </h5>
-
-                                        <!-- Tags/Keywords -->
-                                        <div class="mb-3">
-                                            @if($course->kategori)
-                                                @php
-                                                    $tags = explode(',', $course->kategori);
-                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
-                                                @endphp
-                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
-                                                    <span class="badge me-1 mb-1"
-                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
-                                                        {{ trim($tag) }}
-                                                    </span>
-                                                @endforeach
-                                            @endif
-                                        </div>
-
-                                        <!-- Rating -->
-                                        @if($course->rating)
-                                            <div class="d-flex align-items-center mb-3">
-                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
-                                                <span class="fw-bold"
-                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
-                                            </div>
-                                        @endif
-
-                                        <!-- Course Type and Duration with More Space -->
-                                        <div class="d-flex align-items-center text-muted mt-3"
-                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-certificate me-1"></i>
-                                                <span>Certificate</span>
-                                            </div>
-
-                                            @if($course->duration_r)
+                                            <!-- Course Type and Duration with More Space -->
+                                            <div class="d-flex align-items-center text-muted mt-3"
+                                                style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="fas fa-clock me-1"></i>
-                                                    <span>{{ $course->duration_r }}</span>
+                                                    <i class="fas fa-certificate me-1"></i>
+                                                    <span>Certificate</span>
                                                 </div>
-                                            @endif
+
+                                                @if($course->duration_r)
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="fas fa-clock me-1"></i>
+                                                        <span>{{ $course->duration_r }}</span>
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         @endforeach
@@ -382,14 +393,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                               color: white; 
-                                               border: none; 
-                                               border-radius: 20px; 
-                                               padding: 8px 18px; 
-                                               font-weight: 600;
-                                               font-size: 0.9rem;
-                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                               transition: all 0.3s ease;"
+                                                               color: white; 
+                                                               border: none; 
+                                                               border-radius: 20px; 
+                                                               padding: 8px 18px; 
+                                                               font-weight: 600;
+                                                               font-size: 0.9rem;
+                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -540,14 +551,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                               color: white; 
-                                               border: none; 
-                                               border-radius: 20px; 
-                                               padding: 8px 18px; 
-                                               font-weight: 600;
-                                               font-size: 0.9rem;
-                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                               transition: all 0.3s ease;"
+                                                               color: white; 
+                                                               border: none; 
+                                                               border-radius: 20px; 
+                                                               padding: 8px 18px; 
+                                                               font-weight: 600;
+                                                               font-size: 0.9rem;
+                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -651,14 +662,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                               color: white; 
-                                               border: none; 
-                                               border-radius: 20px; 
-                                               padding: 8px 18px; 
-                                               font-weight: 600;
-                                               font-size: 0.9rem;
-                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                               transition: all 0.3s ease;"
+                                                               color: white; 
+                                                               border: none; 
+                                                               border-radius: 20px; 
+                                                               padding: 8px 18px; 
+                                                               font-weight: 600;
+                                                               font-size: 0.9rem;
+                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -762,14 +773,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                               color: white; 
-                                               border: none; 
-                                               border-radius: 20px; 
-                                               padding: 8px 18px; 
-                                               font-weight: 600;
-                                               font-size: 0.9rem;
-                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                               transition: all 0.3s ease;"
+                                                               color: white; 
+                                                               border: none; 
+                                                               border-radius: 20px; 
+                                                               padding: 8px 18px; 
+                                                               font-weight: 600;
+                                                               font-size: 0.9rem;
+                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -998,14 +1009,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                               color: white; 
-                                               border: none; 
-                                               border-radius: 20px; 
-                                               padding: 8px 18px; 
-                                               font-weight: 600;
-                                               font-size: 0.9rem;
-                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                               transition: all 0.3s ease;"
+                                                               color: white; 
+                                                               border: none; 
+                                                               border-radius: 20px; 
+                                                               padding: 8px 18px; 
+                                                               font-weight: 600;
+                                                               font-size: 0.9rem;
+                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>

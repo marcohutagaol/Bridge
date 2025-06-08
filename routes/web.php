@@ -1,32 +1,34 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminCreateController;
-use App\Http\Controllers\AdminPaymentController;
-use App\Http\Controllers\ChartController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MyLearningController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\SelectedCourseController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UtbkController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
-
 use App\Http\Controllers\KampusController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
+
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MyLearningController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\AdminCreateController;
 
 
 use App\Http\Controllers\UniversitasController;
+use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\LearningPageController;
+use App\Http\Controllers\SelectedCourseController;
 use App\Http\Controllers\LearningProgressController;
 
-
+ 
 Route::get('/', [AdminController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('index');
 Route::get('/', function () {
@@ -92,6 +94,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/course-payment', [AdminPaymentController::class, 'coursePayment'])->name('admin.payment.course_payment');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/progress', [ProgressController::class, 'index'])->name('admin.progress.index');
+});
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/nilai', [NilaiController::class, 'index'])->name('admin.progress.nilai');
 });
 
 
