@@ -11,6 +11,7 @@ class Career extends Model
 
     protected $fillable = [
         'name',
+        'kategoris',
         'image',
         'description',
         'description2',
@@ -18,7 +19,6 @@ class Career extends Model
         'jobs_available',
         'credential',
         'credential_logo',
-        'kategoris',
     ];
 
     // Accessor untuk konsistensi nama

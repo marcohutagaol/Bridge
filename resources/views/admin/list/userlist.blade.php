@@ -3,27 +3,40 @@
 @section('content')
     <div class="user-list-container">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="fw-bold m-0">User List</h1>
-            <div class="search-box">
-                <div class="input-group">
-                    <span class="input-group-text bg-white border-end-0">
-                        <i class="fas fa-search text-muted"></i>
-                    </span>
-                    <input type="text" class="form-control border-start-0" placeholder="Search users...">
+            <h1 class="fw-bold m-0">Career List</h1>
 
-                    <form method="GET" action="{{ route('admin.users') }}">
-                        <div class="relative">
-                            <select name="per_page" onchange="this.form.submit()" class="px-3 py-2 border rounded">
-                                <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
-                                <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
-                                <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
-                            </select>
-                        </div>
-                    </form>
+            <a href="/career-create" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
+                Create New
+            </a>
+        </div>
 
+        <form method="GET" action="{{ route('admin.list.users') }}">
+            <div class="p-4 bg-white rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <input type="text" name="user_name" value="{{ request('item_name') }}" placeholder="Search"
+                        class="px-3 py-2 border rounded w-full" />
+                </div>
+
+                <div class="mt-4 items-center flex-wrap gap-2 d-flex justify-content-between">
+                    <div class="gap-2 flex">
+                        <button type="submit" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
+                            Apply Filter
+                        </button>
+                        <a href="{{ route('admin.list.career_list') }}"
+                            class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
+                            Reset
+                        </a>
+                    </div>
+                    <div class="relative">
+                        <select name="per_page" onchange="this.form.submit()" class="px-3 py-2 border rounded">
+                            <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
+                            <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
+                            <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
 
         <div class="table-container">
             <div class="table-responsive">
@@ -50,15 +63,15 @@
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <!-- <td>
-                                                    <div class="action-buttons">
-                                                        <button class="btn btn-outline-info btn-sm" title="Edit">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                        <button class="btn btn-outline-danger btn-sm" title="Delete">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </div>
-                                                </td> -->
+                                                                            <div class="action-buttons">
+                                                                                <button class="btn btn-outline-info btn-sm" title="Edit">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                </button>
+                                                                                <button class="btn btn-outline-danger btn-sm" title="Delete">
+                                                                                    <i class="fas fa-trash"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </td> -->
                             </tr>
                         @endforeach
                     </tbody>
