@@ -91,31 +91,6 @@ INSERT INTO `careers` (`id`, `name`, `image`, `description`, `description2`, `me
 (121, 'Medical Office Manager', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/00atxywtfxvd/4hveGmg0cZrmJIyZxlhcAG/d78216c5c11bc489040d36ec13efb3df/medical-office-manager-role-card_1X.png?auto=format%2Ccompress&dpr=1&w=430', 'A Medical Office Manager manages the daily operations of a healthcare facility. They manage budgets and ensure patient satisfaction.', 'If you like: managing medical office operations, ensuring patient satisfaction, improving healthcare administrative processes .', 'N/A', 'N/A', 'Medical Billing and Coding Fundamentals ; Medical Office Procedures and Administration Fundamentals', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/0d/11f9d45cef49a88b54b22947f43ed2/MedCerts-Stacked-360x360.png?auto=format%2Ccompress&dpr=1;  https://d3njjcbhbojbot.cloudfront.net/api/ut', 'healthcare', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
--- Dumping data untuk tabel `checkouts`
---
-
-INSERT INTO `checkouts` (`id`, `user_id`, `item_type`, `item_id`, `checkout_date`, `status`, `payment_amount`, `organization_type`, `corporation_name`, `school_name`, `country`, `payment_method`, `card_number`, `expiry_date`, `cvc`, `created_at`, `updated_at`) VALUES
-(1, 11, 'career', 1, NULL, 'pending', 199000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 10:07:59', '2025-06-02 10:07:59'),
-(2, 11, 'course', 1, NULL, 'pending', 234505.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 10:08:43', '2025-06-02 10:08:43'),
-(3, 11, 'course', 1, NULL, 'pending', 234505.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 10:20:50', '2025-06-02 10:20:50'),
-(4, 11, 'course', 1, NULL, 'pending', 234505.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 10:20:57', '2025-06-02 10:20:57'),
-(11, 12, 'course', 5, NULL, 'pending', 234505.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 18:55:29', '2025-06-02 18:55:29'),
-(12, 12, 'course', 1, NULL, 'pending', 234505.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 18:57:22', '2025-06-02 18:57:22'),
-(13, 12, 'module', 5, NULL, 'pending', 99000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 19:18:23', '2025-06-02 19:18:23'),
-(14, 13, 'career', 2, NULL, 'pending', 199000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 19:19:03', '2025-06-02 19:19:03'),
-(15, 13, 'module', 4, NULL, 'pending', 99000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 20:03:12', '2025-06-02 20:03:12'),
-(16, 13, 'course', 1, NULL, 'pending', 234505.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 20:52:01', '2025-06-02 20:52:01'),
-(17, 13, 'module', 4, NULL, 'pending', 99000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 20:52:36', '2025-06-02 20:52:36'),
-(18, 13, 'course', 12, NULL, 'pending', 234505.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 20:53:24', '2025-06-02 20:53:24'),
-(19, 11, 'career', 2, NULL, 'pending', 199000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 21:14:03', '2025-06-02 21:14:03'),
-(20, 11, 'module', 4, NULL, 'pending', 99000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 21:28:35', '2025-06-02 21:28:35'),
-(21, 11, 'module', 4, NULL, 'pending', 99000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-02 21:41:07', '2025-06-02 21:41:07'),
-(22, 11, 'module', 4, NULL, 'pending', 99000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-03 05:08:35', '2025-06-03 05:08:35'),
-(23, 12, 'career', 1, NULL, 'pending', 199000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-03 05:12:32', '2025-06-03 05:12:32'),
-(24, 12, 'course', 1, NULL, 'pending', 234505.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-03 05:28:51', '2025-06-03 05:28:51'),
-(25, 11, 'module', 4, NULL, 'pending', 99000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-03 21:00:55', '2025-06-03 21:00:55');
-
---
 -- Dumping data untuk tabel `courses_certificates`
 --
 
@@ -4058,10 +4033,7 @@ INSERT INTO `subject_university` (`id`, `university_id`, `subject_id`) VALUES
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `user_type`) VALUES
-(11, 'Marco Hutagaol', 'marco3003207@gmail.com', NULL, '$2y$12$7m5OlVu70SXIBaKaY.7qduK/GbJZhEEWAYJQyLymCzqwVZLzZi2J6', NULL, '2025-05-16 08:59:49', '2025-05-16 08:59:49', 'user'),
-(12, 'Hasbi', 'hasbi@gmail.com', NULL, '$2y$12$5CGzto9RoO9NorkU9ZPd4uqllMUqznQ76es6edAXCzqAKL.jA4Tbe', NULL, '2025-05-16 09:01:18', '2025-05-16 09:01:18', 'user'),
-(13, 'jose', 'jose@gmail.com', NULL, '$2y$12$beLXZocmkHpzT/iSPRSf6OpJnKf3LywpLcLfKaS/cxJCtNgBTJJNy', NULL, '2025-05-16 09:01:53', '2025-05-16 09:01:53', 'user'),
-(14, 'Admin', 'admin@gmail.com', NULL, '$2y$12$W9lfFWb2ylvRARjVe6mR4uy/6bPwx9R61iTjrauikkS7TvZQQgQ4y', NULL, '2025-05-29 21:33:52', '2025-05-29 21:33:52', 'admin');
+(0, 'Admin', 'admin@gmail.com', NULL, '$2y$12$W9lfFWb2ylvRARjVe6mR4uy/6bPwx9R61iTjrauikkS7TvZQQgQ4y', NULL, '2025-05-29 21:33:52', '2025-05-29 21:33:52', 'admin');
 
 --
 -- Dumping data untuk tabel `utbk`

@@ -8,13 +8,6 @@
         </a>
 
         <div class="d-flex align-items-center">
-            <div class="search-bar me-4">
-                <div class="search-box">
-                    <i class="fas fa-search text-white-50"></i>
-                    <input type="text" class="search-input" placeholder="Search...">
-                </div>
-            </div>
-
             <div class="dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
