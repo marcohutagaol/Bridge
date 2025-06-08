@@ -10,6 +10,7 @@ class Checkout extends Model
     use HasFactory;
 
     protected $fillable = [
+        'order_id',
         'user_id',
         'item_type',
         'item_id',
@@ -27,17 +28,16 @@ class Checkout extends Model
     ];
 
     protected $casts = [
-        'checkout_date' => 'date',
+        'checkout_date' => 'datetime',
         'payment_amount' => 'decimal:2',
     ];
 
-    // Relationship ke User
+    // Relationships
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
-    // Specific relationships untuk setiap type - DIPERBAIKI tanpa where constraint
     public function course()
     {
         return $this->belongsTo(Course::class, 'item_id');
@@ -53,7 +53,53 @@ class Checkout extends Model
         return $this->belongsTo(University::class, 'item_id');
     }
 
-    // Method untuk mendapatkan item berdasarkan type
+   public function learningProgress()
+    {
+        return $this->hasOne(LearningProgress::class, 'order_id', 'order_id');
+    }
+
+    // Method untuk membuat atau mendapatkan learning progress
+    public function getOrCreateLearningProgress()
+    {
+        return $this->learningProgress()->firstOrCreate([
+            'order_id' => $this->order_id
+        ], [
+            'progress' => 'none',
+            'nilai' => null
+        ]);
+    }
+
+    // Method untuk update learning progress
+    public function updateLearningProgress($progress, $nilai = null)
+    {
+        $learningProgress = $this->getOrCreateLearningProgress();
+        $learningProgress->updateProgress($progress, $nilai);
+        
+        return $learningProgress;
+    }
+
+    // Method untuk check apakah learning sudah selesai
+    public function isLearningCompleted()
+    {
+        $progress = $this->learningProgress;
+        return $progress && $progress->isCompleted();
+    }
+
+    // Relasi dinamis berbasis item_type
+    public function getItemAttribute()
+    {
+        switch ($this->item_type) {
+            case 'course':
+                return $this->course;
+            case 'career':
+                return $this->career;
+            case 'module':
+                return $this->module;
+            default:
+                return null;
+        }
+    }
+
     public function getItemByType()
     {
         if (!$this->item_type) {
@@ -66,25 +112,22 @@ class Checkout extends Model
                     $this->load('course');
                 }
                 return $this->course;
-                
             case 'career':
                 if (!$this->relationLoaded('career')) {
                     $this->load('career');
                 }
                 return $this->career;
-                
             case 'module':
                 if (!$this->relationLoaded('module')) {
                     $this->load('module');
                 }
                 return $this->module;
-                
             default:
                 return null;
         }
     }
 
-    // Accessor untuk item details
+    // Akses item details (frontend ready)
     public function getItemDetailsAttribute()
     {
         $item = $this->getItemByType();
@@ -109,7 +152,6 @@ class Checkout extends Model
         ];
     }
 
-    // Method untuk mendapatkan harga item
     public function getItemPrice()
     {
         $item = $this->getItemByType();
@@ -120,15 +162,13 @@ class Checkout extends Model
         return $item->price ?? $this->getDefaultPrice();
     }
 
-    // Method untuk mendapatkan gambar item
     public function getItemImage()
     {
         $item = $this->getItemByType();
         if (!$item) return null;
 
-        // Cek berbagai kemungkinan nama field image
         $imageFields = ['institution_logo', 'image', 'logo', 'thumbnail', 'photo', 'image_path'];
-        
+
         foreach ($imageFields as $field) {
             if (isset($item->$field) && !empty($item->$field)) {
                 return $item->$field;
@@ -138,7 +178,6 @@ class Checkout extends Model
         return null;
     }
 
-    // Method untuk mendapatkan provider/institution
     public function getItemProvider()
     {
         $item = $this->getItemByType();
@@ -156,7 +195,6 @@ class Checkout extends Model
         }
     }
 
-    // Default prices
     public function getDefaultPrice()
     {
         switch ($this->item_type) {
@@ -171,7 +209,16 @@ class Checkout extends Model
         }
     }
 
-    // Scopes untuk filter berdasarkan item type
+    public function scopeStatus($query, $status)
+    {
+        return $query->where('status', $status);
+    }
+
+    public function scopeForUser($query, $userId)
+    {
+        return $query->where('user_id', $userId);
+    }
+
     public function scopeForCourses($query)
     {
         return $query->where('item_type', 'course');
@@ -187,9 +234,70 @@ class Checkout extends Model
         return $query->where('item_type', 'module');
     }
 
-    // Scope untuk mendapatkan checkout dengan item data - AMAN
     public function scopeWithItemData($query)
     {
         return $query->with('user');
     }
+
+    public function getFormattedOrderIdAttribute()
+    {
+        return "#{$this->order_id}";
+    }
+
+    public function getStatusColorAttribute()
+    {
+        switch ($this->status) {
+            case 'completed':
+                return 'success';
+            case 'pending':
+                return 'warning';
+            case 'trial':
+                return 'info';
+            case 'cancelled':
+                return 'danger';
+            default:
+                return 'secondary';
+        }
+    }
+
+    public function getFormattedAmountAttribute()
+    {
+        return 'IDR ' . number_format($this->payment_amount, 0, ',', '.');
+    }
+
+    /*
+     * Tambahan dari kode baru (tidak mengubah apapun dari kode lama)
+     */
+
+    // Versi baru dengan lazy load cek (tetap biarkan meskipun ada getItemByType di atas)
+    public function getItemByTypeNew()
+    {
+        if (!$this->item_type) {
+            return null;
+        }
+
+        switch ($this->item_type) {
+            case 'course':
+                if (!$this->relationLoaded('course')) {
+                    $this->load('course');
+                }
+                return $this->course;
+            case 'career':
+                if (!$this->relationLoaded('career')) {
+                    $this->load('career');
+                }
+                return $this->career;
+            case 'module':
+                if (!$this->relationLoaded('module')) {
+                    $this->load('module');
+                }
+                return $this->module;
+            default:
+                return null;
+        }
+    }
+
+
+    
+
 }

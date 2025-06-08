@@ -30,6 +30,9 @@ class MyLearningController extends Controller
             }
         });
 
+        
+
         return view('pages.mylearning', compact('checkouts'));
     }
+    
 }

@@ -8,6 +8,7 @@ use App\Models\Career;
 use App\Models\University;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
@@ -89,6 +90,9 @@ class CheckoutController extends Controller
             return back()->withErrors(['item' => 'Selected item not found']);
         }
 
+        // Generate unique order ID
+        $orderId = $this->generateOrderId();
+
         // Tentukan status dan payment amount
         $isTrial = $request->has('trialBtn');
         $status = $isTrial ? 'trial' : 'pending';
@@ -96,6 +100,7 @@ class CheckoutController extends Controller
 
         // Buat checkout record
         $checkout = Checkout::create([
+            'order_id' => $orderId,
             'user_id' => Auth::id(),
             'item_type' => $validated['item_type'],
             'item_id' => $validated['item_id'],
@@ -114,13 +119,15 @@ class CheckoutController extends Controller
 
         $message = $isTrial ? 'Free trial started successfully!' : 'Checkout completed successfully!';
         
-        return redirect()->route('checkout.success', $checkout->id)->with('success', $message);
+        return redirect()->route('checkout.success', $checkout->order_id)->with('success', $message);
     }
 
-    // Method untuk menampilkan success page
-    public function success($checkoutId)
+    // Method untuk menampilkan success page (menggunakan order_id sebagai parameter)
+    public function success($orderId)
     {
-        $checkout = Checkout::where('user_id', Auth::id())->findOrFail($checkoutId);
+        $checkout = Checkout::where('user_id', Auth::id())
+                           ->where('order_id', $orderId)
+                           ->firstOrFail();
         
         // Load item data secara manual
         $item = $this->getItemByType($checkout->item_type, $checkout->item_id);
@@ -152,6 +159,44 @@ class CheckoutController extends Controller
         });
 
         return view('checkout.index', compact('checkouts'));
+    }
+
+    // Method untuk mencari checkout berdasarkan order ID
+    public function findByOrderId($orderId)
+    {
+        $checkout = Checkout::where('order_id', $orderId)->firstOrFail();
+        
+        // Load item data
+        $item = $this->getItemByType($checkout->item_type, $checkout->item_id);
+        $checkout->item_data = $item;
+        
+        return view('checkout.detail', compact('checkout'));
+    }
+
+    // Helper method untuk generate unique order ID
+    private function generateOrderId()
+    {
+        do {
+            // Format: BRG-YYYY-XXXX (BRG = Bridge, YYYY = tahun, XXXX = 4 digit random)
+            $year = date('Y');
+            $randomNumber = mt_rand(1000, 9999);
+            $orderId = "BRG-{$year}-{$randomNumber}";
+        } while (Checkout::where('order_id', $orderId)->exists());
+
+        return $orderId;
+    }
+
+    // Alternative method untuk generate order ID dengan format yang berbeda
+    private function generateAlternativeOrderId()
+    {
+        do {
+            // Format: BRG + timestamp + 3 digit random
+            $timestamp = substr(time(), -6); // ambil 6 digit terakhir dari timestamp
+            $random = mt_rand(100, 999);
+            $orderId = "BRG{$timestamp}{$random}";
+        } while (Checkout::where('order_id', $orderId)->exists());
+
+        return $orderId;
     }
 
     // Helper method untuk mendapatkan item berdasarkan type
@@ -202,4 +247,6 @@ class CheckoutController extends Controller
                 return 0;
         }
     }
+
+    
 }

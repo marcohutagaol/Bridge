@@ -1,24 +1,27 @@
 <?php
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MyLearningController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\RankingController;
-use App\Http\Controllers\UniversitasController;
-use App\Http\Controllers\SelectedCourseController;
-
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtbkController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KampusController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
+
+use App\Http\Controllers\KampusController;
 use App\Http\Controllers\MateriController;
-
-
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RankingController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MyLearningController;
+use App\Http\Controllers\UniversityController;
+
+
+use App\Http\Controllers\UniversitasController;
+use App\Http\Controllers\LearningPageController;
+use App\Http\Controllers\SelectedCourseController;
+use App\Http\Controllers\LearningProgressController;
 
  
 Route::get('/', [AdminController::class, 'index'])
@@ -118,7 +121,6 @@ Route::get('/career/{id}', [CareerController::class, 'show'])->name('career.deta
 Route::get('/certificate-detail', [CourseController::class, 'index'])->name('certificate.detail');
 Route::get('/certificate-detail/{id}', [CourseController::class, 'show'])->name('certificate.detail.show');
 // Halaman checkout
-Route::get('/course/{id}/checkout', [CourseController::class, 'checkout'])->name('course.checkout');
 
 // COURSES ROUTES - FIXED
 // Main courses page using SelectedCourseController (contains $recentCourses)
@@ -202,5 +204,38 @@ Route::get('/direktori-kampus', [KampusController::class, 'index'])->name('secti
 
 Route::get('/detail-kampus/{id}', [KampusController::class, 'show'])->name('section2.detail_kampus');
 // SECTION 2
+
+
+//INOVOICE
+
+// Invoice routes
+Route::prefix('invoice')->name('invoice.')->group(function () {
+    // Download PDF invoice
+    Route::get('/download/{orderId}', [InvoiceController::class, 'downloadInvoice'])
+        ->name('download');
+    
+    // View PDF invoice in browser
+    Route::get('/view/{orderId}', [InvoiceController::class, 'viewInvoice'])
+        ->name('view');
+    
+    // Generate and save invoice
+    Route::post('/generate/{orderId}', [InvoiceController::class, 'generateInvoice'])
+        ->name('generate');
+    
+    // Email invoice
+    Route::post('/email/{orderId}', [InvoiceController::class, 'emailInvoice'])
+        ->name('email');
+    
+    // Bulk generate invoices
+    Route::post('/bulk-generate', [InvoiceController::class, 'bulkGenerateInvoices'])
+        ->name('bulk.generate');
+});
+
+
+
+Route::post('/learning-progress/save', [LearningProgressController::class, 'store'])->name('learning-progress.store');
+
+
+
 
 require __DIR__ . '/auth.php';
