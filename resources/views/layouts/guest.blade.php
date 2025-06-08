@@ -194,71 +194,106 @@
             animation: fadeIn 0.5s ease-out;
         }
 
-        @media (max-width: 768px) {
+        /* Enhanced Responsive Design */
+        @media (min-width: 1025px) {
             .signin-signup {
-                padding: 1rem;
+                padding: 0 2rem;
+                max-width: 820px;
             }
 
             form {
-                padding: 2rem;
-            }
-
-            .title {
-                font-size: 1.8rem;
+                padding: 3rem;
+                max-width: 450px;
             }
         }
 
         @media (max-width: 1024px) {
             .signin-signup {
-                max-width: 90%;
-                flex-direction: column;
+                width: 95%;
+                max-width: 700px;
+                padding: 0 1.5rem;
             }
 
             form {
-                max-width: 100%;
+                max-width: 500px;
+                padding: 2.5rem;
             }
         }
 
         @media (max-width: 768px) {
+            .signin-signup {
+                width: 100%;
+                padding: 0 1rem;
+            }
+
             form {
-                padding: 1.5rem;
+                width: 100%;
+                max-width: none;
+                padding: 2rem;
+                margin: 1rem;
             }
 
             .title {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
+                margin-bottom: 1.8rem;
+            }
+
+            .input-field {
+                margin: 0.8rem 0;
             }
 
             .input-field input {
-                padding: 1rem 2.5rem;
-                font-size: 0.95rem;
-            }
-
-            .input-field i {
-                font-size: 1rem;
-                left: 1rem;
-            }
-
-            .btn {
-                width: 130px;
-                height: 45px;
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .title {
-                font-size: 1.4rem;
-            }
-
-            .input-field input {
-                padding: 0.9rem 2.2rem;
-                font-size: 0.9rem;
+                padding: 1rem 2.8rem;
             }
 
             .btn {
                 width: 100%;
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            form {
+                padding: 1.8rem 1.5rem;
+                margin: 0.5rem;
+            }
+
+            .title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .input-field input {
+                padding: 0.9rem 2.5rem;
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                max-width: 100%;
                 height: 44px;
-                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            form {
+                padding: 1.5rem 1rem;
+            }
+
+            .title {
+                font-size: 1.3rem;
+                margin-bottom: 1.2rem;
+            }
+        }
+
+        @media (max-height: 700px) {
+            .signin-signup {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+
+            form {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
             }
         }
     </style>
