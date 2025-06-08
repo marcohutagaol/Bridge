@@ -207,6 +207,60 @@
                 font-size: 1.8rem;
             }
         }
+
+        @media (max-width: 1024px) {
+            .signin-signup {
+                max-width: 90%;
+                flex-direction: column;
+            }
+
+            form {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            form {
+                padding: 1.5rem;
+            }
+
+            .title {
+                font-size: 1.6rem;
+            }
+
+            .input-field input {
+                padding: 1rem 2.5rem;
+                font-size: 0.95rem;
+            }
+
+            .input-field i {
+                font-size: 1rem;
+                left: 1rem;
+            }
+
+            .btn {
+                width: 130px;
+                height: 45px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.4rem;
+            }
+
+            .input-field input {
+                padding: 0.9rem 2.2rem;
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                width: 100%;
+                height: 44px;
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 
