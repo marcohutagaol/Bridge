@@ -64,18 +64,24 @@
                         </a>
                     @endif
 
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/profil">Profil</a></li>
-                        <li><a class="dropdown-item" href="/my-learning">My learning</a></li>
-                        <li><a class="dropdown-item" href="{{ route('wishlist.index') }}">My Wishlist</a></li>
-                        <li><a class="dropdown-item" href="/profile">Profil</a></li>
-                        <li>
-                            <form method="POST" action="/logout">
-                                @csrf
-                                <button type="submit" class="dropdown-item">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
+                    @if(Auth::check())
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/my-learning">My learning</a></li>
+                            <li><a class="dropdown-item" href="{{ route('wishlist.index') }}">My Wishlist</a></li>
+                            <li><a class="dropdown-item" href="/profile">Profil</a></li>
+                            <li>
+                                <form method="POST" action="/logout">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    @else
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/login">Login</a></li>
+                            <li><a class="dropdown-item" href="/register">Register</a></li>
+                        </ul>
+                    @endif
                 </div>
 
             </div>
