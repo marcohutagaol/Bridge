@@ -17,11 +17,13 @@
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Course Name</label>
                             <input name="name" type="text" class="form-control" placeholder="Enter course name">
+
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Category</label>
                             <select name="kategori" class="form-control">
+
                                 <option value="">Select category</option>
                                 <option value="programming">Programming</option>
                                 <option value="design">Design</option>
@@ -47,6 +49,7 @@
                         <label class="form-label">Course Image</label>
                         <div class="input-group">
                             <input name="image" type="text" class="form-control" placeholder="Enter image URL">
+
                             <button class="btn btn-outline-secondary" type="button">Preview</button>
                         </div>
                     </div>
@@ -55,6 +58,7 @@
                         <label class="form-label">Description</label>
                         <textarea name="description" class="form-control" rows="3"
                             placeholder="Enter course description"></textarea>
+
                     </div>
 
                     <div class="row">

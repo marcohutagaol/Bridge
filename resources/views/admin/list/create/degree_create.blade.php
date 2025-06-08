@@ -22,6 +22,7 @@
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Degree Level</label>
                             <select name="tipe" class="form-control">
+
                                 <option value="">Select level</option>
                                 <option value="bachelor">Bachelor's Degree</option>
                                 <option value="master">Master's Degree</option>
@@ -33,6 +34,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label">University</label>
+
                             <input name="name" type="text" class="form-control" placeholder="Enter university name">
                         </div>
 
