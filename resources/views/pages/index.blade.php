@@ -31,14 +31,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto">
-                        <h1 class="text-white text-center">Discover. Learn. Enjoy</h1>
-                        <h6 class="text-center">platform for creatives around the world</h6>
+                        <h1 class="text-white text-center">Temukan. Belajar. Berkembang</h1>
+                        <h6 class="text-center">Platform pembelajaran untuk masa depan lebih baik</h6>
 
                         <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-text bi-search" id="basic-addon1"></span>
                                 <input name="keyword" type="search" class="form-control" id="keyword"
-                                    placeholder="Design, Code, Marketing, Finance ..." aria-label="Search">
+                                    placeholder="Cari topik pembelajaran ..." aria-label="Search">
                                 <button type="submit" class="form-control">Search</button>
                             </div>
                         </form>
@@ -55,9 +55,13 @@
                             <a href="topics-detail.html">
                                 <div class="d-flex">
                                     <div>
-                                        <h5 class="mb-2">Web Design</h5>
-                                        <p class="mb-0">When you search for free CSS templates, you will notice that
-                                            TemplateMo is one of the best websites.</p>
+                                        <h5 class="mb-2">Persiapan Kuliah</h5>
+                                        <p class="mb-0" style="text-align: justify">Siapkan dirimu untuk jenjang
+                                            pendidikan
+                                            tinggi, kuasai teknik belajar
+                                            efektif, manajemen waktu, dan strategi
+                                            menghadapi ujian, Raih prestasi terbaik dengan metode belajar yang terbukti
+                                            efektif.</p>
                                     </div>
                                     <span class="badge bg-design rounded-pill ms-auto">14</span>
                                 </div>
@@ -75,10 +79,15 @@
 
                                 <div class="custom-block-overlay-text d-flex">
                                     <div>
-                                        <h5 class="text-white mb-2">Finance</h5>
-                                        <p class="text-white">Topic Listing Template includes homepage, listing page,
-                                            detail page, and contact page. You can feel free to edit and adapt for your
-                                            CMS requirements.</p>
+                                        <h5 class="text-white mb-2">Karir</h5>
+                                        <p class="text-white" style="text-align: justify;">
+                                            Jelajahi berbagai peluang karir dan dapatkan panduan lengkap untuk mencapai
+                                            tujuan profesional Anda.
+                                            Bangun fondasi yang kuat, kembangkan keterampilan yang relevan, dan
+                                            persiapkan diri menghadapi
+                                            tantangan dunia kerja masa depan.
+                                        </p>
+
                                         <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
                                     </div>
                                     <span class="badge bg-finance rounded-pill ms-auto">25</span>
@@ -108,7 +117,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h2 class="mb-4">TOPICS</h2>
+                        <h2 class="mb-4">PILIHAN TOPIC</h2>
                     </div>
                 </div>
             </div>
@@ -119,12 +128,12 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="design-tab" data-bs-toggle="tab"
                                 data-bs-target="#design-tab-pane" type="button" role="tab"
-                                aria-controls="design-tab-pane" aria-selected="true">Kuliah</button>
+                                aria-controls="design-tab-pane" aria-selected="true">Pendidikan</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="education-tab" data-bs-toggle="tab"
                                 data-bs-target="#education-tab-pane" type="button" role="tab"
-                                aria-controls="education-tab-pane" aria-selected="false">Kerja</button>
+                                aria-controls="education-tab-pane" aria-selected="false">Dunia Kerja</button>
                         </li>
                     </ul>
                 </div>
@@ -144,8 +153,11 @@
                                             <a href="/topic-detail">
                                                 <div class="d-flex">
                                                     <div>
-                                                        <h5 class="mb-2">Persiapan</h5>
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        <h5 class="mb-2">Cari Topik Pilihan</h5>
+                                                        <p class="mb-0" style="align-text: justify">Temukan topik
+                                                            pembelajaran yang sesuai dengan minat dan tujuan karir Anda.
+                                                            Memberikan materi terbaik untuk masa depan pendidikan Anda.
+                                                        </p>
                                                     </div>
                                                     <span class="badge bg-finance rounded-pill ms-auto">30</span>
                                                 </div>
@@ -160,7 +172,10 @@
                                                 <div class="d-flex">
                                                     <div>
                                                         <h5 class="mb-2">Info Kampus</h5>
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        <p class="mb-0" style="text-align:justify;">Menyediakan panduan
+                                                            terpercaya untuk membantu calon mahasiswa menemukan kampus
+                                                            yang tepat. Memberikan informasi terbaik untuk masa depan
+                                                            pendidikan Anda.</p>
                                                     </div>
                                                     <span class="badge bg-finance rounded-pill ms-auto">30</span>
                                                 </div>
@@ -244,8 +259,8 @@
                                     <div class="col-lg-10 col-md-6 col-12 mb-4 mx-auto">
                                         <div class="custom-block custom-block-overlay certificate-block">
                                             <a href="/courses">
-                                                <img src="images/topics/certif.png"
-                                                    class="custom-block-image img-fluid" alt="">
+                                                <img src="images/topics/certif.png" class="custom-block-image img-fluid"
+                                                    alt="">
 
                                                 <!-- Content positioned at the top -->
                                                 <div class="top-content">
@@ -287,7 +302,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h2 class="text-white mb-4">How does it work?</h2>
+                        <h2 class="text-white mb-4">Bagaimana Cara Kerjanya?</h2>
                     </div>
 
                     <div class="col-lg-10 col-12 mx-auto">
@@ -298,10 +313,9 @@
                                 </div>
 
                                 <li>
-                                    <h4 class="text-white mb-3">Search your favourite topic</h4>
-                                    <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Reiciendis, cumque magnam? Sequi, cupiditate quibusdam alias illum sed esse ad
-                                        dignissimos libero sunt, quisquam numquam aliquam? Voluptas, accusamus omnis?
+                                    <h4 class="text-white mb-3">Cari Topik Pilihan Anda</h4>
+                                    <p class="text-white">Temukan topik pembelajaran yang sesuai dengan minat dan tujuan
+                                        karir Anda.
                                     </p>
                                     <div class="icon-holder">
                                         <i class="bi-search"></i>
@@ -309,20 +323,18 @@
                                 </li>
 
                                 <li>
-                                    <h4 class="text-white mb-3">Bookmark &amp; Keep it for yourself</h4>
-                                    <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
-                                        animi necessitatibus aperiam repudiandae nam omnis est vel quo, nihil repellat
-                                        quia velit error modi earum similique odit labore. Doloremque, repudiandae?</p>
+                                    <h4 class="text-white mb-3">Simpan & Pelajari</h4>
+                                    <p class="text-white">Simpan materi pembelajaran favorit dan pelajari sesuai dengan
+                                        kecepatan Anda sendiri.</p>
                                     <div class="icon-holder">
                                         <i class="bi-bookmark"></i>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <h4 class="text-white mb-3">Read &amp; Enjoy</h4>
-                                    <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                        Animi vero quisquam, rem assumenda similique voluptas distinctio, iste est hic
-                                        eveniet debitis ut ducimus beatae id? Quam culpa deleniti officiis autem?</p>
+                                    <h4 class="text-white mb-3">Praktik & Berkembang</h4>
+                                    <p class="text-white">Terapkan pengetahuan yang didapat dan kembangkan keterampilan
+                                        Anda secara berkelanjutan.</p>
                                     <div class="icon-holder">
                                         <i class="bi-book"></i>
                                     </div>
@@ -345,7 +357,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-12">
-                        <h2 class="mb-4">Frequently Asked Questions</h2>
+                        <h2 class="mb-4">Ingin tahu lebih banyak?</h2>
                     </div>
 
                     <div class="clearfix"></div>
@@ -360,7 +372,7 @@
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is Topic Listing?
+                                        Pertanyaan Yang Sering Diajukan
                                     </button>
                                 </h2>
 
