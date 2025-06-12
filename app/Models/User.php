@@ -207,4 +207,30 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('wishlistable_id', $itemId)
             ->exists();
     }
+
+    // Tambahkan method ini ke dalam User Model Anda (App\Models\User)
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    /**
+     * Get unread messages count for user
+     */
+    public function getUnreadMessagesCountAttribute()
+    {
+        return $this->messages()->unread()->count();
+    }
+
+    /**
+     * Get latest messages for user
+     */
+    public function getLatestMessages($limit = 5)
+    {
+        return $this->messages()
+            ->orderBy('created_at', 'desc')
+            ->limit($limit)
+            ->get();
+    }
 }

@@ -15,6 +15,11 @@
         </a>
       </li>
       <li class="nav-item">
+        <a href="{{ route('admin.messages.analytics') }}" class="nav-link  text-white">
+          <i class="fas fa-chart-bar me-2"></i> Message Analytics
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="/users" class="nav-link text-white">
           <i class="fas fa-users me-2"></i> User List
         </a>
@@ -59,24 +64,27 @@
       <li class="nav-item">
 
 
-     <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle text-white" href="#" id="progressDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fas fa-tasks me-2"></i> User Updates
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="progressDropdown">
-        <li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="progressDropdown" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-tasks me-2"></i> User Updates
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="progressDropdown">
+          <li>
             <a class="dropdown-item" href="/progress">
-                <i class="fas fa-chart-line me-2"></i> User Progress
+              <i class="fas fa-chart-line me-2"></i> User Progress
             </a>
-        </li>
-        <li>
+          </li>
+          <li>
             <a class="dropdown-item" href="/nilai">
-                <i class="fas fa-scroll me-2"></i> User Grades
+              <i class="fas fa-scroll me-2"></i> User Grades
             </a>
-        </li>
-    </ul>
-</li>
+          </li>
+        </ul>
+      </li>
+
+
+
 
       </li>
     </ul>

@@ -3,7 +3,7 @@
 @section('content')
   <div class="list-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="fw-bold m-0">Nilai Learning</h1>
+      <h1 class="fw-bold m-0">Grade Learning</h1>
     </div>
 
     <!-- Score Summary Cards -->

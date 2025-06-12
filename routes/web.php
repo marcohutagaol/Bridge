@@ -9,26 +9,27 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\KampusController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RankingController;
 
+use App\Http\Controllers\RankingController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyLearningController;
 use App\Http\Controllers\UniversityController;
+
+
 use App\Http\Controllers\AdminCreateController;
-
-
 use App\Http\Controllers\UniversitasController;
 use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\LearningPageController;
 use App\Http\Controllers\SelectedCourseController;
 use App\Http\Controllers\LearningProgressController;
 
- 
+
 Route::get('/', [AdminController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('index');
 Route::get('/', function () {
@@ -127,7 +128,29 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/wishlist/check', [WishlistController::class, 'check'])->name('wishlist.check');
     Route::get('/wishlist/count', [WishlistController::class, 'count'])->name('wishlist.count');
     Route::delete('/wishlist/remove', [WishlistController::class, 'remove'])->name('wishlist.remove');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+});
+
+
+
+// Route::get('/contact', [ContactController::class, 'index'])->
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/messages/analytics', [ContactController::class, 'analytics'])->name('admin.messages.analytics');
+    
+    Route::get('/messages', [ContactController::class, 'adminIndex'])->name('admin.messages.index');
+    Route::get('/messages/{message}', [ContactController::class, 'show'])->name('admin.messages.show');
+    Route::patch('/messages/{message}/status', [ContactController::class, 'updateStatus'])->name('admin.messages.update-status');
+    Route::delete('/messages/{message}', [ContactController::class, 'destroy'])->name('admin.messages.destroy');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 });
 
 
@@ -248,19 +271,19 @@ Route::prefix('invoice')->name('invoice.')->group(function () {
     // Download PDF invoice
     Route::get('/download/{orderId}', [InvoiceController::class, 'downloadInvoice'])
         ->name('download');
-    
+
     // View PDF invoice in browser
     Route::get('/view/{orderId}', [InvoiceController::class, 'viewInvoice'])
         ->name('view');
-    
+
     // Generate and save invoice
     Route::post('/generate/{orderId}', [InvoiceController::class, 'generateInvoice'])
         ->name('generate');
-    
+
     // Email invoice
     Route::post('/email/{orderId}', [InvoiceController::class, 'emailInvoice'])
         ->name('email');
-    
+
     // Bulk generate invoices
     Route::post('/bulk-generate', [InvoiceController::class, 'bulkGenerateInvoices'])
         ->name('bulk.generate');
