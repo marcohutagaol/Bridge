@@ -1,0 +1,107 @@
+.bookmark-btn {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.bookmark-btn:hover {
+    transform: scale(1.1);
+    background: #1a9999 !important;
+}
+
+.bookmark-btn.bookmarked {
+    background: #dc3545 !important;
+}
+
+.bookmark-btn.bookmarked:hover {
+    background: #c82333 !important;
+}
+
+/* Toast animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .bookmark-btn {
+        width: 35px;
+        height: 30px;
+    }
+
+    .bookmark-icon {
+        font-size: 14px !important;
+    }
+}
+
+
+.bookmark-btn {
+    transition: all 0.3s ease !important;
+}
+
+.bookmark-btn:hover {
+    background: #17A2B8 !important;
+    transform: scale(1.05);
+}
+
+.bookmark-btn:hover .bookmark-icon {
+    color: white !important;
+}
+
+.bookmark-btn.bookmarked {
+    background: #17A2B8 !important;
+}
+
+.bookmark-btn.bookmarked .bookmark-icon {
+    color: white !important;
+}
+
+.bookmark-container {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .bookmark-container {
+    opacity: 1;
+}
+
+.bookmark-btn:focus {
+    outline: none !important;
+    box-shadow: -2px -2px 8px rgba(23, 162, 184, 0.4) !important;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}

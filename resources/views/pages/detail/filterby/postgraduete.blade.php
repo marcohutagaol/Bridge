@@ -8,7 +8,7 @@
     <meta name="description" content="Online Degree Programs Listing Page">
     <meta name="author" content="">
 
-    <title>Online Degree Programs</title>
+    <title>Postgraduate Degree Programs</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +47,7 @@
                 <div class="dropdown me-3">
                     <button class="btn dropdown-toggle filter-btn" type="button" id="programLevelDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Tingkat Program
+                        Program Level
                     </button>
                     <ul class="dropdown-menu filter-dropdown" aria-labelledby="programLevelDropdown">
                         <li><a class="dropdown-item" href="/module">All</a></li>
@@ -62,7 +62,7 @@
     <div class="dropdown">
         <button class="btn dropdown-toggle filter-btn" type="button" id="subjectDropdown"
             data-bs-toggle="dropdown" aria-expanded="false">
-            Subjek
+            Subject
         </button>
        <ul class="dropdown-menu filter-dropdown p-3" aria-labelledby="subjectDropdown"
     style="min-width: 240px; right: -15px; left: auto;">
@@ -113,7 +113,7 @@
         <label class="form-check-label text-dark fw-normal" for="dataScience"> Data Science</label>
     </div></li>
     <li class="mt-3">
-        <button class="btn btn-primary w-100" type="submit" id="applySubjectFilter">Terapkan</button>
+        <button class="btn btn-primary w-100" type="submit" id="applySubjectFilter">Submit</button>
 </ul>
 
     </div>
@@ -122,7 +122,7 @@
             </div>
             
             <!-- Email Button -->
-            <button class="btn btn-outline-success">Email info ke saya</button>
+            <button class="btn btn-outline-success">Email info </button>
         </div>
     </div>
 </div>

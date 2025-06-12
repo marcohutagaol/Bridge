@@ -31,14 +31,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto">
-                        <h1 class="text-white text-center">Temukan. Belajar. Berkembang</h1>
-                        <h6 class="text-center">Platform pembelajaran untuk masa depan lebih baik</h6>
+                        <h1 class="text-white text-center">Discover. Learn. Grow</h1>
+                        <h6 class="text-center">Learning platform for a better future</h6>
 
                         <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-text bi-search" id="basic-addon1"></span>
                                 <input name="keyword" type="search" class="form-control" id="keyword"
-                                    placeholder="Cari topik pembelajaran ..." aria-label="Search">
+                                    placeholder="Search learning topics ..." aria-label="Search">
                                 <button type="submit" class="form-control">Search</button>
                             </div>
                         </form>
@@ -55,13 +55,12 @@
                             <a href="topics-detail.html">
                                 <div class="d-flex">
                                     <div>
-                                        <h5 class="mb-2">Persiapan Kuliah</h5>
-                                        <p class="mb-0" style="text-align: justify">Siapkan dirimu untuk jenjang
-                                            pendidikan
-                                            tinggi, kuasai teknik belajar
-                                            efektif, manajemen waktu, dan strategi
-                                            menghadapi ujian, Raih prestasi terbaik dengan metode belajar yang terbukti
-                                            efektif.</p>
+                                        <h5 class="mb-2">College Preparation</h5>
+                                        <p class="mb-0" style="text-align: justify">Prepare yourself for higher
+                                            education,
+                                            master effective learning techniques, time management, and strategies
+                                            for facing exams. Achieve the best performance with proven effective
+                                            learning methods.</p>
                                     </div>
                                     <span class="badge bg-design rounded-pill ms-auto">14</span>
                                 </div>
@@ -79,13 +78,13 @@
 
                                 <div class="custom-block-overlay-text d-flex">
                                     <div>
-                                        <h5 class="text-white mb-2">Karir</h5>
+                                        <h5 class="text-white mb-2">Career</h5>
                                         <p class="text-white" style="text-align: justify;">
-                                            Jelajahi berbagai peluang karir dan dapatkan panduan lengkap untuk mencapai
-                                            tujuan profesional Anda.
-                                            Bangun fondasi yang kuat, kembangkan keterampilan yang relevan, dan
-                                            persiapkan diri menghadapi
-                                            tantangan dunia kerja masa depan.
+                                            Explore various career opportunities and get complete guidance to achieve
+                                            your professional goals.
+                                            Build a strong foundation, develop relevant skills, and
+                                            prepare yourself to face
+                                            future workplace challenges.
                                         </p>
 
                                         <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
@@ -117,7 +116,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h2 class="mb-4">PILIHAN TOPIC</h2>
+                        <h2 class="mb-4">TOPIC OPTIONS</h2>
                     </div>
                 </div>
             </div>
@@ -128,12 +127,12 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="design-tab" data-bs-toggle="tab"
                                 data-bs-target="#design-tab-pane" type="button" role="tab"
-                                aria-controls="design-tab-pane" aria-selected="true">Pendidikan</button>
+                                aria-controls="design-tab-pane" aria-selected="true">Education</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="education-tab" data-bs-toggle="tab"
                                 data-bs-target="#education-tab-pane" type="button" role="tab"
-                                aria-controls="education-tab-pane" aria-selected="false">Dunia Kerja</button>
+                                aria-controls="education-tab-pane" aria-selected="false">Work World</button>
                         </li>
                     </ul>
                 </div>
@@ -153,10 +152,11 @@
                                             <a href="/topic-detail">
                                                 <div class="d-flex">
                                                     <div>
-                                                        <h5 class="mb-2">Cari Topik Pilihan</h5>
-                                                        <p class="mb-0" style="align-text: justify">Temukan topik
-                                                            pembelajaran yang sesuai dengan minat dan tujuan karir Anda.
-                                                            Memberikan materi terbaik untuk masa depan pendidikan Anda.
+                                                        <h5 class="mb-2">Find Your Choice Topic</h5>
+                                                        <p class="mb-0" style="align-text: justify">Discover learning
+                                                            topics
+                                                            that match your interests and career goals.
+                                                            Providing the best materials for your educational future.
                                                         </p>
                                                     </div>
                                                     <span class="badge bg-finance rounded-pill ms-auto">30</span>
@@ -171,11 +171,12 @@
                                             <a href="/info-kampus">
                                                 <div class="d-flex">
                                                     <div>
-                                                        <h5 class="mb-2">Info Kampus</h5>
-                                                        <p class="mb-0" style="text-align:justify;">Menyediakan panduan
-                                                            terpercaya untuk membantu calon mahasiswa menemukan kampus
-                                                            yang tepat. Memberikan informasi terbaik untuk masa depan
-                                                            pendidikan Anda.</p>
+                                                        <h5 class="mb-2">Campus Info</h5>
+                                                        <p class="mb-0" style="text-align:justify;">Providing trusted
+                                                            guidance
+                                                            to help prospective students find the right campus.
+                                                            Delivering the best information for your educational future.
+                                                        </p>
                                                     </div>
                                                     <span class="badge bg-finance rounded-pill ms-auto">30</span>
                                                 </div>
@@ -255,7 +256,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Kursus dan Sertifikat Block -->
+                                    <!-- Courses and Certificates Block -->
                                     <div class="col-lg-10 col-md-6 col-12 mb-4 mx-auto">
                                         <div class="custom-block custom-block-overlay certificate-block">
                                             <a href="/courses">
@@ -266,7 +267,8 @@
                                                 <div class="top-content">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2" style="color: white;">Kursus dan Sertifikat
+                                                            <h5 class="mb-2" style="color: white;">Courses and
+                                                                Certificates
                                                             </h5>
                                                         </div>
                                                     </div>
@@ -276,9 +278,9 @@
                                                 <div class="bottom-content">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <p class="mb-0" style="color: white;">Tingkatkan
-                                                                keterampilan Anda dengan kursus dan dapatkan sertifikat
-                                                                profesional.</p>
+                                                            <p class="mb-0" style="color: white;">Enhance
+                                                                your skills with courses and get professional
+                                                                certificates.</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -302,7 +304,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h2 class="text-white mb-4">Bagaimana Cara Kerjanya?</h2>
+                        <h2 class="text-white mb-4">How Does It Work?</h2>
                     </div>
 
                     <div class="col-lg-10 col-12 mx-auto">
@@ -313,9 +315,9 @@
                                 </div>
 
                                 <li>
-                                    <h4 class="text-white mb-3">Cari Topik Pilihan Anda</h4>
-                                    <p class="text-white">Temukan topik pembelajaran yang sesuai dengan minat dan tujuan
-                                        karir Anda.
+                                    <h4 class="text-white mb-3">Find Your Choice Topic</h4>
+                                    <p class="text-white">Discover learning topics that match your interests and career
+                                        goals.
                                     </p>
                                     <div class="icon-holder">
                                         <i class="bi-search"></i>
@@ -323,18 +325,18 @@
                                 </li>
 
                                 <li>
-                                    <h4 class="text-white mb-3">Simpan & Pelajari</h4>
-                                    <p class="text-white">Simpan materi pembelajaran favorit dan pelajari sesuai dengan
-                                        kecepatan Anda sendiri.</p>
+                                    <h4 class="text-white mb-3">Save & Learn</h4>
+                                    <p class="text-white">Save your favorite learning materials and study at your own
+                                        pace.</p>
                                     <div class="icon-holder">
                                         <i class="bi-bookmark"></i>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <h4 class="text-white mb-3">Praktik & Berkembang</h4>
-                                    <p class="text-white">Terapkan pengetahuan yang didapat dan kembangkan keterampilan
-                                        Anda secara berkelanjutan.</p>
+                                    <h4 class="text-white mb-3">Practice & Grow</h4>
+                                    <p class="text-white">Apply the knowledge you've gained and continuously develop
+                                        your skills.</p>
                                     <div class="icon-holder">
                                         <i class="bi-book"></i>
                                     </div>
@@ -357,7 +359,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-12">
-                        <h2 class="mb-4">Ingin tahu lebih banyak?</h2>
+                        <h2 class="mb-4">Want to know more?</h2>
                     </div>
 
                     <div class="clearfix"></div>
@@ -372,16 +374,17 @@
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Pertanyaan Yang Sering Diajukan
+                                        What is this learning platform about?
                                     </button>
                                 </h2>
 
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        Topic Listing is free Bootstrap 5 CSS template. <strong>You are not allowed to
-                                            redistribute this template</strong> on any other template collection website
-                                        without our permission. Please contact TemplateMo for more detail. Thank you.
+                                        Our platform is a comprehensive learning course website that focuses on
+                                        <strong>university-level education</strong> and career preparation. We provide
+                                        quality materials and guidance to help students succeed in higher education and
+                                        prepare for their professional journey.
                                     </div>
                                 </div>
                             </div>
@@ -390,15 +393,18 @@
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How to find a topic?
+                                        What kind of courses do you offer?
                                     </button>
                                 </h2>
 
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        You can search on Google with <strong>keywords</strong> such as templatemo
-                                        portfolio, templatemo one-page layouts, photography, digital marketing, etc.
+                                        We offer courses focused on <strong>university preparation</strong> and
+                                        <strong>career development</strong>. This includes college readiness programs,
+                                        study techniques, time management, exam strategies, professional skills
+                                        development, and career guidance to help you succeed in higher education and the
+                                        workplace.
                                     </div>
                                 </div>
                             </div>
@@ -408,16 +414,17 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        Does it need to paid?
+                                        Is the platform free to use?
                                     </button>
                                 </h2>
 
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        You can modify any of this with custom CSS or overriding our default variables.
-                                        It's also worth noting that just about any HTML can go within the
-                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                        We offer both free and premium content. Basic learning materials and resources
+                                        are available for free, while advanced courses and personalized career guidance
+                                        may require a subscription. Our goal is to make quality education accessible to
+                                        everyone preparing for university and career success.
                                     </div>
                                 </div>
                             </div>
@@ -436,14 +443,15 @@
 
                     <div class="col-lg-5 col-12 mb-4 mb-lg-0">
                         <iframe class="google-map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.065641062665!2d-122.4230416990949!3d37.80335401520422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858127459fabad%3A0x808ba520e5e9edb7!2sFrancisco%20Park!5e1!3m2!1sen!2sth!4v1684340239744!5m2!1sen!2sth"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.0865570708543!2d98.65687467411208!3d3.558112251402746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312e35d1e40bbd%3A0xf0b7804e1e07c706!2sUniversitas%20Sumatera%20Utara!5e0!3m2!1sid!2sid!4v1717834900971!5m2!1sid!2sid"
                             width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-12 mb-3 mb-lg- mb-md-0 ms-auto">
-                        <h4 class="mb-3">Head office</h4>
-                        <p>Bay St &amp;, Larkin St, San Francisco, CA 94109, United States</p>
+                        <h4 class="mb-3">Universitas Sumatera Utara</h4>
+                        <p>Jl. Dr. Mansur No.9, Padang Bulan, Kec. Medan Baru, Kota Medan, Sumatera Utara 20222,
+                            Indonesia</p>
                         <hr>
                         <p class="d-flex align-items-center mb-1">
                             <span class="me-2">Phone</span>
@@ -456,16 +464,17 @@
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-12 mx-auto">
-                        <h4 class="mb-3">Dubai office</h4>
-                        <p>Burj Park, Downtown Dubai, United Arab Emirates</p>
+                        <h4 class="mb-3">Fakultas Teknologi Informasi</h4>
+                        <p>Jl. Universitas No.9A, Padang Bulan, Kec. Medan Baru, Kota Medan, Sumatera Utara 20155,
+                            Indonesia</p>
                         <hr>
                         <p class="d-flex align-items-center mb-1">
                             <span class="me-2">Phone</span>
-                            <a href="tel: 110-220-3400" class="site-footer-link">110-220-3400</a>
+                            <a href="tel: 061-8213737" class="site-footer-link">061-8213737</a>
                         </p>
                         <p class="d-flex align-items-center">
                             <span class="me-2">Email</span>
-                            <a href="mailto:info@company.com" class="site-footer-link">info@company.com</a>
+                            <a href="mailto:fti@usu.ac.id" class="site-footer-link">fti@usu.ac.id</a>
                         </p>
                     </div>
                 </div>
