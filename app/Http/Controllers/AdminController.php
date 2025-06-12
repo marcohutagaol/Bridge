@@ -28,7 +28,7 @@ class AdminController extends Controller
 
     public function users(Request $request)
     {
-        $perPage = $request->input('per_page', 10); 
+        $perPage = $request->input('per_page', 25); 
         $search = $request->input('user_name');
         $users = User::where('user_type', 'user')
         ->where('name', 'like', '%' . $search . '%')
@@ -44,7 +44,7 @@ class AdminController extends Controller
 
     public function careers(Request $request)
     {
-        $perPage = $request->input('per_page', 10);
+        $perPage = $request->input('per_page', 25);
         $search = $request->input('item_name');
         $careers = Career::where('name', 'like', '%' . $search . '%')
         ->orWhere('kategoris', 'like', '%' . $search . '%')
@@ -145,7 +145,7 @@ class AdminController extends Controller
 
     public function degrees(Request $request)
     {
-        $perPage = $request->input('per_page', 10);
+        $perPage = $request->input('per_page', 25);
         $search = $request->input('item_name');
         $degrees = University::where('name', 'like', '%' . $search . '%')
         ->orWhere('degree', 'like', '%' . $search . '%')
@@ -239,6 +239,9 @@ class AdminController extends Controller
         $courses = Course::where('name', 'like', '%' . $search . '%')
         ->paginate($perPage)
         ->appends($request->query());
+        // SELECT * FROM courses_certificates
+        // WHERE name LIKE '%{search}%'
+        // LIMIT {perPage} OFFSET {(currentPage - 1) * perPage};      
 
         return view('admin.list.course_list', compact('courses'));
     }
@@ -261,6 +264,15 @@ class AdminController extends Controller
         ]);
 
         Course::create($validated);
+        // INSERT INTO courses_certificates (
+        //     name, image, description, duration_r,
+        //     institution, institution_logo, kategori,
+        //     created_at, updated_at
+        // ) VALUES (
+        //     '{name}', '{image}', '{description}', '{duration_r}',
+        //     '{institution}', '{institution_logo}', '{kategori}',
+        //     NOW(), NOW()
+        // );
 
         return redirect()->route('admin.list.course_list')->with('success', 'Course created successfully.');
     }
@@ -268,6 +280,7 @@ class AdminController extends Controller
     public function editCourse($id)
     {
         $course = Course::find($id);
+        // SELECT * FROM courses_certificates WHERE id = {id};
         return view('admin.list.edit.course_edit', compact('course'));
     }
 
@@ -285,6 +298,17 @@ class AdminController extends Controller
 
         $course = Course::find($id);
         $course->update($validated);
+        // UPDATE courses_certificates
+        // SET
+        //     name = '{name}',
+        //     image = '{image}',
+        //     description = '{description}',
+        //     duration_r = '{duration_r}',
+        //     institution = '{institution}',
+        //     institution_logo = '{institution_logo}',
+        //     kategori = '{kategori}',
+        //     updated_at = NOW()
+        // WHERE id = {id};
 
         return redirect()->route('admin.list.course_list')->with('success', 'Course updated successfully.');
     }
@@ -293,6 +317,7 @@ class AdminController extends Controller
     {
         $course = Course::find($id);
         $course->delete();
+        // DELETE FROM courses_certificates WHERE id = {id};
 
         return redirect()->route('admin.list.course_list')->with('success', 'Course deleted successfully.');
     }

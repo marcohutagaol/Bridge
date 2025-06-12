@@ -3,11 +3,7 @@
 @section('content')
     <div class="user-list-container">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="fw-bold m-0">Career List</h1>
-
-            <a href="/career-create" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
-                Create New
-            </a>
+            <h1 class="fw-bold m-0">User List</h1>
         </div>
 
         <form method="GET" action="{{ route('admin.list.users') }}">
@@ -22,16 +18,15 @@
                         <button type="submit" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
                             Apply Filter
                         </button>
-                        <a href="{{ route('admin.list.career_list') }}"
-                            class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
+                        <a href="{{ route('admin.list.users') }}" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
                             Reset
                         </a>
                     </div>
                     <div class="relative">
                         <select name="per_page" onchange="this.form.submit()" class="px-3 py-2 border rounded">
-                            <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
                             <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
-                            <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
+                            <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                            <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
                         </select>
                     </div>
                 </div>
@@ -47,7 +42,6 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <!-- <th>Actions</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -62,23 +56,37 @@
                                     </div>
                                 </td>
                                 <td>{{ $user->email }}</td>
-                                <!-- <td>
-                                                                            <div class="action-buttons">
-                                                                                <button class="btn btn-outline-info btn-sm" title="Edit">
-                                                                                    <i class="fas fa-edit"></i>
-                                                                                </button>
-                                                                                <button class="btn btn-outline-danger btn-sm" title="Delete">
-                                                                                    <i class="fas fa-trash"></i>
-                                                                                </button>
-                                                                            </div>
-                                                                        </td> -->
-                            </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <div class="mt-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item {{ $users->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $users->previousPageUrl() }}">
+                        <span aria-hidden="true">&laquo;</span> Previous
+                    </a>
+                </li>
+
+                @for ($i = 1; $i <= $users->lastPage(); $i++)
+                    <li class="page-item {{ $users->currentPage() == $i ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $users->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+
+                <li class="page-item {{ $users->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $users->nextPageUrl() }}">
+                        Next <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
 
     <style>
         .user-list-container {
@@ -223,6 +231,39 @@
         .custom-table td {
             // ...existing code...
             white-space: nowrap;
+        }
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .pagination li {
+            margin: 0 2px;
+        }
+
+        .pagination a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #1f4e6c;
+            /* biru gelap */
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .pagination a:hover {
+            background-color: #e6f0f5;
+        }
+
+        .pagination .active a {
+            background-color: #174d6d;
+            /* biru tua */
+            color: white;
+            font-weight: bold;
         }
     </style>
 @endsection
