@@ -1218,13 +1218,13 @@
 
 
         <!-- Belajar dari Ahli Section -->
-        <section class="expert-faculty-section py-5 bg-light">
+      <section class="expert-faculty-section py-5 bg-light">
             <div class="container">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <h2 class="h3 mb-3">Belajar dari Para Ahli</h2>
-                        <p class="text-muted">Dapatkan pengetahuan langsung dari para pengajar terkemuka yang merupakan
-                            pakar di bidangnya masing-masing.</p>
+                        <h2 class="h3 mb-3">Learn from the Experts</h2>
+                        <p class="text-muted">Gain knowledge directly from leading educators who are experts in their
+                            respective fields.</p>
                     </div>
                 </div>
 
@@ -1258,17 +1258,17 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Spesialisasi dalam Manajemen Strategis dan Kepemimpinan dengan
-                                        pengalaman 15+ tahun mengajar di universitas terkemuka.</p>
-                                    <p class="small mb-2"><i class="bi bi-journal-check me-2 text-teal"></i>Lebih dari
-                                        30 publikasi penelitian</p>
-                                    <p class="small mb-0"><i class="bi bi-briefcase me-2 text-teal"></i>Mantan konsultan
-                                        di McKinsey & Company</p>
+                                    <p class="small mb-2">Specializes in Strategic Management and Leadership with
+                                        15+ years of experience teaching at leading universities.</p>
+                                    <p class="small mb-2"><i class="bi bi-journal-check me-2 text-teal"></i>Over
+                                        30 research publications</p>
+                                    <p class="small mb-0"><i class="bi bi-briefcase me-2 text-teal"></i>Former consultant
+                                        at McKinsey & Company</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1303,17 +1303,17 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Pakar dalam Artificial Intelligence dan Machine Learning
-                                        dengan kontribusi signifikan dalam pengembangan algoritma modern.</p>
-                                    <p class="small mb-2"><i class="bi bi-award me-2 text-teal"></i>Penerima IEEE
+                                    <p class="small mb-2">Expert in Artificial Intelligence and Machine Learning
+                                        with significant contributions to modern algorithm development.</p>
+                                    <p class="small mb-2"><i class="bi bi-award me-2 text-teal"></i>Recipient of IEEE
                                         Outstanding Researcher Award</p>
-                                    <p class="small mb-0"><i class="bi bi-buildings me-2 text-teal"></i>Peneliti senior
-                                        di Google AI (2015-2020)</p>
+                                    <p class="small mb-0"><i class="bi bi-buildings me-2 text-teal"></i>Senior researcher
+                                        at Google AI (2015-2020)</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1346,17 +1346,17 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Ahli dalam bidang Renewable Energy dan Smart Grid Technologies
-                                        dengan lebih dari 12 tahun pengalaman riset.</p>
-                                    <p class="small mb-2"><i class="bi bi-lightning me-2 text-teal"></i>Pionir dalam
-                                        pengembangan teknologi solar cell</p>
-                                    <p class="small mb-0"><i class="bi bi-person-workspace me-2 text-teal"></i>Konsultan
-                                        untuk proyek energi terbarukan UN</p>
+                                    <p class="small mb-2">Expert in Renewable Energy and Smart Grid Technologies
+                                        with over 12 years of research experience.</p>
+                                    <p class="small mb-2"><i class="bi bi-lightning me-2 text-teal"></i>Pioneer in
+                                        solar cell technology development</p>
+                                    <p class="small mb-0"><i class="bi bi-person-workspace me-2 text-teal"></i>Consultant
+                                        for UN renewable energy projects</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1391,17 +1391,17 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Spesialis dalam Big Data Analytics dan Business Intelligence
-                                        dengan pengalaman industri yang luas.</p>
-                                    <p class="small mb-2"><i class="bi bi-graph-up me-2 text-teal"></i>Pengembang
-                                        framework analitik terkenal</p>
-                                    <p class="small mb-0"><i class="bi bi-person-video3 me-2 text-teal"></i>Pembicara
-                                        internasional di lebih dari 25 negara</p>
+                                    <p class="small mb-2">Specialist in Big Data Analytics and Business Intelligence
+                                        with extensive industry experience.</p>
+                                    <p class="small mb-2"><i class="bi bi-graph-up me-2 text-teal"></i>Developer of
+                                        renowned analytical frameworks</p>
+                                    <p class="small mb-0"><i class="bi bi-person-video3 me-2 text-teal"></i>International
+                                        speaker in over 25 countries</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1436,17 +1436,17 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Ahli dalam strategi digital marketing dan analitik sosial
-                                        media dengan pengalaman praktis yang ekstensif.</p>
-                                    <p class="small mb-2"><i class="bi bi-megaphone me-2 text-teal"></i>Mantan VP
-                                        Marketing di perusahaan Fortune 500</p>
-                                    <p class="small mb-0"><i class="bi bi-book me-2 text-teal"></i>Penulis buku
-                                        bestseller "Digital Transformation"</p>
+                                    <p class="small mb-2">Expert in digital marketing strategies and social media
+                                        analytics with extensive practical experience.</p>
+                                    <p class="small mb-2"><i class="bi bi-megaphone me-2 text-teal"></i>Former VP
+                                        Marketing at Fortune 500 company</p>
+                                    <p class="small mb-0"><i class="bi bi-book me-2 text-teal"></i>Bestselling author of
+                                        "Digital Transformation"</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1481,17 +1481,17 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Pakar dalam bidang International Finance, Investment
-                                        Strategies, dan Market Analysis dengan reputasi global.</p>
-                                    <p class="small mb-2"><i class="bi bi-bank me-2 text-teal"></i>Mantan ekonom senior
-                                        di World Bank</p>
-                                    <p class="small mb-0"><i class="bi bi-cash-coin me-2 text-teal"></i>Penasihat untuk
-                                        beberapa institusi keuangan terkemuka</p>
+                                    <p class="small mb-2">Expert in International Finance, Investment
+                                        Strategies, and Market Analysis with global reputation.</p>
+                                    <p class="small mb-2"><i class="bi bi-bank me-2 text-teal"></i>Former senior economist
+                                        at World Bank</p>
+                                    <p class="small mb-0"><i class="bi bi-cash-coin me-2 text-teal"></i>Advisor to
+                                        several leading financial institutions</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1501,7 +1501,7 @@
                 <!-- View All Experts CTA -->
                 <div class="row mt-4">
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-teal">Lihat Semua Pengajar</a>
+                        <a href="#" class="btn btn-teal">View All Instructors</a>
                     </div>
                 </div>
             </div>
