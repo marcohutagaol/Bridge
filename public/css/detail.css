@@ -105,3 +105,66 @@
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
+
+
+.bookmark-btn {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.bookmark-btn:hover {
+    transform: scale(1.1);
+    background: #1a9999 !important;
+}
+
+.bookmark-btn.bookmarked {
+    background: #dc3545 !important;
+}
+
+.bookmark-btn.bookmarked:hover {
+    background: #c82333 !important;
+}
+
+/* Toast animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 15px;
+    }
+    
+    .card-title {
+        font-size: 16px;
+    }
+    
+    .bookmark-btn {
+        width: 35px;
+        height: 30px;
+    }
+    
+    .bookmark-icon {
+        font-size: 14px !important;
+    }
+}
+

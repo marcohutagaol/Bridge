@@ -22,6 +22,8 @@
     <link href="{{ asset('css/templatemo-topic-listing.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/degree-programs.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/detail.css') }}" rel="stylesheet">
+
 </head>
 
 <body id="top">
@@ -435,6 +437,7 @@
                             }, 4000);
                         }
                     </script>
+
                     <!-- Pagination Section -->
                     <div class="col-12">
                         <div class="row mt-4">
@@ -975,9 +978,10 @@
             <div class="container">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <h2 class="h3 mb-3">Cerita Sukses dari Mahasiswa Kami</h2>
-                        <p class="text-muted">Dengarkan pengalaman dari siswa yang telah berhasil meraih tujuan akademis
-                            mereka melalui program online kami.</p>
+                        <h2 class="h3 mb-3">Success Stories from Our Students</h2>
+                        <p class="text-muted">Hear the experiences of students who have successfully achieved their
+                            academic
+                            goals through our online programs.</p>
                     </div>
                 </div>
 
@@ -1008,16 +1012,16 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Program Master of Science in Data Science dari University of
-                                                    Colorado Boulder mengubah karir saya. Fleksibilitas jadwal
-                                                    memungkinkan saya tetap bekerja sambil kuliah. Kini saya bekerja
-                                                    sebagai Data Scientist dengan gaji yang lebih baik.
+                                                    The Master of Science in Data Science program from University of
+                                                    Colorado Boulder transformed my career. The flexible schedule
+                                                    allowed me to continue working while studying. Now I work as a
+                                                    Data Scientist with a better salary.
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Diana Purnama</h5>
                                                     <p class="small text-muted">M.S. in Data Science, University of
                                                         Colorado Boulder</p>
-                                                    <p class="small text-muted">Data Scientist di Tech Solutions Inc.
+                                                    <p class="small text-muted">Data Scientist at Tech Solutions Inc.
                                                     </p>
                                                 </div>
                                             </div>
@@ -1047,16 +1051,16 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Saya berhasil menyelesaikan Bachelor of Science in Business
-                                                    Administration sambil mengurus keluarga. Kuliah online dari
-                                                    University of London memberikan saya keterampilan yang relevan
-                                                    dengan pasar kerja. Sangat worth it!
+                                                    I successfully completed my Bachelor of Science in Business
+                                                    Administration while taking care of my family. Online study from
+                                                    University of London gave me skills that are relevant to the job
+                                                    market. It was totally worth it!
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Budi Santoso</h5>
                                                     <p class="small text-muted">B.S. in Business Administration,
                                                         University of London</p>
-                                                    <p class="small text-muted">Marketing Manager di Global Brands Corp.
+                                                    <p class="small text-muted">Marketing Manager at Global Brands Corp.
                                                     </p>
                                                 </div>
                                             </div>
@@ -1086,14 +1090,14 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Executive MBA dari IIT Roorkee memperluas jaringan profesional saya
-                                                    secara global. Materi pembelajaran yang berkualitas tinggi dan dosen
-                                                    yang berpengalaman membuat investasi pendidikan ini sangat berharga.
+                                                    The Executive MBA from IIT Roorkee expanded my professional network
+                                                    globally. High-quality learning materials and experienced lecturers
+                                                    made this educational investment extremely valuable.
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Siti Rahayu</h5>
                                                     <p class="small text-muted">Executive MBA, IIT Roorkee</p>
-                                                    <p class="small text-muted">CEO di Startup Innovation Labs</p>
+                                                    <p class="small text-muted">CEO at Startup Innovation Labs</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1122,15 +1126,14 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Saya menyukai fleksibilitas yang ditawarkan program ini. Fakta bahwa
-                                                    saya dapat melihat materi dan menghadiri kuliah langsung dari mana
-                                                    saja dengan menggunakan ponsel atau laptop saya sangatlah luar
-                                                    biasa.
+                                                    I love the flexibility offered by this program. The fact that I
+                                                    can view materials and attend lectures live from anywhere using
+                                                    my phone or laptop is absolutely amazing.
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Abdulhakim Abdullahi Abdi</h5>
-                                                    <p class="small text-muted">M.A. dalam Hubungan Internasional,
-                                                        Keamanan, dan Strategi</p>
+                                                    <p class="small text-muted">M.A. in International Relations,
+                                                        Security, and Strategy</p>
                                                     <p class="small text-muted">O.P. Jindal Global University</p>
                                                 </div>
                                             </div>
@@ -1160,16 +1163,17 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Program Master of Science in Management dari University of Illinois
-                                                    membuka pintu karir yang sebelumnya tidak pernah saya bayangkan.
-                                                    Studi kasus dan proyek tim mengajarkan keterampilan kepemimpinan
-                                                    yang praktis.
+                                                    The Master of Science in Management program from University of
+                                                    Illinois
+                                                    opened career doors I had never imagined before. Case studies and
+                                                    team
+                                                    projects taught practical leadership skills.
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Ahmad Rizki</h5>
                                                     <p class="small text-muted">M.S. in Management, University of
                                                         Illinois Urbana-Champaign</p>
-                                                    <p class="small text-muted">Senior Manager di Fortune 500 Company
+                                                    <p class="small text-muted">Senior Manager at Fortune 500 Company
                                                     </p>
                                                 </div>
                                             </div>
@@ -1201,13 +1205,11 @@
                 <!-- CTA -->
                 <div class="row mt-5">
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-teal">Lihat Semua Kisah Sukses</a>
+                        <a href="#" class="btn btn-teal">View All Success Stories</a>
                     </div>
                 </div>
             </div>
         </section>
-
-
 
 
 
@@ -1245,7 +1247,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid"
+                                        <img src="images/instructors/cewe.jpg" class="img-fluid"
                                             alt="Dr. Jennifer Wilson">
                                     </div>
                                     <div>
@@ -1290,7 +1292,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid"
+                                        <img src="images/instructors/cowo1.jpg" class="img-fluid"
                                             alt="Prof. David Martinez">
                                     </div>
                                     <div>
@@ -1334,7 +1336,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid" alt="Dr. Aisha Patel">
+                                        <img src="images/instructors/cewe2.jpg" class="img-fluid" alt="Dr. Aisha Patel">
                                     </div>
                                     <div>
                                         <h5 class="card-title h6 mb-1">Dr. Aisha Patel</h5>
@@ -1378,7 +1380,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid"
+                                        <img src="images/instructors/cowo.jpg" class="img-fluid"
                                             alt="Prof. James Chen">
                                     </div>
                                     <div>
@@ -1423,7 +1425,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid"
+                                        <img src="images/instructors/cewe2.jpg" class="img-fluid"
                                             alt="Dr. Sarah Johnson">
                                     </div>
                                     <div>
