@@ -11,16 +11,19 @@
 
         <div class="card">
             <div class="card-body">
-                <form>
+                <form action="{{ route('admin.list.create.course_store') }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Course Name</label>
-                            <input type="text" class="form-control" placeholder="Enter course name">
+                            <input name="name" type="text" class="form-control" placeholder="Enter course name">
+
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Category</label>
-                            <select class="form-control">
+                            <select name="kategori" class="form-control">
+
                                 <option value="">Select category</option>
                                 <option value="programming">Programming</option>
                                 <option value="design">Design</option>
@@ -34,92 +37,36 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Institution</label>
-                            <input type="text" class="form-control" placeholder="Enter institution name">
+                            <input name="institution" type="text" class="form-control" placeholder="Enter institution name">
                         </div>
-
                         <div class="col-md-6 mb-3">
-                            <label class="form-label">Instructor</label>
-                            <input type="text" class="form-control" placeholder="Enter instructor name">
+                            <label class="form-label">Institution Logo</label>
+                            <input name="institution_logo" type="text" class="form-control" placeholder="Enter institution name">
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Course Image</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Enter image URL">
+                            <input name="image" type="text" class="form-control" placeholder="Enter image URL">
+
                             <button class="btn btn-outline-secondary" type="button">Preview</button>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Description</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter course description"></textarea>
+                        <textarea name="description" class="form-control" rows="3"
+                            placeholder="Enter course description"></textarea>
+
                     </div>
 
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label class="form-label">Duration</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" placeholder="Enter duration">
-                                <select class="form-select" style="max-width: 120px;">
-                                    <option value="hours">Hours</option>
-                                    <option value="days">Days</option>
-                                    <option value="weeks">Weeks</option>
-                                    <option value="months">Months</option>
-                                </select>
+                                <input name="duration_r" type="text" class="form-control" placeholder="Enter duration">
                             </div>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Difficulty Level</label>
-                            <select class="form-control">
-                                <option value="">Select level</option>
-                                <option value="beginner">Beginner</option>
-                                <option value="intermediate">Intermediate</option>
-                                <option value="advanced">Advanced</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Price (IDR)</label>
-                            <div class="input-group">
-                                <span class="input-group-text">Rp</span>
-                                <input type="number" class="form-control" placeholder="Enter price">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Skills Gained</label>
-                            <input type="text" class="form-control" placeholder="Enter skills (separated by commas)">
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Prerequisites</label>
-                            <input type="text" class="form-control" placeholder="Enter prerequisites (separated by commas)">
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Course Content</label>
-                        <div class="content-modules">
-                            <div class="module-item border rounded p-3 mb-2">
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
-                                        <input type="text" class="form-control" placeholder="Module title">
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <input type="text" class="form-control" placeholder="Duration (e.g., 2 hours)">
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea class="form-control" rows="2" placeholder="Module description"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-outline-primary btn-sm mt-2">
-                                <i class="fas fa-plus me-1"></i>Add Module
-                            </button>
                         </div>
                     </div>
 
@@ -127,7 +74,7 @@
                         <button type="reset" class="btn btn-secondary">
                             <i class="fas fa-undo me-2"></i>Reset
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save me-2"></i>Create Course
                         </button>
                     </div>

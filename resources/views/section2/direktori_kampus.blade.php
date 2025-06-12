@@ -35,11 +35,12 @@
           <div class="col-lg-8 col-12 mx-auto">
             <h3 class="text-white text-center">Cari Universitas Mu</h3>
 
-            <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+            <form method="GET" action="{{ route('section2.direktori_kampus') }}"
+              class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
               <div class="input-group input-group-lg">
                 <span class="input-group-text bi-search" id="basic-addon1"></span>
-                <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Universitas ..."
-                  aria-label="Search">
+                <input name="kampus_name" type="search" class="form-control" id="search-input"
+                  placeholder="Universitas ..." aria-label="Search" value="{{ request('kampus_name') }}">
                 <button type="submit" class="form-control text-black">Search</button>
               </div>
             </form>
@@ -229,6 +230,7 @@
   <script src="js/click-scroll.js"></script>
   <script src="js/custom.js"></script>
   <script src="js/navbar-scroll.js"></script>
+
 
 
 </body>

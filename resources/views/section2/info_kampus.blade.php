@@ -36,46 +36,6 @@
             <h1 class="text-black text-center">Info Universitas dan Jurusan</h1>
             <h6 class="text-center">Pendidikan Tinggi Negri</h6>
 
-            <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
-              <div class="input-group input-group-lg">
-                <span class="input-group-text bi-search" id="basic-addon1"></span>
-                <input name="keyword" type="search" class="form-control" id="keyword"
-                  placeholder="Cari Universitas/Jurusan" aria-label="Search">
-                <button type="submit" class="form-control text-black">Search</button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div class="row justify-content-center mt-5">
-          <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
-            <div class="custom-block bg-white shadow-lg">
-              <a href="/direktori-kampus">
-                <div class="d-flex">
-                  <div>
-                    <h5 class="mb-2">Universitas</h5>
-                    <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                  </div>
-                  <span class="badge bg-finance rounded-pill ms-auto">30</span>
-                </div>
-                <img src="images/topics/undraw_Finance_re_gnv2.png" class="custom-block-image img-fluid" alt="">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-12">
-            <div class="custom-block bg-white shadow-lg">
-              <a href="/topic-detail">
-                <div class="d-flex">
-                  <div>
-                    <h5 class="mb-2">Jurusan</h5>
-                    <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                  </div>
-                  <span class="badge bg-finance rounded-pill ms-auto">30</span>
-                </div>
-                <img src="images/topics/undraw_Finance_re_gnv2.png" class="custom-block-image img-fluid" alt="">
-              </a>
-            </div>
           </div>
         </div>
       </div>

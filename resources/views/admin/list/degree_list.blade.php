@@ -2,8 +2,18 @@
 
 @section('content')
     <div class="list-container">
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="fw-bold m-0">Degree List</h1>
+
+            <a href="/degree-create" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
+                Create New
+            </a>
         </div>
 
         <form method="GET" action="{{ route('admin.list.degree_list') }}">
@@ -18,7 +28,8 @@
                         <button type="submit" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
                             Apply Filter
                         </button>
-                        <a href="{{ route('admin.list.degree_list') }}" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
+                        <a href="{{ route('admin.list.degree_list') }}"
+                            class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
                             Reset
                         </a>
                     </div>
@@ -59,13 +70,20 @@
                                 <td>{{ $degree->application_deadline }}</td>
                                 <td>{{ $degree->image_path }}</td>
                                 <td>
-                                    <div class="action-buttons">
-                                        <button class="btn btn-outline-info btn-sm" title="Edit">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-outline-danger btn-sm" title="Delete">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                    <div class="action-buttons d-flex gap-2">
+                                        <a href="/degree-edit/{{ $degree->id }}">
+                                            <button class="btn btn-outline-info btn-sm" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </a>
+                                        <form action="{{ route('admin.list.degree_destroy', $degree->id) }}" method="POST"
+                                            onsubmit="return confirm('Are you sure want to delete this degree?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

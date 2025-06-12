@@ -11,16 +11,18 @@
 
         <div class="card">
             <div class="card-body">
-                <form>
+                <form action="{{ route('admin.list.create.degree_store') }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Degree Name</label>
-                            <input type="text" class="form-control" placeholder="Enter degree name">
+                            <input name="degree" type="text" class="form-control" placeholder="Enter degree name">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Degree Level</label>
-                            <select class="form-control">
+                            <select name="tipe" class="form-control">
+
                                 <option value="">Select level</option>
                                 <option value="bachelor">Bachelor's Degree</option>
                                 <option value="master">Master's Degree</option>
@@ -32,106 +34,34 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label">University</label>
-                            <input type="text" class="form-control" placeholder="Enter university name">
+
+                            <input name="name" type="text" class="form-control" placeholder="Enter university name">
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label class="form-label">Field of Study</label>
-                            <input type="text" class="form-control" placeholder="Enter field of study">
+                            <label class="form-label">Ranking of University</label>
+                            <input name="ranking" type="text" class="form-control" placeholder="Enter ranking of university">
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">University Logo</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Enter logo URL">
+                            <input name="image_path" type="text" class="form-control" placeholder="Enter logo URL">
                             <button class="btn btn-outline-secondary" type="button">Preview</button>
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Program Description</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter program description"></textarea>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Duration</label>
-                            <div class="input-group">
-                                <input type="number" class="form-control" placeholder="Enter duration">
-                                <select class="form-select" style="max-width: 120px;">
-                                    <option value="years">Years</option>
-                                    <option value="semesters">Semesters</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Language</label>
-                            <select class="form-control">
-                                <option value="">Select language</option>
-                                <option value="english">English</option>
-                                <option value="indonesian">Indonesian</option>
-                                <option value="bilingual">Bilingual</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Tuition Fee (IDR/year)</label>
-                            <div class="input-group">
-                                <span class="input-group-text">Rp</span>
-                                <input type="number" class="form-control" placeholder="Enter tuition fee">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Entry Requirements</label>
-                            <textarea class="form-control" rows="3"
-                                placeholder="Enter entry requirements (e.g., High school diploma, minimum GPA)"></textarea>
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Career Opportunities</label>
-                            <textarea class="form-control" rows="3"
-                                placeholder="Enter potential career paths for graduates"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Curriculum Overview</label>
-                        <div class="course-modules">
-                            <div class="module-item border rounded p-3 mb-2">
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
-                                        <input type="text" class="form-control" placeholder="Course/Module name">
-                                    </div>
-                                    <div class="col-md-3 mb-2">
-                                        <input type="text" class="form-control" placeholder="Credits">
-                                    </div>
-                                    <div class="col-md-3 mb-2">
-                                        <select class="form-control">
-                                            <option value="">Select semester</option>
-                                            <option value="1">Semester 1</option>
-                                            <option value="2">Semester 2</option>
-                                            <option value="3">Semester 3</option>
-                                            <option value="4">Semester 4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-outline-primary btn-sm mt-2">
-                                <i class="fas fa-plus me-1"></i>Add Course
-                            </button>
-                        </div>
+                        <label class="form-label">Application Deadline</label>
+                        <textarea name="application_deadline" class="form-control" rows="3" placeholder="Enter application deadline"></textarea>
                     </div>
 
                     <div class="d-flex justify-content-end gap-2 mt-4">
                         <button type="reset" class="btn btn-secondary">
                             <i class="fas fa-undo me-2"></i>Reset
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save me-2"></i>Create Degree
                         </button>
                     </div>
