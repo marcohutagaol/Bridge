@@ -4170,33 +4170,6 @@ INSERT INTO `learning_progress` (`order_id`, `progress`, `nilai`, `created_at`, 
 ('BRG-2025-4167-1', 'done', 0, '2025-06-07 18:26:50', '2025-06-07 18:26:50');
 
 --
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '0001_01_01_000000_create_users_table', 1),
-(2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '2025_05_01_074605_create_data_kampus_table', 1),
-(5, '2025_05_16_132906_create_visimisi_kampus_table', 1),
-(6, '2025_05_17_150634_create_universities_table', 1),
-(7, '2025_05_18_084724_add_tipe_to_universities_table', 1),
-(8, '2025_05_18_114626_add_row_column_to_universities_table', 1),
-(9, '2025_05_18_160817_create_subjects_table', 1),
-(10, '2025_05_18_160905_create_subject_university_table', 1),
-(11, '2025_05_20_141924_create_careers_table', 1),
-(12, '2025_05_29_050111_create_utbk_table', 1),
-(13, '2025_05_29_054432_create_jawaban_utbk_table', 1),
-(14, '2025_05_30_042721_add_user_type_collumn_to_users_table', 1),
-(15, '2025_06_04_020345_add_kampus_id_column_to_visimisi_kampus_table', 1),
-(16, '2025_06_04_020720_add_kampus_id_foreign_to_visimisi_kampus_table', 1),
-(17, '2025_06_04_082108_create_courses_certificates_table', 1),
-(18, '2025_06_05_081647_create_wishlist_table', 1),
-(19, '2025_06_06_100535_create_checkout_table', 1),
-(20, '2025_06_06_100657_update_checkout_table', 1),
-(21, '2025_06_07_072443_create_learning_table', 1);
-
---
 -- Dumping data for table `sessions`
 --
 
