@@ -165,19 +165,24 @@
                         {
                             data: [careerData[0], null],
                             backgroundColor: 'rgba(75,192,192,0.6)',
-                            yAxisID: 'y1'
+                            yAxisID: 'y1',
+                            borderColor: '#fff',
+                            borderWidth: 1,
+                            barThickness: 70,
+                            maxBarThickness: 100,
+                            borderRadius: 8
                         },
                         {
                             data: [null, careerData[1]],
                             backgroundColor: 'rgba(255,159,64,0.6)',
-                            yAxisID: 'y2'
+                            yAxisID: 'y2',
+                            borderColor: '#fff',
+                            borderWidth: 1,
+                            barThickness: 70,
+                            maxBarThickness: 100,
+                            borderRadius: 8
                         }
                     ],
-                    borderColor: '#fff',
-                    borderWidth: 1,
-                    barThickness: 70,
-                    maxBarThickness: 100,
-                    borderRadius: 8
                 },
                 options: {
                     responsive: true,
@@ -190,12 +195,12 @@
                         y1: {
                             type: 'linear',
                             position: 'left',
-                            beginAtZero: true
+                            beginAtZero: true,
                         },
                         y2: {
                             type: 'linear',
                             position: 'right',
-                            beginAtZero: true
+                            beginAtZero: true,
                         }
                     }
                 }

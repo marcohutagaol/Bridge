@@ -8,8 +8,6 @@ use App\Http\Controllers\MyLearningController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\SelectedCourseController;
 use App\Http\Controllers\UtbkController;
-// use App\Http\Controllers\AdminController;
-// use App\Http\Controllers\ChartController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
@@ -18,21 +16,9 @@ use App\Http\Controllers\MateriController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
-
-use App\Http\Controllers\RankingController;
-// use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\WishlistController;
-// use App\Http\Controllers\DashboardController;
-// use App\Http\Controllers\MyLearningController;
 use App\Http\Controllers\UniversityController;
-
-
-use App\Http\Controllers\AdminCreateController;
-use App\Http\Controllers\UniversitasController;
-// use App\Http\Controllers\AdminPaymentController;
-use App\Http\Controllers\LearningPageController;
-// use App\Http\Controllers\SelectedCourseController;
 use App\Http\Controllers\LearningProgressController;
 
 

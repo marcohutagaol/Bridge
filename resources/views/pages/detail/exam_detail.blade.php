@@ -315,14 +315,14 @@
                                         @if($career->median_salary)
                                             <div class="salary">
                                                 <p class="small text-success mb-0"><strong>Median Salary:</strong>
-                                                    {{ $career->median_salary }}</p>
+                                                    This role has a IDR {{ $career->median_salary }} median salary.</p>
                                             </div>
                                         @endif
 
                                         @if($career->jobs_available)
                                             <div class="jobs-available">
                                                 <p class="small text-primary mb-0"><strong>Jobs Available:</strong>
-                                                    {{ $career->jobs_available }}</p>
+                                                    This role has approximately {{ $career->jobs_available }} jobs available</p>
                                             </div>
                                         @endif
 
