@@ -36,8 +36,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto text-center title-container">
-                        <h1 class="text-dark page-title">Find the right degree for you.. </h1>
-                        <a href="/certificate-detail" class="btn">Kunjungi Situs</a>
+                        <h1>
+                            Find the right course & certife for you..
+                            <a href="/certificate-detail" style="color: #66e6d3; text-decoration: none; margin-left: 10px;"
+                                onmouseover="this.style.color='#3cc1af'" onmouseout="this.style.color='#66e6d3'">
+                                more
+                            </a>
+                        </h1>
+
 
                     </div>
                 </div>
@@ -164,14 +170,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                               color: white; 
-                                                               border: none; 
-                                                               border-radius: 20px; 
-                                                               padding: 8px 18px; 
-                                                               font-weight: 600;
-                                                               font-size: 0.9rem;
-                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                               transition: all 0.3s ease;"
+                                                                               color: white; 
+                                                                               border: none; 
+                                                                               border-radius: 20px; 
+                                                                               padding: 8px 18px; 
+                                                                               font-weight: 600;
+                                                                               font-size: 0.9rem;
+                                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -280,14 +286,14 @@
                     @if(count($popularCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                           color: white; 
-                                           border: none; 
-                                           border-radius: 20px; 
-                                           padding: 8px 18px; 
-                                           font-weight: 600;
-                                           font-size: 0.9rem;
-                                           box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                           transition: all 0.3s ease;"
+                                                           color: white; 
+                                                           border: none; 
+                                                           border-radius: 20px; 
+                                                           padding: 8px 18px; 
+                                                           font-weight: 600;
+                                                           font-size: 0.9rem;
+                                                           box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                           transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -298,21 +304,21 @@
                         </div>
                     @endif
                 </div>
-                <!-- Personalized Specializations Section -->
                 <div class="mb-5">
-                    <h2 class="mb-4 fw-bold">Personalized Specializations </h2>
+                    <h2 class="mb-4 fw-bold">Personalized Specializations</h2>
                     <div class="row g-4" id="coursesContainer">
                         @foreach($personalizedCourses as $index => $course)
                             <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
                                 style="{{ $index >= 4 ? 'display: none;' : '' }}">
-                                <div class="card shadow-sm h-100 border-0"
-                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
-                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
-                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                                    <!-- Course Image with Better Fit -->
-                                    <a href="{{ route('certificate.detail.show', $course->id) }}"
-                                        class="text-decoration-none">
+                                <!-- Wrap the entire card with a link -->
+                                <a href="{{ route('certificate.detail.show', $course->id) }}" class="text-decoration-none">
+                                    <div class="card shadow-sm h-100 border-0"
+                                        style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                                        onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
+                                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
+
+                                        <!-- Course Image with Better Fit -->
                                         <div class="position-relative"
                                             style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
                                             <img src="{{ $course->image ?? '/api/placeholder/350/160' }}"
@@ -385,33 +391,33 @@
                                                 @endif
                                             </div>
                                         </div>
-                                </div>
+                                    </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
 
-                    @if(count(value: $recentCourses) > 4)
+                    @if(count($personalizedCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                               color: white; 
-                                                               border: none; 
-                                                               border-radius: 20px; 
-                                                               padding: 8px 18px; 
-                                                               font-weight: 600;
-                                                               font-size: 0.9rem;
-                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                               transition: all 0.3s ease;"
+                                                   color: white; 
+                                                   border: none; 
+                                                   border-radius: 20px; 
+                                                   padding: 8px 18px; 
+                                                   font-weight: 600;
+                                                   font-size: 0.9rem;
+                                                   box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                   transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
                                 <span id="btnCount" class="ms-2 badge"
-                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
+                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($personalizedCourses) - 4 }}</span>
                                 <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
                             </button>
                         </div>
                     @endif
                 </div>
-
                 <!-- Coursera Plus Subscription Section -->
                 <div class="mb-5">
                     <h2 class="mb-4">Explore with a Coursera Plus Subscription</h2>
@@ -551,14 +557,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                               color: white; 
-                                                               border: none; 
-                                                               border-radius: 20px; 
-                                                               padding: 8px 18px; 
-                                                               font-weight: 600;
-                                                               font-size: 0.9rem;
-                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                               transition: all 0.3s ease;"
+                                                                               color: white; 
+                                                                               border: none; 
+                                                                               border-radius: 20px; 
+                                                                               padding: 8px 18px; 
+                                                                               font-weight: 600;
+                                                                               font-size: 0.9rem;
+                                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -662,14 +668,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                               color: white; 
-                                                               border: none; 
-                                                               border-radius: 20px; 
-                                                               padding: 8px 18px; 
-                                                               font-weight: 600;
-                                                               font-size: 0.9rem;
-                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                               transition: all 0.3s ease;"
+                                                                               color: white; 
+                                                                               border: none; 
+                                                                               border-radius: 20px; 
+                                                                               padding: 8px 18px; 
+                                                                               font-weight: 600;
+                                                                               font-size: 0.9rem;
+                                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -773,14 +779,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                               color: white; 
-                                                               border: none; 
-                                                               border-radius: 20px; 
-                                                               padding: 8px 18px; 
-                                                               font-weight: 600;
-                                                               font-size: 0.9rem;
-                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                               transition: all 0.3s ease;"
+                                                                               color: white; 
+                                                                               border: none; 
+                                                                               border-radius: 20px; 
+                                                                               padding: 8px 18px; 
+                                                                               font-weight: 600;
+                                                                               font-size: 0.9rem;
+                                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -799,578 +805,22 @@
 
 
         <!-- Categories Section -->
-        <section class="categories-section">
-            <div class="container">
-                <h2 class="section-title mb-4">Categories</h2>
 
-                <div class="row g-4">
-                    <!-- Row 1 -->
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-paint-brush"></i>
-                            </div>
-                            <a href="#" class="category-link">Arts and Humanities</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <a href="#" class="category-link">Business</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <a href="#" class="category-link">Computer Science</a>
-                        </div>
-                    </div>
-
-                    <!-- Row 2 -->
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <a href="#" class="category-link">Data Science</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-server"></i>
-                            </div>
-                            <a href="#" class="category-link">Information Technology</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
-                            <a href="#" class="category-link">Health</a>
-                        </div>
-                    </div>
-
-                    <!-- Row 3 -->
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-calculator"></i>
-                            </div>
-                            <a href="#" class="category-link">Math and Logic</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <a href="#" class="category-link">Personal Development</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-microscope"></i>
-                            </div>
-                            <a href="#" class="category-link">Physical Science and Engineering</a>
-                        </div>
-                    </div>
-
-                    <!-- Row 4 -->
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <a href="#" class="category-link">Social Sciences</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fas fa-language"></i>
-                            </div>
-                            <a href="#" class="category-link">Language Learning</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
 
         <!-- Font Awesome CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        <section class="affordable-education-section py-5 bg-light">
-            <div class="container">
-                <!-- Recently Viewed Products Section -->
-                <div class="mb-5">
-                    <h2 class="mb-4 fw-bold">Based on Your Recent Views</h2>
-                    <div class="row g-4" id="coursesContainer">
-                        @foreach($bestCourses as $index => $course)
-                            <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
-                                style="{{ $index >= 4 ? 'display: none;' : '' }}">
-                                <div class="card shadow-sm h-100 border-0"
-                                    style="border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;"
-                                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
-                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
 
-                                    <!-- Course Image with Better Fit -->
-                                    <div class="position-relative"
-                                        style="height: 160px; overflow: hidden; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-                                        <img src="{{ $course->image ?? '/api/placeholder/350/160' }}" class="w-100 h-100"
-                                            style="object-fit: cover; object-position: center;" alt="{{ $course->name }}">
-                                    </div>
-
-                                    <div class="card-body p-3">
-                                        <!-- Institution with Logo -->
-                                        <div class="d-flex align-items-center mb-2">
-                                            @if($course->institution_logo)
-                                                <img src="{{ $course->institution_logo }}" class="me-2"
-                                                    style="height: 24px; width: 24px; object-fit: contain;"
-                                                    alt="{{ $course->institution }}">
-                                            @else
-                                                <div class="me-2 d-flex align-items-center justify-content-center"
-                                                    style="height: 24px; width: 24px; background: #f0f0f0; border-radius: 4px; font-size: 10px; color: #666;">
-                                                    {{ substr($course->institution ?? 'G', 0, 1) }}
-                                                </div>
-                                            @endif
-                                            <span class="text-muted" style="font-size: 0.85rem; font-weight: 500;">
-                                                {{ $course->institution ?? 'Google' }}
-                                            </span>
-                                        </div>
-
-                                        <!-- Course Name -->
-                                        <h5 class="card-title mb-2"
-                                            style="font-size: 1rem; font-weight: 600; line-height: 1.3; color: #2c3e50;">
-                                            {{ $course->name }}
-                                        </h5>
-
-                                        <!-- Tags/Keywords -->
-                                        <div class="mb-3">
-                                            @if($course->kategori)
-                                                @php
-                                                    $tags = explode(',', $course->kategori);
-                                                    $colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c'];
-                                                @endphp
-                                                @foreach(array_slice($tags, 0, 6) as $index => $tag)
-                                                    <span class="badge me-1 mb-1"
-                                                        style="background-color: {{ $colors[$index % count($colors)] }}; color: white; font-size: 0.65rem; padding: 3px 8px; border-radius: 12px;">
-                                                        {{ trim($tag) }}
-                                                    </span>
-                                                @endforeach
-                                            @endif
-                                        </div>
-
-                                        <!-- Rating -->
-                                        @if($course->rating)
-                                            <div class="d-flex align-items-center mb-3">
-                                                <span class="text-warning me-1" style="font-size: 0.9rem;">★</span>
-                                                <span class="fw-bold"
-                                                    style="font-size: 0.85rem; color: #2c3e50;">{{ $course->rating }}</span>
-                                            </div>
-                                        @endif
-
-                                        <!-- Course Type and Duration with More Space -->
-                                        <div class="d-flex align-items-center text-muted mt-3"
-                                            style="font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #f0f0f0; gap: 20px;">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-certificate me-1"></i>
-                                                <span>Certificate</span>
-                                            </div>
-
-                                            @if($course->duration_r)
-                                                <div class="d-flex align-items-center">
-                                                    <i class="fas fa-clock me-1"></i>
-                                                    <span>{{ $course->duration_r }}</span>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-
-                    @if(count(value: $recentCourses) > 4)
-                        <div class="mt-4">
-                            <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                               color: white; 
-                                                               border: none; 
-                                                               border-radius: 20px; 
-                                                               padding: 8px 18px; 
-                                                               font-weight: 600;
-                                                               font-size: 0.9rem;
-                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                               transition: all 0.3s ease;"
-                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
-                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
-                                <span id="btnText">Show More</span>
-                                <span id="btnCount" class="ms-2 badge"
-                                    style="background: rgba(255,255,255,0.2); border-radius: 10px; font-size: 0.75rem;">{{ count($recentCourses) - 4 }}</span>
-                                <i id="btnIcon" class="fas fa-chevron-down ms-2" style="font-size: 0.8rem;"></i>
-                            </button>
-                        </div>
-                    @endif
-                </div>
-
-                <!-- Most Popular Certificates Section -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Most Popular Certificates</h2>
-
-                    <div class="row g-3">
-                        <!-- Certificate 1 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="Google">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Google</p>
-                                    <h5 class="card-title h6 mb-1">Google Data Analytics Professional Certificate</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">8 bulan untuk
-                                        menyelesaikan | 10.000+ peserta mendaftar bulan ini</p>
-                                    <p class="small text-success mb-0" style="font-size: 0.7rem;">Dibutuhkan oleh 3.560+
-                                        perusahaan</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certificate 2 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="Microsoft">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Microsoft</p>
-                                    <h5 class="card-title h6 mb-1">Microsoft Azure Fundamentals (AZ-900)</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">6 minggu untuk
-                                        menyelesaikan | 8.500+ peserta mendaftar bulan ini</p>
-                                    <p class="small text-success mb-0" style="font-size: 0.7rem;">Dibutuhkan oleh 2.980+
-                                        perusahaan</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certificate 3 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="AWS">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">Amazon Web Services</p>
-                                    <h5 class="card-title h6 mb-1">AWS Cloud Practitioner Essentials</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">12 minggu untuk
-                                        menyelesaikan | 12.400+ peserta mendaftar bulan ini</p>
-                                    <p class="small text-success mb-0" style="font-size: 0.7rem;">Dibutuhkan oleh 4.250+
-                                        perusahaan</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Personalized Specializations Section -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Personalized Specializations for You</h2>
-
-                    <div class="row g-3">
-                        <!-- Specialization 1 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="DeepLearning.AI">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">DeepLearning.AI</p>
-                                    <h5 class="card-title h6 mb-1">Deep Learning Specialization</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">3 bulan untuk
-                                        menyelesaikan | 5 kursus</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-warning rounded-circle me-1" style="width: 8px; height: 8px;">
-                                        </div>
-                                        <p class="small text-warning mb-0" style="font-size: 0.7rem;">Sesuai dengan
-                                            minat Machine Learning Anda</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Specialization 2 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of Michigan">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of Michigan
-                                    </p>
-                                    <h5 class="card-title h6 mb-1">Python for Everybody Specialization</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">4 bulan untuk
-                                        menyelesaikan | 5 kursus</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-warning rounded-circle me-1" style="width: 8px; height: 8px;">
-                                        </div>
-                                        <p class="small text-warning mb-0" style="font-size: 0.7rem;">Berdasarkan
-                                            pencarian Python Anda</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Specialization 3 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="IBM">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">IBM</p>
-                                    <h5 class="card-title h6 mb-1">Data Science Professional Certificate</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">5 bulan untuk
-                                        menyelesaikan | 10 kursus</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-warning rounded-circle me-1" style="width: 8px; height: 8px;">
-                                        </div>
-                                        <p class="small text-warning mb-0" style="font-size: 0.7rem;">Populer untuk
-                                            karir yang Anda minati</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Specialization 4 -->
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;"
-                                        alt="University of California, Irvine">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        California, Irvine</p>
-                                    <h5 class="card-title h6 mb-1">Project Management Specialization</h5>
-                                    <p class="small text-muted mb-1" style="font-size: 0.7rem;">3 bulan untuk
-                                        menyelesaikan | 4 kursus</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-warning rounded-circle me-1" style="width: 8px; height: 8px;">
-                                        </div>
-                                        <p class="small text-warning mb-0" style="font-size: 0.7rem;">Melengkapi
-                                            pendidikan Manajemen Anda</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Coursera Plus Subscription Section -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Explore with a Coursera Plus Subscription</h2>
-
-                    <div class="row">
-                        <div class="col-lg-8 col-md-12 mx-auto">
-                            <div class="card shadow">
-                                <div class="card-body p-4">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-8">
-                                            <h4 class="mb-2">Akses tak terbatas ke 7,000+ kursus top</h4>
-                                            <p class="text-muted mb-3">Dapatkan sertifikat tanpa batas dan akses ke
-                                                spesialisasi populer dengan langganan tahunan</p>
-                                            <ul class="list-unstyled mb-3">
-                                                <li class="d-flex align-items-center mb-2">
-                                                    <div class="bg-primary rounded-circle me-2"
-                                                        style="width: 10px; height: 10px;"></div>
-                                                    <span class="small">Sertifikat yang diakui industri</span>
-                                                </li>
-                                                <li class="d-flex align-items-center mb-2">
-                                                    <div class="bg-primary rounded-circle me-2"
-                                                        style="width: 10px; height: 10px;"></div>
-                                                    <span class="small">7,000+ kursus dari universitas dan perusahaan
-                                                        terkemuka</span>
-                                                </li>
-                                                <li class="d-flex align-items-center">
-                                                    <div class="bg-primary rounded-circle me-2"
-                                                        style="width: 10px; height: 10px;"></div>
-                                                    <span class="small">Jaminan uang kembali 14 hari</span>
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-primary">Coba Gratis Selama 7 Hari</button>
-                                        </div>
-                                        <div class="col-md-4 text-center mt-3 mt-md-0">
-                                            <div class="rounded-circle bg-primary p-3 d-inline-flex align-items-center justify-content-center"
-                                                style="width: 100px; height: 100px;">
-                                                <h3 class="text-white mb-0">Rp99rb</h3>
-                                            </div>
-                                            <p class="small mt-2">per bulan, ditagih tahunan</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Earn Credit Section -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Earn credit towards one of these degrees</h2>
-
-                    <div class="row g-3">
-                        <!-- Degree 1 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of Pennsylvania">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of
-                                        Pennsylvania</p>
-                                    <h5 class="card-title h6 mb-1">Master of Computer and Information Technology</h5>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">100% online | Peringkat
-                                        #10 di AS untuk Ilmu Komputer</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-primary">Penerimaan 95%</span>
-                                        <span class="fw-bold">$25,000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Degree 2 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="HEC Paris">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">HEC Paris</p>
-                                    <h5 class="card-title h6 mb-1">Master's in Innovation and Entrepreneurship</h5>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">100% online | Sekolah
-                                        Bisnis #1 di Eropa</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-primary">Penerimaan 92%</span>
-                                        <span class="fw-bold">€20,000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Degree 3 -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card shadow h-100">
-                                <div class="p-2">
-                                    <img src="/api/placeholder/150/60" class="card-img-top"
-                                        style="height: 60px; object-fit: contain;" alt="University of Michigan">
-                                </div>
-                                <div class="card-body p-3">
-                                    <p class="text-muted small mb-1" style="font-size: 0.75rem;">University of Michigan
-                                    </p>
-                                    <h5 class="card-title h6 mb-1">Master of Applied Data Science</h5>
-                                    <p class="small text-muted mb-0" style="font-size: 0.7rem;">100% online | Peringkat
-                                        #19 di AS untuk Matematika</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-primary">Penerimaan 87%</span>
-                                        <span class="fw-bold">$31,688</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Earn Your Degree Section -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Earn Your Degree</h2>
-
-                    <div class="row g-4">
-                        <!-- Degree Category 1 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card shadow h-100">
-                                <img src="/api/placeholder/400/200" class="card-img-top" alt="Computer Science Degrees">
-                                <div class="card-body">
-                                    <h5 class="card-title h6">Ilmu Komputer</h5>
-                                    <p class="small text-muted">32 gelar dari universitas terkemuka</p>
-                                    <button class="btn btn-outline-primary btn-sm mt-2">Jelajahi</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Degree Category 2 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card shadow h-100">
-                                <img src="/api/placeholder/400/200" class="card-img-top" alt="Business Degrees">
-                                <div class="card-body">
-                                    <h5 class="card-title h6">Bisnis</h5>
-                                    <p class="small text-muted">45 gelar dari sekolah bisnis terbaik</p>
-                                    <button class="btn btn-outline-primary btn-sm mt-2">Jelajahi</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Degree Category 3 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card shadow h-100">
-                                <img src="/api/placeholder/400/200" class="card-img-top" alt="Data Science Degrees">
-                                <div class="card-body">
-                                    <h5 class="card-title h6">Data Science</h5>
-                                    <p class="small text-muted">28 gelar dari institusi global</p>
-                                    <button class="btn btn-outline-primary btn-sm mt-2">Jelajahi</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Degree Category 4 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card shadow h-100">
-                                <img src="/api/placeholder/400/200" class="card-img-top" alt="Health Degrees">
-                                <div class="card-body">
-                                    <h5 class="card-title h6">Kesehatan</h5>
-                                    <p class="small text-muted">19 gelar dari institusi medis ternama</p>
-                                    <button class="btn btn-outline-primary btn-sm mt-2">Jelajahi</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Free Courses Section -->
-
-            </div>
-        </section>
-
-        <!-- Student Testimonials Section -->
         <section class="student-testimonials-section py-5" style="background-color: #f9f9f9;">
             <div class="container">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <h2 class="h3 mb-3">Cerita Sukses dari Mahasiswa Kami</h2>
-                        <p class="text-muted">Dengarkan pengalaman dari siswa yang telah berhasil meraih tujuan akademis
-                            mereka melalui program online kami.</p>
+                        <h2 class="h3 mb-3">Success Stories from Our Students</h2>
+                        <p class="text-muted">Hear the experiences of students who have successfully achieved their
+                            academic
+                            goals through our online programs.</p>
                     </div>
                 </div>
 
@@ -1401,16 +851,16 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Program Master of Science in Data Science dari University of
-                                                    Colorado Boulder mengubah karir saya. Fleksibilitas jadwal
-                                                    memungkinkan saya tetap bekerja sambil kuliah. Kini saya bekerja
-                                                    sebagai Data Scientist dengan gaji yang lebih baik.
+                                                    The Master of Science in Data Science program from University of
+                                                    Colorado Boulder transformed my career. The flexible schedule
+                                                    allowed me to continue working while studying. Now I work as a
+                                                    Data Scientist with a better salary.
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Diana Purnama</h5>
                                                     <p class="small text-muted">M.S. in Data Science, University of
                                                         Colorado Boulder</p>
-                                                    <p class="small text-muted">Data Scientist di Tech Solutions Inc.
+                                                    <p class="small text-muted">Data Scientist at Tech Solutions Inc.
                                                     </p>
                                                 </div>
                                             </div>
@@ -1440,16 +890,16 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Saya berhasil menyelesaikan Bachelor of Science in Business
-                                                    Administration sambil mengurus keluarga. Kuliah online dari
-                                                    University of London memberikan saya keterampilan yang relevan
-                                                    dengan pasar kerja. Sangat worth it!
+                                                    I successfully completed my Bachelor of Science in Business
+                                                    Administration while taking care of my family. Online study from
+                                                    University of London gave me skills that are relevant to the job
+                                                    market. It was totally worth it!
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Budi Santoso</h5>
                                                     <p class="small text-muted">B.S. in Business Administration,
                                                         University of London</p>
-                                                    <p class="small text-muted">Marketing Manager di Global Brands Corp.
+                                                    <p class="small text-muted">Marketing Manager at Global Brands Corp.
                                                     </p>
                                                 </div>
                                             </div>
@@ -1479,14 +929,14 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Executive MBA dari IIT Roorkee memperluas jaringan profesional saya
-                                                    secara global. Materi pembelajaran yang berkualitas tinggi dan dosen
-                                                    yang berpengalaman membuat investasi pendidikan ini sangat berharga.
+                                                    The Executive MBA from IIT Roorkee expanded my professional network
+                                                    globally. High-quality learning materials and experienced lecturers
+                                                    made this educational investment extremely valuable.
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Siti Rahayu</h5>
                                                     <p class="small text-muted">Executive MBA, IIT Roorkee</p>
-                                                    <p class="small text-muted">CEO di Startup Innovation Labs</p>
+                                                    <p class="small text-muted">CEO at Startup Innovation Labs</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1515,15 +965,14 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Saya menyukai fleksibilitas yang ditawarkan program ini. Fakta bahwa
-                                                    saya dapat melihat materi dan menghadiri kuliah langsung dari mana
-                                                    saja dengan menggunakan ponsel atau laptop saya sangatlah luar
-                                                    biasa.
+                                                    I love the flexibility offered by this program. The fact that I
+                                                    can view materials and attend lectures live from anywhere using
+                                                    my phone or laptop is absolutely amazing.
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Abdulhakim Abdullahi Abdi</h5>
-                                                    <p class="small text-muted">M.A. dalam Hubungan Internasional,
-                                                        Keamanan, dan Strategi</p>
+                                                    <p class="small text-muted">M.A. in International Relations,
+                                                        Security, and Strategy</p>
                                                     <p class="small text-muted">O.P. Jindal Global University</p>
                                                 </div>
                                             </div>
@@ -1553,16 +1002,17 @@
                                             <div class="testimonial-content p-4">
                                                 <blockquote class="fs-5 mb-4">
                                                     <i class="bi bi-quote fs-2 text-teal d-block mb-2"></i>
-                                                    Program Master of Science in Management dari University of Illinois
-                                                    membuka pintu karir yang sebelumnya tidak pernah saya bayangkan.
-                                                    Studi kasus dan proyek tim mengajarkan keterampilan kepemimpinan
-                                                    yang praktis.
+                                                    The Master of Science in Management program from University of
+                                                    Illinois
+                                                    opened career doors I had never imagined before. Case studies and
+                                                    team
+                                                    projects taught practical leadership skills.
                                                 </blockquote>
                                                 <div class="testimonial-author">
                                                     <h5 class="h6 mb-1">Ahmad Rizki</h5>
                                                     <p class="small text-muted">M.S. in Management, University of
                                                         Illinois Urbana-Champaign</p>
-                                                    <p class="small text-muted">Senior Manager di Fortune 500 Company
+                                                    <p class="small text-muted">Senior Manager at Fortune 500 Company
                                                     </p>
                                                 </div>
                                             </div>
@@ -1594,17 +1044,133 @@
                 <!-- CTA -->
                 <div class="row mt-5">
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-teal">Lihat Semua Kisah Sukses</a>
+                        <a href="#" class="btn btn-teal">View All Success Stories</a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section class="categories-section">
+            <div class="container">
+                <h2 class="section-title mb-6">Categories</h2>
 
+                <div class="row g-4">
+                    <!-- Row 1 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['arts']]) }}"
+                                class="category-link">Arts and Humanities</a>
+                        </div>
+                    </div>
 
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['bussines']]) }}"
+                                class="category-link">Business</a>
+                        </div>
+                    </div>
 
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['computerscience']]) }}"
+                                class="category-link">Computer Science</a>
+                        </div>
+                    </div>
 
+                    <!-- Row 2 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['datascience']]) }}"
+                                class="category-link">Data Science</a>
+                        </div>
+                    </div>
 
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['it']]) }}"
+                                class="category-link">Information Technology</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['health']]) }}"
+                                class="category-link">Health</a>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['math']]) }}"
+                                class="category-link">Math and Logic</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['personal']]) }}"
+                                class="category-link">Personal Development</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['physical']]) }}"
+                                class="category-link">Physical Science and Engineering</a>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['social']]) }}"
+                                class="category-link">Social Sciences</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <a href="{{ route('certificate.detail', ['kategori' => ['language']]) }}"
+                                class="category-link">Language Learning</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
 
@@ -1613,11 +1179,12 @@
             <div class="container">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <h2 class="h3 mb-3">Belajar dari Para Ahli</h2>
-                        <p class="text-muted">Dapatkan pengetahuan langsung dari para pengajar terkemuka yang merupakan
-                            pakar di bidangnya masing-masing.</p>
+                        <h2 class="h3 mb-3">Learn from the Experts</h2>
+                        <p class="text-muted">Gain knowledge directly from leading educators who are experts in their
+                            respective fields.</p>
                     </div>
                 </div>
+
 
                 <div class="row g-4">
                     <!-- Expert 1 -->
@@ -1638,7 +1205,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid"
+                                        <img src="images/instructors/cewe.jpg" class="img-fluid"
                                             alt="Dr. Jennifer Wilson">
                                     </div>
                                     <div>
@@ -1649,17 +1216,18 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Spesialisasi dalam Manajemen Strategis dan Kepemimpinan dengan
-                                        pengalaman 15+ tahun mengajar di universitas terkemuka.</p>
-                                    <p class="small mb-2"><i class="bi bi-journal-check me-2 text-teal"></i>Lebih dari
-                                        30 publikasi penelitian</p>
-                                    <p class="small mb-0"><i class="bi bi-briefcase me-2 text-teal"></i>Mantan konsultan
-                                        di McKinsey & Company</p>
+                                    <p class="small mb-2">Specializes in Strategic Management and Leadership with
+                                        15+ years of experience teaching at leading universities.</p>
+                                    <p class="small mb-2"><i class="bi bi-journal-check me-2 text-teal"></i>Over
+                                        30 research publications</p>
+                                    <p class="small mb-0"><i class="bi bi-briefcase me-2 text-teal"></i>Former
+                                        consultant
+                                        at McKinsey & Company</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1683,7 +1251,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid"
+                                        <img src="images/instructors/cowo1.jpg" class="img-fluid"
                                             alt="Prof. David Martinez">
                                     </div>
                                     <div>
@@ -1694,17 +1262,18 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Pakar dalam Artificial Intelligence dan Machine Learning
-                                        dengan kontribusi signifikan dalam pengembangan algoritma modern.</p>
-                                    <p class="small mb-2"><i class="bi bi-award me-2 text-teal"></i>Penerima IEEE
+                                    <p class="small mb-2">Expert in Artificial Intelligence and Machine Learning
+                                        with significant contributions to modern algorithm development.</p>
+                                    <p class="small mb-2"><i class="bi bi-award me-2 text-teal"></i>Recipient of IEEE
                                         Outstanding Researcher Award</p>
-                                    <p class="small mb-0"><i class="bi bi-buildings me-2 text-teal"></i>Peneliti senior
-                                        di Google AI (2015-2020)</p>
+                                    <p class="small mb-0"><i class="bi bi-buildings me-2 text-teal"></i>Senior
+                                        researcher
+                                        at Google AI (2015-2020)</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1727,7 +1296,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid" alt="Dr. Aisha Patel">
+                                        <img src="images/instructors/cewe2.jpg" class="img-fluid" alt="Dr. Aisha Patel">
                                     </div>
                                     <div>
                                         <h5 class="card-title h6 mb-1">Dr. Aisha Patel</h5>
@@ -1737,17 +1306,18 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Ahli dalam bidang Renewable Energy dan Smart Grid Technologies
-                                        dengan lebih dari 12 tahun pengalaman riset.</p>
-                                    <p class="small mb-2"><i class="bi bi-lightning me-2 text-teal"></i>Pionir dalam
-                                        pengembangan teknologi solar cell</p>
-                                    <p class="small mb-0"><i class="bi bi-person-workspace me-2 text-teal"></i>Konsultan
-                                        untuk proyek energi terbarukan UN</p>
+                                    <p class="small mb-2">Expert in Renewable Energy and Smart Grid Technologies
+                                        with over 12 years of research experience.</p>
+                                    <p class="small mb-2"><i class="bi bi-lightning me-2 text-teal"></i>Pioneer in
+                                        solar cell technology development</p>
+                                    <p class="small mb-0"><i
+                                            class="bi bi-person-workspace me-2 text-teal"></i>Consultant
+                                        for UN renewable energy projects</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1771,8 +1341,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid"
-                                            alt="Prof. James Chen">
+                                        <img src="images/instructors/cowo.jpg" class="img-fluid" alt="Prof. James Chen">
                                     </div>
                                     <div>
                                         <h5 class="card-title h6 mb-1">Prof. James Chen</h5>
@@ -1782,17 +1351,18 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Spesialis dalam Big Data Analytics dan Business Intelligence
-                                        dengan pengalaman industri yang luas.</p>
-                                    <p class="small mb-2"><i class="bi bi-graph-up me-2 text-teal"></i>Pengembang
-                                        framework analitik terkenal</p>
-                                    <p class="small mb-0"><i class="bi bi-person-video3 me-2 text-teal"></i>Pembicara
-                                        internasional di lebih dari 25 negara</p>
+                                    <p class="small mb-2">Specialist in Big Data Analytics and Business Intelligence
+                                        with extensive industry experience.</p>
+                                    <p class="small mb-2"><i class="bi bi-graph-up me-2 text-teal"></i>Developer of
+                                        renowned analytical frameworks</p>
+                                    <p class="small mb-0"><i
+                                            class="bi bi-person-video3 me-2 text-teal"></i>International
+                                        speaker in over 25 countries</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1816,7 +1386,7 @@
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="instructor-avatar rounded-circle overflow-hidden me-3"
                                         style="width: 60px; height: 60px;">
-                                        <img src="images/instructors/dosen.jpg" class="img-fluid"
+                                        <img src="images/instructors/cewe2.jpg" class="img-fluid"
                                             alt="Dr. Sarah Johnson">
                                     </div>
                                     <div>
@@ -1827,17 +1397,17 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Ahli dalam strategi digital marketing dan analitik sosial
-                                        media dengan pengalaman praktis yang ekstensif.</p>
-                                    <p class="small mb-2"><i class="bi bi-megaphone me-2 text-teal"></i>Mantan VP
-                                        Marketing di perusahaan Fortune 500</p>
-                                    <p class="small mb-0"><i class="bi bi-book me-2 text-teal"></i>Penulis buku
-                                        bestseller "Digital Transformation"</p>
+                                    <p class="small mb-2">Expert in digital marketing strategies and social media
+                                        analytics with extensive practical experience.</p>
+                                    <p class="small mb-2"><i class="bi bi-megaphone me-2 text-teal"></i>Former VP
+                                        Marketing at Fortune 500 company</p>
+                                    <p class="small mb-0"><i class="bi bi-book me-2 text-teal"></i>Bestselling author of
+                                        "Digital Transformation"</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1872,17 +1442,18 @@
 
                                 <!-- Credentials -->
                                 <div class="instructor-credentials">
-                                    <p class="small mb-2">Pakar dalam bidang International Finance, Investment
-                                        Strategies, dan Market Analysis dengan reputasi global.</p>
-                                    <p class="small mb-2"><i class="bi bi-bank me-2 text-teal"></i>Mantan ekonom senior
-                                        di World Bank</p>
-                                    <p class="small mb-0"><i class="bi bi-cash-coin me-2 text-teal"></i>Penasihat untuk
-                                        beberapa institusi keuangan terkemuka</p>
+                                    <p class="small mb-2">Expert in International Finance, Investment
+                                        Strategies, and Market Analysis with global reputation.</p>
+                                    <p class="small mb-2"><i class="bi bi-bank me-2 text-teal"></i>Former senior
+                                        economist
+                                        at World Bank</p>
+                                    <p class="small mb-0"><i class="bi bi-cash-coin me-2 text-teal"></i>Advisor to
+                                        several leading financial institutions</p>
                                 </div>
 
                                 <!-- CTA Button -->
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">Lihat Kursus</a>
+                                    <a href="#" class="btn btn-outline-teal btn-sm w-100">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -1892,12 +1463,11 @@
                 <!-- View All Experts CTA -->
                 <div class="row mt-4">
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-teal">Lihat Semua Pengajar</a>
+                        <a href="#" class="btn btn-teal">View All Instructors</a>
                     </div>
                 </div>
             </div>
         </section>
-
 
 
 
