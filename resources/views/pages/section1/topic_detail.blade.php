@@ -71,9 +71,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto text-center title-container">
-                        <h1 class="text-white page-title">Persiapan Masuk untuk Kuliah</h1>
-                        <h6 class="text-center">Persiapkan diri Anda untuk sukses dalam ujian masuk perguruan tinggi
-                            dengan materi pembelajaran terbaik dan terlengkap.</h6>
+                        <h1 class="text-white page-title">Preparation for Entry to College</h1>
+                        <h6 class="text-center">Prepare yourself for success in college entrance exams with the best and most comprehensive learning materials.</h6>
                     </div>
                 </div>
 

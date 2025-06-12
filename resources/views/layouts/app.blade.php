@@ -22,9 +22,20 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        .dropdown-menu {
+            right: 0 !important;
+        }
+    </style>
+
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased overflow-x-hidden">
     <div class="min-h-screen bg-[#3bb3a9]">
         <nav class="navbar navbar-expand-lg py-1" style="min-height:40px; background-color: #3bb3a9;">
             <div class="container">
@@ -32,11 +43,14 @@
                     <i class="bi-back"></i>
                     <span>Bridge</span>
                 </a>
-                <div class="d-none d-lg-block">
+                <div class="d-none d-lg-block me-3">
                     <div class="dropdown">
-                        <a href="/profile" class="navbar-icon bi-person smoothscroll"></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/profile">Profil</a></li>
+                        <a href="#" class="navbar-icon bi-person smoothscroll text-white" id="profileDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="font-size: 1.4rem;"></a>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="/">Back</a></li>
                             <li>
                                 <form method="POST" action="/logout">
                                     @csrf

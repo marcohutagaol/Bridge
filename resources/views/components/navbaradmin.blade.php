@@ -7,18 +7,19 @@
             <span class="text-white fw-bold">Bridge</span>
         </a>
 
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center ms-auto">
             <div class="dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     {{ Auth::user()->name }}
                 </a>
 
-                <ul class="dropdown-menu">
-                    <form method="POST" action="/logout">
-                        @csrf
-                        <button type="submit" class="dropdown-item">Logout</button>
-                    </form>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                    <li>
+                        <form method="POST" action="/logout" class="m-0">
+                            @csrf
+                            <button type="submit" class="dropdown-item">Logout</button>
+                        </form>
                     </li>
                 </ul>
             </div>

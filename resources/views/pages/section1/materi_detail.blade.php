@@ -77,8 +77,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto text-center title-container">
-                        <h1 class="text-white page-title">Selamat Mengerjakan Soal dengan Baik</h1>
-                        <h6 class="text-center">Apapun hasilnya tetap semangat</h6>
+                        <h1 class="text-white page-title">Good luck with your questions</h1>
+                        <h6 class="text-center">Whatever the result, stay enthusiastic</h6>
                     </div>
                 </div>
 
