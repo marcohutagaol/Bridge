@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Career;
-use App\Models\Checkout;
 use App\Models\Course;
 use App\Models\University;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -19,11 +17,11 @@ class AdminController extends Controller
             $user_type = Auth()->user()->user_type;
 
             if ($user_type == 'user') {
-                return view('pages.index');
+                return redirect()->route('pages.index');
             }
 
             if ($user_type == 'admin') {
-                return view('admin.dashboard');
+                return redirect()->route('admin.dashboard');
             }
         }
     }
@@ -36,6 +34,10 @@ class AdminController extends Controller
         ->where('name', 'like', '%' . $search . '%')
         ->paginate($perPage)
         ->appends($request->query());
+        // SELECT * FROM users
+        // WHERE user_type = 'user' AND name LIKE '%{search}%'
+        // LIMIT {perPage} OFFSET {(currentPage - 1) * perPage};
+
 
         return view('admin.list.userlist', compact('users'));
     }
@@ -48,6 +50,11 @@ class AdminController extends Controller
         ->orWhere('kategoris', 'like', '%' . $search . '%')
         ->paginate($perPage)
         ->appends($request->query());
+        // SELECT * FROM careers
+        // WHERE name LIKE '%{search}%'
+        // OR kategoris LIKE '%{search}%'
+        // LIMIT {perPage} OFFSET {(currentPage - 1) * perPage};
+
 
         return view('admin.list.career_list', compact('careers'));
     }
@@ -72,6 +79,16 @@ class AdminController extends Controller
         ]);
 
         Career::create($validated);
+        // INSERT INTO careers (
+        //     name, kategoris, image, description, description2,
+        //     median_salary, jobs_available, credential, credential_logo,
+        //     created_at, updated_at
+        // ) VALUES (
+        //     '{name}', '{kategoris}', '{image}', '{description}', '{description2}',
+        //     '{median_salary}', '{jobs_available}', '{credential}', '{credential_logo}',
+        //     NOW(), NOW()
+        // );
+
 
         return redirect()->route('admin.list.career_list')->with('success', 'Career created successfully.');
     }
@@ -79,6 +96,7 @@ class AdminController extends Controller
     public function editCareer($id)
     {
         $career = Career::find($id);
+        // SELECT * FROM careers WHERE id = {id};
         return view('admin.list.edit.career_edit', compact('career'));
     }
 
@@ -98,6 +116,20 @@ class AdminController extends Controller
 
         $career = Career::find($id);
         $career->update($validated);
+        // UPDATE careers
+        // SET
+        //     name = '{name}',
+        //     kategoris = '{kategoris}',
+        //     image = '{image}',
+        //     description = '{description}',
+        //     description2 = '{description2}',
+        //     median_salary = '{median_salary}',
+        //     jobs_available = '{jobs_available}',
+        //     credential = '{credential}',
+        //     credential_logo = '{credential_logo}',
+        //     updated_at = NOW()
+        // WHERE id = {id};
+
 
         return redirect()->route('admin.list.career_list')->with('success', 'Career updated successfully.');
     }
@@ -106,6 +138,7 @@ class AdminController extends Controller
     {
         $career = Career::find($id);
         $career->delete();
+        // DELETE FROM careers WHERE id = {id};
 
         return redirect()->route('admin.list.career_list')->with('success', 'Career deleted successfully.');
     }
@@ -119,6 +152,11 @@ class AdminController extends Controller
         ->orWhere('tipe', 'like', '%' . $search . '%')
         ->paginate($perPage)
         ->appends($request->query());
+        // SELECT * FROM universities
+        // WHERE name LIKE '%{search}%'
+        // OR degree LIKE '%{search}%'
+        // OR tipe LIKE '%{search}%'
+        // LIMIT {perPage} OFFSET {(currentPage - 1) * perPage};
 
         return view('admin.list.degree_list', compact('degrees'));
     }
@@ -140,6 +178,13 @@ class AdminController extends Controller
         ]);
 
         University::create($validated);
+        // INSERT INTO universities (
+        //     degree, tipe, name, ranking, image_path, application_deadline,
+        //     created_at, updated_at
+        // ) VALUES (
+        //     '{degree}', '{tipe}', '{name}', '{ranking}', '{image_path}', '{application_deadline}',
+        //     NOW(), NOW()
+        // );
 
         return redirect()->route('admin.list.degree_list')->with('success', 'Degree created successfully.');
     }
@@ -147,6 +192,7 @@ class AdminController extends Controller
     public function editDegree($id)
     {
         $degree = University::find($id);
+        // SELECT * FROM universities WHERE id = {id};
         return view('admin.list.edit.degree_edit', compact('degree'));
     }
 
@@ -163,6 +209,16 @@ class AdminController extends Controller
 
         $degree = University::find($id);
         $degree->update($validated);
+        // UPDATE universities
+        // SET
+        //     degree = '{degree}',
+        //     tipe = '{tipe}',
+        //     name = '{name}',
+        //     ranking = '{ranking}',
+        //     image_path = '{image_path}',
+        //     application_deadline = '{application_deadline}',
+        //     updated_at = NOW()
+        // WHERE id = {id};
 
         return redirect()->route('admin.list.degree_list')->with('success', 'Degree updated successfully.');
     }
@@ -171,6 +227,7 @@ class AdminController extends Controller
     {
         $degree = University::find($id);
         $degree->delete();
+        // DELETE FROM universities WHERE id = {id};
 
         return redirect()->route('admin.list.degree_list')->with('success', 'Degree deleted successfully.');
     }
