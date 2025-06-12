@@ -38,7 +38,8 @@
                     <div class="col-lg-8 col-12 mx-auto text-center title-container">
                         <h1>
                             Find the right course & certife for you..
-                            <a href="/certificate-detail" style="color: #66e6d3; text-decoration: none; margin-left: 10px;"
+                            <a href="/certificate-detail"
+                                style="color: #66e6d3; text-decoration: none; margin-left: 10px;"
                                 onmouseover="this.style.color='#3cc1af'" onmouseout="this.style.color='#66e6d3'">
                                 more
                             </a>
@@ -170,14 +171,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                                               color: white; 
-                                                                               border: none; 
-                                                                               border-radius: 20px; 
-                                                                               padding: 8px 18px; 
-                                                                               font-weight: 600;
-                                                                               font-size: 0.9rem;
-                                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                                               transition: all 0.3s ease;"
+                                                                                   color: white; 
+                                                                                   border: none; 
+                                                                                   border-radius: 20px; 
+                                                                                   padding: 8px 18px; 
+                                                                                   font-weight: 600;
+                                                                                   font-size: 0.9rem;
+                                                                                   box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                                                   transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -286,14 +287,14 @@
                     @if(count($popularCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                           color: white; 
-                                                           border: none; 
-                                                           border-radius: 20px; 
-                                                           padding: 8px 18px; 
-                                                           font-weight: 600;
-                                                           font-size: 0.9rem;
-                                                           box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                           transition: all 0.3s ease;"
+                                                               color: white; 
+                                                               border: none; 
+                                                               border-radius: 20px; 
+                                                               padding: 8px 18px; 
+                                                               font-weight: 600;
+                                                               font-size: 0.9rem;
+                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                               transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -400,14 +401,14 @@
                     @if(count($personalizedCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                   color: white; 
-                                                   border: none; 
-                                                   border-radius: 20px; 
-                                                   padding: 8px 18px; 
-                                                   font-weight: 600;
-                                                   font-size: 0.9rem;
-                                                   box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                   transition: all 0.3s ease;"
+                                                       color: white; 
+                                                       border: none; 
+                                                       border-radius: 20px; 
+                                                       padding: 8px 18px; 
+                                                       font-weight: 600;
+                                                       font-size: 0.9rem;
+                                                       box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                       transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -420,7 +421,7 @@
                 </div>
                 <!-- Coursera Plus Subscription Section -->
                 <div class="mb-5">
-                    <h2 class="mb-4">Explore with a Coursera Plus Subscription</h2>
+                    <h2 class="mb-4">Explore with a Bridge Plus Subscription</h2>
 
                     <div class="row">
                         <div class="col-lg-8 col-md-12 mx-auto">
@@ -428,35 +429,34 @@
                                 <div class="card-body p-4">
                                     <div class="row align-items-center">
                                         <div class="col-md-8">
-                                            <h4 class="mb-2">Akses tak terbatas ke 7,000+ kursus top</h4>
-                                            <p class="text-muted mb-3">Dapatkan sertifikat tanpa batas dan akses ke
-                                                spesialisasi populer dengan langganan tahunan</p>
+                                            <h4 class="mb-2">Unlimited access to 7,000+ top courses</h4>
+                                            <p class="text-muted mb-3">Earn unlimited certificates and access popular
+                                                specializations with an annual subscription</p>
                                             <ul class="list-unstyled mb-3">
                                                 <li class="d-flex align-items-center mb-2">
                                                     <div class="bg-primary rounded-circle me-2"
                                                         style="width: 10px; height: 10px;"></div>
-                                                    <span class="small">Sertifikat yang diakui industri</span>
+                                                    <span class="small">Industry-recognized certificates</span>
                                                 </li>
                                                 <li class="d-flex align-items-center mb-2">
                                                     <div class="bg-primary rounded-circle me-2"
                                                         style="width: 10px; height: 10px;"></div>
-                                                    <span class="small">7,000+ kursus dari universitas dan perusahaan
-                                                        terkemuka</span>
+                                                    <span class="small">7,000+ courses from top universities and
+                                                        companies</span>
                                                 </li>
                                                 <li class="d-flex align-items-center">
                                                     <div class="bg-primary rounded-circle me-2"
                                                         style="width: 10px; height: 10px;"></div>
-                                                    <span class="small">Jaminan uang kembali 14 hari</span>
+                                                    <span class="small">14-day money-back guarantee</span>
                                                 </li>
                                             </ul>
-                                            <button class="btn btn-primary">Coba Gratis Selama 7 Hari</button>
                                         </div>
                                         <div class="col-md-4 text-center mt-3 mt-md-0">
                                             <div class="rounded-circle bg-primary p-3 d-inline-flex align-items-center justify-content-center"
                                                 style="width: 100px; height: 100px;">
-                                                <h3 class="text-white mb-0">Rp99rb</h3>
+                                                <h3 class="text-white mb-0">Rp99K</h3>
                                             </div>
-                                            <p class="small mt-2">per bulan, ditagih tahunan</p>
+                                            <p class="small mt-2">per month, billed annually</p>
                                         </div>
                                     </div>
                                 </div>
@@ -465,9 +465,10 @@
                     </div>
                 </div>
 
+
                 <!-- Explore with a Coursera Plus Subscription -->
                 <div class="mb-5">
-                    <h2 class="mb-4 fw-bold">Explore with a Coursera Plus Subscription </h2>
+                    <h2 class="mb-4 fw-bold">Explore with a Bridge Plus Subscription </h2>
                     <div class="row g-4" id="coursesContainer">
                         @foreach($exploreCourses as $index => $course)
                             <div class="col-lg-3 col-md-6 col-sm-12 course-item {{ $index >= 4 ? 'hidden-course' : '' }}"
@@ -557,14 +558,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                                               color: white; 
-                                                                               border: none; 
-                                                                               border-radius: 20px; 
-                                                                               padding: 8px 18px; 
-                                                                               font-weight: 600;
-                                                                               font-size: 0.9rem;
-                                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                                               transition: all 0.3s ease;"
+                                                                                   color: white; 
+                                                                                   border: none; 
+                                                                                   border-radius: 20px; 
+                                                                                   padding: 8px 18px; 
+                                                                                   font-weight: 600;
+                                                                                   font-size: 0.9rem;
+                                                                                   box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                                                   transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -668,14 +669,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                                               color: white; 
-                                                                               border: none; 
-                                                                               border-radius: 20px; 
-                                                                               padding: 8px 18px; 
-                                                                               font-weight: 600;
-                                                                               font-size: 0.9rem;
-                                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                                               transition: all 0.3s ease;"
+                                                                                   color: white; 
+                                                                                   border: none; 
+                                                                                   border-radius: 20px; 
+                                                                                   padding: 8px 18px; 
+                                                                                   font-weight: 600;
+                                                                                   font-size: 0.9rem;
+                                                                                   box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                                                   transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
@@ -779,14 +780,14 @@
                     @if(count(value: $recentCourses) > 4)
                         <div class="mt-4">
                             <button id="showMoreBtn" class="btn" onclick="toggleCourses()" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); 
-                                                                               color: white; 
-                                                                               border: none; 
-                                                                               border-radius: 20px; 
-                                                                               padding: 8px 18px; 
-                                                                               font-weight: 600;
-                                                                               font-size: 0.9rem;
-                                                                               box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
-                                                                               transition: all 0.3s ease;"
+                                                                                   color: white; 
+                                                                                   border: none; 
+                                                                                   border-radius: 20px; 
+                                                                                   padding: 8px 18px; 
+                                                                                   font-weight: 600;
+                                                                                   font-size: 0.9rem;
+                                                                                   box-shadow: 0 3px 12px rgba(78, 205, 196, 0.3); 
+                                                                                   transition: all 0.3s ease;"
                                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 18px rgba(78, 205, 196, 0.4)'"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(78, 205, 196, 0.3)'">
                                 <span id="btnText">Show More</span>
