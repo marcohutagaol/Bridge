@@ -13,7 +13,7 @@
         @method('put')
 
         <div>
-            <x-input-label for="update_password_current_password" :value="__('Current Password')" class="text-base" />
+            <x-input-label for="update_password_current_password" :value="__('Current Password')" class="text-base text-black" />
             <x-text-input id="update_password_current_password" name="current_password" type="password"
                 class="mt-1 block w-full input input-bordered bg-white text-black focus:border-cyan-500 focus:ring-cyan-500"
                 autocomplete="current-password" />
@@ -21,7 +21,7 @@
         </div>
 
         <div>
-            <x-input-label for="update_password_password" :value="__('New Password')" class="text-base" />
+            <x-input-label for="update_password_password" :value="__('New Password')" class="text-base text-black" />
             <x-text-input id="update_password_password" name="password" type="password"
                 class="mt-1 block w-full input input-bordered bg-white text-black focus:border-cyan-500 focus:ring-cyan-500"
                 autocomplete="new-password" />
@@ -30,7 +30,7 @@
 
         <div>
             <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')"
-                class="text-base" />
+                class="text-base text-black" />
             <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password"
                 class="mt-1 block w-full input input-bordered bg-white text-black focus:border-cyan-500 focus:ring-cyan-500"
                 autocomplete="new-password" />

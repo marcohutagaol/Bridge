@@ -380,7 +380,7 @@
 
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" style="text-align: justify;">
                                         Our platform is a comprehensive learning course website that focuses on
                                         <strong>university-level education</strong> and career preparation. We provide
                                         quality materials and guidance to help students succeed in higher education and
@@ -399,7 +399,7 @@
 
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" style="text-align: justify;">
                                         We offer courses focused on <strong>university preparation</strong> and
                                         <strong>career development</strong>. This includes college readiness programs,
                                         study techniques, time management, exam strategies, professional skills
@@ -420,7 +420,7 @@
 
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" style="text-align: justify;">
                                         We offer both free and premium content. Basic learning materials and resources
                                         are available for free, while advanced courses and personalized career guidance
                                         may require a subscription. Our goal is to make quality education accessible to
