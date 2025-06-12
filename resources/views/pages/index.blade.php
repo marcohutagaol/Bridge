@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bride learning</title>
+    <title>Bridge</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/templatemo-topic-listing.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 
@@ -44,29 +44,23 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="featured-section">
-            <div class="container">
+                <br><br><br>
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                         <div class="custom-block bg-white shadow-lg">
-                            <a href="topics-detail.html">
-                                <div class="d-flex">
-                                    <div>
-                                        <h5 class="mb-2">College Preparation</h5>
-                                        <p class="mb-0" style="text-align: justify">Prepare yourself for higher
-                                            education,
-                                            master effective learning techniques, time management, and strategies
-                                            for facing exams. Achieve the best performance with proven effective
-                                            learning methods.</p>
-                                    </div>
-                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
+                            <div class="d-flex">
+                                <div>
+                                    <h5 class="mb-2">College Preparation</h5>
+                                    <p class="mb-0" style="text-align: justify">Prepare yourself for higher
+                                        education,
+                                        master effective learning techniques, time management, and strategies
+                                        for facing exams. Achieve the best performance with proven effective
+                                        learning methods.</p>
                                 </div>
-                                <img src="images/topics/undraw_Remote_design_team_re_urdx.png"
-                                    class="custom-block-image img-fluid" alt="">
-                            </a>
+                                <span class="badge bg-design rounded-pill ms-auto">14</span>
+                            </div>
+                            <img src="images/topics/undraw_Remote_design_team_re_urdx.png"
+                                class="custom-block-image img-fluid" alt="">
                         </div>
                     </div>
 

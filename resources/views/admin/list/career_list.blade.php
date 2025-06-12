@@ -35,9 +35,9 @@
                     </div>
                     <div class="relative">
                         <select name="per_page" onchange="this.form.submit()" class="px-3 py-2 border rounded">
-                            <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
                             <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
-                            <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
+                            <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                            <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
                         </select>
                     </div>
                 </div>

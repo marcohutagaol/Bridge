@@ -66,7 +66,11 @@
             value="{{ old('credential', $career->credential) }}">
         </div>
 
-        <button type="submit" class="btn btn-primary">Update Career</button>
+        <div class="d-flex justify-content-end gap-2 mt-4">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save me-2"></i>Update Career
+          </button>
+        </div>
       </form>
     </div>
   </div>

@@ -5,7 +5,6 @@
         <i class="fas fa-user-shield fa-2x"></i>
       </div>
       <h6 class="mb-0">Admin Dashboard</h6>
-      <small class="text-muted"><i class="fas fa-circle text-success me-1"></i>Online</small>
     </div>
 
     <ul class="nav flex-column">
