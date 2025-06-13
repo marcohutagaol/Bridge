@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 13, 2025 at 02:48 PM
+-- Generation Time: Jun 13, 2025 at 02:47 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.21
 
@@ -20,61 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `bridge`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cache`
---
-
-CREATE TABLE `cache` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expiration` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `cache`
---
-
-INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('bridge_cache_a929eb33e338738d2a91e955ce7623764480253c', 'i:1;', 1749820326),
-('bridge_cache_a929eb33e338738d2a91e955ce7623764480253c:timer', 'i:1749820326;', 1749820326),
-('bridge_cache_fd93751649ac3ea8f8772ba49c8c1fe068002835', 'i:1;', 1749787727),
-('bridge_cache_fd93751649ac3ea8f8772ba49c8c1fe068002835:timer', 'i:1749787727;', 1749787727);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cache_locks`
---
-
-CREATE TABLE `cache_locks` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expiration` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `careers`
---
-
-CREATE TABLE `careers` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description2` text COLLATE utf8mb4_unicode_ci,
-  `median_salary` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jobs_available` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `credential` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `credential_logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `kategoris` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `careers`
@@ -143,33 +88,6 @@ INSERT INTO `careers` (`id`, `name`, `image`, `description`, `description2`, `me
 (78, 'What Does a UX Designer Do?', 'N/A', 'September 19, 2024 · 9 min read', 'N/A', '', '', '', '', 'softwareandedit', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (120, 'Personal Trainer / Fitness Instructor', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/00atxywtfxvd/4lDxmmYpba2XV97J9n9bNM/457fb08295275b9169468fc60d0a213d/personal-trainer-fitness-instructor-role-card_1X.png?auto=format%2Ccompress&dpr=1&w=430', 'A Personal Trainer designs and implements exercise programs tailored to individual client needs. They motivate clients to reach fitness goals', 'If you like: designing personalized fitness programs, motivating clients towards health goals, understanding exercise science .', '54318418', '359', 'NASM Personal Fitness Trainer', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/ea/d33cdef4004e82a433ed12bd645846/NA_Logo_360px-x-360-NEW.png?auto=format%2Ccompress&dpr=1', 'healthcare', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (121, 'Medical Office Manager', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/00atxywtfxvd/4hveGmg0cZrmJIyZxlhcAG/d78216c5c11bc489040d36ec13efb3df/medical-office-manager-role-card_1X.png?auto=format%2Ccompress&dpr=1&w=430', 'A Medical Office Manager manages the daily operations of a healthcare facility. They manage budgets and ensure patient satisfaction.', 'If you like: managing medical office operations, ensuring patient satisfaction, improving healthcare administrative processes .', '', '', 'Medical Billing and Coding Fundamentals ; Medical Office Procedures and Administration Fundamentals', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/0d/11f9d45cef49a88b54b22947f43ed2/MedCerts-Stacked-360x360.png?auto=format%2Ccompress&dpr=1;  https://d3njjcbhbojbot.cloudfront.net/api/ut', 'healthcare', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `checkouts`
---
-
-CREATE TABLE `checkouts` (
-  `id` bigint UNSIGNED NOT NULL,
-  `order_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint UNSIGNED NOT NULL,
-  `item_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `item_id` bigint UNSIGNED NOT NULL,
-  `checkout_date` timestamp NULL DEFAULT NULL,
-  `status` enum('pending','completed','cancelled','trial') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
-  `payment_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `organization_type` enum('individual','corporation','school') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `corporation_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `school_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment_method` enum('card','paypal') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `card_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `expiry_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cvc` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `checkouts`
@@ -278,26 +196,6 @@ INSERT INTO `checkouts` (`id`, `order_id`, `user_id`, `item_type`, `item_id`, `c
 (100, 'BRG-2025-0088', 19, 'module', 1, NULL, 'pending', 199000.00, 'individual', NULL, NULL, 'ID', 'paypal', NULL, NULL, NULL, '2025-06-08 12:00:00', '2025-06-08 12:00:00'),
 (101, 'BRG-2025-0089', 19, 'module', 2, NULL, 'pending', 299000.00, 'individual', NULL, NULL, 'ID', '', NULL, NULL, NULL, '2025-06-08 12:05:00', '2025-06-08 12:05:00'),
 (102, 'BRG-2025-0090', 19, 'module', 1, NULL, 'completed', 199000.00, 'individual', NULL, NULL, 'ID', '', NULL, NULL, NULL, '2025-06-08 12:10:00', '2025-06-08 12:15:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `courses_certificates`
---
-
-CREATE TABLE `courses_certificates` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` longtext COLLATE utf8mb4_unicode_ci,
-  `description` longtext COLLATE utf8mb4_unicode_ci,
-  `rating` decimal(2,1) DEFAULT NULL,
-  `duration_r` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `institution` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `institution_logo` longtext COLLATE utf8mb4_unicode_ci,
-  `kategori` mediumtext COLLATE utf8mb4_unicode_ci,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `courses_certificates`
@@ -3944,24 +3842,6 @@ INSERT INTO `courses_certificates` (`id`, `name`, `image`, `description`, `ratin
 (3573, '程序设计与算法', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/e6/b274e054e011e48c3fdf248aef8454/LOGO-final.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=265&h=216&q=50&fit=crop', 'Skills you\'ll gain: Data Structures, Algorithms, C++ (Programming Language), Object Oriented Programming (OOP), Object Oriented Design, Computational Thinking, Graph Theory, C (Programming Language), Programming Principles, Theoretical Computer Science, Program Development, Computer Science, Data Storage, Computer Architecture, Computer Programming, Database Systems, Software Design Patterns, Performance Tuning, Computational Logic, Debugging', 4.8, 'Beginner · Specialization · 3 - 6 Months', 'Peking University', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-university-assets.s3.amazonaws.com/38/d88a069e4cce7bfd0acb86c4c7d6bc/.png?auto=format%2Ccompress&dpr=3&w=24&h=24', 'computerscience', NULL, NULL),
 (3574, '파이썬 단기집중과정', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/a1/fd9a9b0f404af6842d49aad8cf141a/Andrew-WA-Thompson-699-1-.jpg?auto=format%2C%20compress%2C%20enhance&dpr=1&w=265&h=216&q=50&fit=crop', 'Skills you\'ll gain: Object Oriented Programming (OOP), Python Programming, Computer Programming, Programming Principles, Computational Thinking, Scripting Languages, Scripting, Problem Management, Data Structures, Debugging', 4.7, 'Beginner · Course · 1 - 3 Months', 'Google', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/4a/cb36835ae3421187080898a7ecc11d/Google-G_360x360.png?auto=format%2Ccompress&dpr=3&w=24&h=24', 'it', NULL, NULL);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `data_kampus`
---
-
-CREATE TABLE `data_kampus` (
-  `id` bigint UNSIGNED NOT NULL,
-  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tanggal_berdiri` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lokasi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `akreditas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipe` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deskripsi` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `website` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `data_kampus`
 --
@@ -4088,89 +3968,6 @@ INSERT INTO `data_kampus` (`id`, `nama`, `tanggal_berdiri`, `lokasi`, `akreditas
 (118, 'Politeknik Negeri Cilacap', '8 Juli 2008', 'Jawa Tengah', 'Baik', 'politeknik', 'images/section2/logo univ/PNC.png', 'Politeknik Negeri Cilacap (PNC) terletak di Kabupaten Cilacap, Provinsi Jawa Tengah. PNC didirikan pada tanggal 3 Oktober 2014 berdasarkan Peraturan Menteri Pendidikan dan Kebudayaan Nomor 102 Tahun 2014. PNC menyelenggarakan program pendidikan vokasi dalam berbagai bidang ilmu pengetahuan dan teknologi. Jika memenuhi syarat, PNC juga dapat menyelenggarakan pendidikan profesi di lingkungan akademiknya. PNC juga telah mencetak berbagai macam lulusan yang baik yang tersebar di berbagai perusahaan swasta atau negara di Indonesia.', 'pnc.ac.id'),
 (119, 'Politeknik Negeri Indramayu', '8 Juli 2008', 'Jawa Barat', 'Baik', 'politeknik', 'images/section2/logo univ/POLINDRA.png', 'Politeknik Indramayu (POLINDRA) merupakan perguruan tinggi setingkat vokasi pertama yang didirikan di Indramayu, Jawa Barat. Pada tahun 2014 Politeknik Indramayu berubah status dari Perguruan Tinggi Swasta (PTS) menjadi Perguruan Tinggi Negeri (PTN) yang diresmikan pada tanggal 6 Oktober 2014, oleh Presiden Republik Indonesia Dr. Susilo Bambang Yudhoyono.<br/>Sampai saat ini, POLINDRA memiliki enam program studi, dengan rincian Teknik Mesin (D3), Teknik Informatika (D3), Teknik Pendingin dan Tata Udara (D3), Perancangan Manufaktur (D4), Rekayasa Perangkat Lunak (D4), dan Keperawatan (D3).', 'polindra.ac.id'),
 (120, 'Politeknik Negeri Nunukan', '24 September 2020', 'Kalimantan Utara', 'Baik', 'politeknik', 'images/section2/logo univ/PNN.png', 'Perguruan Tinggi Negeri Politeknik Nunukan, atau PNN, merupakan institusi politeknik di Kalimantan Utara, tepatnya di Kabupaten Nunukan. Lokasinya berada di wilayah yang berbatasan langsung dengan Malaysia. PNN didirikan pada tahun 2020 dan sebelumnya merupakan bagian dari Politeknik Negeri Samarinda.', 'pnn.ac.id');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `failed_jobs`
---
-
-CREATE TABLE `failed_jobs` (
-  `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `jawaban_utbk`
---
-
-CREATE TABLE `jawaban_utbk` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED NOT NULL DEFAULT '0',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `soal_id` bigint UNSIGNED NOT NULL,
-  `kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `sub_kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `jawaban` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `jobs`
---
-
-CREATE TABLE `jobs` (
-  `id` bigint UNSIGNED NOT NULL,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `attempts` tinyint UNSIGNED NOT NULL,
-  `reserved_at` int UNSIGNED DEFAULT NULL,
-  `available_at` int UNSIGNED NOT NULL,
-  `created_at` int UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `job_batches`
---
-
-CREATE TABLE `job_batches` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_jobs` int NOT NULL,
-  `pending_jobs` int NOT NULL,
-  `failed_jobs` int NOT NULL,
-  `failed_job_ids` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `options` mediumtext COLLATE utf8mb4_unicode_ci,
-  `cancelled_at` int DEFAULT NULL,
-  `created_at` int NOT NULL,
-  `finished_at` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `learning_progress`
---
-
-CREATE TABLE `learning_progress` (
-  `order_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `progress` enum('none','in_progress','done') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'none',
-  `nilai` int DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `learning_progress`
@@ -4342,92 +4139,6 @@ INSERT INTO `learning_progress` (`order_id`, `progress`, `nilai`, `created_at`, 
 ('BRG-2025-1840-3', 'done', 0, '2025-06-07 05:59:47', '2025-06-07 05:59:47'),
 ('BRG-2025-4167-1', 'done', 0, '2025-06-07 18:26:50', '2025-06-07 18:26:50');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `messages`
---
-
-CREATE TABLE `messages` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `template_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` enum('unread','read','replied') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unread',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '0001_01_01_000000_create_users_table', 1),
-(2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '2025_05_01_074605_create_data_kampus_table', 1),
-(5, '2025_05_16_132906_create_visimisi_kampus_table', 1),
-(6, '2025_05_17_150634_create_universities_table', 1),
-(7, '2025_05_18_084724_add_tipe_to_universities_table', 1),
-(8, '2025_05_18_114626_add_row_column_to_universities_table', 1),
-(9, '2025_05_18_160817_create_subjects_table', 1),
-(10, '2025_05_18_160905_create_subject_university_table', 1),
-(11, '2025_05_20_141924_create_careers_table', 1),
-(12, '2025_05_29_050111_create_utbk_table', 1),
-(13, '2025_05_29_054432_create_jawaban_utbk_table', 1),
-(14, '2025_05_30_042721_add_user_type_collumn_to_users_table', 1),
-(15, '2025_06_04_020345_add_kampus_id_column_to_visimisi_kampus_table', 1),
-(16, '2025_06_04_020720_add_kampus_id_foreign_to_visimisi_kampus_table', 1),
-(17, '2025_06_04_082108_create_courses_certificates_table', 1),
-(18, '2025_06_05_081647_create_wishlist_table', 1),
-(19, '2025_06_06_100535_create_checkout_table', 1),
-(20, '2025_06_06_100657_update_checkout_table', 1),
-(21, '2025_06_07_072443_create_learning_table', 1),
-(22, '2025_06_08_113632_create_message_table', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `password_reset_tokens`
---
-
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sessions`
---
-
-CREATE TABLE `sessions` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_activity` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `sessions`
 --
@@ -4436,19 +4147,6 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 ('38aU8UIjgP0AynIhxHvuN55otA7l4OBwBJRAkD2m', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Herd/1.16.0 Chrome/120.0.6099.291 Electron/28.2.5 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTEdodGZia2lQVjFyNlVJR0pGOFpRY2s4TlFFWGxSbDV1ampjQlFRWCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly9icmlkZ2UudGVzdC8/aGVyZD1wcmV2aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1749819421),
 ('f1bbeLWJL0OyJSmfr0yBRqkO3Z4nZJJ2X4DgacI8', 164, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiT25GMzJIbGdtRmdJR3JYT0pyMnB3TllKS256VWVuVU01dzI0TVZoMyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly9icmlkZ2UudGVzdC9tYXRlcmkvUGVuYWxhcmFuK0t1YW50aXRhdGlmIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTY0O30=', 1749821714),
 ('sxey4se9mz8KADZzaJ2hTEIATG6Ajd3TxuxTzKLP', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNWI1ZG1vMEh0WWh3NnYzQUtNN1F5MnNIczg5QjlTTUFVZVlxbVR4ayI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyODoiaHR0cDovL2JyaWRnZS50ZXN0L2Rhc2hib2FyZCI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI4OiJodHRwOi8vYnJpZGdlLnRlc3QvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1749819421);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `subjects`
---
-
-CREATE TABLE `subjects` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `subjects`
@@ -4465,17 +4163,44 @@ INSERT INTO `subjects` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (8, 'Personal Development', '2025-05-18 21:14:10', '2025-05-18 21:14:10'),
 (9, 'Data Science', '2025-05-18 21:17:46', '2025-05-18 21:17:46');
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `subject_university`
+-- Dumping data for table `universities`
 --
 
-CREATE TABLE `subject_university` (
-  `id` bigint UNSIGNED NOT NULL,
-  `university_id` bigint UNSIGNED NOT NULL,
-  `subject_id` bigint UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `universities` (`id`, `name`, `degree`, `tipe`, `ranking`, `application_deadline`, `image_path`, `created_at`, `updated_at`, `row`) VALUES
+(1, 'University of Illinois Urbana-Champaign', 'Master of Science in Management (iMSM)', 'bachelor', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Rp5a6TiZD2LO4n6MHsMtS/78e1f67bd7784a40ddae53db3389a054/IllinoisGies.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 1),
+(2, 'University of Huddersfield', 'MSc Management', 'master', 'AACSB accredited, Business School of the Year 2023 (THE Awards), top in the UK in the global Times Higher Education Young University Rankings 2024', 'Application due September 10, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5bvCtypTxR2uVK6aH7HS0k/0e98a5efb8aaed315766914559c8c4e0/200x400_logo__1_.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(3, 'University of Michigan', 'Master of Applied Data Science', 'master', '#1 Public Research University in the U.S. (QS World Rankings, 2022)', 'Application due June 1, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/7EM0x2VEDTvYABQqQXiIem/6ce5b3f131a225cbf1a6b0aa24af8df6/University_of_Michigan_Horizontal_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(4, 'University of Pittsburgh', 'Master of Data Science', 'master', 'A highly-ranked, Carnegie R1 public research institution', 'Application due August 18, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/3DZlvCCGVWluFtfeXoCgFO/e0e068904fbabadd01c00c3165f54f68/900x200_px_SCI_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(5, 'Northeastern University', 'Master of Science in Data Analytics Engineering', 'master', 'Ranked in the top 40 of the U.S. News Best Graduate Schools in Engineering', 'Application due July 25, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2UqKAdajxMiAKGLdOgYCrc/f09facd5960e7697c6398f672c7c14dc/Captura_de_pantalla_2023-08-30_a_la_s__11.29.07_a.m..png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(6, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 2),
+(7, 'University of Illinois Urbana-Champaign', 'Master of Business Administration (iMBA)', 'master', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Rp5a6TiZD2LO4n6MHsMtS/78e1f67bd7784a40ddae53db3389a054/IllinoisGies.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 1),
+(8, 'University of Colorado Boulder', 'Master of Science in Computer Science', 'master', 'Ranked #98 in the Best Global Universities (US News & World Report, 2025)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 1),
+(9, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 2),
+(11, 'University of North Texas', 'Bachelor of Applied Arts and Sciences', 'master', 'Ranked #25 for online Bachelorâ€™s programs (U.S. News & World Report, 2025)', 'Application due June 16, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/HL1NahIE4QwHd9xvhxvtx/8293d49ce1609a5c858719fb183f6229/UNT_COURSERA_BAAS_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 1),
+(12, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(13, 'University of Colorado Boulder', 'Master of Engineering in Engineering Management', 'master', 'Top 20 Engineering School (U.S. News Engineering Schools ranking, 2025)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 2),
+(14, 'Illinois Tech', 'Master of Business Administration', 'master', '#20 in the U.S. for high earnings and economic mobility (NYT college ranking tool, 2023)', 'Application due June 7, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5JUClhmEcjBngRNT8Jp4A8/718fded3686a7003bdd2aeb70a772c49/e52950db-1fef-454d-82a6-a40667359c0a.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(15, 'University of Illinois Urbana-Champaign', 'Master of Science in Management (iMSM)', 'master', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Rp5a6TiZD2LO4n6MHsMtS/78e1f67bd7784a40ddae53db3389a054/IllinoisGies.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 3),
+(16, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 3),
+(17, 'University of London', 'Master of Science in Cyber Security', 'master', '#34 in the UK (The Times and Sunday Times Good University Guide 2025)', 'Application due September 8, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5ASJDg3lEJwiQ2i3baLYbD/f64e9ef7e44f9cc4bb38b8bc2c9659b0/UoL_Royal_Holloway_logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 3),
+(18, 'University of Illinois Urbana-Champaign', 'Master of Science in Management (iMSM)', 'master', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Rp5a6TiZD2LO4n6MHsMtS/78e1f67bd7784a40ddae53db3389a054/IllinoisGies.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(19, 'University of Huddersfield', 'MSc Management', 'master', 'AACSB accredited, Business School of the Year 2023 (THE Awards), top in the UK in the global Times Higher Education Young University Rankings 2024', 'Application due September 10, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5bvCtypTxR2uVK6aH7HS0k/0e98a5efb8aaed315766914559c8c4e0/200x400_logo__1_.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(20, 'University of Michigan', 'Master of Applied Data Science', 'master', '#1 Public Research University in the U.S. (QS World Rankings, 2022)', 'Application due June 1, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/7EM0x2VEDTvYABQqQXiIem/6ce5b3f131a225cbf1a6b0aa24af8df6/University_of_Michigan_Horizontal_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(21, 'Northeastern University', 'Master of Science in Data Analytics Engineering', 'master', 'Ranked in the top 40 of the U.S. News Best Graduate Schools in Engineering', 'Application due July 25, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2UqKAdajxMiAKGLdOgYCrc/f09facd5960e7697c6398f672c7c14dc/Captura_de_pantalla_2023-08-30_a_la_s__11.29.07_a.m..png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(22, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(24, 'University of Colorado Boulder', 'Master of Engineering in Engineering Management', 'master', 'Top 20 Engineering School (U.S. News Engineering Schools ranking, 2025)', 'Application due June 12, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2IPmuma57uM5ek16lRQAbT/061735e29e1ac3b2b6741fdee4753dec/CUBoulder_360x360.png?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w=48&h=48', NULL, NULL, 4),
+(25, 'University of Michigan', 'Master of Public Health', 'master', '#4 School of Public Health (U.S. News & World Report, 2021)', 'Application due June 29, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/60SA8pGxPXMmJf4n7umK1H/ccec31bbe2358210bf8391dcba6cd2f1/umich.png?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w=48&h=48', NULL, NULL, 0),
+(26, 'University of Illinois', 'Master of Business Administration (iMBA)', 'master', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1FEh4ZoSeNYJ44HxicpwgE/7e94d0f48196b2f1284c90168dd1104b/CenterILblock-ISQUAREOrangeBackgrnd__1_.png?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w', NULL, NULL, 4),
+(27, 'HEC Paris', 'MSc in Innovation and Entrepreneurship', 'master', '#1 Business School in Europe (Financial Times, 2022)', 'Application due June 1, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2TGd4ZOjIp0SJOb63J2QQj/7a96187ecd3de0afcc7b2759af1341b8/HEC_logo-96.jpg?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w=48&h=48', NULL, NULL, 0),
+(28, 'Universidad de los Andes', 'MaestrÃ­a en IngenierÃ­a de Software', 'master', 'Universidad No. 5 de Latinoamérica (QS Ranking 2024)', 'Application due June 17, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2vpThGDM4ephvaJehcYKGs/a8f07a48746d89d7114e7a99b16dba76/uniandessquare.png?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w=48&h=48', NULL, NULL, 0),
+(35, 'Indian Institute of Technology Guwahati', 'Bachelor of Science in Data Science & AI', 'bachelor', 'Named as one of the world’s top universities for the study of Data Science (QS World University Rankings by Subject 2024)', 'Application due May 29, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/IHNuNEKZnmjtOs3g6uX9h/c0038feefd8e96515ab88ee67e1bb59f/Square_logo_for_partner_landing_page.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(36, 'University of London ', 'Bachelor of Science in Marketing', 'bachelor', 'Ranked #34 in the UK (The Times and Sunday Times Good University Guide 2025)', 'Application due September 7, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5ASJDg3lEJwiQ2i3baLYbD/f64e9ef7e44f9cc4bb38b8bc2c9659b0/UoL_Royal_Holloway_logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 5),
+(37, 'University of London', 'Bachelor of Science in Business Administration', 'bachelor', 'Ranked #34 in the UK (The Times and Sunday Times Good University Guide 2025)', 'Application due September 7, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5ASJDg3lEJwiQ2i3baLYbD/f64e9ef7e44f9cc4bb38b8bc2c9659b0/UoL_Royal_Holloway_logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 5),
+(39, 'Georgetown University', 'Bachelor of Arts in Liberal Studies', 'bachelor', 'Ranked #24 in the National University rankings (US News & World Report, 2025)', 'Application due June 14, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/249FlRfDx2yviQr9UUz57n/e25a8f5dd17ed44212698529e3e88760/Georgetown_SCS_MonotoneLogo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 5),
+(40, 'University of North Texas', 'Bachelor of Science in General Business', 'bachelor', 'Ranked #25 for online Bachelor’s programs (U.S. News & World Report, 2025)', 'Application due June 15, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/HL1NahIE4QwHd9xvhxvtx/8293d49ce1609a5c858719fb183f6229/UNT_COURSERA_BAAS_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(41, 'Illinois Tech', 'Bachelor of Information Technology', 'bachelor', 'Bachelor of Information Technology', 'Application due June 6, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5JUClhmEcjBngRNT8Jp4A8/718fded3686a7003bdd2aeb70a772c49/e52950db-1fef-454d-82a6-a40667359c0a.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
+(42, 'Indian Statistical Institute', 'Postgraduate Diploma in Applied Statistics ', 'diploma', 'ISI is a renowned institution where eminent scientists lead high-impact national projects ', 'Application due July 25, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5R2a5JvlUUjaCx88o6ieGr/f34781a19154cb1de019183c8d2377db/Webp.net-resizeimage.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0);
 
 --
 -- Dumping data for table `subject_university`
@@ -4529,82 +4254,6 @@ INSERT INTO `subject_university` (`id`, `university_id`, `subject_id`) VALUES
 (45, 25, 7),
 (46, 39, 6),
 (47, 11, 6);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `universities`
---
-
-CREATE TABLE `universities` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `degree` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipe` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ranking` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `application_deadline` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `row` int NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `universities`
---
-
-INSERT INTO `universities` (`id`, `name`, `degree`, `tipe`, `ranking`, `application_deadline`, `image_path`, `created_at`, `updated_at`, `row`) VALUES
-(1, 'University of Illinois Urbana-Champaign', 'Master of Science in Management (iMSM)', 'bachelor', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Rp5a6TiZD2LO4n6MHsMtS/78e1f67bd7784a40ddae53db3389a054/IllinoisGies.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 1),
-(2, 'University of Huddersfield', 'MSc Management', 'master', 'AACSB accredited, Business School of the Year 2023 (THE Awards), top in the UK in the global Times Higher Education Young University Rankings 2024', 'Application due September 10, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5bvCtypTxR2uVK6aH7HS0k/0e98a5efb8aaed315766914559c8c4e0/200x400_logo__1_.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(3, 'University of Michigan', 'Master of Applied Data Science', 'master', '#1 Public Research University in the U.S. (QS World Rankings, 2022)', 'Application due June 1, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/7EM0x2VEDTvYABQqQXiIem/6ce5b3f131a225cbf1a6b0aa24af8df6/University_of_Michigan_Horizontal_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(4, 'University of Pittsburgh', 'Master of Data Science', 'master', 'A highly-ranked, Carnegie R1 public research institution', 'Application due August 18, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/3DZlvCCGVWluFtfeXoCgFO/e0e068904fbabadd01c00c3165f54f68/900x200_px_SCI_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(5, 'Northeastern University', 'Master of Science in Data Analytics Engineering', 'master', 'Ranked in the top 40 of the U.S. News Best Graduate Schools in Engineering', 'Application due July 25, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2UqKAdajxMiAKGLdOgYCrc/f09facd5960e7697c6398f672c7c14dc/Captura_de_pantalla_2023-08-30_a_la_s__11.29.07_a.m..png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(6, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 2),
-(7, 'University of Illinois Urbana-Champaign', 'Master of Business Administration (iMBA)', 'master', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Rp5a6TiZD2LO4n6MHsMtS/78e1f67bd7784a40ddae53db3389a054/IllinoisGies.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 1),
-(8, 'University of Colorado Boulder', 'Master of Science in Computer Science', 'master', 'Ranked #98 in the Best Global Universities (US News & World Report, 2025)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 1),
-(9, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 2),
-(11, 'University of North Texas', 'Bachelor of Applied Arts and Sciences', 'master', 'Ranked #25 for online Bachelorâ€™s programs (U.S. News & World Report, 2025)', 'Application due June 16, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/HL1NahIE4QwHd9xvhxvtx/8293d49ce1609a5c858719fb183f6229/UNT_COURSERA_BAAS_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 1),
-(12, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(13, 'University of Colorado Boulder', 'Master of Engineering in Engineering Management', 'master', 'Top 20 Engineering School (U.S. News Engineering Schools ranking, 2025)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 2),
-(14, 'Illinois Tech', 'Master of Business Administration', 'master', '#20 in the U.S. for high earnings and economic mobility (NYT college ranking tool, 2023)', 'Application due June 7, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5JUClhmEcjBngRNT8Jp4A8/718fded3686a7003bdd2aeb70a772c49/e52950db-1fef-454d-82a6-a40667359c0a.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(15, 'University of Illinois Urbana-Champaign', 'Master of Science in Management (iMSM)', 'master', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Rp5a6TiZD2LO4n6MHsMtS/78e1f67bd7784a40ddae53db3389a054/IllinoisGies.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 3),
-(16, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 3),
-(17, 'University of London', 'Master of Science in Cyber Security', 'master', '#34 in the UK (The Times and Sunday Times Good University Guide 2025)', 'Application due September 8, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5ASJDg3lEJwiQ2i3baLYbD/f64e9ef7e44f9cc4bb38b8bc2c9659b0/UoL_Royal_Holloway_logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 3),
-(18, 'University of Illinois Urbana-Champaign', 'Master of Science in Management (iMSM)', 'master', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Rp5a6TiZD2LO4n6MHsMtS/78e1f67bd7784a40ddae53db3389a054/IllinoisGies.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(19, 'University of Huddersfield', 'MSc Management', 'master', 'AACSB accredited, Business School of the Year 2023 (THE Awards), top in the UK in the global Times Higher Education Young University Rankings 2024', 'Application due September 10, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5bvCtypTxR2uVK6aH7HS0k/0e98a5efb8aaed315766914559c8c4e0/200x400_logo__1_.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(20, 'University of Michigan', 'Master of Applied Data Science', 'master', '#1 Public Research University in the U.S. (QS World Rankings, 2022)', 'Application due June 1, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/7EM0x2VEDTvYABQqQXiIem/6ce5b3f131a225cbf1a6b0aa24af8df6/University_of_Michigan_Horizontal_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(21, 'Northeastern University', 'Master of Science in Data Analytics Engineering', 'master', 'Ranked in the top 40 of the U.S. News Best Graduate Schools in Engineering', 'Application due July 25, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2UqKAdajxMiAKGLdOgYCrc/f09facd5960e7697c6398f672c7c14dc/Captura_de_pantalla_2023-08-30_a_la_s__11.29.07_a.m..png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(22, 'University of Colorado Boulder', 'Master of Science in Data Science', 'master', '#38 University in the World (Academic Ranking of World Universities, 2019)', 'Application due June 13, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/QYnQLOD2XH1JdEAJt7zFY/982c1e09539e87e4cf637c57eb4142dd/CU-Boulder.jpg?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(24, 'University of Colorado Boulder', 'Master of Engineering in Engineering Management', 'master', 'Top 20 Engineering School (U.S. News Engineering Schools ranking, 2025)', 'Application due June 12, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2IPmuma57uM5ek16lRQAbT/061735e29e1ac3b2b6741fdee4753dec/CUBoulder_360x360.png?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w=48&h=48', NULL, NULL, 4),
-(25, 'University of Michigan', 'Master of Public Health', 'master', '#4 School of Public Health (U.S. News & World Report, 2021)', 'Application due June 29, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/60SA8pGxPXMmJf4n7umK1H/ccec31bbe2358210bf8391dcba6cd2f1/umich.png?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w=48&h=48', NULL, NULL, 0),
-(26, 'University of Illinois', 'Master of Business Administration (iMBA)', 'master', '#12 in Top Public Universities in the U.S. (U.S. News & World Report, 2023)', 'Application due June 5, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1FEh4ZoSeNYJ44HxicpwgE/7e94d0f48196b2f1284c90168dd1104b/CenterILblock-ISQUAREOrangeBackgrnd__1_.png?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w', NULL, NULL, 4),
-(27, 'HEC Paris', 'MSc in Innovation and Entrepreneurship', 'master', '#1 Business School in Europe (Financial Times, 2022)', 'Application due June 1, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2TGd4ZOjIp0SJOb63J2QQj/7a96187ecd3de0afcc7b2759af1341b8/HEC_logo-96.jpg?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w=48&h=48', NULL, NULL, 0),
-(28, 'Universidad de los Andes', 'MaestrÃ­a en IngenierÃ­a de Software', 'master', 'Universidad No. 5 de Latinoamérica (QS Ranking 2024)', 'Application due June 17, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2vpThGDM4ephvaJehcYKGs/a8f07a48746d89d7114e7a99b16dba76/uniandessquare.png?auto=format%2Ccompress&dpr=1&fm=avif&fit=fill&w=48&h=48', NULL, NULL, 0),
-(35, 'Indian Institute of Technology Guwahati', 'Bachelor of Science in Data Science & AI', 'bachelor', 'Named as one of the world’s top universities for the study of Data Science (QS World University Rankings by Subject 2024)', 'Application due May 29, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/IHNuNEKZnmjtOs3g6uX9h/c0038feefd8e96515ab88ee67e1bb59f/Square_logo_for_partner_landing_page.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(36, 'University of London ', 'Bachelor of Science in Marketing', 'bachelor', 'Ranked #34 in the UK (The Times and Sunday Times Good University Guide 2025)', 'Application due September 7, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5ASJDg3lEJwiQ2i3baLYbD/f64e9ef7e44f9cc4bb38b8bc2c9659b0/UoL_Royal_Holloway_logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 5),
-(37, 'University of London', 'Bachelor of Science in Business Administration', 'bachelor', 'Ranked #34 in the UK (The Times and Sunday Times Good University Guide 2025)', 'Application due September 7, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5ASJDg3lEJwiQ2i3baLYbD/f64e9ef7e44f9cc4bb38b8bc2c9659b0/UoL_Royal_Holloway_logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 5),
-(39, 'Georgetown University', 'Bachelor of Arts in Liberal Studies', 'bachelor', 'Ranked #24 in the National University rankings (US News & World Report, 2025)', 'Application due June 14, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/249FlRfDx2yviQr9UUz57n/e25a8f5dd17ed44212698529e3e88760/Georgetown_SCS_MonotoneLogo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 5),
-(40, 'University of North Texas', 'Bachelor of Science in General Business', 'bachelor', 'Ranked #25 for online Bachelor’s programs (U.S. News & World Report, 2025)', 'Application due June 15, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/HL1NahIE4QwHd9xvhxvtx/8293d49ce1609a5c858719fb183f6229/UNT_COURSERA_BAAS_Logo.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(41, 'Illinois Tech', 'Bachelor of Information Technology', 'bachelor', 'Bachelor of Information Technology', 'Application due June 6, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5JUClhmEcjBngRNT8Jp4A8/718fded3686a7003bdd2aeb70a772c49/e52950db-1fef-454d-82a6-a40667359c0a.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0),
-(42, 'Indian Statistical Institute', 'Postgraduate Diploma in Applied Statistics ', 'diploma', 'ISI is a renowned institution where eminent scientists lead high-impact national projects ', 'Application due July 25, 2025', 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5R2a5JvlUUjaCx88o6ieGr/f34781a19154cb1de019183c8d2377db/Webp.net-resizeimage.png?auto=format%2Ccompress&dpr=1', NULL, NULL, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `user_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -4777,23 +4426,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (163, 'stephen albert', 'stephenalbert146@gmail.com', '2025-06-12 21:07:47', '$2y$12$aOD/4PRSvjxKM1kFV/8iyud9eEBbnAu8vwCoJIqQD2ATXpu1CxQ8m', NULL, '2025-06-12 21:06:44', '2025-06-12 21:07:47', 'user'),
 (164, 'ste', 'stephenalbert147@gmail.com', '2025-06-13 06:11:06', '$2y$12$ACnquWQx9hg/HHgUVxWe6ODlE8KMdfaxxA5IHG5Okh3SqAN3u2M5u', NULL, '2025-06-13 06:10:08', '2025-06-13 06:11:06', 'user');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `utbk`
---
-
-CREATE TABLE `utbk` (
-  `id` bigint UNSIGNED NOT NULL,
-  `kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sub_kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nomor` int NOT NULL,
-  `soal` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `utbk`
 --
@@ -4895,20 +4527,6 @@ INSERT INTO `utbk` (`id`, `kategori`, `sub_kategori`, `nomor`, `soal`, `gambar`,
 (93, 'PK & Penalaran Matematika', 'Data dan Ketidakpastian 1', 3, 'Sepasang pengantin baru yang baru saja melangsungkan pernikahan berencana mempunyai empat anak. Si suami menginginkan dari keempat anaknya itu nanti dua anak berjenis kelamin perempuan dan dua lainnya laki-laki. Sedangkan si istri menginginkan keempat anaknya terdiri dari tiga anak berjenis kelamin sama dan satu yang lainnya berbeda. Pernyataan yang paling tepat berdasarkan masalah tersebut bahwa peluang terjadinya keinginan suami adalah ....', 'matematika.png', NULL, NULL),
 (94, 'PK & Penalaran Matematika', 'Data dan Ketidakpastian 1', 4, 'Untuk memenuhi biaya pendidikan, Budi bekerja 15 jam setiap minggu. Ia bisa memilih waktu bekerja pada hari Jumat, Sabtu dan Minggu. Jika satuan waktu bekerja dihitung dalam jam dan ia harus bekerja paling sedikit 4 jam pada setiap hari tersebut, maka komposisi lama jam kerja Budi pada hari-hari tersebut yang mungkin ada sebanyak ...', 'matematika.png', NULL, NULL),
 (95, 'PK & Penalaran Matematika', 'Data dan Ketidakpastian 1', 5, 'Untuk membuat secara lengkap satu set rak sepatu, seorang tukang kayu membutuhkan 4 potong panel kayu panjang dan 6 panel kayu pendek. Tukang kayu memiliki persediaan panel kayu panjang dengan 5 pilihan warna dan panel kayu pendek dengan 7 pilihan warna. Jika panel kayu panjang harus dipasangkan dengan warna yang sama demikian juga halnya dengan panel kayu pendek tetapi panel kayu panjang tidak harus sewarna dengan panel kayu pendek, banyak variasi warna rak sepatu yang dapat dibuat adalah ....', 'matematika.png', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `visimisi_kampus`
---
-
-CREATE TABLE `visimisi_kampus` (
-  `id` bigint UNSIGNED NOT NULL,
-  `kampus_id` bigint UNSIGNED DEFAULT NULL,
-  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `visi` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `misi` text COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `visimisi_kampus`
@@ -5037,21 +4655,6 @@ INSERT INTO `visimisi_kampus` (`id`, `kampus_id`, `nama`, `visi`, `misi`) VALUES
 (119, 119, 'Politeknik Negeri Indramayu', 'Politeknik Terdepan Tingkat Nasional Berdaya Saing Global.', '1. Meningkatkan mutu, akses, dan relevansi pendidikan politeknik untuk menghasilkan lulusan sesuai kebutuhan pekerjaan;</br>\r\n2. Melakukan penelitian terapan dan pengabdian masyarakat untuk mengatasi persoalan industri dan masyarakat.'),
 (120, 120, 'Politeknik Negeri Nunukan', 'Menjadi institusi pendidikan tinggi vokasional terkemuka dan luar biasa di Kalimantan pada tahun 2024.', '1. Menginovasi fleksibilitas kurikulum</br>\r\n2. Membangun kegunaannya</br>\r\n3. Memberdayakan semua sumber daya');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `wishlists`
---
-
-CREATE TABLE `wishlists` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED NOT NULL,
-  `wishlistable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `wishlistable_id` bigint UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `wishlists`
 --
@@ -5067,71 +4670,6 @@ INSERT INTO `wishlists` (`id`, `user_id`, `wishlistable_type`, `wishlistable_id`
 (16, 11, 'App\\Models\\Course', 4, '2025-06-04 19:30:56', '2025-06-04 19:30:56'),
 (17, 11, 'App\\Models\\Course', 13, '2025-06-05 00:21:35', '2025-06-05 00:21:35'),
 (18, 11, 'App\\Models\\Career', 1, '2025-06-05 00:22:55', '2025-06-05 00:22:55');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `cache`
---
-ALTER TABLE `cache`
-  ADD PRIMARY KEY (`key`);
-
---
--- Indexes for table `cache_locks`
---
-ALTER TABLE `cache_locks`
-  ADD PRIMARY KEY (`key`);
-
---
--- Indexes for table `careers`
---
-ALTER TABLE `careers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `checkouts`
---
-ALTER TABLE `checkouts`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `checkouts_order_id_unique` (`order_id`),
-  ADD KEY `checkouts_order_id_index` (`order_id`);
-
---
--- Indexes for table `courses_certificates`
---
-ALTER TABLE `courses_certificates`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `data_kampus`
---
-ALTER TABLE `data_kampus`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indexes for table `jawaban_utbk`
---
-ALTER TABLE `jawaban_utbk`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `jawaban_utbk`
---
-ALTER TABLE `jawaban_utbk`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

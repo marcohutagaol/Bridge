@@ -14,24 +14,24 @@ class UtbkController extends Controller
      */
     public function index(Request $request)
     {
-        // Ambil parameter filter dari request
+        // Ambil parameter filter dari request, default "Semua"
         $kategori_filter = $request->get('kategori', 'Semua');
 
-        // Query dasar
+        // Query dasar ambil data dari model Utbk
         $query = Utbk::query();
 
-        // Aplikasikan filter jika bukan "Semua"
+        // Filter berdasarkan kategori jika tidak "Semua"
         if ($kategori_filter && $kategori_filter !== 'Semua') {
             $query->where('kategori', $kategori_filter);
         }
 
-        // Ambil data dengan pagination
+        // Ambil data soal dengan pagination (100 per halaman)
         $utbk = $query->paginate(100);
 
-        // Ambil semua kategori unik untuk dropdown
+        // Ambil daftar kategori unik untuk dropdown filter
         $kategori_list = Utbk::select('kategori')->distinct()->orderBy('kategori')->get();
 
-        // Ambil sub_kategori unik berdasarkan filter
+        // Ambil subkategori unik berdasarkan filter kategori
         if ($kategori_filter && $kategori_filter !== 'Semua') {
             $sub_kategori_unik = Utbk::where('kategori', $kategori_filter)
                 ->select('sub_kategori', 'kategori', 'gambar')
@@ -43,7 +43,7 @@ class UtbkController extends Controller
                 ->get();
         }
 
-        // Data spesifik per sub kategori (untuk kompatibilitas dengan view yang ada)
+        // Ambil data berdasarkan subkategori masing-masing
         $ppid = DB::table('utbk')->where('sub_kategori', 'Pengantar Penalaran Induktif dan Deduktif')->get();
         $pd = DB::table('utbk')->where('sub_kategori', 'Penalaran Deduktif')->get();
         $pi = DB::table('utbk')->where('sub_kategori', 'Penalaran Induktif')->get();
@@ -64,6 +64,7 @@ class UtbkController extends Controller
         $geo = DB::table('utbk')->where('sub_kategori', 'Geometri 1')->get();
         $data = DB::table('utbk')->where('sub_kategori', 'Data dan Ketidakpastian 1')->get();
 
+        // Kirim data ke view
         return view('pages.section1.topic_detail', compact(
             'utbk',
             'sub_kategori_unik',
@@ -93,22 +94,20 @@ class UtbkController extends Controller
 
     public function submitJawaban(Request $request)
     {
-
-        // Validasi: pastikan semua jawaban diisi dan maksimal 1000 karakter
+        // Validasi bahwa setiap jawaban harus ada dan maksimal 1000 karakter
         $request->validate([
             'jawaban' => 'required|array',
             'jawaban.*' => 'required|string|max:1000',
         ]);
 
-        // Simpan semua jawaban ke database
+        // Simpan jawaban user ke tabel jawaban_utbk
         foreach ($request->jawaban as $id_soal => $jawaban) {
 
-            // Ambil data soal dari tabel utbk
+            // Ambil soal berdasarkan ID untuk mengambil kategori dan sub_kategori
             $soal = DB::table('utbk')->where('id', $id_soal)->first();
 
-            // Pastikan soal ditemukan sebelum insert
+            // Jika soal ditemukan, insert ke tabel jawaban_utbk
             if ($soal) {
-
                 DB::table('jawaban_utbk')->insert([
                     'user_id' => Auth::id(),
                     'name' => Auth::user()->name,
@@ -120,8 +119,9 @@ class UtbkController extends Controller
                     'updated_at' => now(),
                 ]);
             }
-
         }
+
+        // Redirect kembali dengan pesan sukses
         return back()->with('success', 'Semua jawaban berhasil dikirim!');
     }
 
@@ -130,7 +130,7 @@ class UtbkController extends Controller
      */
     public function create()
     {
-        //
+        // Tidak digunakan
     }
 
     /**
@@ -138,7 +138,7 @@ class UtbkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Tidak digunakan
     }
 
     /**
@@ -146,10 +146,13 @@ class UtbkController extends Controller
      */
     public function show($sub_kategori)
     {
+        // Ambil 5 soal pertama berdasarkan subkategori dan urutan nomor
         $materi = Utbk::where('sub_kategori', $sub_kategori)
             ->orderBy('nomor')
             ->limit(5)
             ->get();
+
+        // Kirim ke view materi_detail
         return view('pages.section1.materi_detail', compact('materi', 'sub_kategori'));
     }
 
@@ -158,7 +161,7 @@ class UtbkController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Tidak digunakan
     }
 
     /**
@@ -166,7 +169,7 @@ class UtbkController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Tidak digunakan
     }
 
     /**
@@ -174,6 +177,6 @@ class UtbkController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Tidak digunakan
     }
 }

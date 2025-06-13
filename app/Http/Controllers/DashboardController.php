@@ -14,8 +14,11 @@ class DashboardController extends Controller
     {
         $data = [
             'jumlah_course' => Course::count(),
+            // SELECT COUNT(*) FROM courses;
             'jumlah_career' => Career::count(),
+            // SELECT COUNT(*) FROM careers;
             'jumlah_degree' => University::count()
+            // SELECT COUNT(*) FROM universities;
         ];
 
         return view('admin.dashboard', compact('data'));
