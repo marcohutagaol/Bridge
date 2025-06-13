@@ -132,7 +132,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-outline-success">Email info ke saya</button>
+                        <button class="btn btn-outline-success">Email info to me</button>
                     </div>
                 </div>
             </div>
