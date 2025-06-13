@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_id')->default(0);
             $table->string('name')->default('');
             $table->unsignedBigInteger('soal_id');
+            $table->string('kategori')->default('');
+            $table->string('sub_kategori')->default('');
             $table->text('jawaban');
             $table->timestamps();
         });
