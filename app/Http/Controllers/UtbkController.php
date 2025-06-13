@@ -102,16 +102,26 @@ class UtbkController extends Controller
 
         // Simpan semua jawaban ke database
         foreach ($request->jawaban as $id_soal => $jawaban) {
-            DB::table('jawaban_utbk')->insert([
-                'user_id' => Auth::id(),
-                'name' => Auth::user()->name,
-                'soal_id' => $id_soal,
-                'jawaban' => $jawaban,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
 
+            // Ambil data soal dari tabel utbk
+            $soal = DB::table('utbk')->where('id', $id_soal)->first();
+
+            // Pastikan soal ditemukan sebelum insert
+            if ($soal) {
+
+                DB::table('jawaban_utbk')->insert([
+                    'user_id' => Auth::id(),
+                    'name' => Auth::user()->name,
+                    'soal_id' => $id_soal,
+                    'kategori' => $soal->kategori,
+                    'sub_kategori' => $soal->sub_kategori,
+                    'jawaban' => $jawaban,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+
+        }
         return back()->with('success', 'Semua jawaban berhasil dikirim!');
     }
 
