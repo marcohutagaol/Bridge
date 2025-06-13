@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Online Degree Programs Listing Page">
     <meta name="author" content="">
-    <title>Persiapan</title>
+    <title>Preparation</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,14 +82,14 @@
                     <div class="col-12">
                         <div class="filter-container d-flex flex-wrap align-items-center justify-content-between">
                             <div class="d-flex align-items-center mb-3 mb-md-0">
-                                <span class="me-3">Filter menurut:</span>
+                                <span class="me-3">Filter by:</span>
                                 <div class="dropdown me-3">
                                     <button class="btn dropdown-toggle" type="button" id="programLevelDropdown"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        UTBK & Ujian Mandiri
+                                        UTBK & Independent Exams
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="programLevelDropdown">
-                                        <li><a class="dropdown-item" href="#">UTBK & Ujian Mandiri</a></li>
+                                        <li><a class="dropdown-item" href="#">UTBK & Independent Exams</a></li>
                                     </ul>
                                 </div>
                                 <!-- Filter Form -->
@@ -97,12 +97,12 @@
                                     <div class="dropdown">
                                         <button class="btn dropdown-toggle" type="button" id="subjectDropdown"
                                             data-bs-toggle="dropdown" aria-expanded="false">
-                                            {{ $kategori_filter ?? 'Pilih Paket' }}
+                                            {{ $kategori_filter ?? 'Select Package' }}
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="subjectDropdown">
                                             <li>
-                                                <a class="dropdown-item filter-option" href="#" data-kategori="Semua">
-                                                    Semua
+                                                <a class="dropdown-item filter-option" href="#" data-kategori="All">
+                                                    All
                                                 </a>
                                             </li>
                                             @if(isset($kategori_list))
@@ -118,16 +118,16 @@
                                             @else
 
                                                 <li><a class="dropdown-item filter-option" href="#"
-                                                        data-kategori="Penalaran Umum">Penalaran Umum</a></li>
+                                                        data-kategori="General Reasoning">General Reasoning</a></li>
                                                 <li><a class="dropdown-item filter-option" href="#"
-                                                        data-kategori="PPU, PBM, dan Literasi dalam Bahasa Indonesia">PPU,
-                                                        PBM, dan Literasi Bahasa Indonesia</a></li>
+                                                        data-kategori="PPU, PBM, and Literacy in Indonesian Language">PPU,
+                                                        PBM, and Indonesian Language Literacy</a></li>
                                                 <li><a class="dropdown-item filter-option" href="#"
-                                                        data-kategori="Literasi Bahasa Inggris">Literasi Bahasa Inggris</a>
+                                                        data-kategori="English Language Literacy">English Language Literacy</a>
                                                 </li>
                                                 <li><a class="dropdown-item filter-option" href="#"
-                                                        data-kategori="PK & Penalaran Matematika">PK & Penalaran
-                                                        Matematika</a></li>
+                                                        data-kategori="PK & Mathematical Reasoning">PK & Mathematical
+                                                        Reasoning</a></li>
                                             @endif
                                         </ul>
                                     </div>
@@ -159,7 +159,7 @@
                                             </h5>
                                             <div class="mt-auto">
                                                 <p class="small text-muted mb-1">Essay</p>
-                                                <p class="small text-danger mb-0">5 soal</p>
+                                                <p class="small text-danger mb-0">5 questions</p>
                                             </div>
                                         </div>
                                     </div>
@@ -168,26 +168,26 @@
                         @endforeach
                     @else
                         <div class="col-12 text-center">
-                            <p class="text-muted">Tidak ada materi yang ditemukan untuk kategori ini.</p>
+                            <p class="text-muted">No materials found for this category.</p>
                         </div>
                     @endif
 
-                    <!-- Banner Konsultan -->
+                    <!-- Consultant Banner -->
                     <div class="konsultan-banner d-flex align-items-center justify-content-between p-4 mb-4"
                         style="border-radius: 20px;">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('images/materiutbk/icon.png') }}" alt="Konsultan"
+                            <img src="{{ asset('images/materiutbk/icon.png') }}" alt="Consultant"
                                 class="konsultan-img me-3"
                                 style="height: 140px; width: 110px; object-fit: cover; border-radius: 16px;">
                             <div>
-                                <div class="text-white fw-semibold mb-1" style="font-size: 1.1rem;">Masih punya
-                                    pertanyaan?</div>
+                                <div class="text-white fw-semibold mb-1" style="font-size: 1.1rem;">Still have
+                                    questions?</div>
                                 <div class="text-white fw-bold" style="font-size: 1.6rem; line-height: 1.2;">
-                                    Tanyakan via chat ke Konsultan
+                                    Ask via chat to Consultant
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-outline-success">Email info ke saya</button>
+                        <button class="btn btn-outline-success">Email info to me</button>
                     </div>
                 </div>
             </div>
@@ -204,7 +204,7 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                // Filter functionality dengan server-side
+                // Filter functionality with server-side
                 const filterOptions = document.querySelectorAll('.filter-option');
                 const cardContainer = document.getElementById('card-container');
                 const kategoriInput = document.getElementById('kategori_input');
@@ -221,7 +221,7 @@
                         dropdownButton.textContent = this.textContent;
 
                         // Set input value
-                        kategoriInput.value = kategori === 'Semua' ? '' : kategori;
+                        kategoriInput.value = kategori === 'All' ? '' : kategori;
 
                         // Add loading state
                         cardContainer.classList.add('filter-loading');
@@ -231,7 +231,7 @@
                     });
                 });
 
-                // Dropdown functionality untuk program level
+                // Dropdown functionality for program level
                 const programItems = document.querySelectorAll('#programLevelDropdown + .dropdown-menu .dropdown-item');
                 programItems.forEach(item => {
                     item.addEventListener('click', function (e) {
@@ -240,7 +240,7 @@
                     });
                 });
 
-                // Pagination functionality (jika diperlukan)
+                // Pagination functionality (if needed)
                 const pages = document.querySelectorAll('.pagination .page-link[data-page]');
                 const prevBtn = document.getElementById('prevPageBtn');
                 const nextBtn = document.getElementById('nextPageBtn');
