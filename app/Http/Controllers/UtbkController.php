@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Utbk;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UtbkController extends Controller
 {
@@ -207,6 +208,7 @@ class UtbkController extends Controller
 
     public function submitJawaban(Request $request)
     {
+
         // Validasi: pastikan semua jawaban diisi dan maksimal 1000 karakter
         $request->validate([
             'jawaban' => 'required|array',
@@ -228,6 +230,25 @@ class UtbkController extends Controller
             ]);
         }
 
+            // Ambil data soal dari tabel utbk
+            $soal = DB::table('utbk')->where('id', $id_soal)->first();
+
+            // Pastikan soal ditemukan sebelum insert
+            if ($soal) {
+
+                DB::table('jawaban_utbk')->insert([
+                    'user_id' => Auth::id(),
+                    'name' => Auth::user()->name,
+                    'soal_id' => $id_soal,
+                    'kategori' => $soal->kategori,
+                    'sub_kategori' => $soal->sub_kategori,
+                    'jawaban' => $jawaban,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+
+        }
         return back()->with('success', 'Semua jawaban berhasil dikirim!');
     }
 

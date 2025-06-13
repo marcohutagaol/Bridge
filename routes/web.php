@@ -114,7 +114,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // UTBK Routes
 Route::get('/utbk', [UtbkController::class, 'index'])->name('utbk.index');
 Route::get('/materi/{sub_kategori}', [UtbkController::class, 'show'])->name('materi.detail');
-Route::post('/utbk/submit-jawaban', [UtbkController::class, 'submitJawaban'])->name('utbk.submit');
+Route::post('/utbk/submit-jawaban', [UtbkController::class, 'submitJawaban'])
+    ->name('utbk.submit')
+    ->middleware('auth');
 
 // Alternative route jika menggunakan nama lain
 Route::get('/topic-detail', [UtbkController::class, 'index'])->name('topic.detail');
