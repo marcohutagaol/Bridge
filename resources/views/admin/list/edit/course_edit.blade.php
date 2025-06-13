@@ -68,9 +68,6 @@
         </div>
 
         <div class="d-flex justify-content-end gap-2 mt-4">
-          <a href="{{ route('admin.list.course_list') }}" class="btn btn-secondary">
-            <i class="fas fa-arrow-left me-2"></i>Back
-          </a>
           <button type="submit" class="btn btn-primary">
             <i class="fas fa-save me-2"></i>Update Course
           </button>

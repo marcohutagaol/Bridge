@@ -1,24 +1,26 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminPaymentController;
-use App\Http\Controllers\ChartController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MyLearningController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\SelectedCourseController;
 use App\Http\Controllers\UtbkController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\KampusController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MyLearningController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\AdminPaymentController;
+use App\Http\Controllers\LearningPageController;
+use App\Http\Controllers\SelectedCourseController;
 use App\Http\Controllers\LearningProgressController;
 
 
@@ -274,7 +276,7 @@ Route::prefix('invoice')->name('invoice.')->group(function () {
     // Download PDF invoice
     Route::get('/download/{orderId}', [InvoiceController::class, 'downloadInvoice'])
         ->name('download');
-
+ 
     // View PDF invoice in browser
     Route::get('/view/{orderId}', [InvoiceController::class, 'viewInvoice'])
         ->name('view');
@@ -296,7 +298,18 @@ Route::prefix('invoice')->name('invoice.')->group(function () {
 
 Route::post('/learning-progress/save', [LearningProgressController::class, 'store'])->name('learning-progress.store');
 
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
+// Career page
+Route::get('/careers', [CareerController::class, 'showCareers'])->name('careers');
+
+// Certificate page
+Route::get('/certificate', [CourseController::class, 'index'])->name('certificate');
+
+// Optional: certificate detail if needed
+
+// Route pencarian universitas
+Route::get('/universities', [App\Http\Controllers\UniversityController::class, 'index'])->name('universities.index');
 
 
 require __DIR__ . '/auth.php';

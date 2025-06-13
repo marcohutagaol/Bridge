@@ -12,7 +12,10 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
     /**
-     * Display the user's profile form.
+     * Menampilkan form profil pengguna.
+     * 
+     * SQL terkait (implisit):
+     * SELECT * FROM users WHERE id = current_user_id;
      */
     public function edit(Request $request): View
     {
@@ -22,36 +25,52 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the user's profile information.
+     * Memperbarui informasi profil pengguna.
+     * 
+     * SQL terkait:
+     * UPDATE users 
+     * SET name = ?, email = ?, ... 
+     * WHERE id = current_user_id;
+     * 
+     * Jika email diubah:
+     *   SET email_verified_at = NULL
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
+            // Reset verifikasi email jika email diubah
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $request->user()->save(); // Simpan perubahan ke database
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
-     * Delete the user's account.
+     * Menghapus akun pengguna dari sistem.
+     * 
+     * SQL terkait:
+     * DELETE FROM users WHERE id = current_user_id;
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Validasi bahwa password yang dimasukkan sesuai
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
 
         $user = $request->user();
 
+        // Logout user dari sistem
         Auth::logout();
 
+        // Hapus user dari database
         $user->delete();
 
+        // Hapus sesi dan regenerasi token
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

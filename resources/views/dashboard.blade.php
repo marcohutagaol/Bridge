@@ -24,7 +24,7 @@
                                 {{ __('Update Profile') }}
                             </a>
 
-                            <a href="{{ url('/') }}"
+                            <a href="{{ url('/home') }}"
                                 class="inline-flex items-center px-4 py-2 rounded-[49px] transition-all duration-500"
                                 style="background: linear-gradient(45deg, #009688, #00bcd4);color: #fff;font-weight: 600;text-transform: uppercase;width: 200px;height: 49px;display: flex;align-items: center;justify-content: center;">
                                 <i class="fas fa-home mr-2"></i>
