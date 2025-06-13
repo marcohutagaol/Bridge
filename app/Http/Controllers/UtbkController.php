@@ -64,115 +64,115 @@ class UtbkController extends Controller
         }
 
         // Data spesifik per sub kategori (untuk kompatibilitas dengan view yang ada)
-        
+
         // SQL Query untuk PPID:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Pengantar Penalaran Induktif dan Deduktif';
         */
         $ppid = DB::table('utbk')->where('sub_kategori', 'Pengantar Penalaran Induktif dan Deduktif')->get();
-        
+
         // SQL Query untuk PD:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Penalaran Deduktif';
         */
         $pd = DB::table('utbk')->where('sub_kategori', 'Penalaran Deduktif')->get();
-        
+
         // SQL Query untuk PI:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Penalaran Induktif';
         */
         $pi = DB::table('utbk')->where('sub_kategori', 'Penalaran Induktif')->get();
-        
+
         // SQL Query untuk PK:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Penalaran Kuantitatif';
         */
         $pk = DB::table('utbk')->where('sub_kategori', 'Penalaran Kuantitatif')->get();
-        
+
         // SQL Query untuk MT:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Membaca Teks';
         */
         $mt = DB::table('utbk')->where('sub_kategori', 'Membaca Teks')->get();
-        
+
         // SQL Query untuk EJA:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Ejaan';
         */
         $eja = DB::table('utbk')->where('sub_kategori', 'Ejaan')->get();
-        
+
         // SQL Query untuk KATA:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Kata dan Pembentukannya';
         */
         $kata = DB::table('utbk')->where('sub_kategori', 'Kata dan Pembentukannya')->get();
-        
+
         // SQL Query untuk KALIMAT:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Kalimat';
         */
         $kalimat = DB::table('utbk')->where('sub_kategori', 'Kalimat')->get();
-        
+
         // SQL Query untuk DIKSI:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Diksi dan Makna Kata';
         */
         $diksi = DB::table('utbk')->where('sub_kategori', 'Diksi dan Makna Kata')->get();
-        
+
         // SQL Query untuk LBI:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Literasi Bahasa Indonesia';
         */
         $lbi = DB::table('utbk')->where('sub_kategori', 'Literasi Bahasa Indonesia')->get();
-        
+
         // SQL Query untuk BASIC:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Get to Know All the Basics';
         */
         $basic = DB::table('utbk')->where('sub_kategori', 'Get to Know All the Basics')->get();
-        
+
         // SQL Query untuk ENG1:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'English Level 1';
         */
         $eng1 = DB::table('utbk')->where('sub_kategori', 'English Level 1')->get();
-        
+
         // SQL Query untuk ENG2:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'English Level 2';
         */
         $eng2 = DB::table('utbk')->where('sub_kategori', 'English Level 2')->get();
-        
+
         // SQL Query untuk ENG3:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'English Level 3';
         */
         $eng3 = DB::table('utbk')->where('sub_kategori', 'English Level 3')->get();
-        
+
         // SQL Query untuk LM:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Logika Matematika';
         */
         $lm = DB::table('utbk')->where('sub_kategori', 'Logika Matematika')->get();
-        
+
         // SQL Query untuk BIL:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Bilangan';
         */
         $bil = DB::table('utbk')->where('sub_kategori', 'Bilangan')->get();
-        
+
         // SQL Query untuk ALJ:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Aljabar 1';
         */
         $alj = DB::table('utbk')->where('sub_kategori', 'Aljabar 1')->get();
-        
+
         // SQL Query untuk GEO:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Geometri 1';
         */
         $geo = DB::table('utbk')->where('sub_kategori', 'Geometri 1')->get();
-        
+
         // SQL Query untuk DATA:
         /*
         SELECT * FROM utbk WHERE sub_kategori = 'Data dan Ketidakpastian 1';
@@ -230,27 +230,27 @@ class UtbkController extends Controller
             ]);
         }
 
-            // Ambil data soal dari tabel utbk
-            $soal = DB::table('utbk')->where('id', $id_soal)->first();
+        // Ambil data soal dari tabel utbk
+        $soal = DB::table('utbk')->where('id', $id_soal)->first();
 
-            // Pastikan soal ditemukan sebelum insert
-            if ($soal) {
+        // Pastikan soal ditemukan sebelum insert
+        if ($soal) {
 
-                DB::table('jawaban_utbk')->insert([
-                    'user_id' => Auth::id(),
-                    'name' => Auth::user()->name,
-                    'soal_id' => $id_soal,
-                    'kategori' => $soal->kategori,
-                    'sub_kategori' => $soal->sub_kategori,
-                    'jawaban' => $jawaban,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-            }
-
+            DB::table('jawaban_utbk')->insert([
+                'user_id' => Auth::id(),
+                'name' => Auth::user()->name,
+                'soal_id' => $id_soal,
+                'kategori' => $soal->kategori,
+                'sub_kategori' => $soal->sub_kategori,
+                'jawaban' => $jawaban,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
+
         return back()->with('success', 'Semua jawaban berhasil dikirim!');
     }
+
 
     /**
      * Show the form for creating a new resource.
