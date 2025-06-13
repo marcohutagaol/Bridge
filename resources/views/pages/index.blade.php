@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bride learning</title>
+    <title>Bridge</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/templatemo-topic-listing.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 
@@ -48,29 +48,23 @@
 
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="featured-section">
-            <div class="container">
+                <br><br><br>
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                         <div class="custom-block bg-white shadow-lg">
-                            <a href="topics-detail.html">
-                                <div class="d-flex">
-                                    <div>
-                                        <h5 class="mb-2">College Preparation</h5>
-                                        <p class="mb-0" style="text-align: justify">Prepare yourself for higher
-                                            education,
-                                            master effective learning techniques, time management, and strategies
-                                            for facing exams. Achieve the best performance with proven effective
-                                            learning methods.</p>
-                                    </div>
-                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
+                            <div class="d-flex">
+                                <div>
+                                    <h5 class="mb-2">College Preparation</h5>
+                                    <p class="mb-0" style="text-align: justify">Prepare yourself for higher
+                                        education,
+                                        master effective learning techniques, time management, and strategies
+                                        for facing exams. Achieve the best performance with proven effective
+                                        learning methods.</p>
                                 </div>
-                                <img src="images/topics/undraw_Remote_design_team_re_urdx.png"
-                                    class="custom-block-image img-fluid" alt="">
-                            </a>
+                                <span class="badge bg-design rounded-pill ms-auto">14</span>
+                            </div>
+                            <img src="images/topics/undraw_Remote_design_team_re_urdx.png"
+                                class="custom-block-image img-fluid" alt="">
                         </div>
                     </div>
 
@@ -384,7 +378,7 @@
 
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" style="text-align: justify;">
                                         Our platform is a comprehensive learning course website that focuses on
                                         <strong>university-level education</strong> and career preparation. We provide
                                         quality materials and guidance to help students succeed in higher education and
@@ -403,7 +397,7 @@
 
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" style="text-align: justify;">
                                         We offer courses focused on <strong>university preparation</strong> and
                                         <strong>career development</strong>. This includes college readiness programs,
                                         study techniques, time management, exam strategies, professional skills
@@ -424,7 +418,7 @@
 
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" style="text-align: justify;">
                                         We offer both free and premium content. Basic learning materials and resources
                                         are available for free, while advanced courses and personalized career guidance
                                         may require a subscription. Our goal is to make quality education accessible to

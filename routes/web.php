@@ -24,15 +24,14 @@ use App\Http\Controllers\SelectedCourseController;
 use App\Http\Controllers\LearningProgressController;
 
 
-Route::get('/welcome', function () {
-    return view('pages.welcomemain');
+Route::get('/', function () {
+    return view('welcome');
 })->name('welcome');
 
-Route::get('/', [AdminController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('index');
-    
-Route::get('/', function () {
-    return view('pages.index');
+Route::middleware('auth')->group(function () {
+    Route::get('/home', function () {
+        return view('pages.index');
+    });
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -47,7 +46,7 @@ Route::get('/profil', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name(name: 'profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -143,7 +142,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/messages/analytics', [ContactController::class, 'analytics'])->name('admin.messages.analytics');
-    
+
     Route::get('/messages', [ContactController::class, 'adminIndex'])->name('admin.messages.index');
     Route::get('/messages/{message}', [ContactController::class, 'show'])->name('admin.messages.show');
     Route::patch('/messages/{message}/status', [ContactController::class, 'updateStatus'])->name('admin.messages.update-status');

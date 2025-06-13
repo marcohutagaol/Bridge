@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="/">
-            <i class="bi-back"></i>
+        <a class="navbar-brand" href="/home">
+            <i class="fas fa-bridge"></i>
             <span>Bridge</span>
         </a>
 

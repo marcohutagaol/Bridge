@@ -621,6 +621,7 @@ strong {
   overflow: hidden;
   padding-top: 150px;
   padding-bottom: 150px;
+  border-radius: 0 0 100px 100px;
 }
 
 .hero-section .input-group {
@@ -739,7 +740,7 @@ strong {
   TOPICS              
 -----------------------------------------*/
 .featured-section {
-  background-color: var(--secondary-color);
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
   border-radius: 0 0 100px 100px;
   padding-bottom: 100px;
 }

@@ -19,24 +19,39 @@
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/templatemo-topic-listing.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        .dropdown-menu {
+            right: 0 !important;
+        }
+    </style>
+
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased overflow-x-hidden">
     <div class="min-h-screen bg-[#3bb3a9]">
         <nav class="navbar navbar-expand-lg py-1" style="min-height:40px; background-color: #3bb3a9;">
             <div class="container">
-                <a class="navbar-brand" href="/">
-                    <i class="bi-back"></i>
+                <a class="navbar-brand" href="/home">
+                    <i class="fas fa-bridge"></i>
                     <span>Bridge</span>
                 </a>
-                <div class="d-none d-lg-block">
+                <div class="d-none d-lg-block me-3">
                     <div class="dropdown">
-                        <a href="/profile" class="navbar-icon bi-person smoothscroll"></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/profile">Profil</a></li>
+                        <a href="#" class="navbar-icon bi-person smoothscroll text-white" id="profileDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="font-size: 1.4rem;"></a>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="/home">Back</a></li>
                             <li>
                                 <form method="POST" action="/logout">
                                     @csrf

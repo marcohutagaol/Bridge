@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Career;
-use App\Models\Checkout;
 use App\Models\Course;
 use App\Models\University;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -19,35 +17,44 @@ class AdminController extends Controller
             $user_type = Auth()->user()->user_type;
 
             if ($user_type == 'user') {
-                return view('pages.index');
+                return redirect()->route('pages.index');
             }
 
             if ($user_type == 'admin') {
-                return view('admin.dashboard');
+                return redirect()->route('admin.dashboard');
             }
         }
     }
 
     public function users(Request $request)
     {
-        $perPage = $request->input('per_page', 10); 
+        $perPage = $request->input('per_page', 25); 
         $search = $request->input('user_name');
         $users = User::where('user_type', 'user')
         ->where('name', 'like', '%' . $search . '%')
         ->paginate($perPage)
         ->appends($request->query());
+        // SELECT * FROM users
+        // WHERE user_type = 'user' AND name LIKE '%{search}%'
+        // LIMIT {perPage} OFFSET {(currentPage - 1) * perPage};
+
 
         return view('admin.list.userlist', compact('users'));
     }
 
     public function careers(Request $request)
     {
-        $perPage = $request->input('per_page', 10);
+        $perPage = $request->input('per_page', 25);
         $search = $request->input('item_name');
         $careers = Career::where('name', 'like', '%' . $search . '%')
         ->orWhere('kategoris', 'like', '%' . $search . '%')
         ->paginate($perPage)
         ->appends($request->query());
+        // SELECT * FROM careers
+        // WHERE name LIKE '%{search}%'
+        // OR kategoris LIKE '%{search}%'
+        // LIMIT {perPage} OFFSET {(currentPage - 1) * perPage};
+
 
         return view('admin.list.career_list', compact('careers'));
     }
@@ -72,6 +79,16 @@ class AdminController extends Controller
         ]);
 
         Career::create($validated);
+        // INSERT INTO careers (
+        //     name, kategoris, image, description, description2,
+        //     median_salary, jobs_available, credential, credential_logo,
+        //     created_at, updated_at
+        // ) VALUES (
+        //     '{name}', '{kategoris}', '{image}', '{description}', '{description2}',
+        //     '{median_salary}', '{jobs_available}', '{credential}', '{credential_logo}',
+        //     NOW(), NOW()
+        // );
+
 
         return redirect()->route('admin.list.career_list')->with('success', 'Career created successfully.');
     }
@@ -79,6 +96,7 @@ class AdminController extends Controller
     public function editCareer($id)
     {
         $career = Career::find($id);
+        // SELECT * FROM careers WHERE id = {id};
         return view('admin.list.edit.career_edit', compact('career'));
     }
 
@@ -98,6 +116,20 @@ class AdminController extends Controller
 
         $career = Career::find($id);
         $career->update($validated);
+        // UPDATE careers
+        // SET
+        //     name = '{name}',
+        //     kategoris = '{kategoris}',
+        //     image = '{image}',
+        //     description = '{description}',
+        //     description2 = '{description2}',
+        //     median_salary = '{median_salary}',
+        //     jobs_available = '{jobs_available}',
+        //     credential = '{credential}',
+        //     credential_logo = '{credential_logo}',
+        //     updated_at = NOW()
+        // WHERE id = {id};
+
 
         return redirect()->route('admin.list.career_list')->with('success', 'Career updated successfully.');
     }
@@ -106,19 +138,25 @@ class AdminController extends Controller
     {
         $career = Career::find($id);
         $career->delete();
+        // DELETE FROM careers WHERE id = {id};
 
         return redirect()->route('admin.list.career_list')->with('success', 'Career deleted successfully.');
     }
 
     public function degrees(Request $request)
     {
-        $perPage = $request->input('per_page', 10);
+        $perPage = $request->input('per_page', 25);
         $search = $request->input('item_name');
         $degrees = University::where('name', 'like', '%' . $search . '%')
         ->orWhere('degree', 'like', '%' . $search . '%')
         ->orWhere('tipe', 'like', '%' . $search . '%')
         ->paginate($perPage)
         ->appends($request->query());
+        // SELECT * FROM universities
+        // WHERE name LIKE '%{search}%'
+        // OR degree LIKE '%{search}%'
+        // OR tipe LIKE '%{search}%'
+        // LIMIT {perPage} OFFSET {(currentPage - 1) * perPage};
 
         return view('admin.list.degree_list', compact('degrees'));
     }
@@ -140,6 +178,13 @@ class AdminController extends Controller
         ]);
 
         University::create($validated);
+        // INSERT INTO universities (
+        //     degree, tipe, name, ranking, image_path, application_deadline,
+        //     created_at, updated_at
+        // ) VALUES (
+        //     '{degree}', '{tipe}', '{name}', '{ranking}', '{image_path}', '{application_deadline}',
+        //     NOW(), NOW()
+        // );
 
         return redirect()->route('admin.list.degree_list')->with('success', 'Degree created successfully.');
     }
@@ -147,6 +192,7 @@ class AdminController extends Controller
     public function editDegree($id)
     {
         $degree = University::find($id);
+        // SELECT * FROM universities WHERE id = {id};
         return view('admin.list.edit.degree_edit', compact('degree'));
     }
 
@@ -163,6 +209,16 @@ class AdminController extends Controller
 
         $degree = University::find($id);
         $degree->update($validated);
+        // UPDATE universities
+        // SET
+        //     degree = '{degree}',
+        //     tipe = '{tipe}',
+        //     name = '{name}',
+        //     ranking = '{ranking}',
+        //     image_path = '{image_path}',
+        //     application_deadline = '{application_deadline}',
+        //     updated_at = NOW()
+        // WHERE id = {id};
 
         return redirect()->route('admin.list.degree_list')->with('success', 'Degree updated successfully.');
     }
@@ -171,6 +227,7 @@ class AdminController extends Controller
     {
         $degree = University::find($id);
         $degree->delete();
+        // DELETE FROM universities WHERE id = {id};
 
         return redirect()->route('admin.list.degree_list')->with('success', 'Degree deleted successfully.');
     }
@@ -182,6 +239,9 @@ class AdminController extends Controller
         $courses = Course::where('name', 'like', '%' . $search . '%')
         ->paginate($perPage)
         ->appends($request->query());
+        // SELECT * FROM courses_certificates
+        // WHERE name LIKE '%{search}%'
+        // LIMIT {perPage} OFFSET {(currentPage - 1) * perPage};      
 
         return view('admin.list.course_list', compact('courses'));
     }
@@ -204,6 +264,15 @@ class AdminController extends Controller
         ]);
 
         Course::create($validated);
+        // INSERT INTO courses_certificates (
+        //     name, image, description, duration_r,
+        //     institution, institution_logo, kategori,
+        //     created_at, updated_at
+        // ) VALUES (
+        //     '{name}', '{image}', '{description}', '{duration_r}',
+        //     '{institution}', '{institution_logo}', '{kategori}',
+        //     NOW(), NOW()
+        // );
 
         return redirect()->route('admin.list.course_list')->with('success', 'Course created successfully.');
     }
@@ -211,6 +280,7 @@ class AdminController extends Controller
     public function editCourse($id)
     {
         $course = Course::find($id);
+        // SELECT * FROM courses_certificates WHERE id = {id};
         return view('admin.list.edit.course_edit', compact('course'));
     }
 
@@ -228,6 +298,17 @@ class AdminController extends Controller
 
         $course = Course::find($id);
         $course->update($validated);
+        // UPDATE courses_certificates
+        // SET
+        //     name = '{name}',
+        //     image = '{image}',
+        //     description = '{description}',
+        //     duration_r = '{duration_r}',
+        //     institution = '{institution}',
+        //     institution_logo = '{institution_logo}',
+        //     kategori = '{kategori}',
+        //     updated_at = NOW()
+        // WHERE id = {id};
 
         return redirect()->route('admin.list.course_list')->with('success', 'Course updated successfully.');
     }
@@ -236,6 +317,7 @@ class AdminController extends Controller
     {
         $course = Course::find($id);
         $course->delete();
+        // DELETE FROM courses_certificates WHERE id = {id};
 
         return redirect()->route('admin.list.course_list')->with('success', 'Course deleted successfully.');
     }
