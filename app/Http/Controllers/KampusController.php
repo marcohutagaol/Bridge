@@ -13,41 +13,42 @@ class KampusController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-{
-    $search = $request->input('kampus_name');
+    {
+        $search = $request->input('kampus_name');
 
-    $universitas = Kampus::query()
-        ->where('tipe', 'universitas')
-        ->when($search, function ($query) use ($search) {
-            $query->where('nama', 'like', '%' . $search . '%');
-        })
-        ->get();
+        // SQL: SELECT * FROM kampus WHERE tipe = 'universitas' [AND nama LIKE %$search%]
+        $universitas = Kampus::query()
+            ->where('tipe', 'universitas')
+            ->when($search, function ($query) use ($search) {
+                $query->where('nama', 'like', '%' . $search . '%');
+            })
+            ->get();
 
-    $institut = Kampus::query()
-        ->where('tipe', 'institut')
-        ->when($search, function ($query) use ($search) {
-            $query->where('nama', 'like', '%' . $search . '%');
-        })
-        ->get();
+        // SQL: SELECT * FROM kampus WHERE tipe = 'institut' [AND nama LIKE %$search%]
+        $institut = Kampus::query()
+            ->where('tipe', 'institut')
+            ->when($search, function ($query) use ($search) {
+                $query->where('nama', 'like', '%' . $search . '%');
+            })
+            ->get();
 
-    $politeknik = Kampus::query()
-        ->where('tipe', 'politeknik')
-        ->when($search, function ($query) use ($search) {
-            $query->where('nama', 'like', '%' . $search . '%');
-        })
-        ->get();
+        // SQL: SELECT * FROM kampus WHERE tipe = 'politeknik' [AND nama LIKE %$search%]
+        $politeknik = Kampus::query()
+            ->where('tipe', 'politeknik')
+            ->when($search, function ($query) use ($search) {
+                $query->where('nama', 'like', '%' . $search . '%');
+            })
+            ->get();
 
-    return view('section2.direktori_kampus', compact('universitas', 'institut', 'politeknik'));
-}
+        return view('section2.direktori_kampus', compact('universitas', 'institut', 'politeknik'));
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-
         //
-
     }
 
     /**
@@ -63,10 +64,12 @@ class KampusController extends Controller
      */
     public function show(string $id)
     {
+        // SQL: SELECT * FROM kampus WHERE id = '$id'
         $universitas = Kampus::where('id', $id)->get();
-        // SELECT * FROM data_kampus WHERE id = '$id';
+
+        // SQL: SELECT * FROM visi_misi_kampus WHERE kampus_id = '$id'
         $deskripsi = VisiMisiKampus::where('kampus_id', $id)->get();
-        // SELECT * FROM visimisi_kampus WHERE id = '$id';
+
         return view('section2.detail_kampus', compact('universitas', 'deskripsi'));
     }
 

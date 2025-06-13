@@ -11,10 +11,11 @@ class LearningController extends Controller
     {
         $user = Auth::user();
 
-        // Ambil semua checkout user dan relasi course
+        // SQL: SELECT * FROM checkouts WHERE user_id = '$user->id';
+        // Lalu: SELECT * FROM courses WHERE id IN (course_id dari checkouts)
+        // (dengan eager loading relasi 'course')
         $checkouts = $user->checkouts()->with('course')->get();
 
         return view('pages.mylearning', compact('checkouts'));
-
     }
 }

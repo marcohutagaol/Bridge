@@ -22,6 +22,61 @@
     <link href="{{ asset('css/degree-programs.css') }}" rel="stylesheet">
     <link href="{{ asset('css/checkout.css') }}" rel="stylesheet">
 
+    <style>
+        /* Custom styles for different image types */
+        .course-image-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+        }
+
+        /* Course style - default small logo style */
+        .course-image-container.course-type .provider-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        /* Career style - larger cover image style */
+        .course-image-container.career-type {
+            width: 100px;
+            height: 80px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .course-image-container.career-type .provider-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Module style - rounded with border */
+        .course-image-container.module-type {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border: 3px solid #fff;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .course-image-container.module-type .provider-logo {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    </style>
    
 </head>
 
@@ -206,7 +261,14 @@
 
                 <div class="order-summary">
                     <div class="course-item">
-                        <div class="course-image-container">
+                        <div class="course-image-container 
+                            @if($itemType === 'course')
+                                course-type
+                            @elseif($itemType === 'career')
+                                career-type
+                            @else
+                                module-type
+                            @endif">
                             @if($itemType === 'course')
                                 <img src="{{ $course->institution_logo }}" alt="{{ $course->institution }}" class="provider-logo">
                             @elseif($itemType === 'career')
@@ -279,7 +341,7 @@
                             @endif
                         </div>
                         <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b586?w=80&h=80&fit=crop&crop=face"
+                            <img src="{{ asset('images/instructors/cowo1.jpg') }}"
                                 alt="Ana C." class="author-avatar">
                             <div class="author-info">
                                 <div class="author-name">— Ana.C.</div>

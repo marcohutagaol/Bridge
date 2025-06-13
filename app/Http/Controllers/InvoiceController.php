@@ -15,6 +15,8 @@ class InvoiceController extends Controller
     public function downloadInvoice($orderId)
     {
         // Find checkout by order_id
+        // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
+        // (dengan relasi user dimuat menggunakan eager loading)
         $checkout = Checkout::where('order_id', $orderId)
             ->with('user') // Load user relationship
             ->firstOrFail();
@@ -43,6 +45,8 @@ class InvoiceController extends Controller
     public function viewInvoice($orderId)
     {
         // Find checkout by order_id
+        // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
+        // (dengan relasi user dimuat)
         $checkout = Checkout::where('order_id', $orderId)
             ->with('user')
             ->firstOrFail();
@@ -61,6 +65,8 @@ class InvoiceController extends Controller
     public function generateInvoice($orderId)
     {
         // Find checkout by order_id
+        // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
+        // (dengan relasi user dimuat)
         $checkout = Checkout::where('order_id', $orderId)
             ->with('user')
             ->firstOrFail();
@@ -86,6 +92,8 @@ class InvoiceController extends Controller
     public function emailInvoice($orderId)
     {
         // Find checkout by order_id
+        // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
+        // (dengan relasi user dimuat)
         $checkout = Checkout::where('order_id', $orderId)
             ->with('user')
             ->firstOrFail();
@@ -94,7 +102,7 @@ class InvoiceController extends Controller
         $pdf = Pdf::loadView('invoices.pdf', compact('checkout'));
         $pdf->setPaper('A4', 'portrait');
 
-    
+        // (Bagian pengiriman email belum diimplementasikan)
     }
 
     /**
@@ -108,10 +116,14 @@ class InvoiceController extends Controller
 
         foreach ($orderIds as $orderId) {
             try {
+                // Find checkout by order_id
+                // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
+                // (dengan relasi user dimuat)
                 $checkout = Checkout::where('order_id', $orderId)
                     ->with('user')
                     ->firstOrFail();
 
+                // Generate PDF
                 $pdf = Pdf::loadView('invoices.pdf', compact('checkout'));
                 $pdf->setPaper('A4', 'portrait');
 

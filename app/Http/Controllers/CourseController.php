@@ -12,6 +12,7 @@ class CourseController extends Controller
     {
         $query = Course::query();
 
+        // Filter kategori jika ada
         if ($request->has('kategori')) {
             $kategori = $request->input('kategori');
             foreach ($kategori as $k) {
@@ -19,23 +20,17 @@ class CourseController extends Controller
             }
         }
 
-        if ($request->has('kategori')) {
-            $kategori = $request->input('kategori');
-            foreach ($kategori as $lang) {
-                $query->where('kategori', 'LIKE', "%{$lang}%");
-            }
-        }
-
-        if ($request->has('kategori')) {
-            $kategori = $request->input('kategori');
-            foreach ($kategori as $p) {
-                $query->where('kategori', 'LIKE', "%{$p}%");
-            }
+        // Filter keyword jika ada
+        if ($request->has('keyword')) {
+            $keyword = $request->input('keyword');
+            $query->where(function ($q) use ($keyword) {
+                $q->where('name', 'like', "%{$keyword}%")
+                  ->orWhere('description', 'like', "%{$keyword}%");
+            });
         }
 
         $courses = $query->get();
 
-        // Tambahkan wishlistIds
         $wishlistIds = [];
         if (auth()->check()) {
             $wishlistIds = auth()->user()->wishlists()
@@ -44,7 +39,6 @@ class CourseController extends Controller
                 ->toArray();
         }
 
-        // Return hasil akhir ke view
         return view('pages.detail.certificate_detail', [
             'courses' => $courses,
             'wishlistIds' => $wishlistIds,
@@ -52,63 +46,67 @@ class CourseController extends Controller
         ]);
     }
 
-    public function show($id)
-    {
-        $course = Course::findOrFail($id);
+   public function show($id)
+   {
+       // SELECT * FROM courses_certificates WHERE id = ? LIMIT 1
+       $course = Course::findOrFail($id);
 
-        return view('pages.detail.certificate_show', [
-            'course' => $course
-        ]);
-    }
+       return view('pages.detail.certificate_show', [
+           'course' => $course
+       ]);
+   }
 
-    public function checkout($id)
-    {
-        $course = Course::findOrFail($id);
+   public function checkout($id)
+   {
+       // SELECT * FROM courses_certificates WHERE id = ? LIMIT 1
+       $course = Course::findOrFail($id);
 
-        return view('pages.detail.checkout', [
-            'course' => $course
-        ]);
-    }
+       return view('pages.detail.checkout', [
+           'course' => $course
+       ]);
+   }
 
-    /**
-     * Proses checkout (untuk form POST)
-     */
-    public function processCheckout(Request $request, $id)
-    {
-        $course = Course::findOrFail($id);
+   /**
+    * Proses checkout (untuk form POST)
+    */
+   public function processCheckout(Request $request, $id)
+   {
+       // SELECT * FROM courses_certificates WHERE id = ? LIMIT 1
+       $course = Course::findOrFail($id);
 
-        // Validasi data form
-        $validated = $request->validate([
-            'payment_method' => 'required',
-            'terms' => 'accepted'
-        ]);
+       // Validasi data form
+       $validated = $request->validate([
+           'payment_method' => 'required',
+           'terms' => 'accepted'
+       ]);
 
-        // Di sini Anda bisa menambahkan logika:
-        // - Penyimpanan ke database
-        // - Integrasi payment gateway
-        // - dll
+       // Di sini Anda bisa menambahkan logika:
+       // - Penyimpanan ke database
+       // - Integrasi payment gateway
+       // - dll
 
-        // Redirect ke halaman sukses
-        return redirect()->route('checkout.success', ['id' => $id])
-            ->with('success', 'Pembelian berhasil diproses!');
-    }
+       // Redirect ke halaman sukses
+       return redirect()->route('checkout.success', ['id' => $id])
+           ->with('success', 'Pembelian berhasil diproses!');
+   }
 
-    /**
-     * Halaman sukses checkout
-     */
-    public function checkoutSuccess($id)
-    {
-        $course = Course::findOrFail($id);
+   /**
+    * Halaman sukses checkout
+    */
+   public function checkoutSuccess($id)
+   {
+       // SELECT * FROM courses_certificates WHERE id = ? LIMIT 1
+       $course = Course::findOrFail($id);
 
-        return view('pages.detail.checkout_success', [
-            'course' => $course
-        ]);
-    }
+       return view('pages.detail.checkout_success', [
+           'course' => $course
+       ]);
+   }
 
-    public function admin()
-    {
-        $courses = Course::paginate(10);
-        return view('admin.course', compact('courses'));
-    }
+   public function admin()
+   {
+       // SELECT * FROM courses_certificates LIMIT 10 OFFSET ?
+       $courses = Course::paginate(10);
+       return view('admin.course', compact('courses'));
+   }
 }
-

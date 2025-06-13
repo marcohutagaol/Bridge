@@ -43,6 +43,11 @@ class WishlistController extends Controller
             $modelClass = $morphMap[$itemType];
 
             // Check if the item exists
+            /* SQL Query:
+             * SELECT * FROM universities WHERE id = ? LIMIT 1; (jika item_type = university)
+             * SELECT * FROM courses WHERE id = ? LIMIT 1; (jika item_type = course)  
+             * SELECT * FROM careers WHERE id = ? LIMIT 1; (jika item_type = career)
+             */
             $item = $modelClass::find($itemId);
             if (!$item) {
                 return response()->json([
@@ -60,6 +65,13 @@ class WishlistController extends Controller
             ]);
 
             // Check if item is already in wishlist
+            /* SQL Query:
+             * SELECT * FROM wishlists 
+             * WHERE user_id = ? 
+             * AND wishlistable_id = ? 
+             * AND wishlistable_type = ? 
+             * LIMIT 1;
+             */
             $existingWishlist = Wishlist::where([
                 'user_id' => $userId,
                 'wishlistable_id' => $itemId,
@@ -68,6 +80,9 @@ class WishlistController extends Controller
 
             if ($existingWishlist) {
                 // Remove from wishlist
+                /* SQL Query:
+                 * DELETE FROM wishlists WHERE id = ?;
+                 */
                 $existingWishlist->delete();
                 
                 Log::info("Item removed from wishlist", [
@@ -82,6 +97,10 @@ class WishlistController extends Controller
                 ]);
             } else {
                 // Add to wishlist
+                /* SQL Query:
+                 * INSERT INTO wishlists (user_id, wishlistable_id, wishlistable_type, created_at, updated_at) 
+                 * VALUES (?, ?, ?, NOW(), NOW());
+                 */
                 $wishlist = Wishlist::create([
                     'user_id' => $userId,
                     'wishlistable_id' => $itemId,
@@ -141,6 +160,21 @@ class WishlistController extends Controller
         $type = $request->get('type'); // optional filter by type
 
         // Get wishlist items with relationships
+        /* SQL Query:
+         * SELECT wishlists.*, 
+         *        universities.* (jika wishlistable_type = App\Models\University),
+         *        courses.* (jika wishlistable_type = App\Models\Course),
+         *        careers.* (jika wishlistable_type = App\Models\Career)
+         * FROM wishlists
+         * LEFT JOIN universities ON wishlists.wishlistable_id = universities.id 
+         *                       AND wishlists.wishlistable_type = 'App\Models\University'
+         * LEFT JOIN courses ON wishlists.wishlistable_id = courses.id 
+         *                   AND wishlists.wishlistable_type = 'App\Models\Course'
+         * LEFT JOIN careers ON wishlists.wishlistable_id = careers.id 
+         *                   AND wishlists.wishlistable_type = 'App\Models\Career'
+         * WHERE wishlists.user_id = ?
+         * ORDER BY wishlists.created_at DESC;
+         */
         $wishlistQuery = Wishlist::where('user_id', $user->id)
                                 ->with('wishlistable')
                                 ->orderBy('created_at', 'desc');
@@ -152,6 +186,18 @@ class WishlistController extends Controller
                 'course' => Course::class,
                 'career' => Career::class,
             ];
+            /* SQL Query (dengan filter type):
+             * SELECT wishlists.*, 
+             *        universities.* (jika type = university),
+             *        courses.* (jika type = course),
+             *        careers.* (jika type = career)
+             * FROM wishlists
+             * LEFT JOIN [table_name] ON wishlists.wishlistable_id = [table_name].id 
+             *                        AND wishlists.wishlistable_type = ?
+             * WHERE wishlists.user_id = ? 
+             * AND wishlists.wishlistable_type = ?
+             * ORDER BY wishlists.created_at DESC;
+             */
             $wishlistQuery->where('wishlistable_type', $morphMap[$type]);
         }
 
@@ -182,6 +228,13 @@ class WishlistController extends Controller
 
         $modelClass = $morphMap[$request->item_type];
 
+        /* SQL Query:
+         * SELECT COUNT(*) as aggregate 
+         * FROM wishlists 
+         * WHERE user_id = ? 
+         * AND wishlistable_id = ? 
+         * AND wishlistable_type = ?;
+         */
         $exists = Wishlist::where([
             'user_id' => Auth::id(),
             'wishlistable_id' => $request->item_id,
@@ -200,6 +253,11 @@ class WishlistController extends Controller
             return response()->json(['count' => 0]);
         }
 
+        /* SQL Query:
+         * SELECT COUNT(*) as aggregate 
+         * FROM wishlists 
+         * WHERE user_id = ?;
+         */
         $count = Wishlist::where('user_id', Auth::id())->count();
         return response()->json(['count' => $count]);
     }
@@ -214,12 +272,22 @@ public function remove(Request $request)
 
     $user = auth()->user();
 
+    /* SQL Query:
+     * SELECT * FROM wishlists 
+     * WHERE wishlistable_id = ? 
+     * AND wishlistable_type = ? 
+     * AND user_id = ? 
+     * LIMIT 1;
+     */
     $wishlistItem = Wishlist::where('wishlistable_id', $request->item_id)
         ->where('wishlistable_type', 'App\\Models\\' . ucfirst($request->item_type))
         ->where('user_id', $user->id)
         ->first();
 
     if ($wishlistItem) {
+        /* SQL Query:
+         * DELETE FROM wishlists WHERE id = ?;
+         */
         $wishlistItem->delete();
         return response()->json(['success' => true, 'message' => 'Item removed from wishlist.']);
     }

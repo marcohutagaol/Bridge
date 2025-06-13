@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -186,7 +186,7 @@
     z-index: 2;
 }
 
-.continue-btn {
+.submit-btn {
     background: linear-gradient(135deg, #20B2AA, #008B8B);
     border: none;
     padding: 15px 40px;
@@ -199,13 +199,13 @@
     box-shadow: 0 10px 30px rgba(32, 178, 170, 0.3);
 }
 
-.continue-btn:hover {
+.submit-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 35px rgba(32, 178, 170, 0.4);
     background: linear-gradient(135deg, #008B8B, #006666);
 }
 
-.continue-btn:disabled {
+.submit-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
@@ -249,9 +249,9 @@
             </div>
             
             <!-- Title -->
-            <h1 class="main-title">Halo San Jossye!</h1>
+            <h1 class="main-title">Hello there...</h1>
             <p class="subtitle">
-                Ceritakan sedikit tentang diri Anda agar saya dapat memberikan rekomendasi terbaik. Pertama, apa tujuan Anda?
+                Tell us a little about yourself so we can provide the best recommendations. First, what's your goal?
             </p>
             
             <!-- Goal Selection Cards -->
@@ -261,7 +261,7 @@
                         <div class="goal-icon">
                             <i class="bi bi-rocket-takeoff"></i>
                         </div>
-                        <p class="goal-title">Memulai karir saya</p>
+                        <p class="goal-title">Start my career</p>
                     </div>
                 </div>
                 
@@ -270,7 +270,7 @@
                         <div class="goal-icon">
                             <i class="bi bi-arrow-left-right"></i>
                         </div>
-                        <p class="goal-title">Mengubah karir saya</p>
+                        <p class="goal-title">Change my career</p>
                     </div>
                 </div>
                 
@@ -279,7 +279,7 @@
                         <div class="goal-icon">
                             <i class="bi bi-graph-up-arrow"></i>
                         </div>
-                        <p class="goal-title">Tumbuh dalam peran saya saat ini</p>
+                        <p class="goal-title">Grow in my current role</p>
                     </div>
                 </div>
                 
@@ -288,15 +288,15 @@
                         <div class="goal-icon">
                             <i class="bi bi-search"></i>
                         </div>
-                        <p class="goal-title">Jelajahi topik di luar pekerjaan</p>
+                        <p class="goal-title">Explore topics outside work</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Continue Button -->
+            <!-- Submit Button -->
             <div class="text-center">
-                <button class="continue-btn" id="continueBtn" disabled>
-                    Berikutnya <i class="bi bi-arrow-right ms-2"></i>
+                <button class="submit-btn" id="submitBtn" disabled>
+                    Submit <i class="bi bi-arrow-right ms-2"></i>
                 </button>
             </div>
         </div>
@@ -306,7 +306,7 @@
     <script>
         // Goal selection functionality
         const goalCards = document.querySelectorAll('.goal-card');
-        const continueBtn = document.getElementById('continueBtn');
+        const submitBtn = document.getElementById('submitBtn');
         let selectedGoal = null;
 
         goalCards.forEach(card => {
@@ -320,8 +320,8 @@
                 // Store selected goal
                 selectedGoal = this.dataset.goal;
                 
-                // Enable continue button
-                continueBtn.disabled = false;
+                // Enable submit button
+                submitBtn.disabled = false;
                 
                 // Add subtle animation
                 this.style.transform = 'translateY(-5px) scale(1.02)';
@@ -331,27 +331,30 @@
             });
         });
 
-        // Continue button functionality
-        continueBtn.addEventListener('click', function() {
+        // Submit button functionality
+        submitBtn.addEventListener('click', function() {
             if (selectedGoal) {
                 // Add loading state
-                this.innerHTML = '<i class="bi bi-arrow-repeat spinner-border spinner-border-sm me-2"></i>Memproses...';
+                this.innerHTML = '<i class="bi bi-arrow-repeat spinner-border spinner-border-sm me-2"></i>Processing...';
                 
-                // Simulate processing
+                // Store the selected goal (you can use localStorage, sessionStorage, or send to server)
+                // For this example, we'll use sessionStorage
+                sessionStorage.setItem('selectedCareerGoal', selectedGoal);
+                
+                // Simulate processing and redirect
                 setTimeout(() => {
-                    alert(`Tujuan karir dipilih: ${getGoalText(selectedGoal)}`);
-                    // Here you would typically redirect or proceed to next step
-                    this.innerHTML = 'Berikutnya <i class="bi bi-arrow-right ms-2"></i>';
-                }, 1500);
+                    // Redirect to courses page
+                    window.location.href = '/courses';
+                }, 1000);
             }
         });
 
         function getGoalText(goalKey) {
             const goalTexts = {
-                'start-career': 'Memulai karir saya',
-                'change-career': 'Mengubah karir saya',
-                'grow-role': 'Tumbuh dalam peran saya saat ini',
-                'explore-topics': 'Jelajahi topik di luar pekerjaan'
+                'start-career': 'Start my career',
+                'change-career': 'Change my career',
+                'grow-role': 'Grow in my current role',
+                'explore-topics': 'Explore topics outside work'
             };
             return goalTexts[goalKey] || 'Unknown goal';
         }

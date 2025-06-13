@@ -897,6 +897,8 @@
                     </select>
                 </div>
 <div class="course-grid">
+
+    
 @foreach($courses as $course)
     <div class="course-card position-relative">
 
