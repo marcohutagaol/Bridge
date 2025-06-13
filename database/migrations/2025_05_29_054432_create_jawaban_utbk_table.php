@@ -12,6 +12,8 @@ return new class extends Migration {
     {
         Schema::create('jawaban_utbk', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->default(0);
+            $table->string('name')->default('');
             $table->unsignedBigInteger('soal_id');
             $table->text('jawaban');
             $table->timestamps();
