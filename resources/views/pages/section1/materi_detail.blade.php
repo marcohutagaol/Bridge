@@ -110,7 +110,7 @@
                                         </div>
                                     @endforeach
                                     <button class="btn btn-primary mt-2" type="submit" title="Kirim Semua Jawaban">
-                                        <i class="bi bi-send-fill"></i> Kirim Semua Jawaban
+                                        <i class="bi bi-send-fill"></i> Submit
                                     </button>
                                 </form>
                             </div>
@@ -125,14 +125,14 @@
                                 class="konsultan-img me-3"
                                 style="height: 140px; width: 110px; object-fit: cover; border-radius: 16px;">
                             <div>
-                                <div class="text-white fw-semibold mb-1" style="font-size: 1.1rem;">Masih punya
-                                    pertanyaan?</div>
+                                <div class="text-white fw-semibold mb-1" style="font-size: 1.1rem;">Still have
+                                    questions?</div>
                                 <div class="text-white fw-bold" style="font-size: 1.6rem; line-height: 1.2;">
-                                    Tanyakan via chat ke Konsultan
+                                    Ask via chat to Consultant
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-outline-success">Email info ke saya</button>
+                        <button class="btn btn-outline-success" onclick="window.location.href='/contact'">Email info to me</button>
                     </div>
                 </div>
             </div>

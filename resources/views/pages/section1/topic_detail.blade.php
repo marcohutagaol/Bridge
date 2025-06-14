@@ -187,7 +187,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-outline-success">Email info to me</button>
+                        <button class="btn btn-outline-success" onclick="window.location.href='/contact'">Email info to me</button>
                     </div>
                 </div>
             </div>
