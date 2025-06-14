@@ -65,7 +65,7 @@
                                     <div class="career-goal-label">CURRENT CAREER GOAL</div>
                                     <div class="career-goal-text">
                                         <i class="bi bi-bullseye"></i>
-                                        <span>Your career goal is to start a career as a Network Administrator</span>
+                                        <span>What your career goal ?</span>
                                     </div>
                                 </div>
                                 <a href="/next" class="edit-goal-btn">

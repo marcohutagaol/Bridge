@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -273,13 +274,14 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-            
+
             .invoice-container {
                 padding: 10px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="invoice-container">
         <!-- Header -->
@@ -287,13 +289,14 @@
             <div class="company-info">
                 <div class="company-logo">Bridge Learning</div>
                 <div class="company-details">
-                    Jl. Teknologi No. 123<br>
-                    Jakarta Selatan, 12345<br>
+                    Jl. Dr. Mansyur No. 9<br>
+                    Medan, Sumatera Utara, 20155<br>
                     Indonesia<br>
-                    Phone: +62 123 456 789<br>
+                    Phone: +62 61 821 1234<br>
                     Email: support@bridge.com<br>
                     Website: www.bridge.com
                 </div>
+
             </div>
             <div class="invoice-info">
                 <div class="invoice-title">INVOICE</div>
@@ -330,7 +333,7 @@
                 <div class="billing-details">
                     <p><strong>Item Type:</strong> {{ ucfirst($checkout->item_type) }}</p>
                     <p><strong>Item ID:</strong> {{ $checkout->item_id }}</p>
-                    <p><strong>Payment Method:</strong> 
+                    <p><strong>Payment Method:</strong>
                         @if($checkout->payment_method === 'card')
                             Credit Card (**** {{ substr($checkout->card_number ?? '0000', -4) }})
                         @else
@@ -447,8 +450,8 @@
                 Payment has been successfully processed and your access has been granted.
             </div>
             <div class="contact-info">
-                Questions about this invoice? Contact us at 
-                <a href="mailto:support@bridge.com">support@bridge.com</a> or 
+                Questions about this invoice? Contact us at
+                <a href="mailto:support@bridge.com">support@bridge.com</a> or
                 <a href="tel:+62123456789">+62 123 456 789</a><br>
                 Bridge Learning Platform - Empowering Your Learning Journey<br>
                 Generated on {{ now()->format('F j, Y g:i A') }}
@@ -456,4 +459,5 @@
         </div>
     </div>
 </body>
+
 </html>

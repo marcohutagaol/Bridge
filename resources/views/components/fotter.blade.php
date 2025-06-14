@@ -61,7 +61,7 @@
                             </ul>
                         </div>
 
-                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2025 Coursera. All rights reserved.</p>
+                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2025 Bridge. All rights reserved.</p>
                     </div>
                 </div>
             </div>

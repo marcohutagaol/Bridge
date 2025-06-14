@@ -3,17 +3,17 @@
 @section('content')
   <div class="career-purchases-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="page-title">Course Purchases List</h1>
+      <h1 class="page-title">Degree Purchases List</h1>
     </div>
 
-    <form method="GET" action="{{ route('admin.payment.course_payment') }}">
+    <form method="GET" action="{{ route('admin.payment.degree_payment') }}">
       <div class="filter-section">
         <h2 class="filter-title">Filter</h2>
         <div class="filter-grid">
           <input type="text" name="user_name" value="{{ request('user_name') }}" placeholder="Search by User Name"
             class="form-input" />
 
-          <input type="text" name="item_name" value="{{ request('item_name') }}" placeholder="Search by Course Name"
+          <input type="text" name="item_name" value="{{ request('item_name') }}" placeholder="Search by University Name"
             class="form-input" />
 
           <select name="method" class="form-select">
@@ -26,13 +26,13 @@
         <div class="filter-actions">
           <div class="button-group">
             <button type="submit" class="btn btn-primary">Apply Filter</button>
-            <a href="{{ route('admin.payment.course_payment') }}" class="btn btn-secondary">Reset</a>
+            <a href="{{ route('admin.payment.degree_payment') }}" class="btn btn-secondary">Reset</a>
           </div>
           <div class="per-page-select">
             <select name="per_page" onchange="this.form.submit()" class="form-select">
+              <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
               <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
-              <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
-              <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
+              <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
             </select>
           </div>
         </div>
@@ -69,7 +69,7 @@
               </td>
               <td>{{ $checkout->item_id }}</td>
               <td>
-                <span class="course-name">{{ $checkout->course->name }}</span>
+                <span class="course-name">{{ $checkout->module->name }}</span>
               </td>
               <td>
                 <span class="amount">${{ number_format($checkout->payment_amount, 2) }}</span>
@@ -162,7 +162,7 @@
       left: 0;
       width: 60px;
       height: 3px;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
       border-radius: 2px;
     }
 
@@ -189,7 +189,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
       background-size: 200% 100%;
       animation: shimmer 3s ease-in-out infinite;
     }
@@ -272,7 +272,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
       transition: left 0.5s ease;
     }
 
@@ -325,7 +325,7 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
     }
 
     /* Table */
@@ -348,7 +348,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(135deg, transparent, #cbd5e0, transparent);
+      background: linear-gradient(90deg, transparent, #cbd5e0, transparent);
     }
 
     .data-table th {

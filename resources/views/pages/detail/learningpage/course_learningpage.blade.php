@@ -169,55 +169,54 @@
                     </div>
                 </div>
 
-                <div class="sidebar" style="flex-basis: 30%; max-width: 30%;">
+              <div class="sidebar" style="flex-basis: 30%; max-width: 30%;">
                     <div class="course-card">
                         <div class="course-progress">
                             <div class="progress-header">
                                 <h4>Program Progress</h4>
                             </div>
-                            <div class="progress-text"><span id="completed-sections-count">0</span> dari <span
-                                    id="total-sections-count">3</span> selesai</div>
+                            <div class="progress-text"><span id="completed-sections-count">0</span> of <span
+                                    id="total-sections-count">3</span> completed</div>
                             <div class="progress-bar">
                                 <div class="progress-fill" id="overall-progress-bar" style="width: 0%"></div>
                             </div>
                         </div>
 
                         <div class="total-nilai-career mt-3 p-3 bg-light rounded">
-                            <h4 class="mb-0">Total Nilai Career: <span id="total-career-nilai"
+                            <h4 class="mb-0">Total Career Score: <span id="total-career-nilai"
                                     class="badge bg-success">0 / 300</span></h4>
                         </div>
 
                         <div class="course-sections mt-4">
                             <div class="section" data-section-id="1">
                                 <div class="section-header">
-                                    <span class="section-title-text">Tahun 1: Foundation Level</span>
+                                    <span class="section-title-text">Year 1: Foundation Level</span>
                                     <button class="section-quiz-btn btn btn-sm btn-info" data-section="1">
-                                        <i class="bi bi-pencil-square"></i> Kuis
+                                        <i class="bi bi-pencil-square"></i> Quiz
                                     </button>
                                     <i class="bi bi-chevron-down section-toggle"></i>
                                 </div>
                                 <div class="section-lessons">
                                     <div class="lesson-item active" data-video-id="x5trGVMKTdY" data-section="1"
-                                        data-description="Video pengantar untuk Bagian 1.">
+                                        data-description="Introductory video for Section 1.">
                                         <i class="bi bi-play-circle lesson-icon"></i>
-                                        <span class="lesson-title">Pengenalan Career Path</span>
+                                        <span class="lesson-title">Career Path Introduction</span>
                                         <span class="lesson-duration">8m</span>
                                     </div>
                                     <div class="lesson-item" data-video-id="anotherVideoId" data-section="1"
-                                        data-description="Materi dasar yang perlu dipahami.">
+                                        data-description="Basic material that needs to be understood.">
                                         <i class="bi bi-file-text lesson-icon"></i>
-                                        <span class="lesson-title">Dasar-dasar Bidang Ini</span>
+                                        <span class="lesson-title">Field Fundamentals</span>
                                         <span class="lesson-duration">15m</span>
                                     </div>
                                     <div class="nilai-display-group mt-2 mb-2">
-                                        <label class="d-block">Nilai Kuis:</label>
-                                        <span id="quiz-nilai-section-1" class="badge bg-primary">Belum
-                                            Mengerjakan</span>
+                                        <label class="d-block">Quiz Score:</label>
+                                        <span id="quiz-nilai-section-1" class="badge bg-primary">Not Taken Yet</span>
                                         <input type="hidden" id="hidden-nilai-section-1" name="hidden-nilai-section-1"
                                             value="0">
                                     </div>
                                     <div class="status-buttons-group">
-                                        <label class="d-block">Status Bagian ini:</label>
+                                        <label class="d-block">Section Status:</label>
                                         <button type="button" class="btn btn-sm btn-outline-secondary status-btn"
                                             data-section="1" data-status="none">None</button>
                                         <button type="button" class="btn btn-sm btn-outline-info status-btn"
@@ -238,28 +237,27 @@
 
                             <div class="section" data-section-id="2">
                                 <div class="section-header">
-                                    <span class="section-title-text">Tahun 2: Core Studies</span>
+                                    <span class="section-title-text">Year 2: Core Studies</span>
                                     <button class="section-quiz-btn btn btn-sm btn-info" data-section="2">
-                                        <i class="bi bi-pencil-square"></i> Kuis
+                                        <i class="bi bi-pencil-square"></i> Quiz
                                     </button>
                                     <i class="bi bi-chevron-down section-toggle"></i>
                                 </div>
                                 <div class="section-lessons">
                                     <div class="lesson-item" data-video-id="Nn7EX3zkGUo" data-section="2"
-                                        data-description="Video untuk konsep inti.">
+                                        data-description="Video for core concepts.">
                                         <i class="bi bi-play-circle lesson-icon"></i>
-                                        <span class="lesson-title">Konsep Inti Bidang</span>
+                                        <span class="lesson-title">Core Field Concepts</span>
                                         <span class="lesson-duration">12m</span>
                                     </div>
                                     <div class="nilai-display-group mt-2 mb-2">
-                                        <label class="d-block">Nilai Kuis:</label>
-                                        <span id="quiz-nilai-section-2" class="badge bg-primary">Belum
-                                            Mengerjakan</span>
+                                        <label class="d-block">Quiz Score:</label>
+                                        <span id="quiz-nilai-section-2" class="badge bg-primary">Not Taken Yet</span>
                                         <input type="hidden" id="hidden-nilai-section-2" name="hidden-nilai-section-2"
                                             value="0">
                                     </div>
                                     <div class="status-buttons-group">
-                                        <label class="d-block">Status Bagian ini:</label>
+                                        <label class="d-block">Section Status:</label>
                                         <button type="button" class="btn btn-sm btn-outline-secondary status-btn"
                                             data-section="2" data-status="none">None</button>
                                         <button type="button" class="btn btn-sm btn-outline-info status-btn"
@@ -280,28 +278,27 @@
 
                             <div class="section" data-section-id="3">
                                 <div class="section-header">
-                                    <span class="section-title-text">Tahun 3: Specialization</span>
+                                    <span class="section-title-text">Year 3: Specialization</span>
                                     <button class="section-quiz-btn btn btn-sm btn-info" data-section="3">
-                                        <i class="bi bi-pencil-square"></i> Kuis
+                                        <i class="bi bi-pencil-square"></i> Quiz
                                     </button>
                                     <i class="bi bi-chevron-down section-toggle"></i>
                                 </div>
                                 <div class="section-lessons">
                                     <div class="lesson-item" data-video-id="zFZrkCIc2Oc" data-section="3"
-                                        data-description="Video untuk spesialisasi.">
+                                        data-description="Video for specialization.">
                                         <i class="bi bi-play-circle lesson-icon"></i>
-                                        <span class="lesson-title">Spesialisasi Tingkat Lanjut</span>
+                                        <span class="lesson-title">Advanced Specialization</span>
                                         <span class="lesson-duration">20m</span>
                                     </div>
                                     <div class="nilai-display-group mt-2 mb-2">
-                                        <label class="d-block">Nilai Kuis:</label>
-                                        <span id="quiz-nilai-section-3" class="badge bg-primary">Belum
-                                            Mengerjakan</span>
+                                        <label class="d-block">Quiz Score:</label>
+                                        <span id="quiz-nilai-section-3" class="badge bg-primary">Not Taken Yet</span>
                                         <input type="hidden" id="hidden-nilai-section-3" name="hidden-nilai-section-3"
                                             value="0">
                                     </div>
                                     <div class="status-buttons-group">
-                                        <label class="d-block">Status Bagian ini:</label>
+                                        <label class="d-block">Section Status:</label>
                                         <button type="button" class="btn btn-sm btn-outline-secondary status-btn"
                                             data-section="3" data-status="none">None</button>
                                         <button type="button" class="btn btn-sm btn-outline-info status-btn"
@@ -321,15 +318,15 @@
                             </div>
 
                             <div class="course-info-card mt-4 p-3" style="background: #f8f9fa; border-radius: 10px;">
-                                <h6 class="text-primary">Informasi Career Path</h6>
+                                <h6 class="text-primary">Career Path Information</h6>
                                 @if($item->duration_r)
-                                    <p class="mb-2"><strong>Durasi:</strong> {{ $item->duration_r }} jam</p>
+                                    <p class="mb-2"><strong>Duration:</strong> {{ $item->duration_r }} hours</p>
                                 @endif
                                 @if($item->rating)
                                     <p class="mb-2"><strong>Rating:</strong> {{ number_format($item->rating, 1) }}/5</p>
                                 @endif
                                 @if($item->kategori)
-                                    <p class="mb-0"><strong>Kategori:</strong> {{ $item->kategori }}</p>
+                                    <p class="mb-0"><strong>Category:</strong> {{ $item->kategori }}</p>
                                 @endif
                             </div>
                         </div>
@@ -342,8 +339,8 @@
             <div class="quiz-content">
                 <div class="quiz-header">
                     <span class="quiz-close" onclick="closeQuiz()">×</span>
-                    <h2 class="quiz-title">Kuis - <span id="quizSectionModalTitle"></span></h2>
-                    <p class="quiz-subtitle">Jawab pertanyaan berikut untuk mendapatkan nilai.</p>
+                    <h2 class="quiz-title">Quiz - <span id="quizSectionModalTitle"></span></h2>
+                    <p class="quiz-subtitle">Answer the following questions to get a grade.</p>
                 </div>
                 <div class="quiz-body">
                     <div class="quiz-questions-container" id="quizQuestionsContainer">

@@ -252,44 +252,44 @@
             <!-- Title -->
             <h1 class="main-title">Hello there...</h1>
             <p class="subtitle">
-                Tell us a little about yourself so we can provide the best recommendations. First, what's your goal?
+                Tell us a little about yourself so we can provide the best recommendations. First, what's your career goal?
             </p>
             
             <!-- Goal Selection Cards -->
             <div class="row g-4 mb-5">
                 <div class="col-lg-3 col-md-6">
-                    <div class="goal-card" data-goal="start-career">
+                    <div class="goal-card" data-goal="tech-entrepreneur">
                         <div class="goal-icon">
-                            <i class="bi bi-rocket-takeoff"></i>
+                            <i class="bi bi-lightbulb"></i>
                         </div>
-                        <p class="goal-title">Start my career</p>
+                        <p class="goal-title">Become a Technology Entrepreneur</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
-                    <div class="goal-card" data-goal="change-career">
+                    <div class="goal-card" data-goal="software-developer">
                         <div class="goal-icon">
-                            <i class="bi bi-arrow-left-right"></i>
+                            <i class="bi bi-code-slash"></i>
                         </div>
-                        <p class="goal-title">Change my career</p>
+                        <p class="goal-title">Become a Software Developer</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
-                    <div class="goal-card" data-goal="grow-role">
+                    <div class="goal-card" data-goal="data-scientist">
                         <div class="goal-icon">
-                            <i class="bi bi-graph-up-arrow"></i>
+                            <i class="bi bi-bar-chart"></i>
                         </div>
-                        <p class="goal-title">Grow in my current role</p>
+                        <p class="goal-title">Become a Data Scientist</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
-                    <div class="goal-card" data-goal="explore-topics">
+                    <div class="goal-card" data-goal="digital-marketer">
                         <div class="goal-icon">
-                            <i class="bi bi-search"></i>
+                            <i class="bi bi-megaphone"></i>
                         </div>
-                        <p class="goal-title">Explore topics outside work</p>
+                        <p class="goal-title">Become a Digital Marketing Expert</p>
                     </div>
                 </div>
             </div>
@@ -352,10 +352,10 @@
 
         function getGoalText(goalKey) {
             const goalTexts = {
-                'start-career': 'Start my career',
-                'change-career': 'Change my career',
-                'grow-role': 'Grow in my current role',
-                'explore-topics': 'Explore topics outside work'
+                'tech-entrepreneur': 'Become a Technology Entrepreneur',
+                'software-developer': 'Become a Software Developer',
+                'data-scientist': 'Become a Data Scientist',
+                'digital-marketer': 'Become a Digital Marketing Expert'
             };
             return goalTexts[goalKey] || 'Unknown goal';
         }

@@ -767,11 +767,117 @@
 
       <section class="hero-section d-flex justify-content-center align-items-center" id="degreesList">
             <div class="container">
-                <div class="row">
-                     <div class="col-lg-8 col-12 mx-auto text-center title-container">
-                        <h1 class="text-white page-title">Find the right degree for you..</h1>
-                    </div>
-                </div>
+             <div class="row">
+    <div class="col-lg-8 col-12 mx-auto text-center title-container">
+        <h1 class="text-white page-title">3000+ Available Course Certificate</h1>
+    </div>
+</div>
+
+<style>
+.page-title {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, 
+        #ffffff 0%, 
+        #f0f9ff 25%, 
+        #26D0CE 50%, 
+        #ffffff 75%, 
+        #f8fafc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    position: relative;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    text-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% {
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    }
+    100% {
+        filter: drop-shadow(0 0 40px rgba(38, 208, 206, 0.6));
+    }
+}
+
+.page-title::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #26D0CE 25%, 
+        #ffffff 50%, 
+        #26D0CE 75%, 
+        transparent 100%);
+    border-radius: 2px;
+    animation: underlineFlow 4s ease-in-out infinite;
+}
+
+@keyframes underlineFlow {
+    0%, 100% { opacity: 0.5; width: 80px; }
+    50% { opacity: 1; width: 150px; }
+}
+
+.page-title::after {
+    content: '✨';
+    position: absolute;
+    top: -20px;
+    right: -30px;
+    font-size: 2rem;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+    50% { transform: rotate(180deg) scale(1.2); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .page-title {
+        font-size: 3.2rem;
+    }
+    
+    .page-title::after {
+        font-size: 1.5rem;
+        right: -20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+    }
+    
+    .page-title::after {
+        font-size: 1.2rem;
+        right: -15px;
+        top: -15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .page-title::after {
+        font-size: 1rem;
+        right: -10px;
+        top: -10px;
+    }
+}
+</style>
 
 
         </section>
@@ -888,15 +994,7 @@
 
             <!-- Content Area -->
             <div class="content-area">
-                <div class="content-header">
-                    <div class="results-info">All results</div>
-                    <select class="sort-dropdown">
-                        <option>Sort by: Best Match</option>
-                        <option>Sort by: Most Popular</option>
-                        <option>Sort by: Newest</option>
-                        <option>Sort by: Rating</option>
-                    </select>
-                </div>
+            
 <div class="course-grid">
 
     

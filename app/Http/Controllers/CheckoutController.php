@@ -15,9 +15,11 @@ class CheckoutController extends Controller
    // Method universal untuk menampilkan form checkout
    public function show($itemType, $itemId)
    {
-       // SELECT * FROM courses WHERE id = ? (jika course)
-       // SELECT * FROM careers WHERE id = ? (jika career)  
-       // SELECT * FROM universities WHERE id = ? (jika module)
+       /* SQL Query berdasarkan item type:
+        * - Jika course: SELECT * FROM courses WHERE id = ?
+        * - Jika career: SELECT * FROM careers WHERE id = ?  
+        * - Jika module: SELECT * FROM universities WHERE id = ?
+        */
        $item = $this->getItemByType($itemType, $itemId);
        
        if (!$item) {
@@ -101,7 +103,14 @@ class CheckoutController extends Controller
        $status = $isTrial ? 'trial' : 'pending';
        $paymentAmount = $isTrial ? 0 : ($item->price ?? $this->getDefaultPrice($validated['item_type']));
 
-       // INSERT INTO checkouts (order_id, user_id, item_type, item_id, status, payment_amount, organization_type, corporation_name, school_name, country, payment_method, card_number, expiry_date, cvc, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       /* SQL Query untuk menyimpan checkout:
+        * INSERT INTO checkouts (
+        *     order_id, user_id, item_type, item_id, status, payment_amount, 
+        *     customer_name, organization_type, corporation_name, school_name, 
+        *     country, payment_method, card_number, expiry_date, cvc, 
+        *     created_at, updated_at
+        * ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())
+        */
        $checkout = Checkout::create([
            'order_id' => $orderId,
            'user_id' => Auth::id(),
@@ -109,6 +118,7 @@ class CheckoutController extends Controller
            'item_id' => $validated['item_id'],
            'status' => $status,
            'payment_amount' => $paymentAmount,
+           'customer_name' => $validated['customer_name'],
            'organization_type' => $validated['organization_type'],
            'corporation_name' => $request->corporation_name,
            'school_name' => $request->school_name,
@@ -128,7 +138,11 @@ class CheckoutController extends Controller
    // Method untuk menampilkan success page (menggunakan order_id sebagai parameter)
    public function success($orderId)
    {
-       // SELECT * FROM checkouts WHERE user_id = ? AND order_id = ? LIMIT 1
+       /* SQL Query untuk mengambil data checkout berdasarkan user dan order ID:
+        * SELECT * FROM checkouts 
+        * WHERE user_id = ? AND order_id = ? 
+        * LIMIT 1
+        */
        $checkout = Checkout::where('user_id', Auth::id())
                           ->where('order_id', $orderId)
                           ->firstOrFail();
@@ -143,7 +157,12 @@ class CheckoutController extends Controller
    // Method untuk menampilkan history checkout user
    public function index()
    {
-       // SELECT * FROM checkouts WHERE user_id = ? ORDER BY created_at DESC LIMIT 10 OFFSET ?
+       /* SQL Query untuk mengambil riwayat checkout user dengan pagination:
+        * SELECT * FROM checkouts 
+        * WHERE user_id = ? 
+        * ORDER BY created_at DESC 
+        * LIMIT 10 OFFSET ?
+        */
        $checkouts = Checkout::where('user_id', Auth::id())
                            ->orderBy('created_at', 'desc')
                            ->paginate(10);
@@ -152,15 +171,21 @@ class CheckoutController extends Controller
        $checkouts->getCollection()->each(function ($checkout) {
            switch ($checkout->item_type) {
                case 'course':
-                   // SELECT * FROM courses_certificates WHERE id = ?
+                   /* SQL Query untuk load course:
+                    * SELECT * FROM courses WHERE id = ?
+                    */
                    $checkout->load('course');
                    break;
                case 'career':
-                   // SELECT * FROM careers WHERE id = ?
+                   /* SQL Query untuk load career:
+                    * SELECT * FROM careers WHERE id = ?
+                    */
                    $checkout->load('career');
                    break;
                case 'module':
-                   // SELECT * FROM universities WHERE id = ?
+                   /* SQL Query untuk load university/module:
+                    * SELECT * FROM universities WHERE id = ?
+                    */
                    $checkout->load('module');
                    break;
            }
@@ -172,7 +197,11 @@ class CheckoutController extends Controller
    // Method untuk mencari checkout berdasarkan order ID
    public function findByOrderId($orderId)
    {
-       // SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
+       /* SQL Query untuk mencari checkout berdasarkan order ID:
+        * SELECT * FROM checkouts 
+        * WHERE order_id = ? 
+        * LIMIT 1
+        */
        $checkout = Checkout::where('order_id', $orderId)->firstOrFail();
        
        // Load item data
@@ -190,7 +219,11 @@ class CheckoutController extends Controller
            $year = date('Y');
            $randomNumber = mt_rand(1000, 9999);
            $orderId = "BRG-{$year}-{$randomNumber}";
-           // SELECT COUNT(*) FROM checkouts WHERE order_id = ?
+           
+           /* SQL Query untuk cek keunikan order ID:
+            * SELECT COUNT(*) FROM checkouts 
+            * WHERE order_id = ?
+            */
        } while (Checkout::where('order_id', $orderId)->exists());
 
        return $orderId;
@@ -204,7 +237,11 @@ class CheckoutController extends Controller
            $timestamp = substr(time(), -6); // ambil 6 digit terakhir dari timestamp
            $random = mt_rand(100, 999);
            $orderId = "BRG{$timestamp}{$random}";
-           // SELECT COUNT(*) FROM checkouts WHERE order_id = ?
+           
+           /* SQL Query untuk cek keunikan order ID alternatif:
+            * SELECT COUNT(*) FROM checkouts 
+            * WHERE order_id = ?
+            */
        } while (Checkout::where('order_id', $orderId)->exists());
 
        return $orderId;
@@ -216,13 +253,22 @@ class CheckoutController extends Controller
        try {
            switch ($itemType) {
                case 'course':
-                   // SELECT * FROM courses_certificates WHERE id = ?
+                   /* SQL Query untuk mengambil data course:
+                    * SELECT * FROM courses 
+                    * WHERE id = ?
+                    */
                    return Course::find($itemId);
                case 'career':
-                   // SELECT * FROM careers WHERE id = ?
+                   /* SQL Query untuk mengambil data career:
+                    * SELECT * FROM careers 
+                    * WHERE id = ?
+                    */
                    return Career::find($itemId);
                case 'module':
-                   // SELECT * FROM universities WHERE id = ?
+                   /* SQL Query untuk mengambil data university/module:
+                    * SELECT * FROM universities 
+                    * WHERE id = ?
+                    */
                    return University::find($itemId);
                default:
                    return null;

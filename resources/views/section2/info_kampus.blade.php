@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Info Pendidikan Tinggi Negri</title>
+  <title>State Higher Education Information</title>
 
   <!-- CSS FILES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,8 +34,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-12 mx-auto">
-            <h1 class="text-black text-center">Info Universitas dan Jurusan</h1>
-            <h6 class="text-center">Pendidikan Tinggi Negri</h6>
+            <h1 class="text-black text-center">University and Major Information</h1>
+            <h6 class="text-center">State Higher Education</h6>
 
           </div>
         </div>
@@ -49,7 +49,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <h3 class="mb-5 mt-5">Top Universitas</h3>
+            <h3 class="mb-5 mt-5">Top Universities</h3>
           </div>
         </div>
       </div>
@@ -61,12 +61,11 @@
             <div class="col-lg-3 col-md-6 col-sm-12">
               <div class="card shadow category-card-2 h-100">
                 <img src="images/section2/logo univ/UI.png" class="card-img-top p-3"
-                  style="object-fit: contain; height: 150px;" alt="Universitas Indonesia">
+                  style="object-fit: contain; height: 150px;" alt="University of Indonesia">
                 <div class="card-body">
-                  <h5 class="card-title">Universitas <br>Indonesia</h5>
-                  <p class=small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Depok, Jawa
-                    Barat</p>
-                  <a href="/detail-kampus/2" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+                  <h5 class="card-title">University of <br>Indonesia</h5>
+                  <p class=small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Depok, West Java</p>
+                  <a href="/detail-kampus/2" class="btn btn-link p-0 fs-6 text-blue">Details <i
                       class="bi bi-arrow-right"></i></a>
                 </div>
               </div>
@@ -76,12 +75,12 @@
             <div class="col-lg-3 col-md-6 col-sm-12">
               <div class="card shadow category-card-2 h-100">
                 <img src="images/section2/logo univ/UGM.png" class="card-img-top p-3"
-                  style="height: 150px; object-fit: contain;" alt="University of Colorado Boulder">
+                  style="height: 150px; object-fit: contain;" alt="Gadjah Mada University">
                 <div class="card-body">
-                  <h5 class="card-title">Universitas <br>Gadjah Mada</h5>
-                  <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Daerah Istimewa
+                  <h5 class="card-title">Gadjah Mada <br>University</h5>
+                  <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Special Region of
                     Yogyakarta</p>
-                  <a href="/detail-kampus/1" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+                  <a href="/detail-kampus/1" class="btn btn-link p-0 fs-6 text-blue">Details <i
                       class="bi bi-arrow-right"></i></a>
                 </div>
               </div>
@@ -91,12 +90,12 @@
             <div class="col-lg-3 col-md-6 col-sm-12">
               <div class="card shadow category-card-2 h-100">
                 <img src="images/section2/logo univ/ITB.png" class="card-img-top p-3"
-                  style="height: 150px; object-fit: contain;" alt="University of North Texas">
+                  style="height: 150px; object-fit: contain;" alt="Bandung Institute of Technology">
                 <div class="card-body">
-                  <h5 class="card-title">Institut <br>Teknologi Bandung</h5>
-                  <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Bandung, Jawa
-                    Barat</p>
-                  <a href="/detail-kampus/64" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+                  <h5 class="card-title">Bandung Institute <br>of Technology</h5>
+                  <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Bandung, West
+                    Java</p>
+                  <a href="/detail-kampus/64" class="btn btn-link p-0 fs-6 text-blue">Details <i
                       class="bi bi-arrow-right"></i></a>
                 </div>
               </div>
@@ -106,18 +105,18 @@
             <div class="col-lg-3 col-md-6 col-sm-12">
               <div class="card shadow category-card-2 h-100">
                 <img src="images/section2/logo univ/Unair.png" class="card-img-top p-3"
-                  style="height: 150px; object-fit: contain;" alt="IIT Roorkee">
+                  style="height: 150px; object-fit: contain;" alt="Airlangga University">
                 <div class="card-body">
-                  <h5 class="card-title">Universitas <br>Airlangga</h5>
-                  <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Surabaya, Jawa
-                    Timur</p>
-                  <a href="/detail-kampus/4" class="btn btn-link p-0 fs-6 text-blue">Detail <i
+                  <h5 class="card-title">Airlangga <br>University</h5>
+                  <p class="small text-muted"><i class="bi bi-geo-alt-fill me-3 fs-4 text-teal"></i>Surabaya, East
+                    Java</p>
+                  <a href="/detail-kampus/4" class="btn btn-link p-0 fs-6 text-blue">Details <i
                       class="bi bi-arrow-right"></i></a>
                 </div>
               </div>
             </div>
           </div>
-          <a href="/direktori-kampus" class="btn btn-link p-0 fs-5 text-teal">Lihat Semua <i
+          <a href="/direktori-kampus" class="btn btn-link p-0 fs-5 text-teal">View All <i
               class="bi bi-arrow-right"></i></a>
         </div>
       </section>
@@ -163,7 +162,7 @@
           <div class="container">
             <div class="row">
               <div class="col-12 text-center">
-                <h3 class="mb-5">Top Jurusan</h3>
+                <h3 class="mb-5">Top Majors</h3>
               </div>
             </div>
           </div>
@@ -177,11 +176,10 @@
                     <div class="card-body">
                       <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-hospital me-3 fs-3 text-teal"></i>
-                        <h4 class="card-title h5 mb-0">Kedokteran</h4>
+                        <h4 class="card-title h5 mb-0">Medicine</h4>
                       </div>
-                      <p class="card-text small">Jurusan dengan persaingan tertinggi, prestisius, dan gaji awal yang
-                        tinggi.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                      <p class="card-text small">Major with the highest competition, prestigious, and high starting salary.</p>
+                      <a href="#" class="btn btn-link p-0 text-teal">Learn More <i
                           class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
@@ -191,10 +189,10 @@
                     <div class="card-body">
                       <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-pc-display me-3 fs-3 text-teal"></i>
-                        <h4 class="card-title h5 mb-0">Teknik Informatika</h4>
+                        <h4 class="card-title h5 mb-0">Computer Science</h4>
                       </div>
-                      <p class="card-text small">Lulusan sangat dibutuhkan di semua sektor, apalagi di era digital.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                      <p class="card-text small">Graduates are highly needed in all sectors, especially in the digital era.</p>
+                      <a href="#" class="btn btn-link p-0 text-teal">Learn More <i
                           class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
@@ -204,10 +202,10 @@
                     <div class="card-body">
                       <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-bank me-3 fs-3 text-teal"></i>
-                        <h4 class="card-title h5 mb-0">Ilmu Hukum</h4>
+                        <h4 class="card-title h5 mb-0">Law</h4>
                       </div>
-                      <p class="card-text small">Prospek kerja luas: pengacara, jaksa, notaris, konsultan hukum.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                      <p class="card-text small">Broad career prospects: lawyer, prosecutor, notary, legal consultant.</p>
+                      <a href="#" class="btn btn-link p-0 text-teal">Learn More <i
                           class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
@@ -217,11 +215,11 @@
                     <div class="card-body">
                       <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-bar-chart-line me-3 fs-3 text-teal"></i>
-                        <h4 class="card-title h5 mb-0">Manajemen</h4>
+                        <h4 class="card-title h5 mb-0">Management</h4>
                       </div>
-                      <p class="card-text small">Jurusan bisnis yang populer dengan peluang karier luas di perusahaan
-                        dan startup.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                      <p class="card-text small">Popular business major with wide career opportunities in companies
+                        and startups.</p>
+                      <a href="#" class="btn btn-link p-0 text-teal">Learn More <i
                           class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
@@ -231,11 +229,11 @@
                     <div class="card-body">
                       <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-people me-3 fs-3 text-teal"></i>
-                        <h4 class="card-title h5 mb-0">Psikologi</h4>
+                        <h4 class="card-title h5 mb-0">Psychology</h4>
                       </div>
-                      <p class="card-text small">Semakin dibutuhkan untuk HRD, konsultan pendidikan, kesehatan mental.
+                      <p class="card-text small">Increasingly needed for HR, educational consultants, mental health.
                       </p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                      <a href="#" class="btn btn-link p-0 text-teal">Learn More <i
                           class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
@@ -245,10 +243,10 @@
                     <div class="card-body">
                       <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-lightning-charge me-3 fs-3 text-teal"></i>
-                        <h4 class="card-title h5 mb-0">Teknik Elektro</h4>
+                        <h4 class="card-title h5 mb-0">Electrical Engineering</h4>
                       </div>
-                      <p class="card-text small">Fokus pada teknologi industri, telekomunikasi, dan energi.</p>
-                      <a href="#" class="btn btn-link p-0 text-teal">Pelajari Lebih Lanjut <i
+                      <p class="card-text small">Focus on industrial technology, telecommunications, and energy.</p>
+                      <a href="#" class="btn btn-link p-0 text-teal">Learn More <i
                           class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
