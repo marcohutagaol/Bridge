@@ -13,12 +13,12 @@ class ProfileController extends Controller
 {
     /**
      * Menampilkan form profil pengguna.
-     * 
-     * SQL terkait (implisit):
-     * SELECT * FROM users WHERE id = current_user_id;
      */
     public function edit(Request $request): View
     {
+        // SQL:
+        // SELECT * FROM users WHERE id = current_user_id;
+
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
@@ -26,38 +26,34 @@ class ProfileController extends Controller
 
     /**
      * Memperbarui informasi profil pengguna.
-     * 
-     * SQL terkait:
-     * UPDATE users 
-     * SET name = ?, email = ?, ... 
-     * WHERE id = current_user_id;
-     * 
-     * Jika email diubah:
-     *   SET email_verified_at = NULL
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
-            // Reset verifikasi email jika email diubah
+            // Jika email berubah, set verifikasi email menjadi NULL
+            // SQL:
+            // UPDATE users SET email_verified_at = NULL WHERE id = current_user_id;
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save(); // Simpan perubahan ke database
+        $request->user()->save();
+
+        // SQL:
+        // UPDATE users 
+        // SET name = ?, email = ?, ... 
+        // WHERE id = current_user_id;
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
      * Menghapus akun pengguna dari sistem.
-     * 
-     * SQL terkait:
-     * DELETE FROM users WHERE id = current_user_id;
      */
     public function destroy(Request $request): RedirectResponse
     {
-        // Validasi bahwa password yang dimasukkan sesuai
+        // Validasi bahwa password sesuai
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
@@ -67,10 +63,11 @@ class ProfileController extends Controller
         // Logout user dari sistem
         Auth::logout();
 
-        // Hapus user dari database
+        // SQL:
+        // DELETE FROM users WHERE id = current_user_id;
         $user->delete();
 
-        // Hapus sesi dan regenerasi token
+        // Hapus sesi dan regenerasi token keamanan
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

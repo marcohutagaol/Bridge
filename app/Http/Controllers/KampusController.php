@@ -16,7 +16,6 @@ class KampusController extends Controller
     {
         $search = $request->input('kampus_name');
 
-        // SQL: SELECT * FROM kampus WHERE tipe = 'universitas' [AND nama LIKE %$search%]
         $universitas = Kampus::query()
             ->where('tipe', 'universitas')
             ->when($search, function ($query) use ($search) {
@@ -24,7 +23,10 @@ class KampusController extends Controller
             })
             ->get();
 
-        // SQL: SELECT * FROM kampus WHERE tipe = 'institut' [AND nama LIKE %$search%]
+        // SQL:
+        // SELECT * FROM kampus WHERE tipe = 'universitas'
+        // [AND nama LIKE '%$search%']
+
         $institut = Kampus::query()
             ->where('tipe', 'institut')
             ->when($search, function ($query) use ($search) {
@@ -32,13 +34,20 @@ class KampusController extends Controller
             })
             ->get();
 
-        // SQL: SELECT * FROM kampus WHERE tipe = 'politeknik' [AND nama LIKE %$search%]
+        // SQL:
+        // SELECT * FROM kampus WHERE tipe = 'institut'
+        // [AND nama LIKE '%$search%']
+
         $politeknik = Kampus::query()
             ->where('tipe', 'politeknik')
             ->when($search, function ($query) use ($search) {
                 $query->where('nama', 'like', '%' . $search . '%');
             })
             ->get();
+
+        // SQL:
+        // SELECT * FROM kampus WHERE tipe = 'politeknik'
+        // [AND nama LIKE '%$search%']
 
         return view('section2.direktori_kampus', compact('universitas', 'institut', 'politeknik'));
     }
@@ -64,11 +73,13 @@ class KampusController extends Controller
      */
     public function show(string $id)
     {
-        // SQL: SELECT * FROM kampus WHERE id = '$id'
         $universitas = Kampus::where('id', $id)->get();
+        // SQL:
+        // SELECT * FROM kampus WHERE id = '$id'
 
-        // SQL: SELECT * FROM visi_misi_kampus WHERE kampus_id = '$id'
         $deskripsi = VisiMisiKampus::where('kampus_id', $id)->get();
+        // SQL:
+        // SELECT * FROM visi_misi_kampus WHERE kampus_id = '$id'
 
         return view('section2.detail_kampus', compact('universitas', 'deskripsi'));
     }

@@ -14,11 +14,14 @@ class LearningPageController extends Controller
 {
     public function show($type, $id)
     {
-        // SQL: SELECT * FROM checkouts WHERE user_id = Auth::id() AND item_type = '$type' AND item_id = '$id' LIMIT 1;
         $checkout = Checkout::where('user_id', Auth::id())
                            ->where('item_type', $type)
                            ->where('item_id', $id)
                            ->first();
+        // SQL:
+        // SELECT * FROM checkouts 
+        // WHERE user_id = Auth::id() AND item_type = '$type' AND item_id = '$id' 
+        // LIMIT 1;
 
         if (!$checkout) {
             abort(403, 'You do not have access to this learning material.');
@@ -27,18 +30,21 @@ class LearningPageController extends Controller
         // Get the item data based on type
         switch ($type) {
             case 'course':
-                // SQL: SELECT * FROM courses WHERE id = '$id' LIMIT 1;
                 $item = Course::findOrFail($id);
+                // SQL:
+                // SELECT * FROM courses WHERE id = '$id' LIMIT 1;
                 return view('pages.detail.learningpage.course_learningpage', compact('item', 'checkout'));
                 
             case 'career':
-                // SQL: SELECT * FROM careers WHERE id = '$id' LIMIT 1;
                 $item = Career::findOrFail($id);
+                // SQL:
+                // SELECT * FROM careers WHERE id = '$id' LIMIT 1;
                 return view('pages.detail.learningpage.careers_learningpage', compact('item', 'checkout'));
                 
             case 'module':
-                // SQL: SELECT * FROM universities WHERE id = '$id' LIMIT 1;
                 $item = University::findOrFail($id);
+                // SQL:
+                // SELECT * FROM universities WHERE id = '$id' LIMIT 1;
                 return view('pages.detail.learningpage.module_learningpage', compact('item', 'checkout'));
                 
             default:

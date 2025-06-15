@@ -31,6 +31,11 @@ class CourseController extends Controller
 
         $courses = $query->get();
 
+        // SQL Approximation:
+        // SELECT * FROM courses
+        // WHERE kategori LIKE '%kategori1%' AND ...
+        //   AND (name LIKE '%keyword%' OR description LIKE '%keyword%');
+
         $wishlistIds = [];
         if (auth()->check()) {
             $wishlistIds = auth()->user()->wishlists()
@@ -39,6 +44,11 @@ class CourseController extends Controller
                 ->toArray();
         }
 
+        // SQL:
+        // SELECT wishlistable_id FROM wishlists
+        // WHERE user_id = [ID_USER]
+        //   AND wishlistable_type = 'App\Models\Course';
+
         return view('pages.detail.certificate_detail', [
             'courses' => $courses,
             'wishlistIds' => $wishlistIds,
@@ -46,67 +56,68 @@ class CourseController extends Controller
         ]);
     }
 
-   public function show($id)
-   {
-       // SELECT * FROM courses_certificates WHERE id = ? LIMIT 1
-       $course = Course::findOrFail($id);
+    public function show($id)
+    {
+        $course = Course::findOrFail($id);
 
-       return view('pages.detail.certificate_show', [
-           'course' => $course
-       ]);
-   }
+        // SQL:
+        // SELECT * FROM courses WHERE id = ? LIMIT 1;
 
-   public function checkout($id)
-   {
-       // SELECT * FROM courses_certificates WHERE id = ? LIMIT 1
-       $course = Course::findOrFail($id);
+        return view('pages.detail.certificate_show', [
+            'course' => $course
+        ]);
+    }
 
-       return view('pages.detail.checkout', [
-           'course' => $course
-       ]);
-   }
+    public function checkout($id)
+    {
+        $course = Course::findOrFail($id);
 
-   /**
-    * Proses checkout (untuk form POST)
-    */
-   public function processCheckout(Request $request, $id)
-   {
-       // SELECT * FROM courses_certificates WHERE id = ? LIMIT 1
-       $course = Course::findOrFail($id);
+        // SQL:
+        // SELECT * FROM courses WHERE id = ? LIMIT 1;
 
-       // Validasi data form
-       $validated = $request->validate([
-           'payment_method' => 'required',
-           'terms' => 'accepted'
-       ]);
+        return view('pages.detail.checkout', [
+            'course' => $course
+        ]);
+    }
 
-       // Di sini Anda bisa menambahkan logika:
-       // - Penyimpanan ke database
-       // - Integrasi payment gateway
-       // - dll
+    public function processCheckout(Request $request, $id)
+    {
+        $course = Course::findOrFail($id);
 
-       // Redirect ke halaman sukses
-       return redirect()->route('checkout.success', ['id' => $id])
-           ->with('success', 'Pembelian berhasil diproses!');
-   }
+        // SQL:
+        // SELECT * FROM courses WHERE id = ? LIMIT 1;
 
-   /**
-    * Halaman sukses checkout
-    */
-   public function checkoutSuccess($id)
-   {
-       // SELECT * FROM courses_certificates WHERE id = ? LIMIT 1
-       $course = Course::findOrFail($id);
+        $validated = $request->validate([
+            'payment_method' => 'required',
+            'terms' => 'accepted'
+        ]);
 
-       return view('pages.detail.checkout_success', [
-           'course' => $course
-       ]);
-   }
+        // [Contoh logika tambahan]
+        // INSERT INTO orders (...) VALUES (...);
 
-   public function admin()
-   {
-       // SELECT * FROM courses_certificates LIMIT 10 OFFSET ?
-       $courses = Course::paginate(10);
-       return view('admin.course', compact('courses'));
-   }
+        return redirect()->route('checkout.success', ['id' => $id])
+            ->with('success', 'Pembelian berhasil diproses!');
+    }
+
+    public function checkoutSuccess($id)
+    {
+        $course = Course::findOrFail($id);
+
+        // SQL:
+        // SELECT * FROM courses WHERE id = ? LIMIT 1;
+
+        return view('pages.detail.checkout_success', [
+            'course' => $course
+        ]);
+    }
+
+    public function admin()
+    {
+        $courses = Course::paginate(10);
+
+        // SQL:
+        // SELECT * FROM courses LIMIT 10 OFFSET [halaman];
+
+        return view('admin.course', compact('courses'));
+    }
 }

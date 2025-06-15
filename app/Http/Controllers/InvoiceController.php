@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use App\Models\Checkout; // Assuming your model is named Checkout
+use App\Models\Checkout;
 use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
@@ -14,20 +14,16 @@ class InvoiceController extends Controller
      */
     public function downloadInvoice($orderId)
     {
-        // Find checkout by order_id
-        // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
-        // (dengan relasi user dimuat menggunakan eager loading)
         $checkout = Checkout::where('order_id', $orderId)
-            ->with('user') // Load user relationship
+            ->with('user')
             ->firstOrFail();
 
-        // Generate PDF
+        // SQL:
+        // SELECT * FROM checkouts WHERE order_id = ? LIMIT 1;
+        // (Relasi eager loading: JOIN users ON checkouts.user_id = users.id)
+
         $pdf = Pdf::loadView('invoices.pdf', compact('checkout'));
-        
-        // Set paper size and orientation
         $pdf->setPaper('A4', 'portrait');
-        
-        // Set options for better rendering
         $pdf->setOptions([
             'isHtml5ParserEnabled' => true,
             'isPhpEnabled' => true,
@@ -35,7 +31,6 @@ class InvoiceController extends Controller
             'enable_php' => true
         ]);
 
-        // Return PDF for download
         return $pdf->download("invoice-{$checkout->order_id}.pdf");
     }
 
@@ -44,18 +39,17 @@ class InvoiceController extends Controller
      */
     public function viewInvoice($orderId)
     {
-        // Find checkout by order_id
-        // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
-        // (dengan relasi user dimuat)
         $checkout = Checkout::where('order_id', $orderId)
             ->with('user')
             ->firstOrFail();
 
-        // Generate PDF
+        // SQL:
+        // SELECT * FROM checkouts WHERE order_id = ? LIMIT 1;
+        // (Relasi eager loading: JOIN users ON checkouts.user_id = users.id)
+
         $pdf = Pdf::loadView('invoices.pdf', compact('checkout'));
         $pdf->setPaper('A4', 'portrait');
-        
-        // Stream PDF to browser
+
         return $pdf->stream("invoice-{$checkout->order_id}.pdf");
     }
 
@@ -64,18 +58,17 @@ class InvoiceController extends Controller
      */
     public function generateInvoice($orderId)
     {
-        // Find checkout by order_id
-        // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
-        // (dengan relasi user dimuat)
         $checkout = Checkout::where('order_id', $orderId)
             ->with('user')
             ->firstOrFail();
 
-        // Generate PDF
+        // SQL:
+        // SELECT * FROM checkouts WHERE order_id = ? LIMIT 1;
+        // (Relasi eager loading: JOIN users ON checkouts.user_id = users.id)
+
         $pdf = Pdf::loadView('invoices.pdf', compact('checkout'));
         $pdf->setPaper('A4', 'portrait');
 
-        // Save to storage
         $filename = "invoices/invoice-{$checkout->order_id}.pdf";
         Storage::put($filename, $pdf->output());
 
@@ -91,14 +84,14 @@ class InvoiceController extends Controller
      */
     public function emailInvoice($orderId)
     {
-        // Find checkout by order_id
-        // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
-        // (dengan relasi user dimuat)
         $checkout = Checkout::where('order_id', $orderId)
             ->with('user')
             ->firstOrFail();
 
-        // Generate PDF
+        // SQL:
+        // SELECT * FROM checkouts WHERE order_id = ? LIMIT 1;
+        // (Relasi eager loading: JOIN users ON checkouts.user_id = users.id)
+
         $pdf = Pdf::loadView('invoices.pdf', compact('checkout'));
         $pdf->setPaper('A4', 'portrait');
 
@@ -116,14 +109,14 @@ class InvoiceController extends Controller
 
         foreach ($orderIds as $orderId) {
             try {
-                // Find checkout by order_id
-                // SQL: SELECT * FROM checkouts WHERE order_id = ? LIMIT 1
-                // (dengan relasi user dimuat)
                 $checkout = Checkout::where('order_id', $orderId)
                     ->with('user')
                     ->firstOrFail();
 
-                // Generate PDF
+                // SQL:
+                // SELECT * FROM checkouts WHERE order_id = ? LIMIT 1;
+                // (Relasi eager loading: JOIN users ON checkouts.user_id = users.id)
+
                 $pdf = Pdf::loadView('invoices.pdf', compact('checkout'));
                 $pdf->setPaper('A4', 'portrait');
 

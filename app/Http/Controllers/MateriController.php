@@ -38,9 +38,9 @@ class MateriController extends Controller
         // Decode URL encoding (contoh: "penalaran%20umum" -> "penalaran umum")
         $sub_kategori = urldecode($sub_kategori);
 
+        $materi = \App\Models\Utbk::where('sub_kategori', $sub_kategori)->get();
         // SQL Equivalent:
         // SELECT * FROM utbks WHERE sub_kategori = '$sub_kategori';
-        $materi = \App\Models\Utbk::where('sub_kategori', $sub_kategori)->get();
 
         // Kembalikan view dengan data materi dan nama sub_kategori
         return view('pages.section1.materi_detail', compact('materi', 'sub_kategori'));
